@@ -1,0 +1,62 @@
+{
+  "data": {
+    "address": {
+      "visible": true,
+      "street": "Av. General San Martin",
+      "number": "1656",
+      "neighborhood": "San Martin",
+      "complement": "Prox. a Praça de eventos",
+      "city": "Recife",
+      "zip_code": "50761000",
+      "state": "PE",
+      "latitude": null,
+      "longitude": null,
+      "reference_point": ""
+    },
+    "contact": {
+      "email": "-passira.pizzaria+1@gmail.com",
+      "website": "",
+      "visible": false,
+      "phone": "81 3140- 7400",
+      "phone_ddi": 55,
+      "whatsapp": "8131407400",
+      "whatsapp_message": "\"Quer fazer seu pedido ou tirar dúvidas de forma mais rápida? Fale diretamente conosco pelo WhatsApp! Clique abaixo para ser redirecionado.\"",
+      "whatsapp_visible": true,
+      "link_faq": ""
+    },
+    "merchant": {
+      "cnpj": "19.659.750/0001-06",
+      "corporate_name": "JEAN CLEIDE DA SILVA RESTAURANTE ME",
+      "name": "Passira - San Martin",
+      "average_rating": "",
+      "description": "",
+      "last_mile": false,
+      "policy_cnpj": ""
+    },
+    "social_medias": {
+      "facebook": {
+        "name": "",
+        "link": ""
+      },
+      "instagram": {
+        "name": "",
+        "link": "https://www.instagram.com/passira_sanmartin"
+      },
+      "twitter": {
+        "name": "",
+        "link": ""
+      },
+      "youtube": {
+        "name": "",
+        "link": ""
+      }
+    },
+    "terms_and_policies": {
+      "terms_of_use": "",
+      "cancellation_policy": "",
+      "repentance_policy": "",
+      "privacy_policy": "Política de Uso - Passira - San Martin\n\nAtualizado em: 21/10/2025\n\n1. Quem somos\n\nO Passira - San Martin é uma marca oficialmente licenciada e operada por JEAN CLEIDE DA SILVA RESTAURANTE ME, devidamente registrada sob o CNPJ 19.659.750/0001-06. Nossa sede está localizada em Av. General San Martin 1656, San Martin - Recife sob o contato -passira.pizzaria+1@gmail.com. Somos responsáveis pela gestão e proteção dos dados pessoais coletados em nossa plataforma, usados para processar e entregar seus pedidos com base nos termos desta política de uso.\n\n2. Coleta de dados\n\nDurante sua interação conosco, coletamos algumas informações para facilitar sua experiência e tornar o serviço mais eficiente. Isso inclui: Informações pessoais, como nome, endereço e telefone, necessárias para processar e entregar seus pedidos. Dados de pagamento, que são tratados com sistemas seguros para proteger suas informações. Dados de navegação, como preferências de consumo, que nos ajudam a personalizar ofertas e melhorar nossos serviços. Garantimos que todos os dados são protegidos e tratados de acordo com a legislação vigente, especialmente a Lei Geral de Proteção de Dados (LGPD). Usamos essas informações apenas para os fins descritos nesta política e nunca vendemos ou compartilhamos dados com terceiros sem sua autorização.\n\n3. Uso responsável do serviço\n\nNosso aplicativo e site foram projetados para facilitar seus pedidos e proporcionar conveniência. Para manter o bom funcionamento, pedimos que você: Informe dados corretos e atualizados ao realizar seu cadastro e pedidos. Utilize a plataforma de maneira ética, sem práticas fraudulentas ou atividades que possam prejudicar a experiência de outros usuários. Não compartilhe sua senha ou credenciais com terceiros. O uso inadequado da plataforma poderá levar à suspensão ou ao cancelamento de seu acesso. \n\n4. Compromisso com a lei\n\nEstamos comprometidos em operar de forma alinhada às leis brasileiras, como o Código de Defesa do Consumidor e o Decreto 7.962/2013, que regulam as transações digitais e protegem seus direitos. Nosso objetivo é garantir que todos os pedidos sejam atendidos com transparência, respeito e qualidade.\n\n5. Segurança e privacidade\n\nProteger suas informações é uma prioridade. Implementamos medidas de segurança robustas para garantir que seus dados estejam sempre protegidos. Caso surja alguma dúvida ou preocupação sobre privacidade, nossa equipe está à disposição para ajudá-lo pelo e-mail fornecido acima.\n\n6. Alterações na política\n\nEsta política pode ser revisada para refletir mudanças nos serviços ou atualizações legais. Qualquer modificação será comunicada de forma clara. Recomendamos que você consulte esta página regularmente para se manter atualizado.\n\n\n7. Fale conosco\n\nSe tiver dúvidas, sugestões ou precisar de suporte, entre em contato pelo nosso email: -passira.pizzaria+1@gmail.com.\n\nAgradecemos por confiar no Passira - San Martin.\n\n\nConte conosco para tornar sua experiência de delivery sempre excelente!",
+      "superapp_description": ""
+    }
+  }
+}

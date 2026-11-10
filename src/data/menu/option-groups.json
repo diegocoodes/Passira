@@ -1,0 +1,110 @@
+[
+  {
+    "id": "311445",
+    "name": "Aplicação ou Borda",
+    "enabled": false,
+    "min": 2,
+    "max": 2,
+    "allowRepeated": false,
+    "additionIds": []
+  },
+  {
+    "id": "306463",
+    "name": "SABORES",
+    "enabled": true,
+    "min": 1,
+    "max": 2,
+    "allowRepeated": false,
+    "additionIds": [
+      "1387897",
+      "1387898",
+      "1387899",
+      "1387900",
+      "1387901",
+      "1387902",
+      "1387903",
+      "1387904"
+    ]
+  },
+  {
+    "id": "306462",
+    "name": "SABORES",
+    "enabled": true,
+    "min": 1,
+    "max": 2,
+    "allowRepeated": false,
+    "additionIds": [
+      "1387889",
+      "1387890",
+      "1387891",
+      "1387892",
+      "1387893",
+      "1387894",
+      "1387895",
+      "1387896"
+    ]
+  },
+  {
+    "id": "298034",
+    "name": "Selecione a Embalagem:",
+    "enabled": true,
+    "min": 1,
+    "max": 1,
+    "allowRepeated": false,
+    "additionIds": [
+      "1324621"
+    ]
+  },
+  {
+    "id": "291297",
+    "name": "SABORES",
+    "enabled": true,
+    "min": 2,
+    "max": 2,
+    "allowRepeated": true,
+    "additionIds": [
+      "1271683",
+      "1271684",
+      "1271685",
+      "1271686",
+      "1271687",
+      "1271688",
+      "1271689",
+      "1271690",
+      "1415425",
+      "1415426",
+      "1415427",
+      "1415428"
+    ]
+  },
+  {
+    "id": "240352",
+    "name": "Escolha uma opção ",
+    "enabled": false,
+    "min": 1,
+    "max": 1,
+    "allowRepeated": false,
+    "additionIds": []
+  },
+  {
+    "id": "240355",
+    "name": "Opção",
+    "enabled": true,
+    "min": 1,
+    "max": 1,
+    "allowRepeated": false,
+    "additionIds": [
+      "1028545",
+      "1028546"
+    ]
+  },
+  {
+    "id": "240351",
+    "name": "Guarnição Filet",
+    "enabled": false,
+    "min": 1,
+    "max": 1,
+    "allowRepeated": false,
+    "additionIds": []
+  }
+]

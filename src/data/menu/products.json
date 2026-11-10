@@ -1,0 +1,3706 @@
+[
+  {
+    "id": "flavor-380033",
+    "sourceId": 380033,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Mussarela ",
+    "description": "Muçarela derretida, orégano fresquinho e azeitonas que elevam o sabor tradicional. Simples, saborosa e perfeita para quem ama o básico feito do jeito certo.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380033/photo1774462463.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380034",
+    "sourceId": 380034,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Calabresa",
+    "description": "Muçarela derretida que abraça a calabresa fatiada, suculenta e com aquele tempero que conquista. Cebola, azeitona e orégano completam essa combinação que é sucesso garantido em cada mordida.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380034/photo1774462929.jpeg",
+    "order": 2,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380075",
+    "sourceId": 380075,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "ITALIANA",
+    "description": "Muçarela derretida que abraça a carne moída temperada na medida, com fatias de tomate fresquinho, cebola que dá aquele toque especial, azeitonas e orégano que completam o aroma típico da Itália. Um clássico que conquista pelo sabor e pela tradição.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380075/photo1756158799.jpeg",
+    "order": 3,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-394352",
+    "sourceId": 394352,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Cheddar ",
+    "description": "Muçarela derretida com uma camada generosa de cheddar cremoso, finalizada com orégano e azeitonas que dão o toque aromático perfeito. Uma explosão de queijo pra quem não resiste a um sabor intenso e irresistível!",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/394352/photo1775846681.jpeg",
+    "order": 4,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383906",
+    "sourceId": 383906,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Banana Nevada",
+    "description": "Massa quentinha coberta com muçarela cremosa, fatias doces de banana, açúcar polvilhado com canela e chocolate branco derretido. Perfeita pra quem gosta de um doce com aquele toque especial.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383906/photo1753568738.jpeg",
+    "order": 5,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383905",
+    "sourceId": 383905,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Chocolate c/ morangos ",
+    "description": "Quem ama chocolate e morango não resiste: mussarela derretida, chocolate cremoso e morangos fatiados bem fresquinhos. Uma combinação doce e equilibrada que faz sucesso em qualquer hora.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383905/photo1776274167.jpeg",
+    "order": 6,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383904",
+    "sourceId": 383904,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Romeu e Julieta ",
+    "description": "Doce de goiaba cremoso derretido no salgado da muçarela, formando aquela combinação que a gente ama. Uma mistura simples, brasileira e cheia de sabor!\n\n",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383904/photo1754251309.jpeg",
+    "order": 7,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383903",
+    "sourceId": 383903,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Provolone ",
+    "description": "Queijo provolone derretido junto com muçarela cremosa, finalizada com orégano e azeitonas que trazem sabor e aroma irresistíveis. Uma explosão de sabor que conquista qualquer fã de queijo de primeira.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383903/photo1754253643.jpeg",
+    "order": 8,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383902",
+    "sourceId": 383902,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Mista",
+    "description": "Mussarela cremosa que derrete na boca, presunto saboroso cheio de suculência, calabresa levemente apimentada e bacon crocante juntos numa combinação arretada de boa.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383902/photo1753382263.jpeg",
+    "order": 9,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383901",
+    "sourceId": 383901,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Bem Me Quer",
+    "description": "Muçarela derretida, presunto, tomate fresco, orégano e azeitonas. Uma escolha simples, mas feita pra acertar em cheio.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383901/photo1754251431.jpeg",
+    "order": 10,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383900",
+    "sourceId": 383900,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Filé Mignon c/ catupiry ",
+    "description": "Muçarela derretida com pedaços suculentos de filé mignon, cobertos pelo catupiry cremoso e irresistível. Orégano e azeitonas finalizam essa combinação que é puro sabor e sofisticação.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383900/photo1754340440.jpeg",
+    "order": 11,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383899",
+    "sourceId": 383899,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Frango c/ bacon e Cheese ",
+    "description": "Frango desfiado, bacon e creme cheese cremoso sobre muçarela derretida, finalizados com orégano e azeitonas.\"",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383899/photo1755208181.jpeg",
+    "order": 12,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383898",
+    "sourceId": 383898,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Calabresa c/ creme cheese",
+    "description": "A clássica calabresa ganha um toque cremoso irresistível com o nosso cream cheese especial, sobre uma muçarela dourada. Finalizada com orégano aromático e um fio de azeite que realça cada ingrediente.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383898/photo1753572501.jpeg",
+    "order": 13,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383897",
+    "sourceId": 383897,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Palmito c/ catupiry ",
+    "description": "Muçarela derretida com palmitos macios e suculentos, cobertos por Catupiry cremoso e um toque de orégano, finalizados com azeitonas.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383897/photo1754431427.jpeg",
+    "order": 14,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383895",
+    "sourceId": 383895,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Peperone",
+    "description": "Fatias de peperone espalham seu sabor marcante e levemente picante, combinando com a cremosidade da mussarela derretida. As azeitonas completam o sabor, e o orégano finaliza com um aroma que remete à pizza feita em casa.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383895/photo1754253718.jpeg",
+    "order": 15,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383894",
+    "sourceId": 383894,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Milho",
+    "description": "Milho salteado sobre muçarela derretida, com azeitonas e um toque de orégano.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383894/photo1754431492.jpeg",
+    "order": 16,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383893",
+    "sourceId": 383893,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Frango com cheddar",
+    "description": "Frango desfiado sobre muçarela derretida, finalizado com cheddar cremoso por cima e um toque de orégano.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383893/photo1754339275.jpeg",
+    "order": 17,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383892",
+    "sourceId": 383892,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Frango com  milho",
+    "description": "Mussarela derretida, frango no ponto, milho e aquele toque de orégano que traz o aroma irresistível. ",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383892/photo1755208571.jpeg",
+    "order": 18,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380039",
+    "sourceId": 380039,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Frango ",
+    "description": "Frango desfiado sobre muçarela derretida, azeitonas e o toque final de orégano. Simples, suculenta e deliciosa.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380039/photo1754347653.jpeg",
+    "order": 19,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380069",
+    "sourceId": 380069,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Frango com Bacon",
+    "description": "Muçarela derretida, frango preparado com temperos leves e bacon crocante que trazem um aroma defumado irresistível. Um clássico com toque de sofisticação.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380069/photo1753825027.jpeg",
+    "order": 20,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380395",
+    "sourceId": 380395,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Catupiry ",
+    "description": "Muçarela derretida com a cremosidade marcante do Catupiry, finalizada com orégano e azeitonas. Um sabor suave e irresistível.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380395/photo1776274973.jpeg",
+    "order": 21,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380057",
+    "sourceId": 380057,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Frango com Catupiry",
+    "description": "Frango desfiado e bem temperado sobre muçarela derretida, coberto com catupiry cremoso que se espalha a cada mordida. Azeitonas e orégano entram pra fechar com chave de ouro esse clássico que nunca sai de moda.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380057/photo1752698526.jpeg",
+    "order": 22,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380036",
+    "sourceId": 380036,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Portuguesa",
+    "description": "- Mussarela, presunto ralado, cebola, ovos cozidos, milho, ervilha, azeitona e orégano",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380036/photo1774465553.jpeg",
+    "order": 23,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380066",
+    "sourceId": 380066,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Napolitana ",
+    "description": "- muçarela, tomate e cebola, orégano e azeitona.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380066/photo1754341241.jpeg",
+    "order": 24,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380065",
+    "sourceId": 380065,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Presunto ",
+    "description": "- muçarela, presunto, orégano e azeitona ",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380065/photo1774465496.jpeg",
+    "order": 25,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380064",
+    "sourceId": 380064,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Bacon",
+    "description": "Muçarela derretida com bacon crocante, azeitonas suculentas e um toque de orégano.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380064/photo1755373727.jpeg",
+    "order": 26,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380063",
+    "sourceId": 380063,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": " Paçoca ",
+    "description": "Base de muçarela, coberta com chocolate ao leite cremoso e finalizada com paçoca esfarelada por cima, que contrasta e equilibra perfeitamente o doce do chocolate.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380063/photo1754256231.jpeg",
+    "order": 27,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380204",
+    "sourceId": 380204,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Nutella",
+    "description": "A combinação que vai além: mussarela derretida criando a base perfeita para a Nutella cremosa que se espalha por cada pedaço, trazendo uma doçura envolvente e um sabor único.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380204/photo1755033088.jpeg",
+    "order": 28,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380062",
+    "sourceId": 380062,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "M&M",
+    "description": "Muçarela, cobertura cremosa de chocolate e M&M’s crocantes por cima. Uma pizza doce com textura, cor e muito sabor.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380062/photo1753569225.jpeg",
+    "order": 29,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380061",
+    "sourceId": 380061,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Cartola com Chocolate ",
+    "description": "- muçarela, banana, canela, açúcar e chocolate ",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380061/photo1776275512.jpeg",
+    "order": 30,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-417606",
+    "sourceId": 417606,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Pizza Maria Bonita",
+    "description": "A mistura que ninguém esperava, mas todo mundo ama. Muçarela derretida com doce de leite e paçoca em uma combinação simplesmente viciante.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/417606/photo1754346984.jpeg",
+    "order": 31,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380060",
+    "sourceId": 380060,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Doce de Leite ",
+    "description": "- muçarela e doce de leite.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380060/photo1732205465.jpeg",
+    "order": 32,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-394355",
+    "sourceId": 394355,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Bianco",
+    "description": "Massa coberta com Nutella cremosa, chocolate branco derretido e pedaços de  morango. Perfeita pra fechar a refeição com aquele sabor que fica na memória.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/394355/photo1755987636.jpeg",
+    "order": 33,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-394354",
+    "sourceId": 394354,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Oreo",
+    "description": "Muçarela derretida, chocolate branco cremoso e pedacinhos crocantes de Oreo sobre uma massa quentinha. Uma pizza doce com textura, equilíbrio e aquele sabor que arranca suspiro a cada mordida.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/394354/photo1753824725.jpeg",
+    "order": 34,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-394353",
+    "sourceId": 394353,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Costela no Bafo ",
+    "description": "Muçarela derretida, coberta com pedaços macios de costela no bafo, desmanchando de tão suculenta. A cebola dá um toque levemente adocicado, e o orégano fecha com aquele aroma que lembra churrasco de domingo.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/394353/photo1754340956.jpeg",
+    "order": 35,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383891",
+    "sourceId": 383891,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Costela no Bafo c/ cheese",
+    "description": "Muçarela derretida, costela no bafo desfiada e suculenta, cebola, cream cheese cremoso e um toque de orégano. Uma combinação rústica, marcante e cheia de sabor!",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383891/photo1753572813.jpeg",
+    "order": 36,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383890",
+    "sourceId": 383890,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Dois amores",
+    "description": "Muçarela derretida com chocolate ao leite e chocolate branco, polvilhados com canela.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383890/photo1755208235.jpeg",
+    "order": 37,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-383889",
+    "sourceId": 383889,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Sensação",
+    "description": "- Muçarela, creme de morango, chocolate ao leite.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/383889/photo1755377927.jpeg",
+    "order": 38,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380059",
+    "sourceId": 380059,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Brigadeiro ",
+    "description": "Camada cremosa de chocolate ao leite derretido sobre a muçarela quente, finalizada com granulados crocantes. Um clássico brasileiro para adoçar seu momento.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380059/photo1755629634.jpeg",
+    "order": 39,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380058",
+    "sourceId": 380058,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Banana com Canela ",
+    "description": "Muçarela derretida, banana assadinha no calor do forno, enquanto o açúcar e a canela criam uma crostinha aromática por cima. Quente, macia e com gosto de memória boa.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380058/photo1754252127.jpeg",
+    "order": 40,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380056",
+    "sourceId": 380056,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Paulista",
+    "description": "- muçarela, calabresa, atum, milho azeitona e orégano",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380056/photo1755377967.jpeg",
+    "order": 41,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380055",
+    "sourceId": 380055,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Camarão com Catupiry",
+    "description": "muçarela, camarão, catupiry, azeitona e orégano",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380055/photo1775847299.jpeg",
+    "order": 42,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380054",
+    "sourceId": 380054,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Camarão ",
+    "description": "- muçarela, camarão, azeitona e orégano",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380054/photo1732112010.jpeg",
+    "order": 43,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380051",
+    "sourceId": 380051,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Nordestina ",
+    "description": "- muçarela, carne de sol, queijo coalho, cebola, azeitona e orégano.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380051/photo1752973422.jpeg",
+    "order": 44,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-417604",
+    "sourceId": 417604,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Pizza Xote e Baião",
+    "description": "A massa leva molho especial de tomate, uma camada de muçarela cremosa, charque desfiada combinada com queijo coalho derretido e cream cheese, finalizada com cebola, orégano e azeitonas.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/417604/photo1755641967.jpeg",
+    "order": 45,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-417603",
+    "sourceId": 417603,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Pizza Trio Nordestino",
+    "description": "Aqui, o Nordeste invade a sua pizza com carne de sol e charque desfiada, queijo coalho e muçarela derretidos, além do cream cheese que deixa tudo ainda mais cremoso. Para finalizar, cebola, orégano e azeitonas.\"",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/417603/photo1755208783.jpeg",
+    "order": 46,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380050",
+    "sourceId": 380050,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Sertaneja ",
+    "description": "Muçarela derretida, charque desfiada e temperada, cebola e tomate frescos, azeitonas e um toque de orégano. Sabor nordestino em cada pedaço!",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380050/photo1753570642.jpeg",
+    "order": 47,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380048",
+    "sourceId": 380048,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Lombo Passira",
+    "description": "Fatias de lombo e bacon crocante sobre muçarela derretida, regadas com molho barbecue levemente defumado, orégano e azeitonas.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380048/photo1755641060.jpeg",
+    "order": 48,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-394351",
+    "sourceId": 394351,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Atum c/ catupiry ",
+    "description": "Atum ralado com sabor marcante, muçarela derretida, catupiry cremoso e cebola. Finalizada com orégano e azeitonas. Uma mistura cremosa que derrete na boca.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/394351/photo1755987696.jpeg",
+    "order": 49,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380045",
+    "sourceId": 380045,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "Atum",
+    "description": "Atum ralado e cebola levemente dourada sobre muçarela derretida, finalizados com orégano aromático e azeitonas.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380045/photo1755641331.jpeg",
+    "order": 50,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380044",
+    "sourceId": 380044,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "4 Queijos",
+    "description": "- muçarela, provolone, ricotota, catupiry, orégano e azeitonas.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380044/photo1756158855.jpeg",
+    "order": 51,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-380043",
+    "sourceId": 380043,
+    "categoryId": "274528",
+    "kind": "pizza",
+    "name": "3 Queijos",
+    "description": "Muçarela, ricota e provolone derretidos na medida certa, com orégano e azeitonas para completar esse sabor que nunca falha.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/380043/photo1755629881.jpeg",
+    "order": 52,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-428606",
+    "sourceId": 428606,
+    "categoryId": "365011",
+    "kind": "pizza",
+    "name": "HAPPY PIZZA - SABORES TRADICIONAIS",
+    "description": ".",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/428606/photo1777488146.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [
+      "Categoria cadastrada na fonte, mas não exibida durante a conferência. Grupos SABORES duplicados; revisar antes de liberar."
+    ],
+    "blocked": true
+  },
+  {
+    "id": "flavor-387343",
+    "sourceId": 387343,
+    "categoryId": "274527",
+    "kind": "pizza",
+    "name": "Paçoca",
+    "description": "Base de muçarela, coberta com chocolate ao leite cremoso e finalizada com paçoca esfarelada por cima, que contrasta e equilibra perfeitamente o doce do chocolate",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/387343/photo1774462182.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-382531",
+    "sourceId": 382531,
+    "categoryId": "274527",
+    "kind": "pizza",
+    "name": "Frango G",
+    "description": "Frango desfiado sobre muçarela derretida, azeitonas e o toque final de orégano. Simples, suculenta e deliciosa.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/382531/photo1754347496.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-382530",
+    "sourceId": 382530,
+    "categoryId": "274527",
+    "kind": "pizza",
+    "name": "Calabresa G",
+    "description": "Calabresa suculenta, com aquele toque levemente apimentado. A cebola, macia, equilibra o sabor intenso, enquanto a mussarela derrete e cria aquela textura cremosa. Um toque de orégano dá o aroma perfeito, deixando a pizza com gostinho de receita feita pra",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/382530/photo1774463021.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [
+      "Descrição aparentemente truncada na fonte. Texto preservado."
+    ],
+    "blocked": false
+  },
+  {
+    "id": "flavor-382529",
+    "sourceId": 382529,
+    "categoryId": "274527",
+    "kind": "pizza",
+    "name": "Catupiry G",
+    "description": "Muçarela derretida com a cremosidade marcante do Catupiry, finalizada com orégano e azeitonas. Um sabor suave e irresistível.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/382529/photo1776274923.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-382528",
+    "sourceId": 382528,
+    "categoryId": "274527",
+    "kind": "pizza",
+    "name": "Presunto G",
+    "description": "Presunto, mussarela, azeitonas e orégano. ",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/382528/photo1774383500.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-382527",
+    "sourceId": 382527,
+    "categoryId": "274527",
+    "kind": "pizza",
+    "name": "BANANA C/ CANELA G",
+    "description": "Doce, quentinha e com gostinho de casa: banana com canela na pizza é puro carinho em fatias. ",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/382527/photo1754339090.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-382526",
+    "sourceId": 382526,
+    "categoryId": "274527",
+    "kind": "pizza",
+    "name": "Napolitana G",
+    "description": "",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/382526/photo1752974076.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-382525",
+    "sourceId": 382525,
+    "categoryId": "274527",
+    "kind": "pizza",
+    "name": "Mussarela G",
+    "description": "Mussarela e orégano.",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/382525/photo1774462494.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "flavor-414849",
+    "sourceId": 414849,
+    "categoryId": "274526",
+    "kind": "pizza",
+    "name": "PIZZA EM DOBRO",
+    "description": "Pediu, levou duas! São duas pizzas grandes. Pode escolher sabores iguais ou diferentes (só não vale meio-a-meio). Aproveita pra dividir ou guardar pra depois. Promoção gostosa demais pra deixar passar!",
+    "image": "https://cdn.neemo.com.br/uploads/pizza_sabor/photo/414849/photo1779916047.jpeg",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2566070",
+    "sourceId": 2566070,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "Picanha Suina - 3 Pessoas   ",
+    "description": "- Picanha suína,  arroz branco, feijão macassar, farofa,  vinagrete, fritas .",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2566070/photo1774382895.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2412389",
+    "sourceId": 2412389,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "BODE ASSADO - 3 Pessoas  ",
+    "description": "- Bode assado, arroz branco, feijão macassar, farofa, vinagrete e  fritas .",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2412389/photo1775847685.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2345669",
+    "sourceId": 2345669,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "Costela no Bafo - 3 Pessoas   ",
+    "description": "- Costela no Bafo, arroz branco, baião de dois, feijão tropeiro, farofa, vinagrete, macaxeira frita. ",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2345669/photo1774463219.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169233",
+    "sourceId": 2169233,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "Carne de Sol Completa - 4 Pessoas ",
+    "description": "- Carne de sol na brasa, arroz branco, feijão macassar, farofa, vinagrete, queijo coalho, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169233/photo1775847246.jpeg.webp",
+    "order": 2,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169232",
+    "sourceId": 2169232,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "Maminha Completa - 4 Pessoas ",
+    "description": "- Maminha na brasa, arroz branco, feijão macassar, farofa, vinagrete, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169232/photo1774464592.jpeg.webp",
+    "order": 3,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2429374",
+    "sourceId": 2429374,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "Frango à Delícia - 2 Pessoas -",
+    "description": "- Frango à milanesa, envolvido com purê, molho branco, finalizado com mussarela gratinada, guarnecido com arroz branco.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2429374/photo1774465068.jpeg.webp",
+    "order": 4,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169230",
+    "sourceId": 2169230,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "Frango Xadrez - 2 Pessoas ",
+    "description": "- frango em cubos, refogado com cebola, pimentão, cenoura, molho shoyu, finalizado com amendoim, acompanha arroz chop suey e molho agridoce.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169230/photo1775929356.jpeg.webp",
+    "order": 5,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169228",
+    "sourceId": 2169228,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "Macarrão Chop Suey - 2 Pessoas ",
+    "description": "- macarrão chinês com carne, frango, camarão, acelga, cenoura, acompanha molho agridoce. ",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169228/photo1725302300.jpeg.webp",
+    "order": 7,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2386286",
+    "sourceId": 2386286,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": " Galeto Completo + Refri 1l antarctica ",
+    "description": "- Galeto na brasa, acompanha arroz branco, feijão macassar, farofa, vinagrete e fritas.+ Guaraná antarctica 1L.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2386286/photo1775929476.jpeg.webp",
+    "order": 8,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169226",
+    "sourceId": 2169226,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "Frango à Cubana - 2 Pessoas ",
+    "description": "- acompanha banana à milanesa, arroz à grega e batata frita. ",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169226/photo1774464633.jpeg.webp",
+    "order": 9,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169225",
+    "sourceId": 2169225,
+    "categoryId": "274515",
+    "kind": "food",
+    "name": "Frango Parmegiana - 2 Pessoas ",
+    "description": "Filé de frango à milanesa, coberto com molho de tomate da casa e gratinado com mussarela. Guarnecido com spaghetti ao sugo.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169225/photo1774464791.jpeg.webp",
+    "order": 10,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2570525",
+    "sourceId": 2570525,
+    "categoryId": "336116",
+    "kind": "food",
+    "name": "A moda da casa ",
+    "description": "A favorita da casa vem caprichada: muçarela cremosa, frango desfiado bem temperadinho, camarão suculento e calabresa dourada. Tudo junto numa combinação saborosa, finalizada com orégano e azeitonas pra dar aquele aroma que conquista na hora. Uma pizza com",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2570525/photo1774383237.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [
+      "A descrição termina em “Uma pizza com” na fonte. Texto preservado sem completar."
+    ],
+    "blocked": false
+  },
+  {
+    "id": "item-2169234",
+    "sourceId": 2169234,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "Estrogonoff de Frango- 2 Pessoas ",
+    "description": "- Cubos de frango refogados com cebola, envolvidos em um cremoso molho à base de ketchup e creme de leite. Acompanha arroz branco e purê. ",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169234/photo1774465285.jpeg.webp",
+    "order": 2,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169127",
+    "sourceId": 2169127,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "Frango ao Catupiry - 2 Pessos",
+    "description": "- Filé de frango grelhado, coberto com cremoso molho branco e catupiry, acompanhado de arroz branco e purê de batatas..",
+    "image": null,
+    "order": 2,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169126",
+    "sourceId": 2169126,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "Frango Supremo - 2 Pessoas",
+    "description": "- Filé de frango empanado e crocante, recheado com presunto, requeijão e mussarela, coberto com cremoso molho branco. Acompanha arroz branco e fritas. ",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169126/photo1774463681.jpeg.webp",
+    "order": 3,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172708",
+    "sourceId": 2172708,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "Frango à Moda da Casa - 2 Pessoas",
+    "description": "- Suculento filé de frango grelhado, coberto com bacon. Acompanha arroz à grega, batatas fritas, farofa especial e vinagrete.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2172708/photo1774463749.jpeg.webp",
+    "order": 4,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169125",
+    "sourceId": 2169125,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "Frango à Delícia - 2 Pessoas",
+    "description": "- Frango à milanesa, envolvido com purê, molho branco, finalizado com mussarela gratinada, guarnecido com arroz branco.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169125/photo1774465082.jpeg.webp",
+    "order": 4,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169124",
+    "sourceId": 2169124,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "Frango à Cubana - 2 Pessoas ",
+    "description": "- Frango à milanesa, banana à milanesa, arroz à grega e batata frita",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169124/photo1774464647.jpeg.webp",
+    "order": 5,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169123",
+    "sourceId": 2169123,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "Frango Parmegiana - 2 Pessoas",
+    "description": "- Peito de frango empanado, ao molho de tomate, gratinado com muçarela, acompanha espaguete ao molho de tomate e queijo ralado.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169123/photo1774464859.jpeg.webp",
+    "order": 7,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172828",
+    "sourceId": 2172828,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": " Galeto Completo - 3 Pessoas",
+    "description": "- Galeto na brasa, acompanha arroz branco, feijão macassar, farofa, vinagrete e fritas.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2172828/photo1775929085.jpeg.webp",
+    "order": 8,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169128",
+    "sourceId": 2169128,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "1/2 Galeto Completo - 2 Pessoas",
+    "description": "- 1/2 galeto assado na brasa, dourado por fora e suculento por dentro, acompanhado de arroz branco, feijão-macassar, farofa, vinagrete fresco e fritas. ",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169128/photo1774463915.jpeg.webp",
+    "order": 8,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172827",
+    "sourceId": 2172827,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "1/2 Galeto Simples - 2 Pessoas  ",
+    "description": "- 1/2 Galeto na brasa, farofa, vinagrete e  fritas.",
+    "image": null,
+    "order": 9,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169129",
+    "sourceId": 2169129,
+    "categoryId": "274508",
+    "kind": "food",
+    "name": "Galeto Simples - 3 Pessoas ",
+    "description": "-Galeto assado na brasa, suculento e dourado, acompanhado de farofa, vinagrete  e fritas.",
+    "image": null,
+    "order": 9,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172333",
+    "sourceId": 2172333,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Estrogonoff de Filé - P/ 1 Pessoa ",
+    "description": "- Guarnecido com arroz branco e purê.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169265",
+    "sourceId": 2169265,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Peixe ao Molho de Tomate  - P/ 1 Pessoa ",
+    "description": "- Guarnecido com arroz branco e purê.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169265/photo1774641533.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169264",
+    "sourceId": 2169264,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Peixe ao Molho de Camarão  - P/ 1 Pessoa",
+    "description": "-Guarnecido com arroz branco e purê.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169261",
+    "sourceId": 2169261,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Frango Xadrez - P/ 1 Pessoa",
+    "description": "- Guarnecido com risoto chop suey.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169261/photo1775929364.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169260",
+    "sourceId": 2169260,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Carne Acebolada - P/ 1 Pessoa",
+    "description": "- Guarnecido com risoto chop suey.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169260/photo1732208083.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169259",
+    "sourceId": 2169259,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Macarrão chop Suey - P/ 1 Pessoa",
+    "description": "Macarrão salteado no fogo alto, com tiras suculentas de carne, frango e camarão. Acelga crocante e cenoura fresquinha, trazendo um contraste de texturas e um sabor envolvente.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169259/photo1755027324.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169258",
+    "sourceId": 2169258,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Filet Cordon Bleu - P/ 1 Pessoa",
+    "description": "- arroz à grega e fritas.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240355"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169257",
+    "sourceId": 2169257,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Filet ao Molho Madeira - P/ 1 Pessoa ",
+    "description": "- arroz branco e purê",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169255",
+    "sourceId": 2169255,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Filet Parmegiana - P/ 1 Pessoa ",
+    "description": "- espaguete ao molho de tomate",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169255/photo1775847469.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169254",
+    "sourceId": 2169254,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Frango Grelhado - P/ 1 Pessoa ",
+    "description": "- arroz branco e purê",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169253",
+    "sourceId": 2169253,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Strogonoff de Frango - P/ 1 Pessoa",
+    "description": "Creme suave, carne macia. Servido com arroz branco soltinho e purê leve, que derrete na boca.\n\n",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169253/photo1755027059.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169252",
+    "sourceId": 2169252,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Frango à Cubana- P/ 1 Pessoa",
+    "description": "- arroz a grega e fritas",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169251",
+    "sourceId": 2169251,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Frango Parmegiana - P/ 1 Pessoa",
+    "description": "- Filé de frango à milanesa, coberto com molho de tomate da casa e gratinado com mussarela. Guarnecido com espaguete ao sugo.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169251/photo1732124633.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169250",
+    "sourceId": 2169250,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Galeto - P/ 1 Pessoa",
+    "description": "- Guarnecido com arroz, feijão, farova, vinagrete e fritas. (tudo na mesma embalagem)",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169250/photo1775843945.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240355"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169249",
+    "sourceId": 2169249,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Carne de Sol - P/ 1 Pessoa",
+    "description": "- arroz, feijão, farofa, vinagrete (tudo na mesma embalagem)",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169249/photo1775847261.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240355"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169248",
+    "sourceId": 2169248,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Maminha - P/ 1 Pessoa",
+    "description": "- arroz, feijão, farova, vinagrete (tudo na mesma embalagem)",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169248/photo1755546121.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240355"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169247",
+    "sourceId": 2169247,
+    "categoryId": "274522",
+    "kind": "food",
+    "name": "Picanha - P/ 1 Pessoa",
+    "description": "- arroz, feijão, farofa, vinagrete (tudo na mesma embalagem)",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240355"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2566113",
+    "sourceId": 2566113,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "PICANHA SUINA - 3 Pessoas   ",
+    "description": "Picanha suína, arroz branco, feijão macassar, vinagrete, farofa e fritas.  ",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2566113/photo1774382776.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2412400",
+    "sourceId": 2412400,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "BODE ASSADO - 3 Pessoas  ",
+    "description": "File de bode assado na brasa, guarnecido de feijão macassar, arroz branco, pirão de queijo, vinagrete e fritas.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2412400/photo1775847670.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172834",
+    "sourceId": 2172834,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "1/2 Carne de Sol Simples -  2 Pessoas",
+    "description": "- Carne de sol na brasa, farofa, vinagrete, queijo coalho, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2172834/photo1774383110.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172833",
+    "sourceId": 2172833,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "Carne de Sol Simples Inteira -  3 Pessoas ",
+    "description": "- Carne de sol na brasa, farofa, vinagrete, queijo coalho, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2172833/photo1774383135.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172831",
+    "sourceId": 2172831,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "1/2 Picanha Simples - 2 Pessoas",
+    "description": "- Picanha na brasa, farofa, vinagrete, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2172831/photo1777485763.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172830",
+    "sourceId": 2172830,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": " Picanha Simples Inteira -3 Pessoas ",
+    "description": "- Picanha na brasa, farofa, vinagrete, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2172830/photo1777485787.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172829",
+    "sourceId": 2172829,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": " Maminha Simples Inteira - 3 Pessoas",
+    "description": "- Maminha na brasa, farofa, vinagrete, macaxeira frita e manteiga de garrafa.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172688",
+    "sourceId": 2172688,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "Costela no Bafo - 3 Pessoas  ",
+    "description": "- Costela no Bafo, arroz branco, baião de dois, feijão tropeiro, farofa, vinagrete, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2172688/photo1774382109.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172687",
+    "sourceId": 2172687,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "Mistão - 4 Pessoas  ",
+    "description": "Mistão arretado: 1/2 galeto assado no ponto, 1/2 carne de sol macia, 1/2 maminha, arroz branco, feijão macassar, farofa, pirão de queijo, vinagrete, macaxeira frita. ",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169150",
+    "sourceId": 2169150,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "1/2 Carne de Sol Completa -  2 Pessoas",
+    "description": "- Carne de sol na brasa, arroz branco, feijão macassar, farofa, vinagrete, queijo coalho, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169150/photo1775847324.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169149",
+    "sourceId": 2169149,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "Carne de Sol Completa - 3 Pessoas ",
+    "description": "- Carne de sol na brasa, arroz branco, feijão macassar, farofa, vinagrete, queijo coalho, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169149/photo1775847288.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169148",
+    "sourceId": 2169148,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "1/2 Maminha Simples - 2 Pessoas",
+    "description": "- Maminha na brasa,farofa, vinagrete, macaxeira frita e manteiga de garrafa.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169146",
+    "sourceId": 2169146,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "1/2 Picanha Completa - 2 Pessoas",
+    "description": "- Picanha na brasa, arroz branco, feijão macassar, farofa, vinagrete, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169146/photo1777487124.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169145",
+    "sourceId": 2169145,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "Picanha Completa - 3 Pessoas",
+    "description": "- Picanha argentina na brasa, arroz branco, feijão macassar, farofa, vinagrete, macaxeira frita e manteiga de garrafa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169145/photo1777487116.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2573223",
+    "sourceId": 2573223,
+    "categoryId": "274509",
+    "kind": "food",
+    "name": "Maminha Completa - 4 Pessoas ",
+    "description": "- Maminha na brasa, arroz branco, feijão macassar, farofa, vinagrete e fritas.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2573223/photo1774464538.jpeg.webp",
+    "order": 3,
+    "enabled": true,
+    "schedule": [
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2820048",
+    "sourceId": 2820048,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": "BAIÃO DE DOIS - PORCAO EXTRA",
+    "description": "Uma combinação saborosa de arroz e feijão macassar , preparada com temperos especiais e ingredientes que realçam o sabor caseiro, finalizada com queijo. ",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169223",
+    "sourceId": 2169223,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": " Banana à Milanesa - PORCAO EXTRA",
+    "description": "- Banana milanesa. 1unidade",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169223/photo1690117302.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169221",
+    "sourceId": 2169221,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": "Feijão Tropeiro - PORÇÃO EXTRA",
+    "description": "- feijão macassar, com farofa, vinagrete, ovos, calabresa e frango.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169221/photo1690117427.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169220",
+    "sourceId": 2169220,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": "Feijão Macassar - PORÇÃO EXTRA",
+    "description": "- Feijão.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169220/photo1690117556.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169219",
+    "sourceId": 2169219,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": "Vinagrete - PORÇÃO EXTRA",
+    "description": "- tomate, cebola e coentro.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169219/photo1690117635.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169217",
+    "sourceId": 2169217,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": "Farofa Simples - PORÇÃO EXTRA",
+    "description": "- tradicional amarela",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169217/photo1690117727.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169216",
+    "sourceId": 2169216,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": "Espaguete - PORÇÃO EXTRA",
+    "description": "- Espaguete ao sugo.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169216/photo1690117775.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169214",
+    "sourceId": 2169214,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": "  Purê - PORÇÃO EXTRA",
+    "description": "- feito com massa de batata",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169214/photo1690117861.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169210",
+    "sourceId": 2169210,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": "Arroz à Grega - PORÇÃO EXTRA",
+    "description": "- arroz refogado com cebola, cenoura, presunto e uva passa.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169210/photo1690118148.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169209",
+    "sourceId": 2169209,
+    "categoryId": "274518",
+    "kind": "food",
+    "name": "Arroz Branco - PORÇÃO EXTRA",
+    "description": "- Arroz branco.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169209/photo1690118197.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169141",
+    "sourceId": 2169141,
+    "categoryId": "274512",
+    "kind": "food",
+    "name": "Espaguete Passira San Martin - 2 Pessoas",
+    "description": "- Camarão, ervilha, presunto em cubos envolvidos no molho especial da casa, gratinado com mussarela.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169141/photo1774642134.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169137",
+    "sourceId": 2169137,
+    "categoryId": "274512",
+    "kind": "food",
+    "name": "Espaguete à Parisiense - 2 Pessoas",
+    "description": "- macarrão ao molho branco, frango, presunto, milho e ervilha",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169137/photo1774465197.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169136",
+    "sourceId": 2169136,
+    "categoryId": "274512",
+    "kind": "food",
+    "name": "Espaguete à Cavala - 2 Pessoas ",
+    "description": "- Espaguete com suculento molho á bolonhesa e ovo frito.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240352"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172537",
+    "sourceId": 2172537,
+    "categoryId": "274511",
+    "kind": "food",
+    "name": "Filet Grelhado - 2 Pessoas ",
+    "description": "- Guarnecido com arroz branco e purê. ",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169242",
+    "sourceId": 2169242,
+    "categoryId": "274511",
+    "kind": "food",
+    "name": "Strogonoff de Filet - 2 Pessoas ",
+    "description": "- Filé refogado com cebolas, preparado com um delicioso molho à base de ketchup e creme de leite. Acompanha arroz branco e purê de batatas.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169242/photo1774383029.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240351"
+    ],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169239",
+    "sourceId": 2169239,
+    "categoryId": "274511",
+    "kind": "food",
+    "name": "Filet Cordon Bleu - 2 Pessoas ",
+    "description": "- filet mignon à milanesa, recheado com presunto e muçarela, molho chateaubriand. Guarnecido com arroz `a grega e fritas.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169238",
+    "sourceId": 2169238,
+    "categoryId": "274511",
+    "kind": "food",
+    "name": "Filet Chateaubriand - 2 Pessoas ",
+    "description": "filet grelhado, molho madeira com presunto, champignon, verduras, ervilha. Guarnecido com arroz à grega e fritas. ",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169237",
+    "sourceId": 2169237,
+    "categoryId": "274511",
+    "kind": "food",
+    "name": "Filet ao Molho Madeira - 2 Pessoas ",
+    "description": "Filet mignon grelhado no ponto certo, coberto com molho madeira encorpado, champignons frescos e ervilhas delicadas. Acompanhado de arroz branco soltinho e purê de batatas cremoso.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169237/photo1753381942.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169236",
+    "sourceId": 2169236,
+    "categoryId": "274511",
+    "kind": "food",
+    "name": "Filet à Moda da casa - 2 Pessoas ",
+    "description": "- filet grelhado, envido no molho madeira, finalizado com ovos fritos, escolha 2 acompanhamentos.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [
+      "240351"
+    ],
+    "pending": [
+      "A descrição pede escolher 2 acompanhamentos, mas o grupo Guarnição Filet está desativado e sem opções. Aguardando confirmação."
+    ],
+    "blocked": true
+  },
+  {
+    "id": "item-2169235",
+    "sourceId": 2169235,
+    "categoryId": "274511",
+    "kind": "food",
+    "name": "Filet Parmegiana - 2 Pessoas ",
+    "description": "- acompanha espaguete ao molho de tomate e queijo ralado.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172270",
+    "sourceId": 2172270,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Arroz Chop Suey Espeial - 3 Pessoas",
+    "description": "- Arroz chop suey, sem legumes.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172260",
+    "sourceId": 2172260,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Chop Suey de Frango - 2 Pessoas",
+    "description": "- Frango, acelga, cenoura, cebola, pimentão, acompanha arroz chop suey e molho agridoce .",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172259",
+    "sourceId": 2172259,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Chop Suey de Carne - 2 Pessoas",
+    "description": "- macarrão chinês com carne, acelga, cenoura, cebola, pimentão, acompanha arroz chop suey e molho agridoce .",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172253",
+    "sourceId": 2172253,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Risoto Camarão - 2 Pessoas   ",
+    "description": "- arroz chop suey com camarão, cenoura, ovo e cebolinho.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172250",
+    "sourceId": 2172250,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Risoto Misto - 2 Pessoas  ",
+    "description": "- arroz chop suey com frango, carne, camarão cenoura, ovo e cebolinho.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172245",
+    "sourceId": 2172245,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Camarão Empanado - 2Pessoas",
+    "description": "- massa crocante, recheada com camarão. Acompanha arroz chop suey.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172244",
+    "sourceId": 2172244,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Frango Empanado - 2 Pessoas",
+    "description": "- massa crocante, recheada com frango. Acompanha risoto chop suey.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [
+      "Preço divergente: tela do produto R$ 67.60; tabela de preços da fonte R$ 69.99. Confirmar com a pizzaria."
+    ],
+    "blocked": true
+  },
+  {
+    "id": "item-2169183",
+    "sourceId": 2169183,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Yakisoba Simples (Sem Camarão) - 4 Pessoas ",
+    "description": "- macarrão com carne, frango, acelga e cenoura, acompanha  molho agridoce;",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169183/photo1774464062.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169182",
+    "sourceId": 2169182,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Yakisoba Especial - 4 Pessoas ",
+    "description": "- macarrão chinês com carne, frango, camarão, acelga e cenoura, acompanha molho agridoce.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169182/photo1690044381.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169181",
+    "sourceId": 2169181,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Chop Suey Especial - 3 Pessoas ",
+    "description": "- macarrão chinês com carne, frango, camarão, acelga, cenoura, cebola, pimentão, acompanha molho agridoce .",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169181/photo1732128401.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169180",
+    "sourceId": 2169180,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Macarrão Chop Suey - 2 Pessoas ",
+    "description": "- macarrão chinês com carne, frango, camarão, acelga, cenoura, acompanha molho agridoce",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169180/photo1725302896.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169179",
+    "sourceId": 2169179,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Frango Xadrez - 2 Pessoas ",
+    "description": "- frango em cubos, refogado com cebola, pimentão, cenoura, molho shoyu, finalizado com amendoim, acompanha arroz chop suey e molho agridoce.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169179/photo1775929335.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169178",
+    "sourceId": 2169178,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Carne Acebolada - 2 Pessoas ",
+    "description": "- carne fatiata ao molho shoyo, cebola, acompanha arroz chop suey e molho agridoce",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169178/photo1732208118.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169173",
+    "sourceId": 2169173,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Bifum - 3 Pessoas",
+    "description": "- macarrão bifun ao molho shoyu, com carne, frango, camarão, presunto, cenoura, cebola, pimentão, ovos, acompanha molho agridoce.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169172",
+    "sourceId": 2169172,
+    "categoryId": "274520",
+    "kind": "food",
+    "name": "Risoto de Frango - 2 Pessoas ",
+    "description": "- arroz chop suey com frango, cenoura, ovo e cebolinho",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2825748",
+    "sourceId": 2825748,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Camarão Passira - 2 Pessoas ",
+    "description": "- Filés de camarão refogados com cebolas e azeitonas, envolvidos em um cremoso molho branco. Acompanha arroz à grega e batatas fritas.  ",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172808",
+    "sourceId": 2172808,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Peixe Escabeche - 2 Pessoas ",
+    "description": "- Filé de peixe frito envolvido no molho de tomate com legumes, azeitona e ervilha. Guarnecido com arroz branco e purê.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169165",
+    "sourceId": 2169165,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Estrogonoff de Camarão - 2 Pessoas ",
+    "description": "- Camarões refogados com cebola e champignon, catchup e creme de leite, acompanha arroz branco e purê.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169163",
+    "sourceId": 2169163,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Camarão ao Catupiry - 2 Pessoas",
+    "description": "- Filé de camarões, refogado com cebola, finalizado com molho branco, catupiry. Guarnecido com  arroz branco e batata frita.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169163/photo1774642009.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169162",
+    "sourceId": 2169162,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Camarão à grega - 2 Pessoas",
+    "description": "- Camarão à milanesa intercalado com queijo, molho de tomate e mussarela. Guarnecido com arroz à grega e fritas. ",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169160",
+    "sourceId": 2169160,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Peixe Grelhado - 2 Pessoas",
+    "description": "- filé de pescada amarela grelhada na brasa, arroz branco, azeitona, ervilha e purê. ",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169158",
+    "sourceId": 2169158,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Bacalhau a Zé do Pipo - 2 Pessoas",
+    "description": "- bacalhau desfiado e refogado com cebola, coberto com purê, gratinado com muçarela e requeijão. Guarnecido cm arroz branco e purê.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169156",
+    "sourceId": 2169156,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Peixe à Delícia - 2 Pessoas",
+    "description": "- filé de peixe empanado, envolvido no purê e molho branco, banana, mussarela gratinada, arroz branco e batata frita.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169155",
+    "sourceId": 2169155,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Peixe ao Molho de Camarão- 2 Pessoas",
+    "description": "- Filé de peixe levemente empanada no amido, camarão, molho de tomate, com verduras, batata cozida,.\n. Guarnecido com arroz branco e purê de batatas.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169155/photo1774643932.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169154",
+    "sourceId": 2169154,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Peixe ao Molho de Coco - 2 Pessoas ",
+    "description": "- filé de peixe levemente empanada, molho de coco, com verduras e batata cozida, acompanha arroz branco e purê. ",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169154/photo1774641127.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169153",
+    "sourceId": 2169153,
+    "categoryId": "274519",
+    "kind": "food",
+    "name": "Peixe ao Molho de Tomate - 2 Pessoas ",
+    "description": "- filé de peixe levemente empanada no amido, molho de tomate com verduras, batata cozida, acompanha arroz branco e purê de batatas.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169153/photo1774641508.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169188",
+    "sourceId": 2169188,
+    "categoryId": "274521",
+    "kind": "food",
+    "name": "Salada de Bacalhau - 2 Pessoas",
+    "description": "- bacalhau desfiado refogado com cebola, coentro, finalizada com azeitonas e ovo cozido.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169186",
+    "sourceId": 2169186,
+    "categoryId": "274521",
+    "kind": "food",
+    "name": "Salada Camarão - 2 Pessoas ",
+    "description": "- camarão, batata, cenoura e maionese.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169185",
+    "sourceId": 2169185,
+    "categoryId": "274521",
+    "kind": "food",
+    "name": "Salada Mista - 2 Pessoas ",
+    "description": "- alface, tomate, cebola, pimentão, batata cozida, presunto, queijo coalho, ovos cozidos e azeitonas.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169184",
+    "sourceId": 2169184,
+    "categoryId": "274521",
+    "kind": "food",
+    "name": "Salada Simples - 2 Pessoas ",
+    "description": "- alface, tomate, cebola, pimentão e azeitonas.",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2825744",
+    "sourceId": 2825744,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Linguiça de Bode (Unidade)",
+    "description": "",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2566153",
+    "sourceId": 2566153,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Picanha Suina com Fritas - 2Pessoas",
+    "description": "- Picanha em cubos, refogada na manteiga com cebola e azeitonas, acompanha batata frita.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2566153/photo1774382874.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2172237",
+    "sourceId": 2172237,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Bolinho de Charque ",
+    "description": "- 10 unidades",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2172237/photo1732040419.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169280",
+    "sourceId": 2169280,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Picanha com Fritas - 2 Pessoas",
+    "description": "- picanha em cubos, refogada na manteiga com cebola e azeitonas, acompanha batata frita. ",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169280/photo1732124976.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169277",
+    "sourceId": 2169277,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Linguiça de Frango (Unidade)",
+    "description": "- 2 unidades",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169277/photo1732040172.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169275",
+    "sourceId": 2169275,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Bolinho de Bacalhau",
+    "description": "- 10 unidades",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169275/photo1732041114.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169274",
+    "sourceId": 2169274,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Bolinho de Queijo ",
+    "description": "- 10 unidades",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169274/photo1732041041.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169273",
+    "sourceId": 2169273,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Camarão ao Alho e Óleo ",
+    "description": "- O camarão ao alho e óleo é preparado com camarões salteados no azeite e alho dourado, resultando em um prato aromático, suculento e cheio de sabor. Ideal como entrada ou acompanhamento.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169273/photo1732040689.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169272",
+    "sourceId": 2169272,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Batata Frita ",
+    "description": "- tradicional",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169272/photo1732040552.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169271",
+    "sourceId": 2169271,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Calabresa com Fritas ",
+    "description": "- calabresa acebolada com fritas. *Não acompanha molhos.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169271/photo1732040503.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169268",
+    "sourceId": 2169268,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Frango à Passarinha com Fritas",
+    "description": "- pedaços de frango fritos e refogados ao alho e óleo, acompanha batata frita.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169268/photo1732040838.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169267",
+    "sourceId": 2169267,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "Carne de Sol com Fritas ",
+    "description": "- carne de sol em cubos, refogada com cebola, acompanha batata frita",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169267/photo1732041164.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169266",
+    "sourceId": 2169266,
+    "categoryId": "274523",
+    "kind": "food",
+    "name": "File com Fritas ",
+    "description": "- filet mignon em cubos, refogado com cebola, molho madeira, acompanha batata frita. ",
+    "image": null,
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2714810",
+    "sourceId": 2714810,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Sprite Lata - 350ml",
+    "description": "Sprite sabor limão Lata - 350ml",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2714810/photo1764612890.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169207",
+    "sourceId": 2169207,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Coca Zero Lata - 350ml",
+    "description": "- Sem açúcar",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169207/photo1690072243.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169203",
+    "sourceId": 2169203,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Fanta Lata - 350ml",
+    "description": "",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169203/photo1690072836.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169202",
+    "sourceId": 2169202,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Guaraná Lata - 350ml",
+    "description": "",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169202/photo1690072922.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [
+      "Preço divergente: tela do produto R$ 8.50; tabela de preços da fonte R$ 9.00. Confirmar com a pizzaria."
+    ],
+    "blocked": true
+  },
+  {
+    "id": "item-2169201",
+    "sourceId": 2169201,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Coca Lata - 350ml",
+    "description": "",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169201/photo1690072950.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169196",
+    "sourceId": 2169196,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Guaraná 2 Litros",
+    "description": "- antarctica",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169196/photo1690073091.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169195",
+    "sourceId": 2169195,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Guaraná 1 Litro",
+    "description": "- antarctica",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169195/photo1690073117.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169194",
+    "sourceId": 2169194,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Coca Cola 2 Litros",
+    "description": "",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169194/photo1690073160.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169193",
+    "sourceId": 2169193,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Coca Cola 1 Litro",
+    "description": "",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169193/photo1690073187.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169191",
+    "sourceId": 2169191,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "H2oh",
+    "description": "sabor tradicional, 500ml.",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169191/photo1690073256.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169190",
+    "sourceId": 2169190,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Água com Gás",
+    "description": "330ml",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169190/photo1690073345.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  },
+  {
+    "id": "item-2169189",
+    "sourceId": 2169189,
+    "categoryId": "274513",
+    "kind": "food",
+    "name": "Água sem Gás",
+    "description": "330ml",
+    "image": "https://cdn.neemo.com.br/uploads/item/photo/2169189/photo1690073293.jpeg.webp",
+    "order": 1,
+    "enabled": true,
+    "schedule": [],
+    "optionGroupIds": [],
+    "pending": [],
+    "blocked": false
+  }
+]

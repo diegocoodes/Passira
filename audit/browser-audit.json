@@ -1,0 +1,951 @@
+[
+  {
+    "category": "Pizzas",
+    "id": 40442,
+    "title": "Grande (8 Fatias)",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/40442.txt"
+  },
+  {
+    "category": "Pizzas",
+    "id": 40443,
+    "title": "Brotinho",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/40443.txt"
+  },
+  {
+    "category": "Pizzas",
+    "id": 40444,
+    "title": "Média (6 Fatias)",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/40444.txt"
+  },
+  {
+    "category": "PROMOÇÃO DE PIZZAS SEG À QUINTA ",
+    "id": 40775,
+    "title": "8 fatias",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/40775.txt"
+  },
+  {
+    "category": " PIZZA EM DOBRO",
+    "id": 40445,
+    "title": "Grande",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/40445.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2566070,
+    "title": "Picanha Suina - 3 Pessoas   ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2566070.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2412389,
+    "title": "BODE ASSADO - 3 Pessoas  ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2412389.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2345669,
+    "title": "Costela no Bafo - 3 Pessoas   ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2345669.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2169233,
+    "title": "Carne de Sol Completa - 4 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169233.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2169232,
+    "title": "Maminha Completa - 4 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169232.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2429374,
+    "title": "Frango à Delícia - 2 Pessoas -",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2429374.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2169230,
+    "title": "Frango Xadrez - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169230.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2169228,
+    "title": "Macarrão Chop Suey - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169228.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2386286,
+    "title": " Galeto Completo + Refri 1l antarctica ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2386286.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2169226,
+    "title": "Frango à Cubana - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169226.txt"
+  },
+  {
+    "category": "Semana de Promoções!",
+    "id": 2169225,
+    "title": "Frango Parmegiana - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169225.txt"
+  },
+  {
+    "category": "Pizza - Somente 1 sabor",
+    "id": 2570525,
+    "title": "A moda da casa ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2570525.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2169234,
+    "title": "Estrogonoff de Frango- 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169234.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2169127,
+    "title": "Frango ao Catupiry - 2 Pessos",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169127.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2169126,
+    "title": "Frango Supremo - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169126.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2172708,
+    "title": "Frango à Moda da Casa - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172708.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2169125,
+    "title": "Frango à Delícia - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169125.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2169124,
+    "title": "Frango à Cubana - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169124.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2169123,
+    "title": "Frango Parmegiana - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169123.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2172828,
+    "title": " Galeto Completo - 3 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172828.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2169128,
+    "title": "1/2 Galeto Completo - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169128.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2172827,
+    "title": "1/2 Galeto Simples - 2 Pessoas  ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172827.txt"
+  },
+  {
+    "category": "Aves ",
+    "id": 2169129,
+    "title": "Galeto Simples - 3 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169129.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2172333,
+    "title": "Estrogonoff de Filé - P/ 1 Pessoa ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172333.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169265,
+    "title": "Peixe ao Molho de Tomate  - P/ 1 Pessoa ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169265.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169264,
+    "title": "Peixe ao Molho de Camarão  - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169264.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169261,
+    "title": "Frango Xadrez - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169261.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169260,
+    "title": "Carne Acebolada - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169260.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2566113,
+    "title": "PICANHA SUINA - 3 Pessoas   ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2566113.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2412400,
+    "title": "BODE ASSADO - 3 Pessoas  ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2412400.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2172834,
+    "title": "1/2 Carne de Sol Simples -  2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172834.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2172833,
+    "title": "Carne de Sol Simples Inteira -  3 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172833.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2172831,
+    "title": "1/2 Picanha Simples - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172831.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2172830,
+    "title": " Picanha Simples Inteira -3 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172830.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2172829,
+    "title": " Maminha Simples Inteira - 3 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172829.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2172687,
+    "title": "Mistão - 4 Pessoas  ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172687.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2169150,
+    "title": "1/2 Carne de Sol Completa -  2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169150.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2169149,
+    "title": "Carne de Sol Completa - 3 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169149.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2169148,
+    "title": "1/2 Maminha Simples - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169148.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2169146,
+    "title": "1/2 Picanha Completa - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169146.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2169145,
+    "title": "Picanha Completa - 3 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169145.txt"
+  },
+  {
+    "category": "HAPPY PIZZA ",
+    "status": "not-visible"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2172688,
+    "title": "Costela no Bafo - 3 Pessoas  ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172688.txt"
+  },
+  {
+    "category": "Na Brasa",
+    "id": 2573223,
+    "title": "Maminha Completa - 4 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2573223.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2820048,
+    "title": "BAIÃO DE DOIS - PORCAO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2820048.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2169223,
+    "title": " Banana à Milanesa - PORCAO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169223.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2169221,
+    "title": "Feijão Tropeiro - PORÇÃO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169221.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2169220,
+    "title": "Feijão Macassar - PORÇÃO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169220.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2169219,
+    "title": "Vinagrete - PORÇÃO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169219.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2169217,
+    "title": "Farofa Simples - PORÇÃO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169217.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2169216,
+    "title": "Espaguete - PORÇÃO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169216.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2169214,
+    "title": "  Purê - PORÇÃO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169214.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2169210,
+    "title": "Arroz à Grega - PORÇÃO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169210.txt"
+  },
+  {
+    "category": "Guarnições ",
+    "id": 2169209,
+    "title": "Arroz Branco - PORÇÃO EXTRA",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169209.txt"
+  },
+  {
+    "category": "Massas ",
+    "id": 2169141,
+    "title": "Espaguete Passira San Martin - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169141.txt"
+  },
+  {
+    "category": "Massas ",
+    "id": 2169137,
+    "title": "Espaguete à Parisiense - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169137.txt"
+  },
+  {
+    "category": "Massas ",
+    "id": 2169136,
+    "title": "Espaguete à Cavala - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169136.txt"
+  },
+  {
+    "category": "Filet Mignon",
+    "id": 2172537,
+    "title": "Filet Grelhado - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172537.txt"
+  },
+  {
+    "category": "Filet Mignon",
+    "id": 2169242,
+    "title": "Strogonoff de Filet - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169242.txt"
+  },
+  {
+    "category": "Filet Mignon",
+    "id": 2169239,
+    "title": "Filet Cordon Bleu - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169239.txt"
+  },
+  {
+    "category": "Filet Mignon",
+    "id": 2169238,
+    "title": "Filet Chateaubriand - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169238.txt"
+  },
+  {
+    "category": "Filet Mignon",
+    "id": 2169237,
+    "title": "Filet ao Molho Madeira - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169237.txt"
+  },
+  {
+    "category": "Filet Mignon",
+    "id": 2169236,
+    "title": "Filet à Moda da casa - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169236.txt"
+  },
+  {
+    "category": "Filet Mignon",
+    "id": 2169235,
+    "title": "Filet Parmegiana - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169235.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2172270,
+    "title": "Arroz Chop Suey Espeial - 3 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172270.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2172260,
+    "title": "Chop Suey de Frango - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172260.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2172259,
+    "title": "Chop Suey de Carne - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172259.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2172253,
+    "title": "Risoto Camarão - 2 Pessoas   ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172253.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2172250,
+    "title": "Risoto Misto - 2 Pessoas  ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172250.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2172245,
+    "title": "Camarão Empanado - 2Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172245.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2172244,
+    "title": "Frango Empanado - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172244.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2169183,
+    "title": "Yakisoba Simples (Sem Camarão) - 4 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169183.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2169182,
+    "title": "Yakisoba Especial - 4 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169182.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2169181,
+    "title": "Chop Suey Especial - 3 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169181.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2169180,
+    "title": "Macarrão Chop Suey - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169180.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2169179,
+    "title": "Frango Xadrez - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169179.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2169178,
+    "title": "Carne Acebolada - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169178.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2169173,
+    "title": "Bifum - 3 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169173.txt"
+  },
+  {
+    "category": "Comida Chinesa ",
+    "id": 2169172,
+    "title": "Risoto de Frango - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169172.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2825748,
+    "title": "Camarão Passira - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2825748.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2172808,
+    "title": "Peixe Escabeche - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172808.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2169165,
+    "title": "Estrogonoff de Camarão - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169165.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2169163,
+    "title": "Camarão ao Catupiry - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169163.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2169162,
+    "title": "Camarão à grega - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169162.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2169160,
+    "title": "Peixe Grelhado - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169160.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2169158,
+    "title": "Bacalhau a Zé do Pipo - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169158.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2169156,
+    "title": "Peixe à Delícia - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169156.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2169155,
+    "title": "Peixe ao Molho de Camarão- 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169155.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2169154,
+    "title": "Peixe ao Molho de Coco - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169154.txt"
+  },
+  {
+    "category": "Frutos do Mar ",
+    "id": 2169153,
+    "title": "Peixe ao Molho de Tomate - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169153.txt"
+  },
+  {
+    "category": "Saladas",
+    "id": 2169188,
+    "title": "Salada de Bacalhau - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169188.txt"
+  },
+  {
+    "category": "Saladas",
+    "id": 2169186,
+    "title": "Salada Camarão - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169186.txt"
+  },
+  {
+    "category": "Saladas",
+    "id": 2169185,
+    "title": "Salada Mista - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169185.txt"
+  },
+  {
+    "category": "Saladas",
+    "id": 2169184,
+    "title": "Salada Simples - 2 Pessoas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169184.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2825744,
+    "title": "Linguiça de Bode (Unidade)",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2825744.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2566153,
+    "title": "Picanha Suina com Fritas - 2Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2566153.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2172237,
+    "title": "Bolinho de Charque ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2172237.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169280,
+    "title": "Picanha com Fritas - 2 Pessoas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169280.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169277,
+    "title": "Linguiça de Frango (Unidade)",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169277.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169275,
+    "title": "Bolinho de Bacalhau",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169275.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169274,
+    "title": "Bolinho de Queijo ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169274.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169273,
+    "title": "Camarão ao Alho e Óleo ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169273.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169272,
+    "title": "Batata Frita ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169272.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169271,
+    "title": "Calabresa com Fritas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169271.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169268,
+    "title": "Frango à Passarinha com Fritas",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169268.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169267,
+    "title": "Carne de Sol com Fritas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169267.txt"
+  },
+  {
+    "category": "Petiscos",
+    "id": 2169266,
+    "title": "File com Fritas ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169266.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2714810,
+    "title": "Sprite Lata - 350ml",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2714810.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169207,
+    "title": "Coca Zero Lata - 350ml",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169207.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169203,
+    "title": "Fanta Lata - 350ml",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169203.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169202,
+    "title": "Guaraná Lata - 350ml",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169202.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169201,
+    "title": "Coca Lata - 350ml",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169201.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169196,
+    "title": "Guaraná 2 Litros",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169196.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169195,
+    "title": "Guaraná 1 Litro",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169195.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169194,
+    "title": "Coca Cola 2 Litros",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169194.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169193,
+    "title": "Coca Cola 1 Litro",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169193.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169191,
+    "title": "H2oh",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169191.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169190,
+    "title": "Água com Gás",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169190.txt"
+  },
+  {
+    "category": "Bebidas ",
+    "id": 2169189,
+    "title": "Água sem Gás",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169189.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169259,
+    "title": "Macarrão chop Suey - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169259.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169258,
+    "title": "Filet Cordon Bleu - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169258.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169257,
+    "title": "Filet ao Molho Madeira - P/ 1 Pessoa ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169257.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169255,
+    "title": "Filet Parmegiana - P/ 1 Pessoa ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169255.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169254,
+    "title": "Frango Grelhado - P/ 1 Pessoa ",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169254.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169253,
+    "title": "Strogonoff de Frango - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169253.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169252,
+    "title": "Frango à Cubana- P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169252.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169251,
+    "title": "Frango Parmegiana - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169251.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169250,
+    "title": "Galeto - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169250.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169249,
+    "title": "Carne de Sol - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169249.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169248,
+    "title": "Maminha - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169248.txt"
+  },
+  {
+    "category": "Pratos Individuais",
+    "id": 2169247,
+    "title": "Picanha - P/ 1 Pessoa",
+    "status": "opened",
+    "evidence": "audit/browser-dialogs/2169247.txt"
+  }
+]

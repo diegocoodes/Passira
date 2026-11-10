@@ -1,0 +1,1 @@
+{"data":{"delivery_configuration":{"enabled":true,"time_to_receive":{"minimum":70,"maximum":90},"minimum_order_rules":{"value":0.0,"delivery_free_tax":0.0,"delivery_fee_included":false}},"takeout_configuration":{"enabled":true,"online_payment_only":false,"time_to_receive":{"minimum":30,"maximum":40}}}}

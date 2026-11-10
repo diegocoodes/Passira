@@ -1,0 +1,524 @@
+[
+  {
+    "id": "274528",
+    "name": "Pizzas",
+    "enabled": true,
+    "kind": "pizza",
+    "image": null,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1425
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1425
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1425
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1425
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1425
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1425
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1425
+          }
+        ]
+      }
+    ],
+    "pending": []
+  },
+  {
+    "id": "365011",
+    "name": "HAPPY PIZZA ",
+    "enabled": true,
+    "kind": "pizza",
+    "image": null,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 900,
+            "end": 1080
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 900,
+            "end": 1080
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 900,
+            "end": 1080
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 900,
+            "end": 1080
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 900,
+            "end": 1080
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 900,
+            "end": 1080
+          }
+        ]
+      }
+    ],
+    "pending": [
+      "Categoria cadastrada na fonte, mas não exibida durante a conferência. Grupos SABORES duplicados; revisar antes de liberar."
+    ]
+  },
+  {
+    "id": "274527",
+    "name": "PROMOÇÃO DE PIZZAS SEG À QUINTA ",
+    "enabled": true,
+    "kind": "pizza",
+    "image": "https://cdn.neemo.com.br/uploads/category/photo/274527/photo1774381972.jpeg",
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 660,
+            "end": 1420
+          }
+        ]
+      }
+    ],
+    "pending": []
+  },
+  {
+    "id": "359581",
+    "name": "PIZZA + REFRI 1 LITRO",
+    "enabled": false,
+    "kind": "pizza",
+    "image": null,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1380
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1380
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1380
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1381
+          }
+        ]
+      }
+    ],
+    "pending": [
+      "Categoria desativada na fonte."
+    ]
+  },
+  {
+    "id": "274526",
+    "name": " PIZZA EM DOBRO",
+    "enabled": true,
+    "kind": "pizza",
+    "image": "https://cdn.neemo.com.br/uploads/category/photo/274526/photo1774381900.jpeg",
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1380
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1410
+          }
+        ]
+      }
+    ],
+    "pending": []
+  },
+  {
+    "id": "274515",
+    "name": "Semana de Promoções!",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [
+      {
+        "day": 1,
+        "name": "segunda",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "name": "terca",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "name": "quarta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "name": "quinta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "name": "sexta",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1420
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "name": "sabado",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1439
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "name": "domingo",
+        "shifts": [
+          {
+            "start": 600,
+            "end": 1439
+          }
+        ]
+      }
+    ],
+    "pending": []
+  },
+  {
+    "id": "336116",
+    "name": "Pizza - Somente 1 sabor",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274508",
+    "name": "Aves ",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274522",
+    "name": "Pratos Individuais",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274509",
+    "name": "Na Brasa",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274518",
+    "name": "Guarnições ",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274512",
+    "name": "Massas ",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274511",
+    "name": "Filet Mignon",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274520",
+    "name": "Comida Chinesa ",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274519",
+    "name": "Frutos do Mar ",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274521",
+    "name": "Saladas",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274523",
+    "name": "Petiscos",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  },
+  {
+    "id": "274513",
+    "name": "Bebidas ",
+    "enabled": true,
+    "kind": "food",
+    "image": null,
+    "schedule": [],
+    "pending": []
+  }
+]

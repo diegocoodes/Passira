@@ -1,0 +1,13 @@
+export type Fulfillment = 'pickup' | 'delivery';
+export type Schedule = { day: number; name: string; shifts: { start: number; end: number }[] }[];
+export type Category = { id: string; name: string; enabled: boolean; kind: string; image: string | null; schedule: Schedule; pending: string[] };
+export type Product = { id: string; sourceId: number; categoryId: string; kind: string; name: string; description: string; image: string | null; order: number; enabled: boolean; schedule: Schedule; optionGroupIds: string[]; pending: string[]; blocked: boolean };
+export type Size = { id: string; categoryId: string; name: string; enabled: boolean; maxFlavors: number; onlyTakeout: boolean; optionGroupIds: string[]; pending: string[] };
+export type Price = { id: string; productId: string; sizeId: string | null; name: string; cents: number | null; deliveryCents: number | null; pickupCents: number | null; observedDisplayCents?: number | null; enabled: boolean; deliveryEnabled: boolean; pickupEnabled: boolean; optionGroupIds: string[] };
+export type OptionGroup = { id: string; name: string; enabled: boolean; min: number; max: number; allowRepeated: boolean; additionIds: string[] };
+export type Addition = { id: string; groupId: string; name: string; description: string; enabled: boolean; cents: number | null; image: string | null; order: number };
+export type GroupSelection = { scope: 'size' | 'product' | 'flavor'; ownerId: string; groupId: string; quantities: Record<string, number> };
+export type ItemConfiguration = { productId: string; priceId: string; flavorIds: string[]; selections: GroupSelection[]; note: string };
+export type CartItem = ItemConfiguration & { id: string; quantity: number };
+export type Customer = { name: string; phone: string; cep: string; street: string; number: string; neighborhood: string; complement: string; note: string; payment: 'pix' | 'debit' | 'credit' };
+export type Order = { id: string; createdAt: string; status: 'saved-locally'; fulfillment: Fulfillment; customer: Customer; items: { configuration: CartItem; title: string; details: string[]; unitCents: number }[]; subtotalCents: number; deliveryCents: number; totalCents: number };

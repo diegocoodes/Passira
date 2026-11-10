@@ -1,0 +1,116 @@
+[
+  {
+    "id": "40442",
+    "categoryId": "274528",
+    "name": "Grande (8 Fatias)",
+    "enabled": true,
+    "maxFlavors": 2,
+    "onlyTakeout": false,
+    "optionGroupIds": [],
+    "pending": []
+  },
+  {
+    "id": "40443",
+    "categoryId": "274528",
+    "name": "Brotinho",
+    "enabled": true,
+    "maxFlavors": 1,
+    "onlyTakeout": false,
+    "optionGroupIds": [],
+    "pending": []
+  },
+  {
+    "id": "40444",
+    "categoryId": "274528",
+    "name": "Média (6 Fatias)",
+    "enabled": true,
+    "maxFlavors": 2,
+    "onlyTakeout": false,
+    "optionGroupIds": [],
+    "pending": []
+  },
+  {
+    "id": "43344",
+    "categoryId": "274528",
+    "name": "Média - 1 Sabor",
+    "enabled": true,
+    "maxFlavors": 1,
+    "onlyTakeout": false,
+    "optionGroupIds": [],
+    "pending": [
+      "Tamanho sem sabores e preços associados na fonte. Não disponível para compra."
+    ]
+  },
+  {
+    "id": "43345",
+    "categoryId": "274528",
+    "name": "Grande - 1 Sabor ",
+    "enabled": true,
+    "maxFlavors": 1,
+    "onlyTakeout": false,
+    "optionGroupIds": [],
+    "pending": [
+      "Tamanho sem sabores e preços associados na fonte. Não disponível para compra."
+    ]
+  },
+  {
+    "id": "44590",
+    "categoryId": "365011",
+    "name": "GRANDE ",
+    "enabled": true,
+    "maxFlavors": 1,
+    "onlyTakeout": false,
+    "optionGroupIds": [
+      "311445"
+    ],
+    "pending": [
+      "Tamanho sem sabores e preços associados na fonte. Não disponível para compra."
+    ]
+  },
+  {
+    "id": "44591",
+    "categoryId": "365011",
+    "name": "GRANDE ",
+    "enabled": true,
+    "maxFlavors": 1,
+    "onlyTakeout": false,
+    "optionGroupIds": [
+      "311445"
+    ],
+    "pending": []
+  },
+  {
+    "id": "40775",
+    "categoryId": "274527",
+    "name": "8 fatias",
+    "enabled": true,
+    "maxFlavors": 2,
+    "onlyTakeout": false,
+    "optionGroupIds": [],
+    "pending": []
+  },
+  {
+    "id": "44224",
+    "categoryId": "359581",
+    "name": "GRANDE + REFRIGERANTE 1 LITRO",
+    "enabled": true,
+    "maxFlavors": 2,
+    "onlyTakeout": false,
+    "optionGroupIds": [
+      "298034"
+    ],
+    "pending": [
+      "Tamanho sem sabores e preços associados na fonte. Não disponível para compra."
+    ]
+  },
+  {
+    "id": "40445",
+    "categoryId": "274526",
+    "name": "Grande",
+    "enabled": true,
+    "maxFlavors": 1,
+    "onlyTakeout": false,
+    "optionGroupIds": [],
+    "pending": []
+  }
+]

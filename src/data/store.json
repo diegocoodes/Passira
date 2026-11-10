@@ -1,0 +1,140 @@
+{
+  "name": "Passira - San Martin",
+  "address": {
+    "visible": true,
+    "street": "Av. General San Martin",
+    "number": "1656",
+    "neighborhood": "San Martin",
+    "complement": "Prox. a Praça de eventos",
+    "city": "Recife",
+    "zip_code": "50761000",
+    "state": "PE",
+    "latitude": null,
+    "longitude": null,
+    "reference_point": ""
+  },
+  "phone": "81 3140- 7400",
+  "whatsapp": "8131407400",
+  "operationTimes": [
+    {
+      "id": 127931,
+      "opened": true,
+      "shifts": [
+        {
+          "end_hour": 23,
+          "end_minute": 15,
+          "start_hour": 10,
+          "start_minute": 0
+        }
+      ],
+      "weekday": "segunda",
+      "weekday_code": 1
+    },
+    {
+      "id": 127932,
+      "opened": true,
+      "shifts": [
+        {
+          "end_hour": 23,
+          "end_minute": 15,
+          "start_hour": 10,
+          "start_minute": 0
+        }
+      ],
+      "weekday": "terca",
+      "weekday_code": 2
+    },
+    {
+      "id": 127933,
+      "opened": true,
+      "shifts": [
+        {
+          "end_hour": 23,
+          "end_minute": 15,
+          "start_hour": 10,
+          "start_minute": 0
+        }
+      ],
+      "weekday": "quarta",
+      "weekday_code": 3
+    },
+    {
+      "id": 127934,
+      "opened": true,
+      "shifts": [
+        {
+          "end_hour": 23,
+          "end_minute": 15,
+          "start_hour": 10,
+          "start_minute": 0
+        }
+      ],
+      "weekday": "quinta",
+      "weekday_code": 4
+    },
+    {
+      "id": 127935,
+      "opened": true,
+      "shifts": [
+        {
+          "end_hour": 23,
+          "end_minute": 15,
+          "start_hour": 10,
+          "start_minute": 0
+        }
+      ],
+      "weekday": "sexta",
+      "weekday_code": 5
+    },
+    {
+      "id": 127936,
+      "opened": true,
+      "shifts": [
+        {
+          "end_hour": 23,
+          "end_minute": 15,
+          "start_hour": 10,
+          "start_minute": 0
+        }
+      ],
+      "weekday": "sabado",
+      "weekday_code": 6
+    },
+    {
+      "id": 127937,
+      "opened": true,
+      "shifts": [
+        {
+          "end_hour": 23,
+          "end_minute": 15,
+          "start_hour": 10,
+          "start_minute": 0
+        }
+      ],
+      "weekday": "domingo",
+      "weekday_code": 7
+    }
+  ],
+  "modes": {
+    "delivery_configuration": {
+      "enabled": true,
+      "time_to_receive": {
+        "minimum": 70,
+        "maximum": 90
+      },
+      "minimum_order_rules": {
+        "value": 0,
+        "delivery_free_tax": 0,
+        "delivery_fee_included": false
+      }
+    },
+    "takeout_configuration": {
+      "enabled": true,
+      "online_payment_only": false,
+      "time_to_receive": {
+        "minimum": 30,
+        "maximum": 40
+      }
+    }
+  }
+}

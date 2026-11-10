@@ -1,0 +1,312 @@
+[
+  {
+    "id": "1387897",
+    "groupId": "306463",
+    "name": "CALABRESA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387898",
+    "groupId": "306463",
+    "name": "MUSSARELA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387899",
+    "groupId": "306463",
+    "name": "FRANGO",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387900",
+    "groupId": "306463",
+    "name": "NAPOLITANA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387901",
+    "groupId": "306463",
+    "name": "CATUPIRY",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387902",
+    "groupId": "306463",
+    "name": "BANANA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387903",
+    "groupId": "306463",
+    "name": "PAÇOCA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387904",
+    "groupId": "306463",
+    "name": "PRESUNTO",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387889",
+    "groupId": "306462",
+    "name": "CALABRESA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387890",
+    "groupId": "306462",
+    "name": "MUSSARELA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387891",
+    "groupId": "306462",
+    "name": "FRANGO",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387892",
+    "groupId": "306462",
+    "name": "NAPOLITANA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387893",
+    "groupId": "306462",
+    "name": "CATUPIRY",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387894",
+    "groupId": "306462",
+    "name": "BANANA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387895",
+    "groupId": "306462",
+    "name": "PAÇOCA",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1387896",
+    "groupId": "306462",
+    "name": "PRESUNTO",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1324621",
+    "groupId": "298034",
+    "name": "Embalagem",
+    "description": "",
+    "enabled": true,
+    "cents": 499,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1271683",
+    "groupId": "291297",
+    "name": "Paçoca ",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1271684",
+    "groupId": "291297",
+    "name": "Catupiry",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 1
+  },
+  {
+    "id": "1271685",
+    "groupId": "291297",
+    "name": "Presunto",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 2
+  },
+  {
+    "id": "1271686",
+    "groupId": "291297",
+    "name": "Banana",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 3
+  },
+  {
+    "id": "1271687",
+    "groupId": "291297",
+    "name": "Frango",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 4
+  },
+  {
+    "id": "1271688",
+    "groupId": "291297",
+    "name": "Napolitana",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 5
+  },
+  {
+    "id": "1271689",
+    "groupId": "291297",
+    "name": "Calabresa",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 6
+  },
+  {
+    "id": "1271690",
+    "groupId": "291297",
+    "name": "Mussarela",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 7
+  },
+  {
+    "id": "1415425",
+    "groupId": "291297",
+    "name": "Frango Catupiry",
+    "description": "",
+    "enabled": true,
+    "cents": 1800,
+    "image": null,
+    "order": 8
+  },
+  {
+    "id": "1415426",
+    "groupId": "291297",
+    "name": "Calabresa com Cream Creese",
+    "description": "",
+    "enabled": true,
+    "cents": 2000,
+    "image": null,
+    "order": 9
+  },
+  {
+    "id": "1415427",
+    "groupId": "291297",
+    "name": "Costela com Cream cheese",
+    "description": "",
+    "enabled": true,
+    "cents": 2000,
+    "image": null,
+    "order": 10
+  },
+  {
+    "id": "1415428",
+    "groupId": "291297",
+    "name": "Trio Nordestino",
+    "description": "",
+    "enabled": true,
+    "cents": 3000,
+    "image": null,
+    "order": 11
+  },
+  {
+    "id": "1028545",
+    "groupId": "240355",
+    "name": "Com Batata Frita",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 0
+  },
+  {
+    "id": "1028546",
+    "groupId": "240355",
+    "name": "Com Macaxeira Frita",
+    "description": "",
+    "enabled": true,
+    "cents": 0,
+    "image": null,
+    "order": 1
+  }
+]
