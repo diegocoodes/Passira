@@ -36,6 +36,7 @@ export async function endSession() {
 export class HttpError extends Error { constructor(public status: number, message: string) { super(message); } }
 export async function rateLimit(key: string, limit: number, seconds: number) {
   const id = digest(key), now = new Date(), expiresAt = new Date(now.getTime() + seconds * 1000);
-  const rows = await db().$queryRaw<{ hits: number }[]>`INSERT INTO RateLimit (id, hits, expiresAt) VALUES (${id}, 1, ${expiresAt}) ON CONFLICT(id) DO UPDATE SET hits = CASE WHEN expiresAt < ${now} THEN 1 ELSE hits + 1 END, expiresAt = CASE WHEN expiresAt < ${now} THEN ${expiresAt} ELSE expiresAt END RETURNING hits`;
-  if (Number(rows[0].hits) > limit) throw new HttpError(429, 'Muitas tentativas. Aguarde alguns minutos.');
+  await db().rateLimit.updateMany({ where: { id, expiresAt: { lt: now } }, data: { hits: 0, expiresAt } });
+  const row = await db().rateLimit.upsert({ where: { id }, create: { id, hits: 1, expiresAt }, update: { hits: { increment: 1 } } });
+  if (row.hits > limit) throw new HttpError(429, 'Muitas tentativas. Aguarde alguns minutos.');
 }

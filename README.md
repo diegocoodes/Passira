@@ -1,6 +1,6 @@
 # Passira San Martin
 
-Cardápio e sistema de pedidos da Passira San Martin, no Recife. Next.js App Router, React, TypeScript, Prisma, SQLite/libSQL e Zustand.
+Cardápio e sistema de pedidos da Passira San Martin, no Recife. Next.js App Router, React, TypeScript, Prisma, PostgreSQL e Zustand. SQLite permanece disponível para desenvolvimento e testes locais.
 
 O cliente abre cada produto em uma página própria, escolhe opções e confirma o pedido. O servidor valida preços e disponibilidade, grava um número sequencial e fornece um link privado de acompanhamento. O painel administrativo permite gerenciar a operação por formulários.
 
@@ -45,9 +45,11 @@ Taxas de entrega são mostradas separadamente. Custos vazios ficam pendentes e i
 
 Esta versão precisa de servidor Next.js e banco persistente. Não usa mais exportação estática em `out/`.
 
-Na Vercel, configure um banco Turso e as variáveis `DATABASE_URL` e `TURSO_AUTH_TOKEN`. Antes da publicação, execute as migrations e o setup em um ambiente confiável, com `ADMIN_EMAIL`, `ADMIN_PASSWORD` e `NODE_ENV=production` para o primeiro administrador. Não há banco de produção provisionado automaticamente.
+Na Vercel, configure `DATABASE_URL` com a conexão PostgreSQL privada. Antes da publicação, execute as migrations e o setup em um ambiente confiável, com `ADMIN_EMAIL`, `ADMIN_PASSWORD` e `NODE_ENV=production` para o primeiro administrador. As credenciais são fornecidas pelo ambiente e ficam fora do Git.
 
 O build gera o Prisma Client, sem executar migrations ou criar contas automaticamente. Arquivos SQLite locais não são aceitos como banco de uma função Vercel. Em um servidor próprio, SQLite precisa ficar em disco persistente e ter backup.
+
+O schema principal em `prisma/schema.prisma` usa PostgreSQL. `npm run db:generate` também gera uma versão SQLite com os mesmos modelos para manter os testes e bancos locais isolados. As migrations ficam separadas por conector; não aplique migrations SQLite ao PostgreSQL.
 
 ```sh
 npm run build

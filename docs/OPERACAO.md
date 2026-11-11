@@ -64,16 +64,16 @@ Em **Configurações**, cadastre regiões, bairros e taxas confirmadas. Bairros 
 
 O sistema agora precisa de um servidor Next.js e de um banco persistente. Exportar `out/` ou manter um arquivo SQLite dentro de uma função Vercel não atende a esses requisitos.
 
-1. Crie um banco Turso, compatível com o schema SQLite do Prisma.
-2. Em um ambiente confiável, configure `DATABASE_URL=libsql://...`, `TURSO_AUTH_TOKEN`, `ADMIN_EMAIL` e uma `ADMIN_PASSWORD` inicial forte, com no mínimo 12 caracteres. Não coloque segredos no repositório.
+1. Use um banco PostgreSQL persistente, como Prisma Postgres.
+2. Em um ambiente confiável, configure `DATABASE_URL=postgresql://...`, `ADMIN_EMAIL` e uma `ADMIN_PASSWORD` inicial forte, com no mínimo 12 caracteres. Não coloque segredos no repositório. A conexão deve usar TLS.
 3. Execute `npm run db:migrate` e `npm run db:setup` com essas variáveis. Para o primeiro administrador de produção, execute o setup com `NODE_ENV=production`; não gera arquivo de senha local nesse modo.
-4. Cadastre `DATABASE_URL` e `TURSO_AUTH_TOKEN` nas variáveis do projeto Vercel, para o ambiente correto. Separe os bancos de preview e produção.
+4. Cadastre `DATABASE_URL` nas variáveis do projeto Vercel, para o ambiente correto. Separe os bancos de preview e produção.
 5. Publique usando Node.js 24.x, `npm ci`, `npm run build` e a saída padrão do Next.js.
 6. Acesse `/admin/`, altere a senha inicial, cadastre custos e entrega e confira o fluxo antes de receber clientes.
 
-O build gera o Prisma Client, mas não executa migrations nem cria administradores automaticamente. Rode as migrations antes de publicar versões que alterem o schema. O comando `db:migrate` usa Prisma Migrate para arquivos locais e migrations SQL com controle de checksum para Turso. Não misture os dois mecanismos sobre o mesmo banco remoto. Faça backups antes de futuras alterações de schema.
+O build gera os clientes Prisma para PostgreSQL e SQLite a partir dos mesmos modelos, mas não executa migrations nem cria administradores automaticamente. Rode as migrations antes de publicar versões que alterem o schema. O comando `db:migrate` usa Prisma Migrate e seleciona o schema e as migrations pelo protocolo de `DATABASE_URL`. Os modelos canônicos ficam em `prisma/schema.prisma`; a versão em `prisma/sqlite/schema.prisma` é gerada por `npm run db:generate`. Não misture migrations dos dois conectores. Faça backups antes de futuras alterações de schema.
 
-Como ainda não há banco de produção, a configuração local não publica nem cria uma conta Turso automaticamente.
+Uma conexão remota configurada no computador não é enviada à Vercel pelo GitHub. Cadastre a variável privada também no ambiente da hospedagem. O repositório não inclui credenciais nem cria contas no provedor automaticamente.
 
 ## Verificação
 
@@ -86,5 +86,7 @@ npm run test:e2e
 ```
 
 Os testes de serviço usam um banco temporário separado. O teste de navegador inicia uma instância de produção na porta 3100, com banco e usuário exclusivos de teste em `test-results/`. Ele não envia pedidos ao WhatsApp nem altera o banco da loja local. O teste completo da compra respeita o horário real da loja, das 10h às 23h15 em America/Recife.
+
+Para validar os serviços no PostgreSQL, forneça `TEST_POSTGRES_URL` apenas ao processo de teste e execute `npm run test:system`. A suíte cria um schema aleatório exclusivo, verifica o isolamento antes de inserir dados e remove esse schema ao terminar. Ela não usa as tabelas operacionais de `public`. Não use os comandos de reset do Prisma no banco da loja.
 
 As senhas são armazenadas como hashes scrypt com salt. As sessões duram 24 horas e usam cookies HttpOnly, SameSite estrito e Secure em produção. Alterar a senha encerra todas as sessões. As APIs administrativas verificam autenticação e origem das alterações; tentativas de login e criação de pedidos têm limitação de frequência.
