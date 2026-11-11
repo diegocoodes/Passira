@@ -74,7 +74,7 @@ test('Brazilian phone and CEP validation', () => {
   assert.equal(formatPhone('81998765432'), '(81) 99876-5432');
   assert.equal(formatPhone('8131407400'), '(81) 3140-7400');
   assert.equal(formatCep('50761000'), '50761-000');
-  const customer: Customer = { name: 'Teste', phone: '(81) 99876-5432', payment: 'pix', note: '', cep: '', street: '', number: '', neighborhood: '', complement: '' };
+  const customer: Customer = { name: 'Teste', phone: '(81) 99876-5432', cpf: '529.982.247-25', payment: 'pix', note: '', cep: '', street: '', number: '', neighborhood: '', complement: '' };
   assert.equal(validateCustomer(customer, false), null);
   assert.ok(validateCustomer(customer, true));
   assert.ok(validateCustomer({ ...customer, phone: '123' }, false));

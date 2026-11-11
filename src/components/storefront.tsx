@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowRight, ChevronRight, Clock3, Info, MapPin, Plus, ReceiptText, Search, ShoppingBag, X } from 'lucide-react';
+import { ArrowRight, ChevronRight, Clock3, Info, MapPin, PackageSearch, Plus, ReceiptText, Search, ShoppingBag, X } from 'lucide-react';
 import { useMenu } from './menu-provider';
 import { getProductImage } from '@/data/illustrative-images';
 import store from '@/data/store.json';
@@ -59,6 +59,7 @@ export function Storefront() {
             <p>Pizzas, pratos, petiscos e bebidas. Consulte o cardápio e faça seu pedido para retirada ou entrega.</p>
             <div className="hero-actions">
               <a href="#cardapio" className="button primary">Ver cardápio<ArrowRight size={19} /></a>
+              <Link href="/rastrear-pedido/" className="button secondary hero-track-order"><PackageSearch size={19} />Rastrear pedido</Link>
               <a className="hero-about" href="#a-passira">Conheça a Passira<ArrowRight size={16} /></a>
             </div>
             <div className="hero-bottom"><MapPin size={15} /><span>San Martin, Recife</span><span className="hero-service">Retirada e entrega</span></div>

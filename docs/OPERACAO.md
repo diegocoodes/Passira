@@ -29,6 +29,12 @@ Cada confirmação grava um pedido no servidor, com número sequencial global: #
 
 O cliente recebe um endereço privado `/pedido/[token]/`. O número do pedido sozinho não permite consultar dados pessoais. Guardar e compartilhar o endereço permite acompanhar o pedido; trate-o como privado.
 
+A página inicial também tem **Rastrear pedido**, que abre `/rastrear-pedido/`. A consulta usa o número, como #2, e retorna somente número, modalidade, data e etapas. Ela não devolve CPF, nome, telefone, endereço, observações, itens ou o token privado.
+
+CPF é obrigatório para novos pedidos e é validado no navegador e no servidor. O valor fica nos dados do cliente do pedido e aparece na conferência, no recibo, no resumo do WhatsApp e no painel administrativo. Pedidos anteriores sem CPF continuam acessíveis. O cadastro atual usa JSON para os dados do cliente, sem necessidade de recriar tabelas para esse campo.
+
+Ao tocar em **Concluir pedido**, o cliente registra o pedido e abre uma conversa do WhatsApp com o resumo preenchido. O envio é confirmado pelo cliente dentro do WhatsApp. Se a conversa não abrir, o recibo oferece **Enviar pelo WhatsApp**. A página de confirmação continua disponível para acompanhar o pedido ou voltar ao cardápio. Não há uso da API do WhatsApp Business nesta versão.
+
 O administrador avança as etapas por botões:
 
 1. Recebido.

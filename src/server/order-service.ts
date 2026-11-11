@@ -6,13 +6,14 @@ import { HttpError } from './auth';
 import { createMenu, storeOpen } from '@/lib/menu';
 import { validateCustomer } from '@/lib/orders';
 import { indexCatalog } from '@/data/menu';
-import type { CartItem, Customer, Fulfillment, ItemConfiguration, Order, OrderStatus } from '@/data/types';
+import type { CartItem, Customer, Fulfillment, ItemConfiguration, Order, OrderStatus, PublicOrderTracking } from '@/data/types';
+import { formatCpf } from '@/lib/format';
 import type { Prisma } from '@/generated/prisma/client';
 import { nextStatuses } from '@/lib/order-status';
 
 const selection = z.object({ scope: z.enum(['size', 'product', 'flavor']), ownerId: z.string().max(100), groupId: z.string().max(100), quantities: z.record(z.string().max(100), z.number().int().min(0).max(99)) });
 export const itemSchema = z.object({ id: z.string().min(1).max(100), productId: z.string().max(100), priceId: z.string().max(100), flavorIds: z.array(z.string().max(100)).max(2), selections: z.array(selection).max(30), note: z.string().max(500), quantity: z.number().int().min(1).max(99) });
-const customerSchema = z.object({ name: z.string().trim().min(2).max(100), phone: z.string().max(20), cep: z.string().max(10), street: z.string().max(150), number: z.string().max(20), neighborhood: z.string().max(100), complement: z.string().max(150), note: z.string().max(1000), payment: z.enum(['pix', 'debit', 'credit']) });
+const customerSchema = z.object({ name: z.string().trim().min(2).max(100), phone: z.string().max(20), cpf: z.string().max(14), cep: z.string().max(10), street: z.string().max(150), number: z.string().max(20), neighborhood: z.string().max(100), complement: z.string().max(150), note: z.string().max(1000), payment: z.enum(['pix', 'debit', 'credit']) });
 export const orderSchema = z.object({ requestKey: z.uuid(), fulfillment: z.enum(['pickup', 'delivery']), customer: customerSchema, items: z.array(itemSchema).min(1).max(80), expectedTotalCents: z.number().int().min(0).max(100000000) });
 const includeOrder = { items: true, events: { orderBy: { createdAt: 'asc' as const } } };
 type StoredOrder = Prisma.OrderGetPayload<{ include: typeof includeOrder }>;
@@ -34,6 +35,7 @@ export async function createOrder(input: unknown, date = new Date()) {
   }
   const reason = validateCustomer(payload.customer, payload.fulfillment === 'delivery');
   if (reason) throw new HttpError(400, reason);
+  payload.customer.cpf = formatCpf(payload.customer.cpf);
   if (!storeOpen(date)) throw new HttpError(400, 'A loja está fora do horário de atendimento.');
   if (new Set(payload.items.map(item => item.id)).size !== payload.items.length) throw new HttpError(400, 'Há itens duplicados no pedido.');
   const catalog = await getCatalog(), menu = createMenu(catalog), { productById } = indexCatalog(catalog);
@@ -74,6 +76,12 @@ export async function trackedOrder(token: string) {
   const order = await db().order.findUnique({ where: { token }, include: includeOrder });
   if (!order) throw new HttpError(404, 'Pedido não encontrado.');
   return presentOrder(order);
+}
+export async function trackedOrderByNumber(number: number): Promise<PublicOrderTracking> {
+  if (!Number.isSafeInteger(number) || number < 1 || number > 2147483647) throw new HttpError(400, 'Informe um número de pedido válido.');
+  const order = await db().order.findUnique({ where: { id: number }, select: { id: true, status: true, fulfillment: true, createdAt: true, events: { select: { status: true, createdAt: true }, orderBy: { createdAt: 'asc' } } } });
+  if (!order) throw new HttpError(404, 'Pedido não encontrado. Confira o número e tente novamente.');
+  return { id: `#${order.id}`, number: order.id, status: order.status as OrderStatus, fulfillment: order.fulfillment as Fulfillment, createdAt: order.createdAt.toISOString(), events: order.events.map(event => ({ status: event.status as OrderStatus, createdAt: event.createdAt.toISOString() })) };
 }
 export async function changeStatus(id: number, expected: OrderStatus, status: OrderStatus) {
   return db().$transaction(async tx => {

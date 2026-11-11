@@ -4,6 +4,8 @@ Cardápio e sistema de pedidos da Passira San Martin, no Recife. Next.js App Rou
 
 O cliente abre cada produto em uma página própria, escolhe opções e confirma o pedido. O servidor valida preços e disponibilidade, grava um número sequencial e fornece um link privado de acompanhamento. O painel administrativo permite gerenciar a operação por formulários.
 
+Na conclusão, o WhatsApp abre com o resumo preenchido para o cliente tocar em Enviar. Os dados do pedido incluem CPF com máscara e validação. A página inicial tem um botão Rastrear pedido: a consulta por número mostra somente as etapas e não expõe dados pessoais nem o link privado do pedido.
+
 ## Executar localmente
 
 Requer Node.js 24.x e npm. No PowerShell, use `npm.cmd` se os scripts estiverem bloqueados.
@@ -62,7 +64,7 @@ A configuração completa, indicadores, segurança, backup e publicação estão
 
 As regiões de entrega começam vazias. Cadastre somente bairros atendidos e taxas confirmadas pelo painel. Taxa vazia ou bairro desconhecido bloqueia a entrega. Retirada tem taxa zero.
 
-Pix, débito e crédito são escolhas de pagamento no recebimento. Não há gateway nem cobrança online. O WhatsApp continua disponível para contato opcional; a gravação e o acompanhamento do pedido ocorrem no servidor.
+Pix, débito e crédito são escolhas de pagamento no recebimento. Não há gateway nem cobrança online. A conclusão registra o pedido no servidor antes de abrir o WhatsApp. A mensagem é preenchida automaticamente; o cliente confirma o envio na conversa. O rastreio por número funciona em `/rastrear-pedido/`, e o link privado continua disponível com o resumo completo.
 
 ## Cardápio original e auditoria
 

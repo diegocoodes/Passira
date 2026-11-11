@@ -9,7 +9,7 @@ import { Client as PgClient } from 'pg';
 import { db } from '../src/server/db';
 import { seedCatalog, getCatalog } from '../src/server/catalog';
 import { saveProduct, dashboard } from '../src/server/admin-service';
-import { changeStatus, createOrder, trackedOrder } from '../src/server/order-service';
+import { changeStatus, createOrder, trackedOrder, trackedOrderByNumber } from '../src/server/order-service';
 import { hashPassword, verifyPassword, HttpError, rateLimit, digest } from '../src/server/auth';
 import { nextStatuses, todayInRecife, dayBounds } from '../src/lib/order-status';
 import { createMenu } from '../src/lib/menu';
@@ -23,7 +23,7 @@ if (postgresUrl) {
   const url = new URL(postgresUrl); url.searchParams.set('schema', testSchema); process.env.DATABASE_URL = url.toString();
 } else process.env.DATABASE_URL = `file:${path.join(folder, 'test.db').replaceAll('\\', '/')}`;
 const serviceTime = new Date('2026-11-11T18:00:00-03:00');
-const customer = { name: 'Cliente de teste', phone: '(81) 99999-9999', cep: '', street: '', number: '', neighborhood: '', complement: '', note: '', payment: 'pix' as const };
+const customer = { name: 'Cliente de teste', phone: '(81) 99999-9999', cpf: '529.982.247-25', cep: '', street: '', number: '', neighborhood: '', complement: '', note: '', payment: 'pix' as const };
 let productId: string, priceId: string;
 
 before(async () => {
@@ -74,11 +74,25 @@ test('orders receive sequential numbers, server totals, and idempotent retry han
   const retries = await Promise.all([createOrder(input, serviceTime), createOrder(input, serviceTime)]);
   assert.ok(retries.every(order => order.number === first.number));
   assert.equal(first.number, 1); assert.equal(first.totalCents, 10000); assert.equal(first.token?.length, 48);
+  assert.equal(first.customer.cpf, '529.982.247-25');
   assert.equal((await trackedOrder(first.token!)).customer.name, customer.name);
   await assert.rejects(createOrder({ ...input, expectedTotalCents: 1 }, serviceTime), (error: unknown) => error instanceof HttpError && error.status === 409);
   await assert.rejects(createOrder({ ...payload(), expectedTotalCents: 1 }, serviceTime), /valores do cardápio mudaram/);
   assert.equal(await db().order.count(), 1);
   await complete(first.number!);
+});
+test('tracking by number returns status without customer information or the private tracking token', async () => {
+  const order = await trackedOrderByNumber(1);
+  assert.equal(order.id, '#1'); assert.equal(order.status, 'completed');
+  assert.deepEqual(Object.keys(order).sort(), ['createdAt', 'events', 'fulfillment', 'id', 'number', 'status']);
+  assert.ok(!JSON.stringify(order).includes(customer.cpf));
+  await assert.rejects(trackedOrderByNumber(999999), (error: unknown) => error instanceof HttpError && error.status === 404);
+  await assert.rejects(trackedOrderByNumber(0), (error: unknown) => error instanceof HttpError && error.status === 400);
+});
+test('invalid CPF prevents new orders from being created', async () => {
+  const input = payload(); const previous = await db().order.count();
+  await assert.rejects(createOrder({ ...input, customer: { ...customer, cpf: '111.111.111-11' } }, serviceTime), /CPF válido/);
+  assert.equal(await db().order.count(), previous);
 });
 test('dashboard counts completed sales, ranks products, subtracts costs and daily expenses', async () => {
   const day = todayInRecife(); await db().expense.create({ data: { day, title: 'Despesa do teste', cents: 1000 } });

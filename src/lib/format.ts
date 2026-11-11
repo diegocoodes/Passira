@@ -13,3 +13,14 @@ export function formatPhone(value: string) {
   return `(${d.slice(0, 2)}) ${local.slice(0, cut)}${local.length > cut ? '-' + local.slice(cut) : ''}`;
 }
 export const formatCep = (v: string) => v.replace(/\D/g, '').slice(0, 8).replace(/(\d{5})(\d)/, '$1-$2');
+export const formatCpf = (value: string) => value.replace(/\D/g, '').slice(0, 11).replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1-$2');
+export function validCpf(value: string) {
+  const digits = value.replace(/\D/g, '');
+  if (!/^\d{11}$/.test(digits) || /^(\d)\1{10}$/.test(digits)) return false;
+  for (const length of [9, 10]) {
+    const sum = [...digits.slice(0, length)].reduce((total, digit, index) => total + Number(digit) * (length + 1 - index), 0);
+    const remainder = (sum * 10) % 11;
+    if ((remainder === 10 ? 0 : remainder) !== Number(digits[length])) return false;
+  }
+  return true;
+}
