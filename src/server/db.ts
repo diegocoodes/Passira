@@ -7,7 +7,7 @@ import { postgresConnection } from './connection';
 
 const globalDb = globalThis as unknown as { passiraDb?: PrismaClient };
 export function db() {
-  const url = process.env.DATABASE_URL || 'file:./prisma/dev.db';
+  const url = process.env.DATABASE_URL?.trim() || 'file:./prisma/dev.db';
   if (process.env.VERCEL && url.startsWith('file:')) throw new Error('Configure DATABASE_URL com um banco PostgreSQL persistente antes de publicar.');
   if (!globalDb.passiraDb) {
     if (/^postgres(ql)?:/.test(url)) {
