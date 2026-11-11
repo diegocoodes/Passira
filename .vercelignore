@@ -8,3 +8,5 @@ test-results
 audit
 public/images/restaurant/*-original.jpg
 *.tsbuildinfo
+prisma/*.db*
+admin-access.local.txt

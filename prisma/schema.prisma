@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Category {
+  id       String    @id
+  name     String
+  data     Json
+  products Product[]
+}
+
+model Product {
+  id         String    @id
+  categoryId String
+  category   Category  @relation(fields: [categoryId], references: [id])
+  name       String
+  data       Json
+  deletedAt  DateTime?
+  updatedAt  DateTime  @updatedAt
+  variants   Variant[]
+}
+
+model Variant {
+  id            String  @id
+  productId     String
+  product       Product @relation(fields: [productId], references: [id])
+  data          Json
+  unitCostCents Int?
+}
+
+model CatalogSetting {
+  id   String @id
+  data Json
+}
+
+model AdditionCost {
+  id        String @id
+  costCents Int?
+}
+
+model Admin {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  createdAt    DateTime  @default(now())
+  sessions     Session[]
+}
+
+model Session {
+  id        String   @id
+  adminId   String
+  admin     Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+}
+
+model Order {
+  id                Int          @id @default(autoincrement())
+  token             String       @unique
+  requestKey        String       @unique
+  requestHash       String
+  status            String       @default("received")
+  fulfillment       String
+  customer          Json
+  subtotalCents     Int
+  deliveryCents     Int
+  totalCents        Int
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  completedAt       DateTime?
+  items             OrderItem[]
+  events            OrderEvent[]
+  @@index([createdAt, status])
+}
+
+model OrderItem {
+  id            String @id @default(cuid())
+  orderId       Int
+  order         Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId     String
+  title         String
+  quantity      Int
+  configuration Json
+  details       Json
+  unitCents     Int
+  unitCostCents Int?
+  @@index([productId])
+}
+
+model OrderEvent {
+  id        String   @id @default(cuid())
+  orderId   Int
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status    String
+  createdAt DateTime @default(now())
+}
+
+model Expense {
+  id        String   @id @default(cuid())
+  day       String
+  title     String
+  cents     Int
+  createdAt DateTime @default(now())
+  @@index([day])
+}
+
+model RateLimit {
+  id        String   @id
+  hits      Int
+  expiresAt DateTime
+}

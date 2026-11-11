@@ -7,3 +7,7 @@ out/
 test-results/
 .sites/
 .vercel/
+!.env.example
+src/generated/
+prisma/*.db*
+admin-access.local.txt

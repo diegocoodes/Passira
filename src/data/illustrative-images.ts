@@ -48,7 +48,8 @@ export const illustrativeImages: Record<string, string> = {
 };
 
 export function getProductImage(product: Product): { src: string; illustrative: boolean } {
+  if (product.photoUrl) return { src: product.photoUrl, illustrative: false };
   if (product.image) return { src: `/images/${product.sourceId}.webp`, illustrative: false };
   const image = illustrativeImages[product.id];
-  return { src: image ? `/images/illustrative/${image}.webp` : '', illustrative: true };
+  return { src: image ? `/images/illustrative/${image}.webp` : '/images/product-placeholder.svg', illustrative: true };
 }
