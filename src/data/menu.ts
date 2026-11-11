@@ -6,6 +6,8 @@ import rawGroups from './menu/option-groups.json';
 import rawAdditions from './menu/additions.json';
 import type { Category, Product, Size, Price, OptionGroup, Addition } from './types';
 import { displayMenuText } from '@/lib/format';
+import { deliveryRegions } from './delivery';
+import type { Catalog } from './types';
 
 function presentEntry<T extends { name: string; description?: string }>(entry: T): T {
   return { ...entry, name: displayMenuText(entry.name), ...(typeof entry.description === 'string' ? { description: displayMenuText(entry.description) } : {}) };
@@ -24,3 +26,16 @@ export const additionById = Object.fromEntries(additions.map(a => [a.id, a]));
 export const categoryById = Object.fromEntries(categories.map(c => [c.id, c]));
 export const availableCategories = categories.filter(c => c.enabled);
 export const productPrices = (id: string) => prices.filter(p => p.productId === id && p.enabled && p.cents !== null);
+
+export const initialCatalog: Catalog = { categories, products, prices, sizes, optionGroups, additions, deliveryRegions };
+export function indexCatalog(catalog: Catalog) {
+  return { ...catalog,
+    productById: Object.fromEntries(catalog.products.map(product => [product.id, product])),
+    categoryById: Object.fromEntries(catalog.categories.map(category => [category.id, category])),
+    sizeById: Object.fromEntries(catalog.sizes.map(size => [size.id, size])),
+    groupById: Object.fromEntries(catalog.optionGroups.map(group => [group.id, group])),
+    additionById: Object.fromEntries(catalog.additions.map(addition => [addition.id, addition])),
+    availableCategories: catalog.categories.filter(category => category.enabled),
+    productPrices: (id: string) => catalog.prices.filter(price => price.productId === id && price.enabled && price.cents !== null),
+  };
+}

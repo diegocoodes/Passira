@@ -2,18 +2,21 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { availableCategories, products } from '@/data/menu';
+import { useMenu } from './menu-provider';
 import { getProductImage } from '@/data/illustrative-images';
 
-const counts = new Map(availableCategories.map(category => [category.id, products.filter(product => product.enabled && product.categoryId === category.id).length]));
+
 const categoryLabels: Record<string, string> = { '274527': 'Promoções de pizzas', '274526': 'Pizza em dobro', '274515': 'Promoções da semana', '336116': 'Pizza de 1 sabor', '365011': 'Happy Pizza' };
 const categoryPhotos: Record<string, string> = { '274528': '/images/380075.webp', '274508': '/images/2169126.webp', '274509': '/images/2172833.webp', '274512': '/images/2169141.webp', '274523': '/images/2172237.webp', '274513': '/images/2169207.webp' };
-const categoryImages = new Map(availableCategories.map(category => {
+function getCategoryImages(availableCategories: import('@/data/types').Category[], products: import('@/data/types').Product[]) { return new Map(availableCategories.map(category => {
   const product = products.find(product => product.enabled && product.categoryId === category.id);
   return [category.id, categoryPhotos[category.id] || (product ? getProductImage(product).src : '')];
-}));
+})); }
 
 export function CategoryNavigation({ selected, choose }: { selected: string | null; choose: (id: string) => void }) {
+  const { availableCategories, products } = useMenu();
+  const counts = new Map(availableCategories.map(category => [category.id, products.filter(product => product.enabled && product.categoryId === category.id).length]));
+  const categoryImages = getCategoryImages(availableCategories, products);
   const track = useRef<HTMLElement>(null);
   const drag = useRef({ pointer: -1, start: 0, scroll: 0, moved: false });
   const [edges, setEdges] = useState({ start: true, end: false });

@@ -1,5 +1,6 @@
-import { additionById, categoryById, groupById, prices, productById, productPrices, sizeById } from '@/data/menu';
-import { deliveryRegions, type DeliveryRegion } from '@/data/delivery';
+import { indexCatalog, initialCatalog } from '@/data/menu';
+import type { Catalog } from '@/data/types';
+import type { DeliveryRegion } from '@/data/delivery';
 import store from '@/data/store.json';
 import type { CartItem, Fulfillment, GroupSelection, ItemConfiguration, Schedule } from '@/data/types';
 import { normalize } from './format';
@@ -19,7 +20,9 @@ export function storeOpen(date = new Date()) {
   const { day, minute } = currentLocal(date);
   return store.operationTimes.some(d => d.weekday_code === day && d.opened && d.shifts.some(s => minute >= s.start_hour * 60 + s.start_minute && minute < s.end_hour * 60 + s.end_minute));
 }
-export function availability(productId: string, date = new Date()): string | null {
+export function createMenu(catalog: Catalog) {
+const { additionById, categoryById, groupById, prices, productById, productPrices, sizeById, deliveryRegions } = indexCatalog(catalog);
+function availability(productId: string, date = new Date()): string | null {
   const p = productById[productId];
   if (!p || !p.enabled) return 'Indisponível no cardápio.';
   const c = categoryById[p.categoryId];
@@ -28,12 +31,12 @@ export function availability(productId: string, date = new Date()): string | nul
   if (!inSchedule(c.schedule, date) || !inSchedule(p.schedule, date)) return 'Disponível somente nos dias e horários desta promoção.';
   return null;
 }
-export const priceFor = (id: string, method: Fulfillment) => {
+const priceFor = (id: string, method: Fulfillment) => {
   const p = prices.find(p => p.id === id);
   if (!p?.enabled || !(method === 'pickup' ? p.pickupEnabled : p.deliveryEnabled)) return null;
   return method === 'pickup' ? p.pickupCents : p.deliveryCents;
 };
-export function requiredGroups(config: ItemConfiguration): GroupRequirement[] {
+function requiredGroups(config: ItemConfiguration): GroupRequirement[] {
   const p = productById[config.productId], price = prices.find(v => v.id === config.priceId);
   if (!p || !price) return [];
   const list: GroupRequirement[] = [];
@@ -49,7 +52,7 @@ export function requiredGroups(config: ItemConfiguration): GroupRequirement[] {
   } else add(price.optionGroupIds, 'product', p.id, p.name);
   return list;
 }
-export function calculateItem(config: ItemConfiguration, method: Fulfillment, date = new Date(), checkAvailability = true): { cents: number | null; error: string | null } {
+function calculateItem(config: ItemConfiguration, method: Fulfillment, date = new Date(), checkAvailability = true): { cents: number | null; error: string | null } {
   const fail = (error: string) => ({ cents: null, error });
   const p = productById[config.productId];
   const price = prices.find(v => v.id === config.priceId && v.productId === config.productId);
@@ -95,7 +98,7 @@ export function calculateItem(config: ItemConfiguration, method: Fulfillment, da
   }
   return { cents: Math.round(base + common + flavorExtras / flavorCount), error: null };
 }
-export function itemDetails(config: ItemConfiguration): string[] {
+function itemDetails(config: ItemConfiguration): string[] {
   const price = prices.find(p => p.id === config.priceId);
   const details = [price?.name.trim() ?? ''];
   if (productById[config.productId]?.kind === 'pizza') details.push(config.flavorIds.map(id => productById[id]?.name.trim()).join(' + '));
@@ -107,20 +110,24 @@ export function itemDetails(config: ItemConfiguration): string[] {
   if (config.note.trim()) details.push(`Obs.: ${config.note.trim()}`);
   return details.filter(Boolean);
 }
-export function getDeliveryFee(method: Fulfillment, neighborhood: string, regions: DeliveryRegion[] = deliveryRegions): number | null {
+function getDeliveryFee(method: Fulfillment, neighborhood: string, regions: DeliveryRegion[] = deliveryRegions): number | null {
   if (method === 'pickup') return 0;
   if (!normalize(neighborhood)) return null;
   const region = regions.find(r => r.neighborhoods.some(n => normalize(n) === normalize(neighborhood)));
   return region && region.feeCents !== null && Number.isSafeInteger(region.feeCents) && region.feeCents >= 0 ? region.feeCents : null;
 }
-export function cartTotals(items: CartItem[], method: Fulfillment, neighborhood: string, date = new Date()) {
+function cartTotals(items: CartItem[], method: Fulfillment, neighborhood: string, date = new Date()) {
   const rows = items.map(item => ({ item, ...calculateItem(item, method, date) }));
   const subtotal = rows.reduce((n, r) => n + (r.cents ?? 0) * r.item.quantity, 0);
   const fee = getDeliveryFee(method, neighborhood);
   const errors = rows.filter(r => r.error || !Number.isInteger(r.item.quantity) || r.item.quantity < 1 || r.item.quantity > 99);
   return { rows, subtotal, fee, total: fee === null || errors.length ? null : subtotal + fee, hasErrors: errors.length > 0 };
 }
-export const minimumPrice = (id: string, method: Fulfillment) => {
+const minimumPrice = (id: string, method: Fulfillment) => {
   const values = productPrices(id).map(v => priceFor(v.id, method)).filter((v): v is number => v !== null);
   return values.length ? Math.min(...values) : null;
 };
+
+return { availability, priceFor, requiredGroups, calculateItem, itemDetails, getDeliveryFee, cartTotals, minimumPrice };
+}
+export const { availability, priceFor, requiredGroups, calculateItem, itemDetails, getDeliveryFee, cartTotals, minimumPrice } = createMenu(initialCatalog);
