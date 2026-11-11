@@ -7,3 +7,5 @@ out/
 test-results/
 .sites/
 .vercel/
+.prisma-composer/
+.alchemy/
