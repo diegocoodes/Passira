@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { AlertCircle, Check, Pizza, Plus } from 'lucide-react';
 import { additions, groupById, prices, productById, productPrices, products, sizeById } from '@/data/menu';
+import { getProductImage } from '@/data/illustrative-images';
 import type { CartItem, GroupSelection, ItemConfiguration, Product } from '@/data/types';
 import { useCart } from '@/lib/cart';
 import { brl } from '@/lib/format';
@@ -20,6 +21,7 @@ export function ProductCustomizer({ product, edit, close, added }: { product: Pr
   const groupRequirements = requiredGroups(config);
   const calculation = calculateItem(config, method);
   const unavailable = availability(product.id);
+  const photo = getProductImage(product);
   const flavors = products.filter(p => p.categoryId === product.categoryId && p.id !== product.id && p.enabled && !p.blocked && prices.some(v => v.productId === p.id && v.sizeId === size?.id && v.enabled && priceFor(v.id, method) !== null));
   const setOption = (requirement: typeof groupRequirements[number], aid: string, q: number, single = false) => {
     setTried(false);
@@ -30,16 +32,16 @@ export function ProductCustomizer({ product, edit, close, added }: { product: Pr
       return { ...c, selections: [...c.selections.filter(s => !(s.scope === requirement.scope && s.ownerId === requirement.ownerId && s.groupId === requirement.groupId)), selection] };
     });
   };
-  return <Dialog title={edit ? 'Editar item' : 'Prepare do seu jeito'} close={close}>
+  return <Dialog title={edit ? 'Editar item' : 'Personalizar item'} close={close}>
     <div className="customizer-scroll">
-      {product.image && <img className="product-cover" src={`/images/${product.sourceId}.webp`} alt={product.name.trim()} />}
+      <div className="product-cover-wrap"><img className="product-cover" src={photo.src} alt={`${photo.illustrative ? 'Foto ilustrativa de ' : ''}${product.name.trim()}`} />{photo.illustrative && <span className="photo-label">Foto ilustrativa</span>}</div>
       <div className="customizer-body"><span className="eyebrow">PASSIRA · SAN MARTIN</span><h3 className="product-title">{product.name}</h3><p className="description full">{product.description || 'Descrição não informada no cardápio original.'}</p>
         {!!product.pending.length && <div className="notice"><AlertCircle size={18} /><div>{product.pending.map((s, i) => <p key={i}>{s}</p>)}</div></div>}
         <fieldset className="option-section"><legend>{product.kind === 'pizza' ? '1. Escolha o tamanho' : variants.length > 1 ? 'Escolha uma opção' : 'Preço do item'}</legend><div className="size-options">{variants.map(v => {
           const value = priceFor(v.id, method);
           return <label key={v.id} className={`size-option ${config.priceId === v.id ? 'selected' : ''}`}><input type="radio" name="size" checked={config.priceId === v.id} disabled={value === null} onChange={() => { setConfig(c => ({ ...c, priceId: v.id, flavorIds: product.kind === 'pizza' ? [product.id] : [], selections: [] })); setTried(false); }} /><span><strong>{v.name}</strong><small>{value === null ? 'Indisponível' : brl(value)}</small></span>{config.priceId === v.id && <Check size={17} />}</label>;
         })}</div></fieldset>
-        {product.kind === 'pizza' && size && <section className="option-section"><h4>2. Escolha os sabores</h4><p className="helper">{size.maxFlavors > 1 ? `Até ${size.maxFlavors} sabores. O preço é a média dos sabores escolhidos.` : 'Este tamanho permite apenas 1 sabor.'}</p><div className="chosen-flavor"><Pizza size={19} /><span>{product.name}</span><span>{price && priceFor(price.id, method) !== null ? brl(priceFor(price.id, method)!) : '—'}</span></div>
+        {product.kind === 'pizza' && size && <section className="option-section"><h4>2. Escolha os sabores</h4><p className="helper">{size.maxFlavors > 1 ? `Até ${size.maxFlavors} sabores. O preço é a média dos sabores escolhidos.` : 'Este tamanho permite apenas 1 sabor.'}</p><div className="chosen-flavor"><Pizza size={19} /><span>{product.name}</span><span>{price && priceFor(price.id, method) !== null ? brl(priceFor(price.id, method)!) : 'A confirmar'}</span></div>
           {size.maxFlavors > 1 && <label className="field"><span>Segundo sabor <small>opcional</small></span><select value={config.flavorIds[1] ?? ''} onChange={e => { setConfig(c => ({ ...c, flavorIds: e.target.value ? [product.id, e.target.value] : [product.id], selections: [] })); setTried(false); }}><option value="">Manter somente {product.name.trim()}</option>{flavors.map(f => { const fp = prices.find(v => v.productId === f.id && v.sizeId === size.id); return <option key={f.id} value={f.id}>{f.name.trim()} · {fp && brl(priceFor(fp.id, method)!)}</option>; })}</select></label>}
         </section>}
         {groupRequirements.map(r => {

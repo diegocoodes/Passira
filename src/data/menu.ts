@@ -5,12 +5,18 @@ import rawPrices from './menu/prices.json';
 import rawGroups from './menu/option-groups.json';
 import rawAdditions from './menu/additions.json';
 import type { Category, Product, Size, Price, OptionGroup, Addition } from './types';
-export const categories: Category[] = rawCategories;
-export const products: Product[] = rawProducts;
-export const sizes: Size[] = rawSizes;
-export const prices: Price[] = rawPrices;
-export const optionGroups: OptionGroup[] = rawGroups;
-export const additions: Addition[] = rawAdditions;
+import { displayMenuText } from '@/lib/format';
+
+function presentEntry<T extends { name: string; description?: string }>(entry: T): T {
+  return { ...entry, name: displayMenuText(entry.name), ...(typeof entry.description === 'string' ? { description: displayMenuText(entry.description) } : {}) };
+}
+
+export const categories: Category[] = rawCategories.map(presentEntry);
+export const products: Product[] = rawProducts.map(presentEntry);
+export const sizes: Size[] = rawSizes.map(presentEntry);
+export const prices: Price[] = rawPrices.map(presentEntry);
+export const optionGroups: OptionGroup[] = rawGroups.map(presentEntry);
+export const additions: Addition[] = rawAdditions.map(presentEntry);
 export const productById = Object.fromEntries(products.map(p => [p.id, p]));
 export const sizeById = Object.fromEntries(sizes.map(s => [s.id, s]));
 export const groupById = Object.fromEntries(optionGroups.map(g => [g.id, g]));

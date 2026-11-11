@@ -1,0 +1,78 @@
+{
+  "place": {
+    "name": "Passira San Martin",
+    "googleMapsUrl": "https://www.google.com/maps?cid=11558539790381466414",
+    "googleCid": "11558539790381466414",
+    "addressOnGoogle": "Av. Gen. San Martin, 1648b, San Martin, Recife, PE",
+    "telephoneOnGoogle": "(81) 3140-7400",
+    "rating": 4.3,
+    "ratingCount": null,
+    "capturedAt": "2026-11-11",
+    "verification": "Google Maps public place page; rating count not exposed in limited view."
+  },
+  "reviews": [
+    {
+      "id": "hillary",
+      "author": "Hillary Gabriela (Deusa)",
+      "rating": 5,
+      "publishedLabel": "2 anos atrás",
+      "sourceUrl": "https://maps.app.goo.gl/8B1xpbpZTo6Cgo4C9",
+      "profileUrl": null,
+      "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWXfx5_76PiWaw-AY0pv-Hr3-_BD2R-rHV15ZVCkFDDdFCfUl0I=w72-h72-p-rp-mo-br100",
+      "text": "atendimento massa só achei que deveria climatizar a quantidade de ventilador é pouca. E o valor achei acessível",
+      "isExcerpt": true,
+      "avatar": "/images/reviews/hillary.webp",
+      "capturedAt": "2026-11-11",
+      "source": "Google Maps"
+    },
+    {
+      "id": "andre",
+      "author": "André Dutra",
+      "rating": 5,
+      "publishedLabel": "3 meses atrás",
+      "sourceUrl": "https://maps.app.goo.gl/o6Ndvj11mfFTomFn6",
+      "profileUrl": "https://www.google.com/maps/contrib/115652851986597534503/reviews",
+      "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIMwOzQk5hcwAIQedG0GVB9HU2eX6JOWaUOtwWRlLSMlcHQNQ=w72-h72-p-rp-mo-ba12-br100",
+      "text": "Lugar muito bom. Os preços são acessíveis. A qualidade da comida é boa. E o atendimento é muito bom.",
+      "isExcerpt": false,
+      "avatar": "/images/reviews/andre.webp",
+      "capturedAt": "2026-11-11",
+      "source": "Google Maps"
+    },
+    {
+      "id": "erica",
+      "author": "Érica Janiele Amaral",
+      "rating": 5,
+      "publishedLabel": "3 meses atrás",
+      "sourceUrl": "https://maps.app.goo.gl/5WsCVurHCCRsTN8M7",
+      "profileUrl": "https://www.google.com/maps/contrib/112697721556874517646/reviews",
+      "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUlPIEQUIDRDRi5OwsL_uJ8fy-CTVrMROS4reblk70HPIqr71Pk_w=w72-h72-p-rp-mo-ba12-br100",
+      "text": "Gosto demais da pizza , daqui é massa de pão mas eu amo tbm . Amo todos os estilos de pizza .",
+      "isExcerpt": false,
+      "avatar": "/images/reviews/erica.webp",
+      "capturedAt": "2026-11-11",
+      "source": "Google Maps"
+    }
+  ],
+  "photo": {
+    "sourceUrl": "https://lh3.googleusercontent.com/grass-cs/AABkmLe7vw7RKgzv0Vf36coYQenXNsi3mdqMqzTiuvIe1zJjQG3Tj5IceeyYrhqWNpIIBNW9c48Oegg_h5zcR3Zhnm3usJWrOqSlaD9kvSVRu-0ND0x38LyoEBynoxb_5ne1XWR8Dovw=w1280-h591-k-no",
+    "googlePhotoUrl": "https://www.google.com/maps/@-8.0663198,-34.927602,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICr5aOBsQE!2e10!3e12!7i1280!8i591",
+    "author": "22 Rels Group",
+    "publishedLabel": "jul. de 2024",
+    "capturedAt": "2026-11-11",
+    "original": "/images/restaurant/ambiente-google-original.jpg",
+    "width": 1280,
+    "height": 591
+  },
+  "interiorPhoto": {
+    "sourceUrl": "https://lh3.googleusercontent.com/grass-cs/AABkmLeUFSLhPiF6S6vgZaNKPxo4bS_DwlOvwCfpodZlzdpfTOg45ROkQ1j7BDfwLP-GTpJksIJVevLGz-t7OCMS5N7LeJ_yHQ8zDxvJM2hpw-Yet42_RiFO-JV3rhZiuvcwBpf5aq-l=s0",
+    "reviewUrl": "https://maps.app.goo.gl/8B1xpbpZTo6Cgo4C9",
+    "author": "Hillary Gabriela (Deusa)",
+    "publishedLabel": "mar. de 2024",
+    "capturedAt": "2026-11-11",
+    "original": "/images/restaurant/interior-google-hillary-original.jpg",
+    "width": 3120,
+    "height": 4160,
+    "description": "Salão da Passira San Martin com mesas de madeira e clientes; fotografia vertical, sem colagem."
+  }
+}

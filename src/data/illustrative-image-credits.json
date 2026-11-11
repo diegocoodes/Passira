@@ -1,0 +1,382 @@
+[
+  {
+    "slug": "frango-cremoso",
+    "title": "Frango grelhado com molho cremoso",
+    "src": "/images/illustrative/frango-cremoso.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/grilled-chicken-with-vegetables-and-cream-sauce-36936952/",
+    "downloadUrl": "https://images.pexels.com/photos/36936952/pexels-photo-36936952.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2169127"
+    ],
+    "bytes": 38208
+  },
+  {
+    "slug": "galeto-assado",
+    "title": "Frango assado",
+    "src": "/images/illustrative/galeto-assado.webp",
+    "author": "Maksim Goncharenok",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/close-up-photo-of-roasted-chicken-6163271/",
+    "downloadUrl": "https://images.pexels.com/photos/6163271/pexels-photo-6163271.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2172827",
+      "item-2169129"
+    ],
+    "bytes": 63234
+  },
+  {
+    "slug": "estrogonofe-file",
+    "title": "Estrogonofe de carne",
+    "src": "/images/illustrative/estrogonofe-file.webp",
+    "author": "Alpha @ Flickr",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beef_Stroganoff.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Beef_Stroganoff.jpg/960px-Beef_Stroganoff.jpg",
+    "products": [
+      "item-2172333"
+    ],
+    "bytes": 62640
+  },
+  {
+    "slug": "peixe-grelhado",
+    "title": "Filé de peixe branco servido com legumes",
+    "src": "/images/illustrative/peixe-grelhado.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/food-restaurant-fish-cooking-11044248/",
+    "downloadUrl": "https://images.pexels.com/photos/11044248/pexels-photo-11044248.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2169264",
+      "item-2169160",
+      "item-2169156"
+    ],
+    "bytes": 62556
+  },
+  {
+    "slug": "cordon-bleu",
+    "title": "Cordon bleu",
+    "src": "/images/illustrative/cordon-bleu.webp",
+    "author": "Marife.altabano",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cordon_Bleu_01.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Cordon_Bleu_01.jpg/960px-Cordon_Bleu_01.jpg",
+    "products": [
+      "item-2169258",
+      "item-2169239"
+    ],
+    "bytes": 88720
+  },
+  {
+    "slug": "file-grelhado",
+    "title": "Bife grelhado ao molho",
+    "src": "/images/illustrative/file-grelhado.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/a-plate-with-a-steak-and-lemon-on-it-27305268/",
+    "downloadUrl": "https://images.pexels.com/photos/27305268/pexels-photo-27305268.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2169257",
+      "item-2172537",
+      "item-2169238",
+      "item-2169236",
+      "item-2169266"
+    ],
+    "bytes": 82528
+  },
+  {
+    "slug": "frango-grelhado",
+    "title": "Prato brasileiro com frango grelhado",
+    "src": "/images/illustrative/frango-grelhado.webp",
+    "author": "Cibele Bergamim",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/classic-brazilian-meal-with-grilled-chicken-34472465/",
+    "downloadUrl": "https://images.pexels.com/photos/34472465/pexels-photo-34472465.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2169254"
+    ],
+    "bytes": 46168
+  },
+  {
+    "slug": "frango-empanado",
+    "title": "Frango empanado",
+    "src": "/images/illustrative/frango-empanado.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/fried-chicken-on-a-plate-3926125/",
+    "downloadUrl": "https://images.pexels.com/photos/3926125/pexels-photo-3926125.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2169252",
+      "item-2172244"
+    ],
+    "bytes": 63880
+  },
+  {
+    "slug": "carne-na-brasa",
+    "title": "Carne bovina grelhada e fatiada",
+    "src": "/images/illustrative/carne-na-brasa.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/sliced-steak-on-a-wooden-board-8694617/",
+    "downloadUrl": "https://images.pexels.com/photos/8694617/pexels-photo-8694617.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2169247",
+      "item-2172829",
+      "item-2169148",
+      "item-2172687"
+    ],
+    "bytes": 90500
+  },
+  {
+    "slug": "baiao-de-dois",
+    "title": "Baião de dois",
+    "src": "/images/illustrative/baiao-de-dois.webp",
+    "author": "Márcia Cristina Machado",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bai%C3%A3o_de_dois_com_pimenta_biquinho.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Bai%C3%A3o_de_dois_com_pimenta_biquinho.jpg/960px-Bai%C3%A3o_de_dois_com_pimenta_biquinho.jpg",
+    "products": [
+      "item-2820048"
+    ],
+    "bytes": 90156
+  },
+  {
+    "slug": "espaguete-bolonhesa",
+    "title": "Espaguete à bolonhesa",
+    "src": "/images/illustrative/espaguete-bolonhesa.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/delicious-spaghetti-bolognese-with-parmesan-cheese-36841076/",
+    "downloadUrl": "https://images.pexels.com/photos/36841076/pexels-photo-36841076.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2169136"
+    ],
+    "bytes": 90746
+  },
+  {
+    "slug": "file-parmegiana",
+    "title": "Bife à parmegiana",
+    "src": "/images/illustrative/file-parmegiana.webp",
+    "author": "Márcia Cristina Machado",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bife_a_parmegiana_com_arroz_e_batata_frita.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Bife_a_parmegiana_com_arroz_e_batata_frita.jpg/960px-Bife_a_parmegiana_com_arroz_e_batata_frita.jpg",
+    "products": [
+      "item-2169235"
+    ],
+    "bytes": 72118
+  },
+  {
+    "slug": "arroz-chop-suey",
+    "title": "Arroz oriental com ovos",
+    "src": "/images/illustrative/arroz-chop-suey.webp",
+    "author": "ProjectManhattan",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Egg_fried_rice.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Egg_fried_rice.jpg/960px-Egg_fried_rice.jpg",
+    "products": [
+      "item-2172270"
+    ],
+    "bytes": 133654
+  },
+  {
+    "slug": "frango-oriental",
+    "title": "Frango salteado com legumes",
+    "src": "/images/illustrative/frango-oriental.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/asian-stir-fry-cooking-in-a-wok-with-chicken-35873820/",
+    "downloadUrl": "https://images.pexels.com/photos/35873820/pexels-photo-35873820.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2172260"
+    ],
+    "bytes": 47744
+  },
+  {
+    "slug": "carne-oriental",
+    "title": "Macarrão oriental com carne",
+    "src": "/images/illustrative/carne-oriental.webp",
+    "author": "Ibrahim Husain Meraj",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bangladeshi_style_home-made_beef_chow_mein.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Bangladeshi_style_home-made_beef_chow_mein.jpg/960px-Bangladeshi_style_home-made_beef_chow_mein.jpg",
+    "products": [
+      "item-2172259"
+    ],
+    "bytes": 72610
+  },
+  {
+    "slug": "arroz-camarao",
+    "title": "Arroz oriental com camarão",
+    "src": "/images/illustrative/arroz-camarao.webp",
+    "author": "Nadin Sh",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/flavorful-shrimp-fried-rice-with-vegetables-29160634/",
+    "downloadUrl": "https://images.pexels.com/photos/29160634/pexels-photo-29160634.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2172253",
+      "item-2172250"
+    ],
+    "bytes": 94730
+  },
+  {
+    "slug": "camarao-empanado",
+    "title": "Camarão empanado",
+    "src": "/images/illustrative/camarao-empanado.webp",
+    "author": "Victor Miyata",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/close-up-of-deep-fried-shrimps-with-sauce-and-lime-on-the-side-15476833/",
+    "downloadUrl": "https://images.pexels.com/photos/15476833/pexels-photo-15476833.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2172245",
+      "item-2169162"
+    ],
+    "bytes": 55634
+  },
+  {
+    "slug": "bifum",
+    "title": "Macarrão de arroz salteado",
+    "src": "/images/illustrative/bifum.webp",
+    "author": "Amin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rice_noodles_vermicelli_mie.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Rice_noodles_vermicelli_mie.jpg/960px-Rice_noodles_vermicelli_mie.jpg",
+    "products": [
+      "item-2169173"
+    ],
+    "bytes": 186764
+  },
+  {
+    "slug": "arroz-frango",
+    "title": "Arroz oriental com frango",
+    "src": "/images/illustrative/arroz-frango.webp",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chicken_fried_rice_-_Stir_Fry_by_CK_2023-12-02.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Chicken_fried_rice_-_Stir_Fry_by_CK_2023-12-02.jpg/960px-Chicken_fried_rice_-_Stir_Fry_by_CK_2023-12-02.jpg",
+    "products": [
+      "item-2169172"
+    ],
+    "bytes": 88974
+  },
+  {
+    "slug": "camarao-ao-molho",
+    "title": "Camarão ao molho",
+    "src": "/images/illustrative/camarao-ao-molho.webp",
+    "author": "Jon Sullivan",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shrimp_scampi_food.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Shrimp_scampi_food.jpg/960px-Shrimp_scampi_food.jpg",
+    "products": [
+      "item-2825748",
+      "item-2169165"
+    ],
+    "bytes": 190818
+  },
+  {
+    "slug": "peixe-escabeche",
+    "title": "Peixe escabeche",
+    "src": "/images/illustrative/peixe-escabeche.webp",
+    "author": "Tamorlan",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trucha_en_escabeche.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Trucha_en_escabeche.jpg/960px-Trucha_en_escabeche.jpg",
+    "products": [
+      "item-2172808"
+    ],
+    "bytes": 77232
+  },
+  {
+    "slug": "bacalhau-gratinado",
+    "title": "Bacalhau à Zé do Pipo",
+    "src": "/images/illustrative/bacalhau-gratinado.webp",
+    "author": "Javier Lastras from España/Spain",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bacalao_Ze_do_Pipo.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Bacalao_Ze_do_Pipo.jpg/960px-Bacalao_Ze_do_Pipo.jpg",
+    "products": [
+      "item-2169158"
+    ],
+    "bytes": 48686
+  },
+  {
+    "slug": "salada-bacalhau",
+    "title": "Salada de bacalhau",
+    "src": "/images/illustrative/salada-bacalhau.webp",
+    "author": "Tamorlan",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bacalao-Ensalada.jpg",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Bacalao-Ensalada.jpg/960px-Bacalao-Ensalada.jpg",
+    "products": [
+      "item-2169188"
+    ],
+    "bytes": 39760
+  },
+  {
+    "slug": "salada-camarao",
+    "title": "Salada de camarão",
+    "src": "/images/illustrative/salada-camarao.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/shrimp-salad-3045734/",
+    "downloadUrl": "https://images.pexels.com/photos/3045734/pexels-photo-3045734.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2169186"
+    ],
+    "bytes": 57156
+  },
+  {
+    "slug": "salada-fresca",
+    "title": "Salada de alface e tomate",
+    "src": "/images/illustrative/salada-fresca.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/plate-with-salad-of-tomato-and-lettuce-leaves-6642493/",
+    "downloadUrl": "https://images.pexels.com/photos/6642493/pexels-photo-6642493.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2169185",
+      "item-2169184"
+    ],
+    "bytes": 44406
+  },
+  {
+    "slug": "linguica-grelhada",
+    "title": "Linguiça grelhada",
+    "src": "/images/illustrative/linguica-grelhada.webp",
+    "author": "Pexels, autoria na página de origem",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/grilled-sausages-and-potato-wedges-on-a-black-plate-27643034/",
+    "downloadUrl": "https://images.pexels.com/photos/27643034/pexels-photo-27643034.jpeg?auto=compress&cs=tinysrgb&w=960",
+    "products": [
+      "item-2825744"
+    ],
+    "bytes": 108024
+  }
+]

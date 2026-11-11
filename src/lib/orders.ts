@@ -2,7 +2,7 @@ import store from '@/data/store.json';
 import type { Customer, Order } from '@/data/types';
 import { brl } from './format';
 export const paymentLabels = { pix: 'Pix', debit: 'Cartão de débito', credit: 'Cartão de crédito' };
-export const pickupAddress = `${store.address.street}, ${store.address.number} · ${store.address.neighborhood}, ${store.address.city}–${store.address.state} · CEP 50761-000`;
+export const pickupAddress = `${store.address.street}, ${store.address.number} · ${store.address.neighborhood}, ${store.address.city}, ${store.address.state} · CEP 50761-000`;
 export function validateCustomer(c: Customer, delivery: boolean): string | null {
   if (c.name.trim().length < 2) return 'Informe seu nome.';
   const phone = c.phone.replace(/\D/g, '');
@@ -13,7 +13,7 @@ export function validateCustomer(c: Customer, delivery: boolean): string | null 
 }
 export function orderText(order: Order) {
   const c = order.customer;
-  return [`Olá, Passira - San Martin! Gostaria de confirmar este pedido:`, `Referência: ${order.id}`, `Modalidade: ${order.fulfillment === 'pickup' ? 'Retirada no estabelecimento' : 'Entrega'}`, `Nome: ${c.name}`, `Telefone: ${c.phone}`, ...(order.fulfillment === 'delivery' ? [`Endereço: ${c.street}, ${c.number}, ${c.neighborhood}, CEP ${c.cep}${c.complement ? ', ' + c.complement : ''}`] : [`Retirada: ${pickupAddress}`]), '', ...order.items.flatMap(i => [`${i.configuration.quantity}× ${i.title} — ${brl(i.unitCents * i.configuration.quantity)}`, ...i.details.map(d => '  ' + d)]), '', `Subtotal: ${brl(order.subtotalCents)}`, `Taxa de entrega: ${brl(order.deliveryCents)}`, `Total: ${brl(order.totalCents)}`, `Pagamento ${order.fulfillment === 'pickup' ? 'na retirada' : 'no recebimento'}: ${paymentLabels[c.payment]}`, ...(c.note ? [`Observação: ${c.note}`] : []), '', 'Aguardando confirmação da pizzaria. Nenhum pagamento realizado.'].join('\n');
+  return [`Olá, Passira San Martin! Gostaria de confirmar este pedido:`, `Referência: ${order.id}`, `Modalidade: ${order.fulfillment === 'pickup' ? 'Retirada no estabelecimento' : 'Entrega'}`, `Nome: ${c.name}`, `Telefone: ${c.phone}`, ...(order.fulfillment === 'delivery' ? [`Endereço: ${c.street}, ${c.number}, ${c.neighborhood}, CEP ${c.cep}${c.complement ? ', ' + c.complement : ''}`] : [`Retirada: ${pickupAddress}`]), '', ...order.items.flatMap(i => [`${i.configuration.quantity}× ${i.title}: ${brl(i.unitCents * i.configuration.quantity)}`, ...i.details.map(d => '  ' + d)]), '', `Subtotal: ${brl(order.subtotalCents)}`, `Taxa de entrega: ${brl(order.deliveryCents)}`, `Total: ${brl(order.totalCents)}`, `Pagamento ${order.fulfillment === 'pickup' ? 'na retirada' : 'no recebimento'}: ${paymentLabels[c.payment]}`, ...(c.note ? [`Observação: ${c.note}`] : []), '', 'Aguardando confirmação da pizzaria. Nenhum pagamento realizado.'].join('\n');
 }
 export const whatsappLink = (order: Order) => `https://wa.me/55${store.whatsapp}?text=${encodeURIComponent(orderText(order))}`;
 export function downloadOrder(order: Order) {

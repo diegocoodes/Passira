@@ -6,3 +6,4 @@ out/
 *.tar.gz
 test-results/
 .sites/
+.vercel/

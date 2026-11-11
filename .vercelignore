@@ -1,0 +1,10 @@
+.git
+.next
+out
+node_modules
+test-results
+.sites
+.openai
+audit
+public/images/restaurant/*-original.jpg
+*.tsbuildinfo
