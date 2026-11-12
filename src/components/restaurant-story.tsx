@@ -12,7 +12,7 @@ export function RestaurantStory() {
       <figcaption>Fotos do Google Maps: <a href={google.interiorPhoto.reviewUrl} target="_blank" rel="noreferrer">{google.interiorPhoto.author}, {google.interiorPhoto.publishedLabel}</a> e <a href={google.photo.googlePhotoUrl} target="_blank" rel="noreferrer">{google.photo.author}, {google.photo.publishedLabel}<ArrowUpRight size={13} /></a>.</figcaption>
     </figure>
     <div className="restaurant-story-copy">
-      <p className="section-kicker">A Passira</p>
+      <p className="section-kicker"><span aria-hidden="true">03</span> A nossa casa</p>
       <h2 id="story-heading">Em San Martin,<br />a mesa está posta.</h2>
       <p>Da pizza ao almoço em família, a Passira faz parte de San Martin, no Recife. O cardápio reúne pratos para compartilhar, massas, petiscos e bebidas.</p>
       <p>Venha ao restaurante, retire seu pedido no balcão ou escolha a entrega para comer em casa.</p>

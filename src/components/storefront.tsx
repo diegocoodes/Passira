@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowRight, ChevronRight, Clock3, Info, MapPin, PackageSearch, Plus, ReceiptText, Search, ShoppingBag, X } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUp, ChevronRight, Clock3, Info, MapPin, PackageSearch, Plus, ReceiptText, Search, ShoppingBag, Utensils, X } from 'lucide-react';
 import { useMenu } from './menu-provider';
 import { getProductImage } from '@/data/illustrative-images';
 import store from '@/data/store.json';
@@ -35,55 +35,67 @@ export function Storefront() {
   const houseSelection = ['flavor-380075', 'item-2169126', 'item-2172833'].map(id => productById[id]).filter(product => product?.enabled && !product.blocked);
   const [category, setCategory] = useState('274528');
   const [query, setQuery] = useState('');
+  const [showAll, setShowAll] = useState(false);
   const [information, setInformation] = useState(false);
   const [history, setHistory] = useState(false);
   const [ready, setReady] = useState(false);
   const [now, setNow] = useState(new Date());
   const items = useCart(s => s.items), orders = useCart(s => s.orders), clearOrders = useCart(s => s.clearOrders), method = useCart(s => s.method);
   useEffect(() => { useCart.persist.rehydrate(); setReady(true); const requestedCategory = new URLSearchParams(window.location.search).get('categoria'); if (requestedCategory && categoryById[requestedCategory]?.enabled) setCategory(requestedCategory); const id = window.setInterval(() => setNow(new Date()), 30000); return () => window.clearInterval(id); }, []);
-  const matching = useMemo(() => products.filter(p => p.enabled && categoryById[p.categoryId]?.enabled && (query ? normalize(`${p.name} ${p.description} ${categoryById[p.categoryId].name}`).includes(normalize(query)) : p.categoryId === category)).sort((a, b) => a.order - b.order), [category, query]);
+  const matching = useMemo(() => products.filter(p => p.enabled && categoryById[p.categoryId]?.enabled && (query ? normalize(`${p.name} ${p.description} ${categoryById[p.categoryId].name}`).includes(normalize(query)) : p.categoryId === category)).sort((a, b) => a.order - b.order), [category, query, products, categoryById]);
+  const visibleProducts = showAll ? matching : matching.slice(0, 6);
   const count = ready ? items.reduce((n, i) => n + i.quantity, 0) : 0;
   const total = ready ? cartTotals(items, method, '').subtotal : 0;
   const selected = categoryById[category];
-  const chooseCategory = (id: string) => { setCategory(id); setQuery(''); };
+  const chooseCategory = (id: string) => { setCategory(id); setQuery(''); setShowAll(false); };
+  const searchMenu = (value: string) => { setQuery(value); setShowAll(false); };
   return <>
     <a className="skip-link" href="#cardapio">Ir para o cardápio</a>
     <div className="top-strip"><span>Passira San Martin</span><span>Todos os dias, 10h às 23h15</span></div>
     <header className="site-header"><div className="header-inner"><a href="#" className="brand" aria-label="Passira, início"><BrandLogo /></a><nav className="header-nav" aria-label="Menu principal"><a href="#cardapio" className="current">Cardápio</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a><button onClick={() => setHistory(true)}><ReceiptText size={17} />Meus pedidos</button><button className="store-information-button" onClick={() => setInformation(true)} aria-label="Informações da loja"><Info size={17} /></button></nav><Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b>{count}</b></Link></div></header>
-    <main>
+    <main className="storefront-main">
       <div className="page-container">
         <section className="hero" aria-labelledby="hero-heading">
           <div className="hero-copy">
-            <p className="hero-location">Pizzaria e restaurante</p>
-            <h1 id="hero-heading">Passira.<br /><span>San Martin.</span></h1>
-            <p>Pizzas, pratos, petiscos e bebidas. Consulte o cardápio e faça seu pedido para retirada ou entrega.</p>
+            <p className="hero-location"><span aria-hidden="true" />Pizzaria e restaurante em San Martin</p>
+            <h1 id="hero-heading">Sabor que reúne.<br /><span>Do nosso jeito.</span></h1>
+            <p>Uma pizza para compartilhar. Um almoço em família. Seu próximo bom momento começa na Passira.</p>
             <div className="hero-actions">
               <a href="#cardapio" className="button primary">Ver cardápio<ArrowRight size={19} /></a>
               <Link href="/rastrear-pedido/" className="button secondary hero-track-order"><PackageSearch size={19} />Rastrear pedido</Link>
-              <a className="hero-about" href="#a-passira">Conheça a Passira<ArrowRight size={16} /></a>
             </div>
-            <div className="hero-bottom"><MapPin size={15} /><span>San Martin, Recife</span><span className="hero-service">Retirada e entrega</span></div>
+            <div className="hero-bottom"><span><MapPin size={15} />San Martin, Recife</span><a className="hero-about" href="#a-passira">Conheça a Passira<ArrowRight size={16} /></a></div>
           </div>
           <figure className="hero-feast">
             <div className="hero-pizza"><img src="/images/380075.webp" alt="Pizza Italiana da Passira, com queijo, carne, tomate, cebola e azeitonas" fetchPriority="high" width={479} height={531} /></div>
-            <figcaption className="hero-dish">Pizza Italiana</figcaption>
+            <figcaption className="hero-dish"><span className="hero-dish-icon"><Utensils size={20} aria-hidden="true" /></span><span><small>Da nossa cozinha para a sua mesa</small><strong>Pizza Italiana</strong></span><a href="/produto/flavor-380075/" aria-label="Ver Pizza Italiana"><ArrowRight size={21} /></a></figcaption>
           </figure>
         </section>
         <div className="store-bar"><div className="store-status"><span className={`status-dot ${ready && !storeOpen(now) ? 'closed' : ''}`}></span><strong>{ready ? storeOpen(now) ? 'Atendimento até 23h15' : 'Fora do horário de atendimento' : 'Passira San Martin'}</strong><span className="store-hours">Todos os dias, 10h às 23h15</span></div><button onClick={() => setInformation(true)}><MapPin size={16} /><span>Av. General San Martin, 1656</span><ChevronRight size={15} /></button><span className="store-estimate"><Clock3 size={16} />{method === 'pickup' ? 'Retirada: 30 a 40 min' : 'Entrega: 70 a 90 min'}</span></div>
         <nav className="section-jump-links" aria-label="Seções da página"><a href="#destaques">Destaques</a><a href="#cardapio">Cardápio</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a></nav>
         <section className="house-selection" id="destaques" aria-labelledby="selection-heading">
-          <div className="section-heading"><div><p className="section-kicker">Para começar</p><h2 id="selection-heading">Seleção da casa</h2></div><a className="section-link" href="#cardapio">Ver cardápio completo<ArrowRight size={18} /></a></div>
+          <div className="section-heading"><div><p className="section-kicker"><span aria-hidden="true">01</span> Para abrir o apetite</p><h2 id="selection-heading">Os bons momentos têm sabor.</h2></div><a className="section-link" href="#cardapio">Explorar o cardápio<ArrowRight size={18} /></a></div>
           <p className="section-intro">Uma pizza, um prato para dividir ou um almoço completo. Escolha o seu e veja as opções.</p>
           <div className="selection-grid">{houseSelection.map(p => <ProductCard key={p.id} product={p} featured at={ready ? now : undefined} />)}</div>
         </section>
-        <section className="menu-section" aria-label="Cardápio Passira"><div id="cardapio" className="menu-anchor"></div><div className="menu-toolbar"><h2>Cardápio</h2><label className="search-field"><Search size={20} /><input type="search" placeholder="Buscar prato, pizza ou ingrediente" value={query} onChange={e => setQuery(e.target.value)} aria-label="Buscar no cardápio" />{query && <button onClick={() => setQuery('')} aria-label="Limpar busca"><X size={17} /></button>}</label></div>
+        <section className="menu-section" aria-label="Cardápio Passira"><div id="cardapio" className="menu-anchor"></div><div className="menu-toolbar"><div><p className="section-kicker"><span aria-hidden="true">02</span> O cardápio da Passira</p><h2>Encontre seu favorito.</h2></div><label className="search-field"><Search size={20} /><input type="search" placeholder="Buscar prato, pizza ou ingrediente" value={query} onChange={e => searchMenu(e.target.value)} aria-label="Buscar no cardápio" />{query && <button onClick={() => searchMenu('')} aria-label="Limpar busca"><X size={17} /></button>}</label></div>
         <CategoryNavigation selected={query ? null : category} choose={chooseCategory} />
         <div className="menu-layout">
           <div className="menu-content"><div className="category-title"><h2>{query ? 'Resultados da busca' : selected.name}<span>{matching.length} {matching.length === 1 ? 'opção' : 'opções'}</span></h2></div>
             {!query && selected.id === '274528' && <p className="category-intro">Escolha seu tamanho e combine até 2 sabores nas pizzas Grande e Média. O valor é a média dos sabores escolhidos.</p>}
             {!query && !!selected.pending.length && <div className="notice"><Info size={18} /><p>{selected.pending.join(' ')}</p></div>}
             {query && <p className="category-intro">Resultados em todas as categorias para “{query}”.</p>}
-            {matching.length ? <div className="product-grid">{matching.map(p => <ProductCard key={p.id} product={p} at={ready ? now : undefined} />)}</div> : <div className="no-results"><Search size={32} strokeWidth={1.3} /><h3>Nenhum item por aqui.</h3><p>Tente outro nome, ingrediente ou categoria.</p><button className="text-button" onClick={() => setQuery('')}>Limpar pesquisa<ArrowRight size={16} /></button></div>}
+            {matching.length ? <>
+              <div className="product-grid" id="menu-products">
+                {visibleProducts.map(p => <ProductCard key={p.id} product={p} at={ready ? now : undefined} />)}
+              </div>
+              <div className="menu-pagination">
+                <p aria-live="polite">Mostrando <strong>{visibleProducts.length}</strong> de {matching.length} {matching.length === 1 ? 'opção' : 'opções'}</p>
+                {matching.length > 6 && <button className="button menu-show-more" aria-expanded={showAll} aria-controls="menu-products" onClick={() => setShowAll(value => !value)}>
+                  {showAll ? 'Ver menos' : 'Ver mais'}{showAll ? <ArrowUp size={18} /> : <ArrowDown size={18} />}
+                </button>}
+              </div>
+            </> : <div className="no-results"><Search size={32} strokeWidth={1.3} /><h3>Nenhum item por aqui.</h3><p>Tente outro nome, ingrediente ou categoria.</p><button className="text-button" onClick={() => searchMenu('')}>Limpar pesquisa<ArrowRight size={16} /></button></div>}
             <div className="menu-end"><a href="#cardapio">Voltar às categorias ↑</a></div>
           </div>
           <div className="desktop-cart">{ready ? <CartPanel /> : <div className="cart-loading">Carregando seu pedido…</div>}</div>

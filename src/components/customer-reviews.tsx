@@ -7,7 +7,7 @@ export function CustomerReviews() {
 
   return <section id="avaliacoes" className="customer-reviews" aria-labelledby="reviews-heading">
     <div className="section-heading reviews-heading">
-      <div><p className="section-kicker">Opiniões no Google</p><h2 id="reviews-heading">Avaliações de clientes</h2></div>
+      <div><p className="section-kicker"><span aria-hidden="true">04</span> Quem senta à nossa mesa</p><h2 id="reviews-heading">Histórias de quem já veio.</h2></div>
       <div className="review-rating"><strong>{google.place.rating.toLocaleString('pt-BR', { minimumFractionDigits: 1 })}</strong><p><span>de 5 no Google</span><a href={google.place.googleMapsUrl} target="_blank" rel="noreferrer">Ver todas as avaliações</a></p></div>
     </div>
     <div className="reviews-grid">{reviews.map(review => <article key={review.id} className="review-card">
