@@ -10,6 +10,7 @@
 .passira-storefront .header-cart { background: #063f2c; border-color: #ffffff66; border-radius: 30px; }
 .passira-storefront .header-cart:hover { background: #092e22; }
 .passira-storefront .storefront-main { background: transparent; }
+.passira-storefront .storefront-main > .page-container { max-width: none; padding-inline: 0; }
 
 .passira-storefront .hero { --checker-height: 96px; --hero-content-height: 602px; position: relative; isolation: isolate; display: block; min-height: calc(var(--hero-content-height) + var(--checker-height)); margin: 0; padding: 0; border-radius: 0; overflow: hidden; color: white; background: radial-gradient(ellipse at 68% 48%, #ffffff13, transparent 55%), radial-gradient(ellipse at 4% 86%, #ffb3b337, transparent 30%), linear-gradient(155deg, #cb1823, #e4343f 70%, #c61520); }
 .passira-storefront .hero-inner { position: relative; max-width: 1360px; min-height: inherit; margin-inline: auto; padding: 36px 44px calc(var(--checker-height) + 42px); }
