@@ -58,8 +58,8 @@ export function Storefront() {
         <section className="hero" aria-labelledby="hero-heading">
           <div className="hero-copy">
             <p className="hero-location"><span aria-hidden="true" />Pizzaria e restaurante em San Martin</p>
-            <h1 id="hero-heading">Sabor que reúne.<br /><span>Do nosso jeito.</span></h1>
-            <p>Uma pizza para compartilhar. Um almoço em família. Seu próximo bom momento começa na Passira.</p>
+            <h1 id="hero-heading">Bateu a fome?<br /><span>Vem de Passira.</span></h1>
+            <p>Pizzas, pratos e petiscos para o seu momento. Escolha no cardápio e peça para retirar ou receber em casa.</p>
             <div className="hero-actions">
               <a href="#cardapio" className="button primary">Ver cardápio<ArrowRight size={19} /></a>
               <Link href="/rastrear-pedido/" className="button secondary hero-track-order"><PackageSearch size={19} />Rastrear pedido</Link>
@@ -72,13 +72,8 @@ export function Storefront() {
           </figure>
         </section>
         <div className="store-bar"><div className="store-status"><span className={`status-dot ${ready && !storeOpen(now) ? 'closed' : ''}`}></span><strong>{ready ? storeOpen(now) ? 'Atendimento até 23h15' : 'Fora do horário de atendimento' : 'Passira San Martin'}</strong><span className="store-hours">Todos os dias, 10h às 23h15</span></div><button onClick={() => setInformation(true)}><MapPin size={16} /><span>Av. General San Martin, 1656</span><ChevronRight size={15} /></button><span className="store-estimate"><Clock3 size={16} />{method === 'pickup' ? 'Retirada: 30 a 40 min' : 'Entrega: 70 a 90 min'}</span></div>
-        <nav className="section-jump-links" aria-label="Seções da página"><a href="#destaques">Destaques</a><a href="#cardapio">Cardápio</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a></nav>
-        <section className="house-selection" id="destaques" aria-labelledby="selection-heading">
-          <div className="section-heading"><div><p className="section-kicker"><span aria-hidden="true">01</span> Para abrir o apetite</p><h2 id="selection-heading">Os bons momentos têm sabor.</h2></div><a className="section-link" href="#cardapio">Explorar o cardápio<ArrowRight size={18} /></a></div>
-          <p className="section-intro">Uma pizza, um prato para dividir ou um almoço completo. Escolha o seu e veja as opções.</p>
-          <div className="selection-grid">{houseSelection.map(p => <ProductCard key={p.id} product={p} featured at={ready ? now : undefined} />)}</div>
-        </section>
-        <section className="menu-section" aria-label="Cardápio Passira"><div id="cardapio" className="menu-anchor"></div><div className="menu-toolbar"><div><p className="section-kicker"><span aria-hidden="true">02</span> O cardápio da Passira</p><h2>Encontre seu favorito.</h2></div><label className="search-field"><Search size={20} /><input type="search" placeholder="Buscar prato, pizza ou ingrediente" value={query} onChange={e => searchMenu(e.target.value)} aria-label="Buscar no cardápio" />{query && <button onClick={() => searchMenu('')} aria-label="Limpar busca"><X size={17} /></button>}</label></div>
+        <nav className="section-jump-links" aria-label="Seções da página"><a href="#cardapio">Cardápio</a><a href="#destaques">Destaques</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a></nav>
+        <section className="menu-section" aria-label="Cardápio Passira"><div id="cardapio" className="menu-anchor"></div><div className="menu-toolbar"><div><p className="section-kicker">Feito para dar água na boca</p><h2>Nosso cardápio.</h2></div><label className="search-field"><Search size={20} /><input type="search" placeholder="Buscar prato, pizza ou ingrediente" value={query} onChange={e => searchMenu(e.target.value)} aria-label="Buscar no cardápio" />{query && <button onClick={() => searchMenu('')} aria-label="Limpar busca"><X size={17} /></button>}</label></div>
         <CategoryNavigation selected={query ? null : category} choose={chooseCategory} />
         <div className="menu-layout">
           <div className="menu-content"><div className="category-title"><h2>{query ? 'Resultados da busca' : selected.name}<span>{matching.length} {matching.length === 1 ? 'opção' : 'opções'}</span></h2></div>
@@ -100,6 +95,11 @@ export function Storefront() {
           </div>
           <div className="desktop-cart">{ready ? <CartPanel /> : <div className="cart-loading">Carregando seu pedido…</div>}</div>
         </div></section>
+        <section className="house-selection" id="destaques" aria-labelledby="selection-heading">
+          <div className="section-heading"><div><p className="section-kicker">Para abrir o apetite</p><h2 id="selection-heading">Vai bem na sua mesa.</h2></div><a className="section-link" href="#cardapio">Voltar ao cardápio<ArrowRight size={18} /></a></div>
+          <p className="section-intro">Uma pizza, um prato para dividir ou um almoço completo. Conheça a seleção da casa.</p>
+          <div className="selection-grid">{houseSelection.map(p => <ProductCard key={p.id} product={p} featured at={ready ? now : undefined} />)}</div>
+        </section>
         <RestaurantStory />
         <CustomerReviews />
       </div>
