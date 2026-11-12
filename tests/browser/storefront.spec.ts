@@ -7,6 +7,9 @@ test('menu shows six options and expands the remaining dishes on demand', async 
   const cards = page.locator('#menu-products > .product-card');
   const more = page.getByRole('button', { name: 'Ver mais', exact: true });
   await expect(cards).toHaveCount(6);
+  await page.getByRole('link', { name: /Bateu a fome/ }).click();
+  await expect(page).toHaveURL(/#cardapio$/);
+  await expect(page.getByRole('heading', { name: 'Nosso cardápio.' })).toBeVisible();
   await expect(more).toHaveAttribute('aria-expanded', 'false');
   await more.click();
   await expect(cards).toHaveCount(pizzas.length);

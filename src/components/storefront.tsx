@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowDown, ArrowRight, ArrowUp, ChevronRight, Clock3, Info, MapPin, PackageSearch, Plus, ReceiptText, Search, ShoppingBag, Utensils, X } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUp, ChevronRight, Clock3, Info, MapPin, Plus, ReceiptText, Search, ShoppingBag, X } from 'lucide-react';
 import { useMenu } from './menu-provider';
 import { getProductImage } from '@/data/illustrative-images';
 import store from '@/data/store.json';
@@ -16,6 +16,7 @@ import { BrandLogo } from './brand-logo';
 import { Dialog } from './dialog';
 import { RestaurantStory } from './restaurant-story';
 import { CustomerReviews } from './customer-reviews';
+import { StorefrontHero, StorefrontManifesto } from './storefront-hero';
 
 
 
@@ -49,28 +50,13 @@ export function Storefront() {
   const selected = categoryById[category];
   const chooseCategory = (id: string) => { setCategory(id); setQuery(''); setShowAll(false); };
   const searchMenu = (value: string) => { setQuery(value); setShowAll(false); };
-  return <>
+  return <div className="passira-storefront">
     <a className="skip-link" href="#cardapio">Ir para o cardápio</a>
     <div className="top-strip"><span>Passira San Martin</span><span>Todos os dias, 10h às 23h15</span></div>
     <header className="site-header"><div className="header-inner"><a href="#" className="brand" aria-label="Passira, início"><BrandLogo /></a><nav className="header-nav" aria-label="Menu principal"><a href="#cardapio" className="current">Cardápio</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a><button onClick={() => setHistory(true)}><ReceiptText size={17} />Meus pedidos</button><button className="store-information-button" onClick={() => setInformation(true)} aria-label="Informações da loja"><Info size={17} /></button></nav><Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b>{count}</b></Link></div></header>
     <main className="storefront-main">
       <div className="page-container">
-        <section className="hero" aria-labelledby="hero-heading">
-          <div className="hero-copy">
-            <p className="hero-location"><span aria-hidden="true" />Pizzaria e restaurante em San Martin</p>
-            <h1 id="hero-heading">Bateu a fome?<br /><span>Vem de Passira.</span></h1>
-            <p>Pizzas, pratos e petiscos para o seu momento. Escolha no cardápio e peça para retirar ou receber em casa.</p>
-            <div className="hero-actions">
-              <a href="#cardapio" className="button primary">Ver cardápio<ArrowRight size={19} /></a>
-              <Link href="/rastrear-pedido/" className="button secondary hero-track-order"><PackageSearch size={19} />Rastrear pedido</Link>
-            </div>
-            <div className="hero-bottom"><span><MapPin size={15} />San Martin, Recife</span><a className="hero-about" href="#a-passira">Conheça a Passira<ArrowRight size={16} /></a></div>
-          </div>
-          <figure className="hero-feast">
-            <div className="hero-pizza"><img src="/images/380075.webp" alt="Pizza Italiana da Passira, com queijo, carne, tomate, cebola e azeitonas" fetchPriority="high" width={479} height={531} /></div>
-            <figcaption className="hero-dish"><span className="hero-dish-icon"><Utensils size={20} aria-hidden="true" /></span><span><small>Da nossa cozinha para a sua mesa</small><strong>Pizza Italiana</strong></span><a href="/produto/flavor-380075/" aria-label="Ver Pizza Italiana"><ArrowRight size={21} /></a></figcaption>
-          </figure>
-        </section>
+        <StorefrontHero />
         <div className="store-bar"><div className="store-status"><span className={`status-dot ${ready && !storeOpen(now) ? 'closed' : ''}`}></span><strong>{ready ? storeOpen(now) ? 'Atendimento até 23h15' : 'Fora do horário de atendimento' : 'Passira San Martin'}</strong><span className="store-hours">Todos os dias, 10h às 23h15</span></div><button onClick={() => setInformation(true)}><MapPin size={16} /><span>Av. General San Martin, 1656</span><ChevronRight size={15} /></button><span className="store-estimate"><Clock3 size={16} />{method === 'pickup' ? 'Retirada: 30 a 40 min' : 'Entrega: 70 a 90 min'}</span></div>
         <nav className="section-jump-links" aria-label="Seções da página"><a href="#cardapio">Cardápio</a><a href="#destaques">Destaques</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a></nav>
         <section className="menu-section" aria-label="Cardápio Passira"><div id="cardapio" className="menu-anchor"></div><div className="menu-toolbar"><div><p className="section-kicker">Feito para dar água na boca</p><h2>Nosso cardápio.</h2></div><label className="search-field"><Search size={20} /><input type="search" placeholder="Buscar prato, pizza ou ingrediente" value={query} onChange={e => searchMenu(e.target.value)} aria-label="Buscar no cardápio" />{query && <button onClick={() => searchMenu('')} aria-label="Limpar busca"><X size={17} /></button>}</label></div>
@@ -95,6 +81,7 @@ export function Storefront() {
           </div>
           <div className="desktop-cart">{ready ? <CartPanel /> : <div className="cart-loading">Carregando seu pedido…</div>}</div>
         </div></section>
+        <StorefrontManifesto />
         <section className="house-selection" id="destaques" aria-labelledby="selection-heading">
           <div className="section-heading"><div><p className="section-kicker">Para abrir o apetite</p><h2 id="selection-heading">Vai bem na sua mesa.</h2></div><a className="section-link" href="#cardapio">Voltar ao cardápio<ArrowRight size={18} /></a></div>
           <p className="section-intro">Uma pizza, um prato para dividir ou um almoço completo. Conheça a seleção da casa.</p>
@@ -108,5 +95,5 @@ export function Storefront() {
     <Link href="/finalizar/" className="mobile-cart-bar"><span className="mobile-cart-count">{count}</span><ShoppingBag size={19} /><strong>Ver meu pedido</strong><b>{brl(total)}</b><ChevronRight size={17} /></Link>
     {information && <Dialog title="Passira San Martin" close={() => setInformation(false)}><div className="information-body"><h3>Informações da loja</h3><div className="information-row"><MapPin size={22} /><div><strong>Endereço para retirada</strong><p>{pickupAddress}</p><p>{store.address.complement}</p></div></div><div className="information-row"><Clock3 size={22} /><div><strong>Todos os dias, 10h às 23h15</strong><p>Estimativa de retirada: 30 a 40 minutos.<br />Estimativa de entrega: 70 a 90 minutos.</p><small>Estimativas informadas no cardápio original. Confirme com a loja.</small></div></div><div className="information-row"><Info size={22} /><div><strong>Pagamento no recebimento</strong><p>Pix, cartão de débito ou crédito. Você só indica a forma de pagamento; nenhuma cobrança é feita pelo site.</p></div></div><a className="button secondary" href="/conferencia/">Ver conferência do cardápio<ArrowRight size={17} /></a></div></Dialog>}
     {history && <Dialog title="Meus pedidos" close={() => setHistory(false)} drawer><div className="drawer-body">{orders.length ? <><p className="helper">Pedidos deste navegador. Abra o acompanhamento para ver a aceitação e as etapas do preparo.</p>{orders.map(o => <details className="history-order" key={o.id}><summary><ReceiptText size={18} /><span><strong>{o.id}</strong><small>{new Date(o.createdAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}</small></span><strong>{brl(o.totalCents)}</strong></summary><OrderReceipt order={o} /></details>)}<button className="text-button" onClick={() => { if (window.confirm('Apagar os resumos salvos neste navegador?')) clearOrders(); }}>Apagar histórico deste navegador</button></> : <div className="no-results"><ReceiptText size={35} strokeWidth={1.2} /><h3>Nenhum pedido salvo</h3><p>Os resumos dos pedidos que você salvar aparecerão neste navegador.</p><button className="button primary" onClick={() => setHistory(false)}>Ver cardápio<ArrowRight size={17} /></button></div>}</div></Dialog>}
-  </>;
+  </div>;
 }
