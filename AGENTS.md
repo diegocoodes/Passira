@@ -13,3 +13,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Utilizar sempre a paleta do logotipo Passira: vermelho, verde, branco e preto. Tons de apoio devem ser variações dessas cores ou cinzas neutros.
 - Não usar hífens ou travessões como separadores em textos, títulos ou nomes exibidos. Manter a pontuação necessária em telefones, CEPs, URLs e código.
 - Manter Barlow Condensed nos títulos e Source Sans 3 nos textos, salvo nova orientação do usuário.
+
+## Atualizações no GitHub
+
+- Após concluir e validar alterações do site, criar um commit com as mudanças da tarefa e enviar para o remoto `origin` na branch de trabalho atual.
+- Fazer o envio automaticamente, sem solicitar nova confirmação, salvo orientação posterior do usuário.

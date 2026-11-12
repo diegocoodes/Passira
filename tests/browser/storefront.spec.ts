@@ -40,7 +40,7 @@ test('menu shows six options and expands the remaining dishes on demand', async 
 test('storefront fits phones, tablets and desktops and keeps product navigation', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
-  for (const width of [320, 390, 768, 1024, 1440]) {
+  for (const width of [320, 390, 768, 1024, 1440, 1860]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
     await page.evaluate(() => document.fonts.ready);
@@ -54,6 +54,7 @@ test('storefront fits phones, tablets and desktops and keeps product navigation'
     expect(brokenImages).toEqual([]);
     const layout = await page.evaluate(() => {
       const hero = document.querySelector('.hero')!.getBoundingClientRect();
+      const header = document.querySelector('.site-header')!.getBoundingClientRect();
       const copy = document.querySelector('.hero-copy')!.getBoundingClientRect();
       const photo = document.querySelector('.hero-feast')!.getBoundingClientRect();
       return {
@@ -61,13 +62,21 @@ test('storefront fits phones, tablets and desktops and keeps product navigation'
         contentWidth: document.documentElement.scrollWidth,
         copyFits: copy.left >= hero.left && copy.right <= hero.right,
         photoFits: photo.left >= hero.left && photo.right <= hero.right,
+        heroLeft: hero.left,
+        heroRight: hero.right,
+        headerLeft: header.left,
+        headerRight: header.right,
       };
     });
     expect(layout.contentWidth).toBeLessThanOrEqual(layout.width);
     expect(layout.copyFits).toBe(true);
     expect(layout.photoFits).toBe(true);
+    expect(layout.heroLeft).toBe(0);
+    expect(layout.heroRight).toBe(layout.width);
+    expect(layout.headerLeft).toBe(0);
+    expect(layout.headerRight).toBe(layout.width);
     await page.screenshot({ path: `test-results/storefront-${width}.png`, fullPage: true });
-    if (width === 390 || width === 1440) {
+    if (width === 390 || width === 1440 || width === 1860) {
       await page.locator('.hero').screenshot({ path: `test-results/banner-${width}.png` });
       await page.locator('.restaurant-story').screenshot({ path: `test-results/restaurante-${width}.png` });
     }

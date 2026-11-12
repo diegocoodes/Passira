@@ -1,8 +1,8 @@
 /* Campaign composition inspired by the supplied reference, in Passira colors. */
-.passira-storefront { background: #063f2c; padding-top: 10px; }
-.passira-storefront .top-strip { background: #063f2c; color: white; }
-.passira-storefront .site-header { max-width: 1360px; width: calc(100% - 80px); margin: 16px auto 0; border: 0; background: #cb1823; color: white; }
-.passira-storefront .header-inner { height: 88px; padding-inline: 40px; }
+.passira-storefront { background: #063f2c; }
+.passira-storefront .top-strip { background: #cb1823; color: white; }
+.passira-storefront .site-header { width: 100%; margin: 0; border: 0; background: #cb1823; color: white; }
+.passira-storefront .header-inner { max-width: 1360px; height: 88px; padding-inline: 44px; }
 .passira-storefront .brand-logo { width: 100px; border-radius: 8px; }
 .passira-storefront .header-nav { margin-left: 42px; gap: 28px; }
 .passira-storefront .header-nav a, .passira-storefront .header-nav button { color: white; font-size: 12px; }
@@ -11,7 +11,8 @@
 .passira-storefront .header-cart:hover { background: #092e22; }
 .passira-storefront .storefront-main { background: transparent; }
 
-.passira-storefront .hero { position: relative; isolation: isolate; display: block; min-height: 650px; margin: 0; padding: 36px 44px 90px; border-radius: 0; overflow: hidden; color: white; background: radial-gradient(ellipse at 68% 48%, #ffffff13, transparent 55%), radial-gradient(ellipse at 4% 86%, #ffb3b337, transparent 30%), linear-gradient(155deg, #cb1823, #e4343f 70%, #c61520); }
+.passira-storefront .hero { position: relative; isolation: isolate; display: block; min-height: 650px; margin: 0; padding: 0; border-radius: 0; overflow: hidden; color: white; background: radial-gradient(ellipse at 68% 48%, #ffffff13, transparent 55%), radial-gradient(ellipse at 4% 86%, #ffb3b337, transparent 30%), linear-gradient(155deg, #cb1823, #e4343f 70%, #c61520); }
+.passira-storefront .hero-inner { position: relative; max-width: 1360px; min-height: inherit; margin-inline: auto; padding: 36px 44px 90px; }
 .passira-storefront .hero::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 10% 87%, #ffffff12, transparent 20%), radial-gradient(ellipse at 85% 23%, #ffffff0d, transparent 24%); }
 .passira-storefront .hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 48px; z-index: 2; background: conic-gradient(white 25%, #007d40 0 50%, white 0 75%, #007d40 0) 0 0 / 48px 48px; pointer-events: none; }
 .passira-storefront .hero-copy { position: relative; z-index: 2; width: 62%; max-width: 660px; padding: 0; }
@@ -47,7 +48,7 @@
 .passira-storefront .hero a:focus-visible { outline: 2px solid white; outline-offset: 5px; }
 
 /* The white menu is the main working surface against the campaign background. */
-.passira-storefront .store-bar { border: 0; border-radius: 0; margin: 0; min-height: 64px; }
+.passira-storefront .store-bar { border: 0; border-radius: 0; margin: 0; min-height: 64px; padding-inline: max(24px, calc((100% - 1280px) / 2)); }
 .passira-storefront .menu-section { margin-top: 24px; background: white; border: 0; border-radius: 0; padding: 38px 30px 0; }
 .passira-storefront .menu-toolbar { padding-bottom: 24px; border-bottom: 1px solid var(--line); }
 .passira-storefront .menu-toolbar h2 { color: #063f2c; font-size: clamp(48px, 4.8vw, 68px); }
@@ -86,10 +87,10 @@
 
 @media (min-width: 1600px) { .passira-storefront .hero h1 { font-size: 124px; } }
 @media (max-width: 1180px) {
-  .passira-storefront .site-header { width: calc(100% - 56px); }
   .passira-storefront .header-inner { padding-inline: 28px; }
   .passira-storefront .header-nav { margin-left: 26px; gap: 22px; }
-  .passira-storefront .hero { min-height: 610px; padding-inline: 30px; }
+  .passira-storefront .hero { min-height: 610px; }
+  .passira-storefront .hero-inner { padding-inline: 30px; }
   .passira-storefront .hero h1 { font-size: 100px; }
   .passira-storefront .hero-copy { width: 65%; }
   .passira-storefront .hero-side-copy { right: 26px; width: 130px; }
@@ -112,13 +113,12 @@
   .passira-storefront .hero-quick-order strong { font-size: 26px; }
 }
 @media (max-width: 760px) {
-  .passira-storefront { padding-top: 0; }
-  .passira-storefront .site-header { width: calc(100% - 36px); margin-top: 8px; }
   .passira-storefront .header-inner { height: 76px; padding-inline: 20px; gap: 12px; }
   .passira-storefront .brand-logo { width: 90px; }
   .passira-storefront .header-nav { gap: 16px; }
   .passira-storefront .header-nav button { font-size: 0; }
-  .passira-storefront .hero { min-height: 550px; padding: 26px 22px 80px; }
+  .passira-storefront .hero { min-height: 550px; }
+  .passira-storefront .hero-inner { padding: 26px 22px 80px; }
   .passira-storefront .hero h1 { font-size: 78px; letter-spacing: -1px; }
   .passira-storefront .hero-copy > .hero-location { font-size: 9px; max-width: 260px; letter-spacing: .4px; }
   .passira-storefront .hero-side-copy { right: 22px; top: 24px; width: 90px; }
@@ -140,7 +140,7 @@
   .manifesto-photo-dish { right: 12px; }
 }
 @media (max-width: 540px) {
-  .passira-storefront .hero { min-height: 740px; padding: 26px 22px 80px; }
+  .passira-storefront .hero { min-height: 740px; }
   .passira-storefront .hero-copy { width: 100%; max-width: none; }
   .passira-storefront .hero-copy > .hero-location { max-width: none; font-size: 8px; margin-bottom: 22px; }
   .passira-storefront .hero h1 { font-size: clamp(68px, 19.5vw, 98px); letter-spacing: -1px; line-height: .83; }
@@ -169,7 +169,8 @@
   .manifesto-photo-dish { right: 6px; top: 14px; }
 }
 @media (max-width: 360px) {
-  .passira-storefront .hero { min-height: 710px; padding-inline: 18px; }
+  .passira-storefront .hero { min-height: 710px; }
+  .passira-storefront .hero-inner { padding-inline: 18px; }
   .passira-storefront .hero h1 { font-size: 65px; }
   .passira-storefront .hero-actions { gap: 5px 10px; }
   .passira-storefront .hero-track-order { font-size: 9px; }

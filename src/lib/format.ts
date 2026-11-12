@@ -1,9 +1,14 @@
 export const brl = (cents: number) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(cents / 100);
 export const normalize = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 export const displayMenuText = (value: string) => value
-  .replace(/^\s*[-–—]\s+/gm, '')
-  .replace(/\s+[-–—]\s*$/g, '')
-  .replace(/\s+[-–—]\s+/g, ', ')
+  .split(/((?:https?:\/\/|www\.)\S+)/g)
+  .map((part, index) => index % 2 ? part : part
+    .replace(/^\s*[-‐‑‒–—]\s+/gm, '')
+    .replace(/\s+[-‐‑‒–—]\s*$/gm, '')
+    .replace(/\s+[-‐‑‒–—]\s+/g, ', ')
+    .replace(/\s*[‒–—]\s*/g, ', ')
+    .replace(/(?<=\p{L})[-‐‑](?=\p{L})/gu, ' '))
+  .join('')
   .trim();
 export function formatPhone(value: string) {
   const d = value.replace(/\D/g, '').slice(0, 11);

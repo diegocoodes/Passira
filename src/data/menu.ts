@@ -29,13 +29,18 @@ export const productPrices = (id: string) => prices.filter(p => p.productId === 
 
 export const initialCatalog: Catalog = { categories, products, prices, sizes, optionGroups, additions, deliveryRegions };
 export function indexCatalog(catalog: Catalog) {
-  return { ...catalog,
-    productById: Object.fromEntries(catalog.products.map(product => [product.id, product])),
-    categoryById: Object.fromEntries(catalog.categories.map(category => [category.id, category])),
-    sizeById: Object.fromEntries(catalog.sizes.map(size => [size.id, size])),
-    groupById: Object.fromEntries(catalog.optionGroups.map(group => [group.id, group])),
-    additionById: Object.fromEntries(catalog.additions.map(addition => [addition.id, addition])),
-    availableCategories: catalog.categories.filter(category => category.enabled),
-    productPrices: (id: string) => catalog.prices.filter(price => price.productId === id && price.enabled && price.cents !== null),
+  const presented = { ...catalog,
+    categories: catalog.categories.map(presentEntry), products: catalog.products.map(presentEntry),
+    prices: catalog.prices.map(presentEntry), sizes: catalog.sizes.map(presentEntry),
+    optionGroups: catalog.optionGroups.map(presentEntry), additions: catalog.additions.map(presentEntry),
+  };
+  return { ...presented,
+    productById: Object.fromEntries(presented.products.map(product => [product.id, product])),
+    categoryById: Object.fromEntries(presented.categories.map(category => [category.id, category])),
+    sizeById: Object.fromEntries(presented.sizes.map(size => [size.id, size])),
+    groupById: Object.fromEntries(presented.optionGroups.map(group => [group.id, group])),
+    additionById: Object.fromEntries(presented.additions.map(addition => [addition.id, addition])),
+    availableCategories: presented.categories.filter(category => category.enabled),
+    productPrices: (id: string) => presented.prices.filter(price => price.productId === id && price.enabled && price.cents !== null),
   };
 }
