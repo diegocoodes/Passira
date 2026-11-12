@@ -38,6 +38,8 @@ test('menu shows six options and expands the remaining dishes on demand', async 
 });
 
 test('storefront fits phones, tablets and desktops and keeps product navigation', async ({ page }) => {
+  // Keep visual captures stable while the interaction suite checks reduced motion separately.
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   for (const width of [320, 390, 768, 1024, 1440, 1860]) {

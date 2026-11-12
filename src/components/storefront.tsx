@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowDown, ArrowRight, ArrowUp, ChevronRight, Clock3, Heart, Info, MapPin, Plus, ReceiptText, Search, ShoppingBag, Trophy, X } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUp, ChevronRight, Clock3, Heart, Info, Leaf, MapPin, Pizza, Plus, ReceiptText, Search, ShoppingBag, Trophy, X } from 'lucide-react';
 import { useMenu } from './menu-provider';
 import { getProductImage } from '@/data/illustrative-images';
 import store from '@/data/store.json';
@@ -20,14 +20,6 @@ import { FavoriteButton } from './favorite-button';
 import { ComboShowcase } from './combo-showcase';
 import { useRevealMotion } from './use-reveal-motion';
 
-
-
-const selectionLabels: Record<string, string> = {
-  'flavor-380075': 'Para compartilhar',
-  'item-2169126': 'Um almoço especial',
-  'item-2172833': 'Para reunir a mesa',
-};
-
 function ProductCard({ product, featured = false, at }: { product: Product; featured?: boolean; at?: Date }) {
   const { minimumPrice, availability, bestSellerIds } = useMenu();
   const method = useCart(s => s.method);
@@ -35,7 +27,7 @@ function ProductCard({ product, featured = false, at }: { product: Product; feat
   const reason = at ? availability(product.id, at) : null;
   const photo = getProductImage(product);
   return <article className={`product-card ${product.blocked ? 'needs-review' : ''} ${featured ? 'featured-product' : ''} ${product.categoryId === '274513' ? 'product-card-drink' : ''}`}><Link href={`/produto/${product.id}/`} prefetch={false} className="product-card-link" aria-label={`Ver ${product.name.trim()}`}>
-    <div className="product-card-visual"><img src={photo.src} alt="" loading="lazy" decoding="async" draggable={false} width={640} height={480} />{featured && <span className="featured-product-label">{selectionLabels[product.id] || 'Seleção da casa'}</span>}{bestSellerIds.includes(product.id) && <span className="best-seller-label" title="Entre os três produtos mais vendidos em pedidos concluídos nos últimos 30 dias"><Trophy size={13} />Mais pedidos</span>}{photo.illustrative && <span className="photo-label">Foto ilustrativa</span>}{product.blocked && <span className="review-label">Em conferência</span>}</div>
+    <div className="product-card-visual"><img src={photo.src} alt="" loading="lazy" decoding="async" draggable={false} width={640} height={480} />{bestSellerIds.includes(product.id) && <span className="best-seller-label" title="Entre os três produtos mais vendidos em pedidos concluídos nos últimos 30 dias"><Trophy size={13} />Mais pedidos</span>}{photo.illustrative && <span className="photo-label">Foto ilustrativa</span>}{product.blocked && <span className="review-label">Em conferência</span>}</div>
     <div className="product-card-copy"><h3>{product.name}</h3><p>{product.description || 'Veja as opções disponíveis.'}</p><div className="product-card-bottom"><div className="product-card-price">{price === null ? <span>Preço em conferência</span> : <>{product.kind === 'pizza' && <small>A partir de</small>}<strong>{brl(price)}</strong></>}{reason && !product.blocked && <span className="availability-label">Consulte os horários</span>}</div><span className="add-circle" aria-hidden="true"><Plus size={18} /><span>Adicionar</span></span></div></div>
   </Link><FavoriteButton productId={product.id} ready={!!at} /></article>;
 }
@@ -95,9 +87,11 @@ export function Storefront() {
         <ComboShowcase />
         <StorefrontManifesto />
         <section className="house-selection" id="destaques" aria-labelledby="selection-heading">
-          <div className="section-heading"><div><p className="section-kicker">Para abrir o apetite</p><h2 id="selection-heading">Boas escolhas.<br /><span>Melhores momentos.</span></h2></div><a className="section-link" href="#cardapio">Explorar o cardápio<ArrowRight size={18} /></a></div>
-          <p className="section-intro">Da primeira fatia ao almoço em família. Sabores da casa para inspirar o seu pedido.</p>
+          <div className="selection-ornament selection-ornament-left" aria-hidden="true"><Pizza size={184} strokeWidth={1} /><Leaf size={72} strokeWidth={1} /></div>
+          <div className="selection-ornament selection-ornament-right" aria-hidden="true"><Pizza size={184} strokeWidth={1} /><Leaf size={72} strokeWidth={1} /></div>
+          <div className="section-heading"><div><p className="section-kicker">Para abrir o apetite</p><h2 id="selection-heading">Favoritos da casa</h2></div></div>
           <div className="selection-grid">{houseSelection.map(p => <ProductCard key={p.id} product={p} featured at={ready ? now : undefined} />)}</div>
+          <div className="selection-action"><a className="section-link" href="#cardapio">Ver menu completo<ArrowRight size={18} /></a></div>
         </section>
         <RestaurantStory />
         <CustomerReviews />
