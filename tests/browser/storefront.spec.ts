@@ -45,6 +45,8 @@ test('storefront fits phones, tablets and desktops and keeps product navigation'
     await page.goto('/');
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('#menu-products > .product-card')).toHaveCount(6);
+    await expect(page.getByText('Pizzaria e restaurante em San Martin', { exact: true })).toHaveCount(0);
+    await expect(page.getByText('Da nossa cozinha direto para a sua mesa. Pizzas, pratos e petiscos para saborear cada momento.', { exact: true })).toHaveCount(0);
     // Load offscreen photos too so full-page review captures the finished design.
     const brokenImages = await page.evaluate(async () => {
       const images = Array.from(document.images);
@@ -66,6 +68,8 @@ test('storefront fits phones, tablets and desktops and keeps product navigation'
         heroRight: hero.right,
         headerLeft: header.left,
         headerRight: header.right,
+        photoBottom: photo.bottom,
+        checkerTop: hero.bottom - parseFloat(getComputedStyle(document.querySelector('.hero')!, '::after').height),
       };
     });
     expect(layout.contentWidth).toBeLessThanOrEqual(layout.width);
@@ -75,12 +79,16 @@ test('storefront fits phones, tablets and desktops and keeps product navigation'
     expect(layout.heroRight).toBe(layout.width);
     expect(layout.headerLeft).toBe(0);
     expect(layout.headerRight).toBe(layout.width);
+    expect(layout.photoBottom).toBeCloseTo(layout.checkerTop, 2);
     await page.screenshot({ path: `test-results/storefront-${width}.png`, fullPage: true });
     if (width === 390 || width === 1440 || width === 1860) {
       await page.locator('.hero').screenshot({ path: `test-results/banner-${width}.png` });
       await page.locator('.restaurant-story').screenshot({ path: `test-results/restaurante-${width}.png` });
+      await page.locator('.customer-reviews').screenshot({ path: `test-results/avaliacoes-${width}.png` });
+      await page.locator('.house-selection').screenshot({ path: `test-results/destaques-${width}.png` });
     }
   }
+  await expect(page.locator('.restaurant-details a[href^="tel:"]')).toHaveAttribute('href', 'tel:+558131407400');
   await page.locator('#menu-products > .product-card').first().click();
   await expect(page).toHaveURL(/\/produto\//);
   expect(errors).toEqual([]);
