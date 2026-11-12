@@ -2,8 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { initialCatalog } from '../src/data/menu';
 import type { Order } from '../src/data/types';
-import { createMenu } from '../src/lib/menu';
-import { comboOffer } from '../src/lib/combo-offer';
 import { prepareRepeatOrder } from '../src/lib/repeat-order';
 import { lookupPostalCode } from '../src/server/postal-code';
 import { HttpError } from '../src/server/auth';
@@ -35,20 +33,6 @@ test('repeat order excludes removed products without dropping valid items', () =
   const result = prepareRepeatOrder(previous, initialCatalog, 'pickup', at);
   assert.equal(result.items.length, 1); assert.equal(result.skipped.length, 1);
   assert.equal(previous.items.length, 2);
-});
-
-test('combo starts at a valid server-calculated price and includes required flavor extras', () => {
-  const offer = comboOffer(initialCatalog, 'pickup');
-  assert.ok(offer);
-  assert.equal(offer.price, 8599);
-  assert.equal(createMenu(initialCatalog).calculateItem(offer.config, 'pickup', at).cents, offer.price);
-  const changed = structuredClone(initialCatalog);
-  changed.additions.filter(option => offer.group.additionIds.includes(option.id) && option.cents === 0).forEach(option => { option.enabled = false; });
-  const premium = comboOffer(changed, 'pickup');
-  assert.ok(premium); assert.equal(premium.price, 12199);
-  assert.equal(createMenu(changed).calculateItem(premium.config, 'pickup', at).cents, premium.price);
-  changed.products.find(product => product.id === offer.product.id)!.enabled = false;
-  assert.equal(comboOffer(changed, 'pickup'), null);
 });
 
 test('postal lookup validates input before the request and handles missing CEP and service errors', async () => {

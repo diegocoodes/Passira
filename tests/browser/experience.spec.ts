@@ -29,7 +29,8 @@ test('favorites persist, filtering keeps six-item behavior and the real combo op
   await page.goto('/');
   await page.getByRole('button', { name: /^Favoritos/ }).click();
   await expect(page.getByText('Seus favoritos ficam aqui.')).toBeVisible();
-  await page.getByRole('link', { name: 'Montar meu combo', exact: true }).click();
+  await page.locator('#category-track').getByRole('button', { name: /pizza em dobro/i }).click();
+  await page.locator('#menu-products a[href="/produto/flavor-414849/"]').click();
   await expect(page.locator('.product-title')).toContainText('PIZZA EM DOBRO');
 });
 

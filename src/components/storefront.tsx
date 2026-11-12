@@ -17,7 +17,6 @@ import { RestaurantStory } from './restaurant-story';
 import { CustomerReviews } from './customer-reviews';
 import { StorefrontHero, StorefrontManifesto } from './storefront-hero';
 import { FavoriteButton } from './favorite-button';
-import { ComboShowcase } from './combo-showcase';
 import { useRevealMotion } from './use-reveal-motion';
 
 function ProductCard({ product, featured = false, at }: { product: Product; featured?: boolean; at?: Date }) {
@@ -84,7 +83,6 @@ export function Storefront() {
           </div>
           <div className="desktop-cart">{ready ? <CartPanel /> : <div className="cart-loading">Carregando seu pedido…</div>}</div>
         </div></section>
-        <ComboShowcase />
         <StorefrontManifesto />
         <section className="house-selection" id="destaques" aria-labelledby="selection-heading">
           <div className="selection-ornament selection-ornament-left" aria-hidden="true"><Pizza size={184} strokeWidth={1} /><Leaf size={72} strokeWidth={1} /></div>

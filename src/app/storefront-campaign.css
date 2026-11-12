@@ -79,8 +79,9 @@
 .passira-storefront .featured-product .add-circle { color: white; background: var(--green); border-radius: 30px; }
 .passira-storefront .featured-product:hover .add-circle { background: var(--green-dark); }
 
-.story-ribbon { display: flex; align-items: center; gap: 20px; min-height: 38px; overflow: hidden; border-bottom: 1px solid #007d4026; background: #f3f8f2; color: var(--green); }
-.story-ribbon > span { display: inline-flex; align-items: center; flex-shrink: 0; gap: 20px; font-family: var(--display); font-size: 13px; font-weight: 600; text-transform: uppercase; white-space: nowrap; }
+.story-ribbon { display: flex; align-items: center; gap: 24px; width: 100%; min-height: 50px; overflow: hidden; border-block: 1px solid #007d4026; background: #f3f8f2; color: var(--green-dark); }
+.story-ribbon > span { display: inline-flex; align-items: center; justify-content: space-between; flex: 1 0 auto; gap: 24px; font-family: var(--display); font-size: clamp(17px, 1.1vw, 20px); font-weight: 500; letter-spacing: .8px; line-height: 1.2; text-transform: uppercase; white-space: nowrap; }
+.story-ribbon strong { font-size: 1.08em; font-weight: 700; }
 .story-ribbon svg { color: var(--red); flex-shrink: 0; }
 .passira-storefront .restaurant-story { position: relative; overflow: hidden; grid-template-columns: 1.05fr 1fr; gap: 64px; margin: 0 0 24px; padding: 72px 60px 60px; border: 0; border-radius: 0; background: #f3f8f2; color: #063f2c; }
 .passira-storefront .restaurant-photo { position: relative; isolation: isolate; padding-bottom: 0; }

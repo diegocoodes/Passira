@@ -27,31 +27,6 @@
 .cart-notice > button:hover { background: #007d4014; }
 .postal-lookup-status { min-height: 18px; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 1.5; }
 .postal-lookup-status[aria-busy="true"] { color: var(--green); }
-.combo-showcase { display: grid; grid-template-columns: .9fr 1.1fr; align-items: stretch; margin-top: 24px; overflow: hidden; background: #eef8f2; color: #063f2c; }
-.combo-photo { position: relative; min-height: 100%; overflow: hidden; }
-.combo-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.combo-photo::after { content: ''; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, #00000080); pointer-events: none; }
-.combo-photo-label { position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 1; display: flex; align-items: center; gap: 10px; color: white; font-size: 13px; font-weight: 600; }
-.combo-photo .photo-label { z-index: 1; top: 16px; bottom: auto; }
-.combo-copy { padding: 36px; }
-.combo-copy h2 { font-family: var(--display); font-size: 48px; line-height: 1; font-weight: 600; margin-bottom: 16px; }
-.combo-copy > p:not(.section-kicker) { font-size: 14px; line-height: 1.7; }
-.combo-copy > ul { display: flex; flex-wrap: wrap; gap: 9px 18px; padding: 0; margin: 20px 0; list-style: none; }
-.combo-copy > ul li { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; font-weight: 600; }
-.combo-copy > ul svg { color: var(--green); }
-.combo-copy .combo-options { color: #43574b; font-size: 12px; }
-.combo-extras { margin-block: 14px 20px; font-size: 12px; }
-.combo-extras > summary { cursor: pointer; padding-block: 8px; font-weight: 600; }
-.combo-extras ul { padding: 0; list-style: none; margin-top: 8px; }
-.combo-extras li { display: flex; justify-content: space-between; gap: 14px; padding-block: 8px; border-top: 1px solid #007d401a; }
-.combo-extras strong { white-space: nowrap; font-weight: 600; }
-.combo-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; border-top: 1px solid #007d4026; padding-top: 22px; margin-top: 22px; }
-.combo-bottom p { display: flex; flex-direction: column; gap: 3px; }
-.combo-bottom p small { font-size: 11px; color: #43574b; }
-.combo-bottom p strong { font-size: 28px; font-variant-numeric: tabular-nums; }
-.combo-bottom .button { background: var(--green); border-color: var(--green); border-radius: 30px; }
-.combo-bottom .button:hover { background: var(--green-dark); border-color: var(--green-dark); }
-.combo-note { display: block; margin-top: 14px; font-size: 11px; color: #43574b; }
 .admin-notification-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 18px; margin-bottom: 20px; }
 .admin-notification-tools > span { max-width: 440px; font-size: 12px; color: var(--muted); }
 .admin-notification-tools .button { font-size: 12px; }
@@ -66,26 +41,13 @@
 @keyframes confirmation-enter { from { opacity: .3; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @keyframes confirmation-pop { from { transform: scale(.75); opacity: .4; } to { transform: scale(1); opacity: 1; } }
 @keyframes confirmation-check { to { stroke-dashoffset: 0; } }
-@media (max-width: 1000px) {
-  .combo-copy { padding: 28px; }
-  .combo-bottom { flex-wrap: wrap; gap: 14px; }
-}
 @media (max-width: 760px) {
   .menu-discovery-tools { align-items: stretch; }
   .favorites-filter { align-self: flex-start; }
-  .combo-showcase { grid-template-columns: 1fr; margin-top: 16px; }
-  .combo-photo { min-height: 0; aspect-ratio: 1.6; }
-  .combo-copy { padding: 26px 24px; }
-  .combo-copy h2 { font-size: 40px; }
-  .combo-copy > ul { flex-direction: column; gap: 10px; }
-  .combo-photo-label { left: 20px; bottom: 20px; }
   .product-page-tools { align-items: flex-start; }
   .product-page-tools .favorite-toggle { min-height: 40px; font-size: 12px; }
 }
 @media (max-width: 400px) {
-  .combo-bottom { align-items: flex-start; flex-direction: column; }
-  .combo-bottom > .button { width: 100%; }
-  .combo-extras li { flex-direction: column; gap: 3px; }
   .cart-notice { padding: 14px; font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {

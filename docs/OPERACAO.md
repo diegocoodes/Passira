@@ -108,7 +108,7 @@ Em Meus pedidos, abra um resumo e use Pedir novamente. O sistema confere as opç
 
 O selo Mais pedidos usa os três produtos ativos com mais unidades vendidas em pedidos concluídos nos últimos 30 dias. Pedidos recebidos, cancelados e vendas antigas não entram no cálculo. Sem vendas concluídas, nenhum selo é inventado. O endpoint público `/api/menu/highlights/` retorna somente os identificadores dos produtos e o período do ranking.
 
-A apresentação Pizza em dobro usa o produto e os grupos de sabores existentes no cardápio. O preço inicial considera as escolhas obrigatórias mais baratas, calculadas pelas mesmas regras do pedido. Sabores com acréscimo são identificados antes da personalização. Se o produto, os preços ou as opções obrigatórias estiverem indisponíveis, a apresentação é ocultada.
+Pizza em dobro está disponível na categoria correspondente do cardápio. Ao abrir o produto, o cliente escolhe os sabores e confere os acréscimos e o total antes de adicionar ao pedido.
 
 ### Endereço pelo CEP
 

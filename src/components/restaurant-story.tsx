@@ -6,7 +6,7 @@ const mapsUrl = 'https://www.google.com/maps?cid=11558539790381466414';
 
 export function RestaurantStory() {
   return <>
-    <div className="story-ribbon" aria-hidden="true">{[0, 1, 2].map(index => <span key={index}>Feito para reunir<Pizza size={16} />Passira San Martin<Leaf size={16} />Sabor à sua mesa<Pizza size={16} /></span>)}</div>
+    <div className="story-ribbon" aria-hidden="true">{Array.from({ length: 8 }, (_, index) => <span key={index}><span>Feito para reunir</span><Pizza size={18} /><strong>Passira San Martin</strong><Leaf size={18} /><span>Sabor à sua mesa</span><Pizza size={18} /></span>)}</div>
     <section className="restaurant-story" id="a-passira" aria-labelledby="story-heading">
       <figure className="restaurant-photo">
         <img className="restaurant-interior" src="/images/restaurant/interior-san-martin.webp" alt="Salão da Passira San Martin, com mesas de madeira e clientes reunidos para uma refeição" loading="lazy" decoding="async" width={1400} height={1867} />

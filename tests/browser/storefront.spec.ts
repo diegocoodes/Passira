@@ -89,6 +89,7 @@ test('storefront fits phones, tablets and desktops and keeps product navigation'
       await page.locator('.restaurant-story').screenshot({ path: `test-results/restaurante-${width}.png` });
       await page.locator('.customer-reviews').screenshot({ path: `test-results/avaliacoes-${width}.png` });
       await page.locator('.house-selection').screenshot({ path: `test-results/destaques-${width}.png` });
+      await page.locator('.story-ribbon').screenshot({ path: `test-results/faixa-${width}.png` });
     }
   }
   await expect(page.locator('.restaurant-details a[href^="tel:"]')).toHaveAttribute('href', 'tel:+558131407400');
