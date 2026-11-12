@@ -11,8 +11,8 @@
 .passira-storefront .header-cart:hover { background: #092e22; }
 .passira-storefront .storefront-main { background: transparent; }
 
-.passira-storefront .hero { --checker-height: 48px; position: relative; isolation: isolate; display: block; min-height: 650px; margin: 0; padding: 0; border-radius: 0; overflow: hidden; color: white; background: radial-gradient(ellipse at 68% 48%, #ffffff13, transparent 55%), radial-gradient(ellipse at 4% 86%, #ffb3b337, transparent 30%), linear-gradient(155deg, #cb1823, #e4343f 70%, #c61520); }
-.passira-storefront .hero-inner { position: relative; max-width: 1360px; min-height: inherit; margin-inline: auto; padding: 36px 44px 90px; }
+.passira-storefront .hero { --checker-height: 96px; --hero-content-height: 602px; position: relative; isolation: isolate; display: block; min-height: calc(var(--hero-content-height) + var(--checker-height)); margin: 0; padding: 0; border-radius: 0; overflow: hidden; color: white; background: radial-gradient(ellipse at 68% 48%, #ffffff13, transparent 55%), radial-gradient(ellipse at 4% 86%, #ffb3b337, transparent 30%), linear-gradient(155deg, #cb1823, #e4343f 70%, #c61520); }
+.passira-storefront .hero-inner { position: relative; max-width: 1360px; min-height: inherit; margin-inline: auto; padding: 36px 44px calc(var(--checker-height) + 42px); }
 .passira-storefront .hero::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 10% 87%, #ffffff12, transparent 20%), radial-gradient(ellipse at 85% 23%, #ffffff0d, transparent 24%); }
 .passira-storefront .hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: var(--checker-height); z-index: 2; background: conic-gradient(white 25%, #007d40 0 50%, white 0 75%, #007d40 0) 0 0 / 48px 48px; pointer-events: none; }
 .passira-storefront .hero-copy { position: relative; z-index: 2; width: 62%; max-width: 660px; padding: 20px 0 0; }
@@ -35,17 +35,16 @@
 .passira-storefront .hero-quick-order { position: absolute; top: 280px; right: 50px; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 136px; height: 136px; border: 2px solid white; border-radius: 50%; background: #006b36; color: white; font-size: 12px; transform: rotate(-9deg); box-shadow: 0 12px 26px #4f0d1726; transition: transform .2s, background .2s; }
 .passira-storefront .hero-quick-order strong { font-family: var(--display); font-size: 30px; line-height: 1; text-transform: uppercase; }
 .passira-storefront .hero-quick-order:hover { transform: rotate(0); background: #063f2c; }
-.passira-storefront .hero-delivery-art { position: absolute; left: 44px; bottom: 80px; z-index: 4; display: flex; align-items: flex-end; gap: 15px; color: white; }
+.passira-storefront .hero-delivery-art { position: absolute; left: 44px; bottom: calc(var(--checker-height) + 32px); z-index: 4; display: flex; align-items: flex-end; gap: 15px; color: white; }
 .passira-storefront .hero-delivery-art > svg:not(.delivery-pizza) { width: 72px; height: 72px; }
 .delivery-pizza { position: absolute; top: -8px; left: 36px; width: 28px; height: 28px; transform: rotate(-18deg); }
 .hero-delivery-art > span { padding-bottom: 9px; font-size: 11px; line-height: 1.5; }
-.passira-storefront .hero-bottom { position: absolute; z-index: 4; bottom: 62px; left: 44px; right: 38px; display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 0; padding: 0; border: 0; max-width: none; color: white; font-size: 10px; }
+.passira-storefront .hero-bottom { position: absolute; z-index: 4; bottom: calc(var(--checker-height) + 14px); left: 44px; right: 38px; display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 0; padding: 0; border: 0; max-width: none; color: white; font-size: 10px; }
 .passira-storefront .hero-bottom > span { display: inline-flex; align-items: center; gap: 6px; }
 .hero-food-tags > span { padding: 2px 9px; border: 1px solid #ffffff66; border-radius: 20px; font-size: 9px; }
 .passira-storefront .hero a:focus-visible { outline: 2px solid white; outline-offset: 5px; }
 
 /* The white menu is the main working surface against the campaign background. */
-.passira-storefront .store-bar { border: 0; border-radius: 0; margin: 0; min-height: 64px; padding-inline: max(24px, calc((100% - 1280px) / 2)); }
 .passira-storefront .menu-section { margin-top: 24px; background: white; border: 0; border-radius: 0; padding: 38px 30px 0; }
 .passira-storefront .menu-toolbar { padding-bottom: 24px; border-bottom: 1px solid var(--line); }
 .passira-storefront .menu-toolbar h2 { color: #063f2c; font-size: clamp(48px, 4.8vw, 68px); }
@@ -133,7 +132,7 @@
 @media (max-width: 1180px) {
   .passira-storefront .header-inner { padding-inline: 28px; }
   .passira-storefront .header-nav { margin-left: 26px; gap: 22px; }
-  .passira-storefront .hero { min-height: 610px; }
+  .passira-storefront .hero { --hero-content-height: 562px; }
   .passira-storefront .hero-inner { padding-inline: 30px; }
   .passira-storefront .hero h1 { font-size: 100px; }
   .passira-storefront .hero-copy { width: 65%; }
@@ -146,7 +145,7 @@
   .passira-storefront .reviews-grid { grid-template-columns: 1fr; gap: 18px; }
   .passira-storefront .review-card { min-height: 0; }
   .passira-storefront .header-nav { margin-left: auto; gap: 20px; }
-  .passira-storefront .hero { min-height: 580px; }
+  .passira-storefront .hero { --hero-content-height: 532px; }
   .passira-storefront .hero h1 { font-size: 88px; }
   .passira-storefront .hero-side-copy { width: 115px; }
   .passira-storefront .hero-feast { left: 30%; width: 63%; }
@@ -162,14 +161,14 @@
   .passira-storefront .brand-logo { width: 90px; }
   .passira-storefront .header-nav { gap: 16px; }
   .passira-storefront .header-nav button { font-size: 0; }
-  .passira-storefront .hero { min-height: 550px; }
-  .passira-storefront .hero-inner { padding: 26px 22px 80px; }
+  .passira-storefront .hero { --hero-content-height: 502px; }
+  .passira-storefront .hero-inner { padding: 26px 22px calc(var(--checker-height) + 32px); }
   .passira-storefront .hero h1 { font-size: 78px; letter-spacing: -1px; }
   .passira-storefront .hero-side-copy { right: 22px; top: 24px; width: 90px; }
   .passira-storefront .hero-feast { left: 28%; width: 66%; }
   .passira-storefront .hero-quick-order { width: 96px; height: 96px; right: 18px; top: 310px; font-size: 10px; }
   .passira-storefront .hero-quick-order strong { font-size: 24px; }
-  .passira-storefront .hero-delivery-art { left: 22px; bottom: 80px; }
+  .passira-storefront .hero-delivery-art { left: 22px; }
   .passira-storefront .hero-bottom { left: 22px; right: 22px; }
   .passira-storefront .hero-image-note { right: 8%; }
   .passira-storefront .menu-section { margin-top: 16px; padding: 28px 20px 0; }
@@ -193,7 +192,7 @@
   .manifesto-photo-dish { right: 12px; }
 }
 @media (max-width: 540px) {
-  .passira-storefront .hero { --checker-height: 32px; min-height: 740px; }
+  .passira-storefront .hero { --checker-height: 64px; --hero-content-height: 708px; }
   .passira-storefront .hero-copy { width: 100%; max-width: none; }
   .passira-storefront .hero h1 { font-size: clamp(68px, 19.5vw, 98px); letter-spacing: -1px; line-height: .83; }
   .passira-storefront .hero h1 > span { margin-top: 7px; -webkit-text-stroke-width: 1.5px; }
@@ -208,7 +207,7 @@
   .passira-storefront .hero-quick-order strong { font-size: 22px; }
   .passira-storefront .hero-quick-order svg { width: 18px; height: 18px; }
   .passira-storefront .hero-delivery-art { display: none; }
-  .passira-storefront .hero-bottom { bottom: 56px; left: 20px; right: 20px; }
+  .passira-storefront .hero-bottom { bottom: calc(var(--checker-height) + 24px); left: 20px; right: 20px; }
   .passira-storefront .hero-bottom > .hero-food-tags { display: none; }
   .passira-storefront .hero-image-note { right: 4%; font-size: 8px; }
   .passira-storefront .hero::after { background-size: 32px 32px; }
@@ -226,7 +225,7 @@
   .manifesto-photo-dish { right: 6px; top: 14px; }
 }
 @media (max-width: 360px) {
-  .passira-storefront .hero { min-height: 710px; }
+  .passira-storefront .hero { --hero-content-height: 678px; }
   .passira-storefront .hero-inner { padding-inline: 18px; }
   .passira-storefront .hero h1 { font-size: 65px; }
   .passira-storefront .hero-actions { gap: 5px 10px; }

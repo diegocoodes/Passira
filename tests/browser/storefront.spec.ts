@@ -45,6 +45,7 @@ test('storefront fits phones, tablets and desktops and keeps product navigation'
     await page.goto('/');
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('#menu-products > .product-card')).toHaveCount(6);
+    await expect(page.locator('.store-bar')).toHaveCount(0);
     await expect(page.getByText('Pizzaria e restaurante em San Martin', { exact: true })).toHaveCount(0);
     await expect(page.getByText('Da nossa cozinha direto para a sua mesa. Pizzas, pratos e petiscos para saborear cada momento.', { exact: true })).toHaveCount(0);
     // Load offscreen photos too so full-page review captures the finished design.
