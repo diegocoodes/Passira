@@ -96,3 +96,34 @@ Os testes de serviço usam um banco temporário separado. O teste de navegador i
 Para validar os serviços no PostgreSQL, forneça `TEST_POSTGRES_URL` apenas ao processo de teste e execute `npm run test:system`. A suíte cria um schema aleatório exclusivo, verifica o isolamento antes de inserir dados e remove esse schema ao terminar. Ela não usa as tabelas operacionais de `public`. Não use os comandos de reset do Prisma no banco da loja.
 
 As senhas são armazenadas como hashes scrypt com salt. As sessões duram 24 horas e usam cookies HttpOnly, SameSite estrito e Secure em produção. Alterar a senha encerra todas as sessões. As APIs administrativas verificam autenticação e origem das alterações; tentativas de login e criação de pedidos têm limitação de frequência.
+## Recursos da loja e do painel
+
+### Favoritos e repetição de pedidos
+
+O coração de cada produto salva o favorito neste navegador. O filtro Favoritos reúne os produtos ativos salvos. Os favoritos continuam disponíveis após recarregar a página e não exigem cadastro.
+
+Em Meus pedidos, abra um resumo e use Pedir novamente. O sistema confere as opções no cardápio atual, recalcula os valores e acrescenta os itens válidos ao carrinho existente. Itens removidos, opções inválidas e promoções fora do horário são informados ao cliente. Os dados já preenchidos no checkout são preservados.
+
+### Produtos mais pedidos e combos
+
+O selo Mais pedidos usa os três produtos ativos com mais unidades vendidas em pedidos concluídos nos últimos 30 dias. Pedidos recebidos, cancelados e vendas antigas não entram no cálculo. Sem vendas concluídas, nenhum selo é inventado. O endpoint público `/api/menu/highlights/` retorna somente os identificadores dos produtos e o período do ranking.
+
+A apresentação Pizza em dobro usa o produto e os grupos de sabores existentes no cardápio. O preço inicial considera as escolhas obrigatórias mais baratas, calculadas pelas mesmas regras do pedido. Sabores com acréscimo são identificados antes da personalização. Se o produto, os preços ou as opções obrigatórias estiverem indisponíveis, a apresentação é ocultada.
+
+### Endereço pelo CEP
+
+Ao informar oito dígitos no checkout de entrega, a aplicação consulta o ViaCEP pelo endpoint `/api/cep/[cep]/`. A consulta sugere rua e bairro e informa a cidade e o estado. Número e complemento continuam sendo preenchidos pelo cliente. Alterações feitas durante a consulta são preservadas.
+
+Se a consulta falhar ou o CEP não for encontrado, o cliente pode preencher o endereço manualmente. A taxa de entrega continua dependendo dos bairros cadastrados no painel. A consulta tem tempo limite de cinco segundos e cache das respostas por 24 horas.
+
+### Avisos de novos pedidos
+
+Use Ativar avisos sonoros no painel para permitir o áudio nesta sessão. A ativação toca um aviso de teste. Novos pedidos recebidos geram um aviso visual e, se o áudio estiver ativo, um sinal sonoro. Pedidos já presentes quando o painel foi aberto não disparam alertas antigos. A verificação acompanha a atualização do painel a cada 15 segundos. O botão Desativar avisos sonoros silencia os próximos avisos.
+
+### Impressão de comandas
+
+Abra um pedido no painel e clique em Imprimir comanda. O navegador abre sua janela de impressão, permitindo escolher a impressora ou salvar um PDF. A comanda inclui produtos, quantidades, opções, observações, contato, modalidade de entrega e valores. CPF e link privado de acompanhamento não são impressos. O layout usa uma coluna de 72 mm, adequada para revisão em uma impressora de recibos de 80 mm; selecione o papel correto no driver.
+
+### Movimento e acessibilidade
+
+As animações de entrada, categorias e novos itens usam transições curtas. O conteúdo já é visível antes de qualquer animação. A preferência do sistema por menos movimento desativa os efeitos decorativos, preservando a navegação, os botões e o acesso a todos os produtos.

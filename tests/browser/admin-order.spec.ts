@@ -3,6 +3,18 @@ const origin = 'http://127.0.0.1:3100';
 
 test('administrator manages products and the customer follows a real numbered order', async ({ page, browser, request }) => {
   const browserErrors: string[] = [];
+  await page.addInitScript(() => {
+    const state = window as unknown as { toneStarts: number };
+    state.toneStarts = 0;
+    class TestAudioContext {
+      state = 'suspended'; currentTime = 0; destination = {};
+      async resume() { this.state = 'running'; }
+      async close() { this.state = 'closed'; }
+      createOscillator() { return { type: '', frequency: { value: 0 }, onended: null, connect() {}, disconnect() {}, start() { state.toneStarts++; }, stop() {} }; }
+      createGain() { return { gain: { setValueAtTime() {}, linearRampToValueAtTime() {} }, connect() {}, disconnect() {} }; }
+    }
+    Object.defineProperty(window, 'AudioContext', { value: TestAudioContext });
+  });
   page.on('pageerror', error => browserErrors.push(error.message));
   expect((await request.get('/api/admin/dashboard/')).status()).toBe(401);
   expect((await request.post('/api/admin/products/', { data: {}, headers: { origin } })).status()).toBe(401);
@@ -13,6 +25,9 @@ test('administrator manages products and the customer follows a real numbered or
   await page.getByLabel('Senha', { exact: true }).fill('senha-apenas-para-testes-123456');
   await page.getByRole('button', { name: 'Entrar no painel' }).click();
   await expect(page.getByRole('heading', { name: 'Sua operação, à vista.' })).toBeVisible();
+  await page.getByRole('button', { name: 'Ativar avisos sonoros', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Desativar avisos sonoros', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  expect(await page.evaluate(() => (window as unknown as { toneStarts: number }).toneStarts)).toBe(2);
   await page.getByRole('button', { name: 'Produtos', exact: true }).click();
   await page.getByRole('button', { name: 'Novo produto', exact: true }).click();
   await page.getByLabel('Nome do produto', { exact: true }).fill('Prato de teste do painel');
@@ -83,8 +98,18 @@ test('administrator manages products and the customer follows a real numbered or
   await expect(tracker.locator('body')).not.toContainText('Cliente Teste');
   await page.getByRole('button', { name: 'Pedidos', exact: true }).click();
   await page.getByRole('button', { name: 'Atualizar painel' }).click();
+  await expect(page.getByRole('alert').filter({ hasText: 'Novo pedido #1 recebido.' })).toBeVisible();
+  expect(await page.evaluate(() => (window as unknown as { toneStarts: number }).toneStarts)).toBe(4);
   const card = page.locator('.admin-order').filter({ hasText: 'Pedido #1' });
   await card.locator('summary').click();
+  await page.evaluate(() => { window.print = () => { document.body.dataset.printRequested = 'true'; }; });
+  await card.getByRole('button', { name: 'Imprimir comanda', exact: true }).click();
+  await expect(page.locator('#passira-print-receipt pre')).toContainText('COMANDA 1');
+  await expect(page.locator('#passira-print-receipt pre')).toContainText(product.name);
+  await expect(page.locator('#passira-print-receipt pre')).not.toContainText('529.982.247-25');
+  expect(await page.locator('body').getAttribute('data-print-requested')).toBe('true');
+  await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+  await expect(page.locator('#passira-print-receipt')).toHaveCount(0);
   await card.getByRole('button', { name: 'Aceitar pedido' }).click();
   await expect(customer.locator('.order-status')).toHaveText('Aceito', { timeout: 25000 });
   await expect(tracker.locator('.order-status')).toHaveText('Aceito', { timeout: 25000 });
@@ -106,6 +131,14 @@ test('administrator manages products and the customer follows a real numbered or
   await expect(page.locator('.admin-expense-row')).toHaveCount(1);
   const report = await (await page.request.get('/api/admin/dashboard/')).json();
   expect(report.completed).toBe(1); expect(report.received).toBe(1); expect(report.profit).toBe(5000); expect(report.topProducts[0].quantity).toBe(2);
+  const highlights = await (await request.get('/api/menu/highlights/')).json();
+  expect(highlights.productIds).toContain(product.id);
+  expect(Object.keys(highlights).sort()).toEqual(['periodDays', 'productIds']);
+  const storefront = await customerContext.newPage();
+  await storefront.goto('/');
+  await storefront.getByLabel('Buscar no cardápio').fill(product.name);
+  await expect(storefront.locator('#menu-products .best-seller-label')).toHaveText('Mais pedidos');
+  await storefront.close();
   await page.getByRole('button', { name: 'Visão geral', exact: true }).click();
   await page.screenshot({ path: 'test-results/admin-desktop.png', fullPage: true });
   for (const width of [320, 390, 768, 1440]) {

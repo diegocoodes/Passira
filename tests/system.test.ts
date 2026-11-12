@@ -15,6 +15,7 @@ import { nextStatuses, todayInRecife, dayBounds } from '../src/lib/order-status'
 import { createMenu } from '../src/lib/menu';
 import { checkOrigin } from '../src/server/http';
 import { postgresConnection } from '../src/server/connection';
+import { salesHighlights } from '../src/server/storefront-insights';
 
 const folder = mkdtempSync(path.join(tmpdir(), 'passira-tests-'));
 const postgresUrl = process.env.TEST_POSTGRES_URL;
@@ -140,4 +141,24 @@ test('login attempt limits are stored in the database and reset after expiration
 test('same-origin requests work behind a proxy and foreign origins are rejected', () => {
   assert.doesNotThrow(() => checkOrigin(new Request('http://localhost:3100/api/admin/login/', { headers: { host: '127.0.0.1:3100', origin: 'http://127.0.0.1:3100' } })));
   assert.throws(() => checkOrigin(new Request('http://localhost:3100/api/admin/login/', { headers: { host: '127.0.0.1:3100', origin: 'https://attacker.example' } })), /Origem/);
+});
+
+test('public highlights use recent completed sales and omit inactive products and customer data', async () => {
+  const completed = await db().order.findFirstOrThrow({ where: { status: 'completed', items: { some: { productId } } } });
+  const product = await db().product.findUniqueOrThrow({ where: { id: productId } });
+  const now = new Date();
+  assert.deepEqual((await salesHighlights(now)).productIds, [productId]);
+  try {
+    await db().order.update({ where: { id: completed.id }, data: { status: 'cancelled' } });
+    assert.equal((await salesHighlights(now)).productIds.length, 0);
+    await db().order.update({ where: { id: completed.id }, data: { status: 'completed', completedAt: new Date(now.getTime() - 31 * 86400000) } });
+    assert.equal((await salesHighlights(now)).productIds.length, 0);
+    await db().order.update({ where: { id: completed.id }, data: { completedAt: completed.completedAt } });
+    await db().product.update({ where: { id: productId }, data: { data: { ...(product.data as Record<string, unknown>), blocked: true } as never } });
+    assert.equal((await salesHighlights(now)).productIds.length, 0);
+  } finally {
+    await db().order.update({ where: { id: completed.id }, data: { status: completed.status, completedAt: completed.completedAt } });
+    await db().product.update({ where: { id: productId }, data: { data: product.data as never } });
+  }
+  assert.deepEqual(Object.keys(await salesHighlights(now)).sort(), ['periodDays', 'productIds']);
 });

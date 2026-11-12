@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
-import { ArrowDown, ArrowRight, ArrowUp, ChevronRight, Clock3, Info, MapPin, Plus, ReceiptText, Search, ShoppingBag, X } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowDown, ArrowRight, ArrowUp, ChevronRight, Clock3, Heart, Info, MapPin, Plus, ReceiptText, Search, ShoppingBag, Trophy, X } from 'lucide-react';
 import { useMenu } from './menu-provider';
 import { getProductImage } from '@/data/illustrative-images';
 import store from '@/data/store.json';
@@ -16,6 +16,9 @@ import { Dialog } from './dialog';
 import { RestaurantStory } from './restaurant-story';
 import { CustomerReviews } from './customer-reviews';
 import { StorefrontHero, StorefrontManifesto } from './storefront-hero';
+import { FavoriteButton } from './favorite-button';
+import { ComboShowcase } from './combo-showcase';
+import { useRevealMotion } from './use-reveal-motion';
 
 
 
@@ -26,15 +29,15 @@ const selectionLabels: Record<string, string> = {
 };
 
 function ProductCard({ product, featured = false, at }: { product: Product; featured?: boolean; at?: Date }) {
-  const { minimumPrice, availability } = useMenu();
+  const { minimumPrice, availability, bestSellerIds } = useMenu();
   const method = useCart(s => s.method);
   const price = product.blocked ? null : minimumPrice(product.id, method);
   const reason = at ? availability(product.id, at) : null;
   const photo = getProductImage(product);
-  return <Link href={`/produto/${product.id}/`} prefetch={false} className={`product-card ${product.blocked ? 'needs-review' : ''} ${featured ? 'featured-product' : ''} ${product.categoryId === '274513' ? 'product-card-drink' : ''}`} aria-label={`Ver ${product.name.trim()}`}>
-    <div className="product-card-visual"><img src={photo.src} alt="" loading="lazy" decoding="async" draggable={false} width={640} height={480} />{featured && <span className="featured-product-label">{selectionLabels[product.id] || 'Seleção da casa'}</span>}{photo.illustrative && <span className="photo-label">Foto ilustrativa</span>}{product.blocked && <span className="review-label">Em conferência</span>}</div>
+  return <article className={`product-card ${product.blocked ? 'needs-review' : ''} ${featured ? 'featured-product' : ''} ${product.categoryId === '274513' ? 'product-card-drink' : ''}`}><Link href={`/produto/${product.id}/`} prefetch={false} className="product-card-link" aria-label={`Ver ${product.name.trim()}`}>
+    <div className="product-card-visual"><img src={photo.src} alt="" loading="lazy" decoding="async" draggable={false} width={640} height={480} />{featured && <span className="featured-product-label">{selectionLabels[product.id] || 'Seleção da casa'}</span>}{bestSellerIds.includes(product.id) && <span className="best-seller-label" title="Entre os três produtos mais vendidos em pedidos concluídos nos últimos 30 dias"><Trophy size={13} />Mais pedidos</span>}{photo.illustrative && <span className="photo-label">Foto ilustrativa</span>}{product.blocked && <span className="review-label">Em conferência</span>}</div>
     <div className="product-card-copy"><h3>{product.name}</h3><p>{product.description || 'Veja as opções disponíveis.'}</p><div className="product-card-bottom"><div className="product-card-price">{price === null ? <span>Preço em conferência</span> : <>{product.kind === 'pizza' && <small>A partir de</small>}<strong>{brl(price)}</strong></>}{reason && !product.blocked && <span className="availability-label">Consulte os horários</span>}</div><span className="add-circle" aria-hidden="true"><Plus size={18} /><span>Adicionar</span></span></div></div>
-  </Link>;
+  </Link><FavoriteButton productId={product.id} ready={!!at} /></article>;
 }
 export function Storefront() {
   const { categoryById, productById, products, cartTotals } = useMenu();
@@ -42,36 +45,40 @@ export function Storefront() {
   const [category, setCategory] = useState('274528');
   const [query, setQuery] = useState('');
   const [showAll, setShowAll] = useState(false);
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const favoriteIds = useCart(state => state.favoriteIds);
+  const root = useRef<HTMLDivElement>(null);
+  useRevealMotion(root);
   const [information, setInformation] = useState(false);
   const [history, setHistory] = useState(false);
   const [ready, setReady] = useState(false);
   const [now, setNow] = useState(new Date());
   const items = useCart(s => s.items), orders = useCart(s => s.orders), clearOrders = useCart(s => s.clearOrders), method = useCart(s => s.method);
   useEffect(() => { useCart.persist.rehydrate(); setReady(true); const requestedCategory = new URLSearchParams(window.location.search).get('categoria'); if (requestedCategory && categoryById[requestedCategory]?.enabled) setCategory(requestedCategory); const id = window.setInterval(() => setNow(new Date()), 30000); return () => window.clearInterval(id); }, []);
-  const matching = useMemo(() => products.filter(p => p.enabled && categoryById[p.categoryId]?.enabled && (query ? normalize(`${p.name} ${p.description} ${categoryById[p.categoryId].name}`).includes(normalize(query)) : p.categoryId === category)).sort((a, b) => a.order - b.order), [category, query, products, categoryById]);
+  const matching = useMemo(() => products.filter(p => p.enabled && categoryById[p.categoryId]?.enabled && (!favoritesOnly || (ready && favoriteIds.includes(p.id))) && (query ? normalize(`${p.name} ${p.description} ${categoryById[p.categoryId].name}`).includes(normalize(query)) : favoritesOnly || p.categoryId === category)).sort((a, b) => a.order - b.order), [category, query, products, categoryById, favoritesOnly, favoriteIds, ready]);
   const visibleProducts = showAll ? matching : matching.slice(0, 6);
   const count = ready ? items.reduce((n, i) => n + i.quantity, 0) : 0;
   const total = ready ? cartTotals(items, method, '').subtotal : 0;
   const selected = categoryById[category];
-  const chooseCategory = (id: string) => { setCategory(id); setQuery(''); setShowAll(false); };
+  const chooseCategory = (id: string) => { setCategory(id); setQuery(''); setShowAll(false); setFavoritesOnly(false); };
   const searchMenu = (value: string) => { setQuery(value); setShowAll(false); };
-  return <div className="passira-storefront">
+  return <div className="passira-storefront" ref={root}>
     <a className="skip-link" href="#cardapio">Ir para o cardápio</a>
     <div className="top-strip"><span>Passira San Martin</span><span>Todos os dias, 10h às 23h15</span></div>
-    <header className="site-header"><div className="header-inner"><a href="#" className="brand" aria-label="Passira, início"><BrandLogo /></a><nav className="header-nav" aria-label="Menu principal"><a href="#cardapio" className="current">Cardápio</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a><button onClick={() => setHistory(true)}><ReceiptText size={17} />Meus pedidos</button><button className="store-information-button" onClick={() => setInformation(true)} aria-label="Informações da loja"><Info size={17} /></button></nav><Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b>{count}</b></Link></div></header>
+    <header className="site-header"><div className="header-inner"><a href="#" className="brand" aria-label="Passira, início"><BrandLogo /></a><nav className="header-nav" aria-label="Menu principal"><a href="#cardapio" className="current">Cardápio</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a><button onClick={() => setHistory(true)}><ReceiptText size={17} />Meus pedidos</button><button className="store-information-button" onClick={() => setInformation(true)} aria-label="Informações da loja"><Info size={17} /></button></nav><Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b key={count} className="cart-count-feedback">{count}</b></Link></div></header>
     <main className="storefront-main">
       <StorefrontHero />
       <div className="page-container">
         <nav className="section-jump-links" aria-label="Seções da página"><a href="#cardapio">Cardápio</a><a href="#destaques">Destaques</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a></nav>
-        <section className="menu-section" aria-label="Cardápio Passira"><div id="cardapio" className="menu-anchor"></div><div className="menu-toolbar"><div><p className="section-kicker">Feito para dar água na boca</p><h2>Nosso cardápio.</h2></div><label className="search-field"><Search size={20} /><input type="search" placeholder="Buscar prato, pizza ou ingrediente" value={query} onChange={e => searchMenu(e.target.value)} aria-label="Buscar no cardápio" />{query && <button onClick={() => searchMenu('')} aria-label="Limpar busca"><X size={17} /></button>}</label></div>
-        <CategoryNavigation selected={query ? null : category} choose={chooseCategory} />
+        <section className="menu-section" aria-label="Cardápio Passira"><div id="cardapio" className="menu-anchor"></div><div className="menu-toolbar"><div><p className="section-kicker">Feito para dar água na boca</p><h2>Nosso cardápio.</h2></div><div className="menu-discovery-tools"><label className="search-field"><Search size={20} /><input type="search" placeholder="Buscar prato, pizza ou ingrediente" value={query} onChange={e => searchMenu(e.target.value)} aria-label="Buscar no cardápio" />{query && <button onClick={() => searchMenu('')} aria-label="Limpar busca"><X size={17} /></button>}</label><button className="favorites-filter" aria-pressed={favoritesOnly} onClick={() => { setFavoritesOnly(value => !value); setShowAll(false); }}><Heart size={16} fill={favoritesOnly ? 'currentColor' : 'none'} />Favoritos<span>{ready ? favoriteIds.length : 0}</span></button></div></div>
+        <CategoryNavigation selected={query || favoritesOnly ? null : category} choose={chooseCategory} />
         <div className="menu-layout">
-          <div className="menu-content"><div className="category-title"><h2>{query ? 'Resultados da busca' : selected.name}<span>{matching.length} {matching.length === 1 ? 'opção' : 'opções'}</span></h2></div>
-            {!query && selected.id === '274528' && <p className="category-intro">Escolha seu tamanho e combine até 2 sabores nas pizzas Grande e Média. O valor é a média dos sabores escolhidos.</p>}
-            {!query && !!selected.pending.length && <div className="notice"><Info size={18} /><p>{selected.pending.join(' ')}</p></div>}
+          <div className="menu-content"><div className="category-title"><h2>{favoritesOnly ? 'Seus favoritos' : query ? 'Resultados da busca' : selected.name}<span>{matching.length} {matching.length === 1 ? 'opção' : 'opções'}</span></h2></div>
+            {!query && !favoritesOnly && selected.id === '274528' && <p className="category-intro">Escolha seu tamanho e combine até 2 sabores nas pizzas Grande e Média. O valor é a média dos sabores escolhidos.</p>}
+            {!query && !favoritesOnly && !!selected.pending.length && <div className="notice"><Info size={18} /><p>{selected.pending.join(' ')}</p></div>}
             {query && <p className="category-intro">Resultados em todas as categorias para “{query}”.</p>}
             {matching.length ? <>
-              <div className="product-grid" id="menu-products">
+              <div className="product-grid" id="menu-products" key={`${category}:${favoritesOnly}`}>
                 {visibleProducts.map(p => <ProductCard key={p.id} product={p} at={ready ? now : undefined} />)}
               </div>
               <div className="menu-pagination">
@@ -80,11 +87,12 @@ export function Storefront() {
                   {showAll ? 'Ver menos' : 'Ver mais'}{showAll ? <ArrowUp size={18} /> : <ArrowDown size={18} />}
                 </button>}
               </div>
-            </> : <div className="no-results"><Search size={32} strokeWidth={1.3} /><h3>Nenhum item por aqui.</h3><p>Tente outro nome, ingrediente ou categoria.</p><button className="text-button" onClick={() => searchMenu('')}>Limpar pesquisa<ArrowRight size={16} /></button></div>}
+            </> : favoritesOnly ? <div className="no-results"><Heart size={32} strokeWidth={1.3} /><h3>{query ? 'Nenhum favorito nesta busca.' : 'Seus favoritos ficam aqui.'}</h3><p>Toque no coração de um prato para salvá-lo neste navegador.</p><button className="text-button" onClick={() => { setFavoritesOnly(false); searchMenu(''); }}>Explorar o cardápio<ArrowRight size={16} /></button></div> : <div className="no-results"><Search size={32} strokeWidth={1.3} /><h3>Nenhum item por aqui.</h3><p>Tente outro nome, ingrediente ou categoria.</p><button className="text-button" onClick={() => searchMenu('')}>Limpar pesquisa<ArrowRight size={16} /></button></div>}
             <div className="menu-end"><a href="#cardapio">Voltar às categorias ↑</a></div>
           </div>
           <div className="desktop-cart">{ready ? <CartPanel /> : <div className="cart-loading">Carregando seu pedido…</div>}</div>
         </div></section>
+        <ComboShowcase />
         <StorefrontManifesto />
         <section className="house-selection" id="destaques" aria-labelledby="selection-heading">
           <div className="section-heading"><div><p className="section-kicker">Para abrir o apetite</p><h2 id="selection-heading">Boas escolhas.<br /><span>Melhores momentos.</span></h2></div><a className="section-link" href="#cardapio">Explorar o cardápio<ArrowRight size={18} /></a></div>

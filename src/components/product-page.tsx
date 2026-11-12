@@ -8,6 +8,7 @@ import type { Product } from '@/data/types';
 import { useCart } from '@/lib/cart';
 import { BrandLogo } from './brand-logo';
 import { ProductCustomizer } from './product-customizer';
+import { FavoriteButton } from './favorite-button';
 
 export function ProductPage({ product }: { product: Product }) {
   const searchParams = useSearchParams();
@@ -38,12 +39,12 @@ export function ProductPage({ product }: { product: Product }) {
     <a href="#produto" className="skip-link">Ir para o produto</a>
     <header className="site-header"><div className="header-inner">
       <Link href="/" className="brand" aria-label="Passira, início"><BrandLogo /></Link>
-      <Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b>{count}</b></Link>
+      <Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b key={count} className="cart-count-feedback">{count}</b></Link>
     </div></header>
     <main id="produto" className="product-page-container">
-      <Link href={editId ? '/finalizar/' : menuHref} className="checkout-back"><ArrowLeft size={18} />{editId ? 'Voltar ao carrinho' : 'Voltar ao cardápio'}</Link>
+      <div className="product-page-tools"><Link href={editId ? '/finalizar/' : menuHref} className="checkout-back"><ArrowLeft size={18} />{editId ? 'Voltar ao carrinho' : 'Voltar ao cardápio'}</Link><FavoriteButton productId={product.id} ready={ready} compact={false} /></div>
       {!ready ? <div className="checkout-loading" role="status">Carregando produto…</div> : completed ? <section className="product-added" aria-labelledby="product-added-title">
-        <div className="product-added-icon"><Check size={32} /></div>
+        <div className="product-added-icon" aria-hidden="true"><Check size={32} /></div>
         <p className="eyebrow">SEU PEDIDO ESTÁ SENDO MONTADO</p>
         <h1 id="product-added-title" ref={confirmation} tabIndex={-1}>{editId ? 'Item atualizado!' : 'Adicionado ao carrinho!'}</h1>
         <p>{product.name.trim()} já está no seu pedido. Você pode escolher mais produtos ou seguir para o carrinho.</p>
