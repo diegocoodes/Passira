@@ -5,6 +5,7 @@ out/
 *.tsbuildinfo
 *.tar.gz
 test-results/
+.taste-skill/
 .sites/
 .vercel/
 !.env.example

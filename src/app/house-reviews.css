@@ -1,0 +1,101 @@
+/* The existing Passira brand, with a shared content edge and editorial compositions. */
+.passira-storefront .restaurant-story, .passira-storefront .customer-reviews { --action: #007d40; --bg: white; --ink: #063f2c; --line-strong: #007d4033; --section-edge: clamp(24px, 5vw, 80px); border-radius: 0; }
+.passira-storefront .restaurant-story { display: block; margin: 0; padding: 64px var(--section-edge); overflow: hidden; background: #f3f8f2; }
+.house-section-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 48px; }
+.passira-storefront .house-section-heading .section-kicker { color: #b81420; margin-bottom: 12px; }
+.passira-storefront .house-section-heading h2, .passira-storefront .customer-reviews .reviews-heading h2 { margin: 0; font: 600 clamp(44px, 4.5vw, 64px)/1.02 var(--display); letter-spacing: -.5px; color: #063f2c; }
+.house-section-heading > p { flex-shrink: 0; color: #3f654a; font-size: 16px; line-height: 1.6; }
+.house-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+.house-information { display: flex; flex-direction: column; min-width: 0; gap: 32px; }
+.restaurant-story-copy h3 { margin: 0; color: #063f2c; font: 600 clamp(32px, 3vw, 44px)/1.08 var(--display); }
+.passira-storefront .restaurant-story-copy > p:not(.section-kicker) { max-width: 100%; margin-top: 20px; font-size: 16px; line-height: 1.75; color: #284732; }
+.passira-storefront .restaurant-details { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin: 24px 0 0; padding: 0; border: 0; }
+.passira-storefront .restaurant-details > div { display: grid; grid-template-columns: 80px minmax(0, 1fr); align-items: baseline; gap: 16px; padding-block: 12px; border-bottom: 1px solid #007d4020; }
+.restaurant-details dt { color: #53665a; font-size: 13px; font-weight: 400; }
+.restaurant-details dd { margin: 0; color: #063f2c; font-size: 16px; line-height: 1.6; }
+.restaurant-details address { font-style: normal; }
+.passira-storefront .restaurant-details a { display: inline-flex; align-items: center; min-height: 44px; color: #063f2c; font-size: 16px; }
+.passira-storefront .restaurant-actions { margin: 24px 0 0; gap: 16px 24px; }
+.passira-storefront .visit-button { min-height: 48px; padding-inline: 24px; font-size: 14px; border-radius: 30px; }
+.passira-storefront .restaurant-menu-link { min-height: 48px; font-size: 14px; }
+.house-facade { display: block; width: 100%; margin-top: auto; background: #e6ede7; border-radius: 0; }
+.house-facade > img { display: block; width: 100%; height: auto; aspect-ratio: 1280 / 591; object-fit: cover; }
+.passira-storefront .restaurant-story .restaurant-photo { position: relative; display: block; padding: 0; min-width: 0; margin: 0; overflow: hidden; border-radius: 0; }
+.passira-storefront .restaurant-story .restaurant-photo::before { content: none; }
+.house-interior-link { position: relative; display: block; width: 100%; height: 100%; min-height: 560px; background: #e6ede7; }
+.passira-storefront .restaurant-story .restaurant-photo .restaurant-interior { position: absolute; bottom: 0; left: 0; display: block; width: 100%; height: 100%; min-height: 560px; aspect-ratio: auto; border-radius: 0; object-fit: cover; object-position: center bottom; }
+.passira-storefront .restaurant-story .restaurant-photo .restaurant-interior[data-source="google-maps"] { height: 165%; }
+.passira-storefront .customer-reviews { padding: 64px var(--section-edge); background: white; }
+.passira-storefront .reviews-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
+.passira-storefront .customer-reviews .section-kicker { margin-bottom: 12px; color: #b81420; }
+.passira-storefront .review-rating { padding: 0; gap: 16px; border: 0; border-radius: 0; background: transparent; color: #063f2c; }
+.passira-storefront .review-rating > strong { font: 600 52px/1 var(--display); color: #063f2c; letter-spacing: -.5px; }
+.passira-storefront .review-rating > strong small { color: #53665a; font-size: 16px; }
+.passira-storefront .review-rating p { gap: 0; font-size: 13px; }
+.passira-storefront .review-rating a { min-height: 44px; color: #006b36; font-size: 13px; }
+.passira-storefront .reviews-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 0 64px; margin-top: 48px; }
+.passira-storefront .review-card { display: flex; flex-direction: column; min-width: 0; min-height: 0; padding: 24px 0; border: 0; border-bottom: 1px solid #007d4026; border-radius: 0; background: white; box-shadow: none; }
+.passira-storefront .review-card:first-child { grid-column: 1; grid-row: 1 / 3; padding: 32px; border: 0; background: #f3f8f2; }
+.passira-storefront .review-card:nth-child(2) { grid-column: 2; grid-row: 1; padding-top: 0; }
+.passira-storefront .review-card:nth-child(3) { grid-column: 2; grid-row: 2; padding-bottom: 0; border-bottom: 0; }
+.passira-storefront .review-card-top { align-items: center; }
+.passira-storefront .review-card-top > svg { width: 24px; height: 24px; color: #b81420; }
+.passira-storefront .review-card-featured .review-card-top > svg { width: 44px; height: 44px; }
+.passira-storefront .review-stars { margin: 0; gap: 4px; color: #007d40; }
+.passira-storefront .review-card blockquote { margin: 16px 0 24px; color: #284732; font-size: 17px; line-height: 1.65; }
+.passira-storefront .review-card-featured blockquote { margin: 32px 0; color: #063f2c; font: 600 clamp(28px, 2.7vw, 40px)/1.25 var(--display); }
+.review-card-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin-top: auto; }
+.passira-storefront .review-author { display: flex; align-items: center; gap: 12px; margin: 0; padding: 0; border: 0; }
+.passira-storefront .review-author img { display: block; width: 48px; height: 48px; border-radius: 50%; }
+.passira-storefront .review-author strong { color: #063f2c; font-size: 15px; }
+.passira-storefront .review-author p { margin-top: 3px; font-size: 13px; color: #53665a; }
+.passira-storefront .review-source { display: inline-flex; align-items: center; gap: 8px; margin: 0; min-height: 44px; color: #006b36; font-size: 13px; }
+.passira-storefront .reviews-note { margin-top: 32px; padding-top: 0; border: 0; max-width: 100%; color: #53665a; font-size: 13px; line-height: 1.7; }
+.restaurant-credits { max-width: 360px; color: white; font-size: 12px; line-height: 1.7; }
+.restaurant-credits summary { display: flex; align-items: center; min-height: 44px; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.restaurant-credits summary::after { content: '+'; margin-left: 12px; font-size: 16px; }
+.restaurant-credits[open] summary::after { content: '−'; }
+.restaurant-credits ul { margin: 0; padding: 0 0 8px 16px; }
+.restaurant-credits a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1180px) { .house-layout { gap: 24px; } .passira-storefront .reviews-grid { gap: 0 32px; } .review-card-bottom { align-items: flex-start; flex-direction: column; } }
+@media (max-width: 1000px) {
+  .passira-storefront .restaurant-story, .passira-storefront .customer-reviews { padding-block: 48px; }
+  .house-section-heading, .passira-storefront .reviews-heading { align-items: flex-start; flex-direction: column; gap: 24px; }
+  .house-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .house-information { display: flex; gap: 32px; }
+  .house-facade { margin: 0; }
+  .house-interior-link { min-height: 0; height: auto; aspect-ratio: 1.6; }
+  .passira-storefront .restaurant-story .restaurant-photo .restaurant-interior { height: 100%; min-height: 0; aspect-ratio: auto; }
+  .passira-storefront .review-card:first-child { padding: 24px; }
+  .passira-storefront .review-rating > strong { font-size: 44px; }
+}
+@media (max-width: 640px) {
+  .passira-storefront .restaurant-story, .passira-storefront .customer-reviews { --section-edge: 24px; padding-block: 40px; }
+  .house-section-heading { margin-bottom: 32px; }
+  .passira-storefront .house-section-heading h2, .passira-storefront .customer-reviews .reviews-heading h2 { font-size: 42px; }
+  .house-section-heading > p { font-size: 16px; }
+  .house-information { display: flex; gap: 32px; }
+  .restaurant-story-copy h3 { font-size: 32px; }
+  .passira-storefront .restaurant-story-copy > p:not(.section-kicker) { margin-top: 16px; }
+  .passira-storefront .restaurant-details > div { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; }
+  .passira-storefront .restaurant-actions { align-items: stretch; flex-direction: column; gap: 8px; }
+  .passira-storefront .restaurant-actions > a { width: 100%; justify-content: center; }
+  .house-facade { order: 1; }
+  .house-interior-link { aspect-ratio: 1; }
+  .passira-storefront .reviews-grid { display: flex; flex-direction: column; margin-top: 32px; gap: 0; }
+  .passira-storefront .review-card:first-child { margin-bottom: 8px; padding: 24px; }
+  .passira-storefront .review-card:nth-child(2), .passira-storefront .review-card:nth-child(3) { padding-block: 24px; }
+  .passira-storefront .review-card-featured blockquote { margin-block: 24px; font-size: 30px; }
+  .review-card-bottom { gap: 8px; }
+  .passira-storefront .review-card blockquote { font-size: 17px; }
+  .passira-storefront .review-card-featured blockquote { font-size: 30px; }
+  .passira-storefront .review-rating > strong { font-size: 40px; }
+}
+@media (max-width: 360px) { .passira-storefront .restaurant-story, .passira-storefront .customer-reviews { --section-edge: 20px; } .passira-storefront .house-section-heading h2, .passira-storefront .customer-reviews .reviews-heading h2 { font-size: 38px; } .passira-storefront .review-card:first-child { padding: 20px; } }
+
+.passira-storefront .review-rating > strong { font-size: 38px; }
+.passira-storefront .reviews-menu-button { margin-top: 24px; min-height: 48px; border-radius: 30px; padding-inline: 24px; font-size: 14px; background: #007d40; color: white; border: 1px solid #007d40; }
+@media (max-width: 640px) { .passira-storefront .reviews-menu-button { width: 100%; justify-content: center; } }
+
+.passira-storefront .restaurant-story { padding-bottom: 32px; }
+.passira-storefront .customer-reviews { padding-top: 32px; }

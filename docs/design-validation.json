@@ -1,0 +1,1364 @@
+{
+  "scope": "Redesign of Nossa casa and customer reviews in the existing Passira storefront. Full-page findings are retained below and are not reported as passed.",
+  "generatedAt": "2026-11-13T16:37:42.440Z",
+  "gate": {
+    "result": "GATE: OPEN 99 (rounds used up)",
+    "round": 3,
+    "maxRounds": 3,
+    "openCount": 99,
+    "warningCount": 49,
+    "open": [
+      {
+        "check": "empty-visual",
+        "where": "nav#category-track > button:nth-of-type(14) > span.category-photo > img \"2169153.webp\"",
+        "message": "the picture 2169153.webp never loaded: its frame shows empty (and 2 more like it: \"2172237.webp\", \"2169207.webp\")",
+        "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "empty-visual",
+        "where": "nav#category-track > button:nth-of-type(15) > span.category-photo > img \"salada-fresca.webp\"",
+        "message": "the picture salada-fresca.webp never loaded: its frame shows empty",
+        "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "hero-fill",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container > section.menu-section \"NOSSO CARDÁPIO.\"",
+        "message": "the next section shows on the first screen: it starts at 840px on a 900px screen (the hero ends at 816px)",
+        "fix": "let the hero fill the first screen alone (min-height: 100svh, less above it): nothing of the next section on load",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "flush",
+        "where": "section.menu-section > div.menu-layout > div.desktop-cart > aside.cart-panel \"Seu pedido 0 Retirada Entrega Seu pedido\"",
+        "message": "its last line sits 0px above the lower edge of section.menu-section, where the ground changes to section.storefront-manifesto",
+        "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "spill",
+        "where": "main.storefront-main > section.hero > div.hero-inner > a.hero-quick-order \"Bateu a fome? PEÇA AQUI\"",
+        "message": "runs 55px past the right edge of the panel it sits on (div.hero-inner > figure.hero-feast > div.hero-pizza > img)",
+        "fix": "keep the box inside the panel it starts on: shrink it, or grow the panel to hold it",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "spill",
+        "where": "section#destaques > div.selection-ornament.selection-ornament-left > svg.lucide.lucide-leaf",
+        "message": "runs 18px past the right edge of the panel it sits on (section#destaques > div.selection-ornament.selection-ornament-left > svg.lucide.lucide-pizza)",
+        "fix": "keep the box inside the panel it starts on: shrink it, or grow the panel to hold it",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "spill",
+        "where": "section#destaques > div.selection-ornament.selection-ornament-right > svg.lucide.lucide-leaf",
+        "message": "runs 21px past the bottom edge of the panel it sits on (section#destaques > div.selection-ornament.selection-ornament-right > svg.lucide.lucide-pizza)",
+        "fix": "keep the box inside the panel it starts on: shrink it, or grow the panel to hold it",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "overlap-text",
+        "where": "div.product-card-copy > div.product-card-bottom > div.product-card-price > small \"A partir de\"",
+        "message": "lies over the text \"Muçarela derretida, orégano fresquinho e\" (div.product-card-copy > p) (and 6 more like it: \"A partir de\", \"A partir de\", \"A partir de\", \"A partir de\", ...)",
+        "fix": "move the box off the text (or the text off the box)",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "cut-text",
+        "where": "main.storefront-main > div.story-ribbon > span:nth-of-type(3) > strong \"PASSIRA SAN MARTIN\"",
+        "message": "cut 112px at the right by the overflow of div.passira-storefront > main.storefront-main > div.story-ribbon",
+        "fix": "give the text room: no overflow clipping a line, no line past its box",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "div#menu-products > article.product-card:nth-of-type(1) \"Mussarela Muçarela derretida, orégano fr\"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "div#menu-products > article.product-card:nth-of-type(2) \"Calabresa Muçarela derretida que abraça \"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "div#menu-products > article.product-card:nth-of-type(3) \"ITALIANA Muçarela derretida que abraça a\"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "div#menu-products > article.product-card:nth-of-type(4) \"Cheddar Muçarela derretida com uma camad\"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "div#menu-products > article.product-card:nth-of-type(5) \"Banana Nevada Massa quentinha coberta co\"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "div#menu-products > article.product-card:nth-of-type(6) \"Chocolate c/ morangos Quem ama chocolate\"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "h2#selection-heading \"Favoritos da casa\"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "section#destaques > div.selection-grid > article.product-card.featured-product:nth-of-type(1) \"ITALIANA Muçarela derretida que abraça a\"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "section#destaques > div.selection-grid > article.product-card.featured-product:nth-of-type(2) \"Frango Supremo, 2 Pessoas Filé de frango\"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "scroll-reveal",
+        "where": "section#destaques > div.selection-grid > article.product-card.featured-product:nth-of-type(3) \"Carne de Sol Simples Inteira, 3 Pessoas \"",
+        "message": "starts an animation (0.3 s) the moment it is scrolled into view (an IntersectionObserver)",
+        "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "button-styles",
+        "where": "(one screen)",
+        "message": "3 button styles on one screen: pill, fill #063f2c, outline #ffffff (\"Meu pedido 0\"); pill, fill #ffffff, outline #007d40 (\"Ver mais\"); pill, fill #171717 (\"Encontre seu favorito\"); the odd one out: \"Encontre seu favorito\"",
+        "fix": "one primary and one secondary button: one shape, one height per size, one label size",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "button-styles",
+        "where": "(the page)",
+        "message": "7 button styles on the page: pill, fill #063f2c, outline #ffffff x1 (\"Meu pedido 0\"); pill, fill #ffffff, outline #ffffff x1 (\"Ver cardápio\"); pill, fill #ffffff, outline #007d40 x1 (\"Ver mais\"); pill, fill #171717 x1 (\"Encontre seu favorito\"); pill, fill #bd1422, outline #ffffff x1 (\"Ver menu completo\"); pill, fill #007d40 x1 (\"Como chegar\"); pill, fill #007d40, outline #007d40 x1 (\"Escolher meu pedido\")",
+        "fix": "one primary and one secondary button: one shape, one height per size, one label size",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "copy-headline",
+        "where": "h1#hero-heading \"SABOR QUE CHEGA ATÉ VOCÊ.\"",
+        "message": "\"SABOR QUE CHEGA ATÉ VOCÊ.\" does not name what is sold (pizzaria e restaurante, pizzaria, restaurante, from flags)",
+        "fix": "put the category noun in the h1 (and who it is for, or where), in 2 to 8 words",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "copy-headings",
+        "where": "section.menu-section > div.menu-toolbar > div:nth-of-type(1) > h2 \"NOSSO CARDÁPIO.\"",
+        "message": "\"NOSSO CARDÁPIO.\" names no product, part, place or section (6 headings like it; at most one brand line per page) (and 5 more like it: \"Categorias\", \"Seu pedido\", \"Favoritos da casa\", \"Nossa casa\", ...)",
+        "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "heading-scale",
+        "where": "article.product-card:nth-of-type(1) > a.product-card-link > div.product-card-copy > h3 \"Mussarela\"",
+        "message": "an h3 at 25px, as large as the smallest h2 (13px) or larger (and 2 more like it: \"Calabresa\", \"ITALIANA\")",
+        "fix": "size headings by level: the h1 largest, one size per level, each level below the one above",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "heading-scale",
+        "where": "section.menu-section > div.menu-toolbar > div:nth-of-type(1) > h2 \"NOSSO CARDÁPIO.\"",
+        "message": "h2 headings in 6 sizes, 13px (\"Categorias\") to 68px (x5.23)",
+        "fix": "size headings by level: the h1 largest, one size per level, each level below the one above",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "stagger",
+        "where": "div.menu-layout > div.menu-content > div.category-title > h2 \"Pizzas52 opções\"",
+        "message": "the 2 lines of this heading start at 30, 115px: a headline broken across columns, read in a zigzag",
+        "fix": "start every row of the list on one left edge",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "off-grid",
+        "where": "div#menu-products > article.product-card:nth-of-type(1) > a.product-card-link > div.product-card-copy \"Mussarela Muçarela derretida, orégano fr\"",
+        "message": "left edge at 40px, 10px off a common edge of its section at 30px (7 elements, like div.product-card-visual); 1 more in this section off the grid too (div.product-card-copy at 40px)",
+        "fix": "move it onto the page margin, or the column edge its section uses",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "tilt",
+        "where": "main.storefront-main > section.hero > div.hero-inner > a.hero-quick-order \"Bateu a fome? PEÇA AQUI\"",
+        "message": "rotated -9.0° (and 2 more like it: \"img: 380075.webp\", div.selection-ornament.selection-ornament-left)",
+        "fix": "set it straight",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "tilt",
+        "where": "main.storefront-main > div.page-container > section.storefront-manifesto > img.manifesto-photo.manifesto-photo-dish \"img: 2169126.webp\"",
+        "message": "rotated 9.0° (and 1 more like it: div.selection-ornament.selection-ornament-right)",
+        "fix": "set it straight",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "contrast",
+        "where": "section.hero > div.hero-inner > div.hero-delivery-art > span \"Seu sabor favorito está a caminho.\"",
+        "message": "body text over a effect reads at 3.9:1 at its worst tenth (needs 4.5:1) (and 1 more like it: \"San Martin, Recife\")",
+        "fix": "put the text on a calm part of the picture, or on a solid panel",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "text-contrast",
+        "where": "section.menu-section > div.menu-layout > div.menu-content > p.category-intro \"Escolha seu tamanho e combine até 2 sabo\"",
+        "message": "body text in #606060 on #ffffff reads 6.29:1 (needs 7:1)",
+        "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "section-gaps",
+        "where": "div.passira-storefront > main.storefront-main > section.hero / div.passira-storefront > main.storefront-main > div.page-container > section.menu-section",
+        "message": "158px between these sections, +204% against the median 52px of gaps at a change of ground",
+        "fix": "use one gap between sections (all within 25% of each other)",
+        "widths": [
+          1440,
+          390
+        ]
+      },
+      {
+        "check": "links",
+        "where": "div.passira-storefront > header.site-header > div.header-inner > a.brand \"Passira, início\"",
+        "message": "\"Passira, início\" goes to \"#\", nowhere",
+        "fix": "point every link at a real section, page or file",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "links",
+        "where": "footer.site-footer > div.page-container.footer-content > div.footer-brand > a.footer-logo \"Passira, início\"",
+        "message": "\"Passira, início\" goes to \"#\", nowhere",
+        "fix": "point every link at a real section, page or file",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "photo-upscale",
+        "where": "div.house-layout > figure.restaurant-photo > a.m-zoom.house-interior-link > img.restaurant-interior \"img: Salão da Passira San Martin, com me\"",
+        "message": "interior-san-martin-800.webp: 662x883 shown at 636x1298, blown up 1.47x",
+        "fix": "use a source at least as wide as the picture is shown (twice that for sharp screens)",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "street-number",
+        "where": "aside.cart-panel > div.pickup-note > div > p \"Av. General San Martin, 1656\"",
+        "message": "a street with its house number: \"Av. General San Martin, 1656\"; a real door, which the brief does not give (and 1 more like it: dl.restaurant-details > div:nth-of-type(1) > dd > address)",
+        "fix": "print the street and the district only (\"Weserstraße, Berlin-Neukölln\"): no house number, unless the brief gives the address",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "field-label",
+        "where": "div.menu-toolbar:nth-of-type(2) > div.menu-discovery-tools:nth-of-type(2) > label.search-field > input",
+        "message": "a input[type=search] without a label you can see: its <label> is hidden",
+        "fix": "put a <label for> with the field's name above it (references/system.md, Forms); a placeholder is no label",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "focus-ring",
+        "where": ".checkout-section-heading h2:focus",
+        "message": "\".checkout-section-heading h2:focus\" in 24ur1eh8n-qs1.css removes the focus outline and sets nothing in its place",
+        "fix": "keep the kit's :focus-visible ring, or put a change of the same strength (a 2px line in --action) in the rule that removes it",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "focus-ring",
+        "where": ".product-detail .product-title:focus, .product-added h1:focus",
+        "message": "\".product-detail .product-title:focus, .product-added h1:focus\" in 24ur1eh8n-qs1.css removes the focus outline and sets nothing in its place",
+        "fix": "keep the kit's :focus-visible ring, or put a change of the same strength (a 2px line in --action) in the rule that removes it",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "focus-visible",
+        "where": "div.passira-storefront:nth-of-type(2) > header.site-header > div.header-inner > a.brand:nth-of-type(1) \"Passira, início\"",
+        "message": "Tab stop 2, a \"Passira, início\": its focus change is faint: 1.14:1 against the ground, 3:1 needed",
+        "fix": "keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "focus-visible",
+        "where": "div.passira-storefront:nth-of-type(2) > header.site-header > div.header-inner > a.header-cart:nth-of-type(2) \"Abrir carrinho, 0 itens\"",
+        "message": "Tab stop 8, a \"Abrir carrinho, 0 itens\": its focus change is faint: 1.14:1 against the ground, 3:1 needed",
+        "fix": "keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "focus-visible",
+        "where": "div.menu-toolbar:nth-of-type(2) > div.menu-discovery-tools:nth-of-type(2) > label.search-field > input \"Buscar no cardápio\"",
+        "message": "Tab stop 12, input \"Buscar no cardápio\": it shows no change when focused",
+        "fix": "keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "focus-visible",
+        "where": "div#menu-products > article.product-card:nth-of-type(1) > a.product-card-link \"Ver Mussarela\"",
+        "message": "Tab stop 32, a \"Ver Mussarela\": the focus lands on something you cannot see",
+        "fix": "keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "run-on",
+        "where": "div.menu-layout:nth-of-type(3) > div.menu-content:nth-of-type(1) > div.category-title:nth-of-type(1) > h2 \"Pizzas52 opções\"",
+        "message": "\"Pizzas | 52 opções\": the heading runs its first sentence into the grey second one with no stop",
+        "fix": "end the heading's first sentence with a full stop before its grey second one (\"Rooms and prices. Breakfast included.\")",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "hero-enter",
+        "where": "div.passira-storefront > main.storefront-main > section.hero",
+        "message": "the hero does not enter on load: no data-enter on the hero and no head line setting html.m-enter (motion.md, The hero's entrance)",
+        "fix": "put data-enter on the hero <section> and keep the head line from starter.html that sets html.m-enter",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "hero-screen",
+        "where": "div.passira-storefront > main.storefront-main > section.hero \"Sabor que chegaaté você.Ver cardápioRast\"",
+        "message": "the hero ends at 816px on a 900px screen, 84px above the fold: it ends at the fold, 1px either way (SR-1)",
+        "fix": "make the hero exactly one screen (height: 100svh, its content fitted inside), never taller or shorter",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "hero-screen",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container \"CardápioDestaquesA PassiraAvaliaçõesFeit\"",
+        "message": "60px of the next section shows on the first screen (from 840px on a 900px screen): nothing below the hero shows at load (SR-1)",
+        "fix": "end the hero at the fold so nothing of the next section shows at load (hero height: 100svh)",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "section-height",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container \"CardápioDestaquesA PassiraAvaliaçõesFeit\"",
+        "message": "the section is 2828px tall (3.1 screens), 1028px over two screens (1800px): every section after the hero is one screen or two, 2px either way (SR-2)",
+        "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "section-height",
+        "where": "div.passira-storefront > main.storefront-main > div.story-ribbon \"Feito para reunirPassira San MartinSabor\"",
+        "message": "the section is 50px tall (0.1 screens), 850px short of one screen (900px): every section after the hero is one screen or two, 2px either way (SR-2)",
+        "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "section-height",
+        "where": "div.passira-storefront > footer.site-footer \"Pizzaria e restaurante em San Martin, Re\"",
+        "message": "the section is 218px tall (0.2 screens), 683px short of one screen (900px): every section after the hero is one screen or two, 2px either way (and 2 more like it: \"Quem já veio à PassiraAv\", \"Passira San MartinNossa \") (SR-2)",
+        "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "section-height",
+        "where": "section#avaliacoes \"Quem já veio à PassiraAvaliações dos cli\"",
+        "message": "the section starts at 4743px, 243px below the screen grid (5 x 900px): sections start on whole screens (SR-2)",
+        "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "section-height",
+        "where": "section#a-passira \"Passira San MartinNossa casaPizzaria e r\"",
+        "message": "the section starts at 3718px, 118px below the screen grid (4 x 900px): sections start on whole screens (and 4 more like it: \"Sabor que chegaaté você.\", \"Pizzaria e restaurante e\", \"Feito para reunirPassira\") (SR-2)",
+        "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "section-air",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container / div.passira-storefront > main.storefront-main > div.story-ribbon",
+        "message": "52px of air between the content of these two sections: 128-480px (64-600px WARN) (SR-3)",
+        "fix": "keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "section-air",
+        "where": "main.storefront-main > div.page-container > section.menu-section > div.menu-toolbar \"Feito para dar água na bocaNosso cardápi\"",
+        "message": "a bottom border across 100% of the container, between the section's content: sections and their parts are told apart by air and ground, not lines (SR-3)",
+        "fix": "take the rule out: sections and their parts are parted by their ground and the air between them",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "one-section",
+        "where": "section.menu-section > div.menu-toolbar > div:nth-of-type(1) > h2 \"Nosso cardápio.\"",
+        "message": "the screen at scroll 118px (the top of section 1) shows 178px of section 2 and the heading of section 2 whole and the content of 2 sections, over 24px each beside section 1: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+        "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "one-section",
+        "where": "div.passira-storefront > footer.site-footer \"Pizzaria e restaurante em San Martin, Re\"",
+        "message": "the screen at scroll 4743px (the top of section 5) shows 127px of section 6 and the content of 2 sections, over 24px each beside section 5: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+        "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "one-section",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container \"CardápioDestaquesA PassiraAvaliaçõesFeit\"",
+        "message": "the screen at scroll 3600px (stride 4) shows 68px of section 2 and the content of 2 sections, over 24px each beside section 4: a screen shows one section (another may peek 8px, 24px WARN) (and 3 more like it: scroll 0px, scroll 3668px, scroll 4500px) (SR-4)",
+        "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "one-section",
+        "where": "div.passira-storefront > main.storefront-main > div.story-ribbon \"Feito para reunirPassira San MartinSabor\"",
+        "message": "a <div> sits directly in <main>: every part of <main> is a <section> (SR-4)",
+        "fix": "put every block of <main> in a <section>, and give a band its own section instead of a ground inside one",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "one-section",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container > section.menu-section \"Feito para dar água na bocaNosso cardápi\"",
+        "message": "a band: a box 100% of the section wide on a ground of its own that holds the heading or the intro: the section's own ground is the band (SR-4)",
+        "fix": "put every block of <main> in a <section>, and give a band its own section instead of a ground inside one",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "one-heading",
+        "where": "section.menu-section > section.category-navigation > div.category-navigation-heading > h2 \"Categorias\"",
+        "message": "the section holds 5 h2 headings: one per section, first in its .wrap (SR-5)",
+        "fix": "give each section one h2, first in its .wrap, and the hero only its h1",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "container-edges",
+        "where": "div.passira-storefront > main.storefront-main > div.story-ribbon \"Feito para reunirPassira San MartinSabor\"",
+        "message": "the content of section 3 runs 0px from the left and 0px from the right (read from its outermost blocks: no .wrap): the page's container starts at 40px; the margin is 64-120px at 1440px (one container, equal margins, 2px either way) (SR-6)",
+        "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "container-edges",
+        "where": "div.passira-storefront > header.site-header \"CardápioA PassiraAvaliaçõesMeus pedidosM\"",
+        "message": "the nav's content runs 84px from the left and 84px from the right (read from its outermost blocks: no .wrap): the page's container starts at 40px (one container, equal margins, 2px either way) (and 5 more like it: \"CardápioDestaquesA Passi\", \"Passira San MartinNossa \", \"Quem já veio à PassiraAv\") (SR-6)",
+        "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "container-edges",
+        "where": "div.passira-storefront \"Pular aberturaÉ Passira.PIZZARIA E RESTA\"",
+        "message": "a <div> at the top of the page, outside header.nav, main, footer.closing and nav.actionbar (SR-6)",
+        "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "container-edges",
+        "where": "div.passira-storefront > main.storefront-main > section.hero \"Sabor que chegaaté você.Ver cardápioRast\"",
+        "message": "the section needs exactly one in-flow child .wrap (it has 1 in-flow child, 0 .wrap) (and 5 more like it: \"CardápioDestaquesA Passi\", \"Feito para reunirPassira\", \"Passira San MartinNossa \") (SR-6)",
+        "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "container-edges",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container > section.menu-section \"Feito para dar água na bocaNosso cardápi\"",
+        "message": "a box runs 0-1440px, outside the container lines of section 2 at 30-1414px: full width is for background layers and grounds only (SR-6)",
+        "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "container-edges",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container > section.storefront-manifesto \"Passira.Pizza para dividir. Pratos para \"",
+        "message": "a box runs 0-1440px, outside the container lines of section 2 at 30-1414px: full width is for background layers and grounds only (and 1 more like it: \"Para abrir o apetiteFavo\") (SR-6)",
+        "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "container-edges",
+        "where": "main.storefront-main > div.page-container > section.storefront-manifesto > span.manifesto-wordmark \"Passira.\"",
+        "message": "1 text block starts on a left line at x 685, 645px from the container's left: text starts on the container's left, or on one split line (x 617, 732, 847) (and 8 more like it: x 668, x 572, \"Favoritos da casa\") (SR-6)",
+        "fix": "start the text on the container's left, or on the one split line every split shares",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "container-edges",
+        "where": "div.hero-inner > figure.hero-feast > div.hero-pizza > img \"Composição ilustrativa de uma mão segura\"",
+        "message": "a <img> over half the container wide runs 462-1305px, not on the container's lines at 40-1400px (and 3 more like it: \"Feito para dar água na b\", \"Passira.Pizza para divid\", \"Para abrir o apetiteFavo\") (SR-6)",
+        "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "row-lines",
+        "where": "div#menu-products \"MussarelaMuçarela derretida, orégano fre\"",
+        "message": "a row of 3 items: its last item ends at 1112px, the container's right line at 1414px (2px either way) (SR-7)",
+        "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "row-lines",
+        "where": "section#avaliacoes > div.reviews-grid \"“Gosto demais da pizza, daqui é massa de\"",
+        "message": "a row of 2 items: its items are 385/193px tall, not one height (2px either way) (SR-7)",
+        "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "row-lines",
+        "where": "section#destaques > div.selection-grid \"ITALIANAMuçarela derretida que abraça a \"",
+        "message": "a row of 3 items: its first item starts at 195px, the container's left line at 30px; its last item ends at 1245px, the container's right line at 1414px (2px either way) (SR-7)",
+        "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "row-lines",
+        "where": "nav#category-track \"Pizzas52 opçõesHappy Pizza1 opçãoPromoçõ\"",
+        "message": "a sideways scroller: 1258px of it hidden behind overflow-x: auto (SR-7)",
+        "fix": "show every item inside the container, or stack them: no sideways scroller, no half-cut carousel",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "row-lines",
+        "where": "div.passira-storefront > main.storefront-main > div.story-ribbon \"Feito para reunirPassira San MartinSabor\"",
+        "message": "a clipped carousel: 1 item cut at rest (SR-7)",
+        "fix": "show every item inside the container, or stack them: no sideways scroller, no half-cut carousel",
+        "widths": [
+          1440
+        ]
+      },
+      {
+        "check": "empty-visual",
+        "where": "nav#category-track > button:nth-of-type(8) > span.category-photo > img \"carne-na-brasa.webp\"",
+        "message": "the picture carne-na-brasa.webp never loaded: its frame shows empty",
+        "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "empty-visual",
+        "where": "nav#category-track > button:nth-of-type(9) > span.category-photo > img \"2172833.webp\"",
+        "message": "the picture 2172833.webp never loaded: its frame shows empty (and 5 more like it: \"2169209.webp\", \"2169141.webp\", \"2169153.webp\", \"2172237.webp\", ...)",
+        "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "empty-visual",
+        "where": "nav#category-track > button:nth-of-type(12) > span.category-photo > img \"file-parmegiana.webp\"",
+        "message": "the picture file-parmegiana.webp never loaded: its frame shows empty",
+        "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "empty-visual",
+        "where": "nav#category-track > button:nth-of-type(13) > span.category-photo > img \"arroz-frango.webp\"",
+        "message": "the picture arroz-frango.webp never loaded: its frame shows empty",
+        "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "flush",
+        "where": "main.storefront-main > div.page-container > section.storefront-manifesto > img.manifesto-photo.manifesto-photo-dish \"img: 2169126.webp\"",
+        "message": "its first line sits 11px under the top edge of section.storefront-manifesto, where the ground changes",
+        "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "flush",
+        "where": "main.storefront-main > div.page-container > section.storefront-manifesto > img.manifesto-photo.manifesto-photo-pizza \"img: 380075.webp\"",
+        "message": "its last line sits 8px above the lower edge of section.storefront-manifesto, where the ground changes to section#destaques",
+        "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "collide",
+        "where": "article.product-card:nth-of-type(1) > a.product-card-link > div.product-card-copy > p \"Muçarela derretida, orégano fresquinho e\"",
+        "message": "the words \"Muçarela derretida, orégano fres\" lie over \"A partir de\": two lines in one place",
+        "fix": "on a phone nothing lies on anything else: let the section grow with its content (min-height for its screens, never a fixed height; --hm: 2 when it needs two) or cut what it holds; keep pictures and cards off the buttons; pad the page under a fixed bar by the bar's height (top: the first section; end: the footer)",
+        "widths": [
+          390,
+          320
+        ]
+      },
+      {
+        "check": "collide",
+        "where": "article.product-card:nth-of-type(2) > a.product-card-link > div.product-card-copy > p \"Muçarela derretida que abraça a calabres\"",
+        "message": "the words \"Muçarela derretida que abraça a \" lie over \"A partir de\": two lines in one place",
+        "fix": "on a phone nothing lies on anything else: let the section grow with its content (min-height for its screens, never a fixed height; --hm: 2 when it needs two) or cut what it holds; keep pictures and cards off the buttons; pad the page under a fixed bar by the bar's height (top: the first section; end: the footer)",
+        "widths": [
+          390,
+          320
+        ]
+      },
+      {
+        "check": "collide",
+        "where": "article.product-card:nth-of-type(3) > a.product-card-link > div.product-card-copy > p \"Muçarela derretida que abraça a carne mo\"",
+        "message": "the words \"Muçarela derretida que abraça a \" lie over \"A partir de\": two lines in one place",
+        "fix": "on a phone nothing lies on anything else: let the section grow with its content (min-height for its screens, never a fixed height; --hm: 2 when it needs two) or cut what it holds; keep pictures and cards off the buttons; pad the page under a fixed bar by the bar's height (top: the first section; end: the footer)",
+        "widths": [
+          390,
+          320
+        ]
+      },
+      {
+        "check": "collide",
+        "where": "article.product-card:nth-of-type(4) > a.product-card-link > div.product-card-copy > p \"Muçarela derretida com uma camada genero\"",
+        "message": "the words \"Muçarela derretida com uma camad\" lie over \"A partir de\": two lines in one place",
+        "fix": "on a phone nothing lies on anything else: let the section grow with its content (min-height for its screens, never a fixed height; --hm: 2 when it needs two) or cut what it holds; keep pictures and cards off the buttons; pad the page under a fixed bar by the bar's height (top: the first section; end: the footer)",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "collide",
+        "where": "article.product-card:nth-of-type(5) > a.product-card-link > div.product-card-copy > p \"Massa quentinha coberta com muçarela cre\"",
+        "message": "the words \"Massa quentinha coberta com muça\" lie over \"A partir de\": two lines in one place",
+        "fix": "on a phone nothing lies on anything else: let the section grow with its content (min-height for its screens, never a fixed height; --hm: 2 when it needs two) or cut what it holds; keep pictures and cards off the buttons; pad the page under a fixed bar by the bar's height (top: the first section; end: the footer)",
+        "widths": [
+          390,
+          320
+        ]
+      },
+      {
+        "check": "collide",
+        "where": "article.product-card:nth-of-type(6) > a.product-card-link > div.product-card-copy > p \"Quem ama chocolate e morango não resiste\"",
+        "message": "the words \"Quem ama chocolate e morango não\" lie over \"A partir de\": two lines in one place",
+        "fix": "on a phone nothing lies on anything else: let the section grow with its content (min-height for its screens, never a fixed height; --hm: 2 when it needs two) or cut what it holds; keep pictures and cards off the buttons; pad the page under a fixed bar by the bar's height (top: the first section; end: the footer)",
+        "widths": [
+          390,
+          320
+        ]
+      },
+      {
+        "check": "collide",
+        "where": "article.product-card.featured-product:nth-of-type(1) > a.product-card-link > div.product-card-copy > p \"Muçarela derretida que abraça a carne mo\"",
+        "message": "the words \"Muçarela derretida que abraça a \" lie over \"A partir de\": two lines in one place",
+        "fix": "on a phone nothing lies on anything else: let the section grow with its content (min-height for its screens, never a fixed height; --hm: 2 when it needs two) or cut what it holds; keep pictures and cards off the buttons; pad the page under a fixed bar by the bar's height (top: the first section; end: the footer)",
+        "widths": [
+          390,
+          320
+        ]
+      },
+      {
+        "check": "no-visual",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container > section.storefront-manifesto \"Passira. PIZZA PARA DIVIDIR. PRATOS PARA\"",
+        "message": "no picture, effect or mock in this section; a feature section needs a visual",
+        "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "off-grid",
+        "where": "footer.site-footer > div.page-container.footer-content > div.footer-brand > a.footer-logo",
+        "message": "left edge at 18px, 6px off the page margin at 24px (18 elements)",
+        "fix": "move it onto the page margin, or the column edge its section uses",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "off-grid",
+        "where": "footer.site-footer > div.page-container.footer-content > div.footer-brand > span \"Pizzaria e restaurante em San Martin, Re\"",
+        "message": "left edge at 18px, 6px off the page margin at 24px (18 elements)",
+        "fix": "move it onto the page margin, or the column edge its section uses",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "off-grid",
+        "where": "div.passira-storefront > footer.site-footer > div.page-container.footer-content > p \"Av. General San Martin, 1656 · San Marti\"",
+        "message": "left edge at 18px, 6px off the page margin at 24px (18 elements)",
+        "fix": "move it onto the page margin, or the column edge its section uses",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "off-grid",
+        "where": "footer.site-footer > div.page-container.footer-content > div:nth-of-type(2) > a \"Cardápio e informações em conferência\"",
+        "message": "left edge at 18px, 6px off the page margin at 24px (18 elements)",
+        "fix": "move it onto the page margin, or the column edge its section uses",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "off-grid",
+        "where": "footer.site-footer > div.page-container.footer-content > div:nth-of-type(2) > small:nth-of-type(1) \"Dados conferidos em 10/11/2026 · Fonte d\"",
+        "message": "left edge at 18px, 6px off the page margin at 24px (18 elements)",
+        "fix": "move it onto the page margin, or the column edge its section uses",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "off-grid",
+        "where": "footer.site-footer > div.page-container.footer-content > div:nth-of-type(2) > small:nth-of-type(2) \"Imagens complementares ilustrativas · Cr\"",
+        "message": "left edge at 18px, 6px off the page margin at 24px (18 elements)",
+        "fix": "move it onto the page margin, or the column edge its section uses",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "off-grid",
+        "where": "div.page-container.footer-content > div:nth-of-type(2) > details.restaurant-credits > summary \"Créditos das fotos da casa\"",
+        "message": "left edge at 18px, 6px off the page margin at 24px (18 elements)",
+        "fix": "move it onto the page margin, or the column edge its section uses",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "right-edge",
+        "where": "div.hero-inner > figure.hero-feast > div.hero-pizza > img \"img: Composição ilustrativa de uma mão s\"",
+        "message": "its right edge runs 16px past the content's right edge (366px, where 6 boxes end) (and 7 more like it: label.search-field, div.product-card-visual, div.product-card-visual, div.product-card-visual, ...)",
+        "fix": "end it on the content's right edge, like the other blocks of its section",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "tilt",
+        "where": "section#destaques > div.selection-ornament.selection-ornament-right",
+        "message": "rotated 36.0°",
+        "fix": "set it straight",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "contrast",
+        "where": "section.hero > div.hero-inner > div.hero-bottom > span \"San Martin, Recife\"",
+        "message": "body text over a effect reads at 4.0:1 at its worst tenth (needs 4.5:1) (and 1 more like it: \"Ver cardápio\")",
+        "fix": "put the text on a calm part of the picture, or on a solid panel",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "section-gaps",
+        "where": "div.passira-storefront > main.storefront-main > div.page-container > section.storefront-manifesto / section#destaques",
+        "message": "24px between these sections, -62% against the median 64px of gaps at a change of ground",
+        "fix": "use one gap between sections (all within 25% of each other)",
+        "widths": [
+          390
+        ]
+      },
+      {
+        "check": "container",
+        "where": "page",
+        "message": "no .wrap",
+        "fix": "put the content in one .wrap",
+        "widths": [
+          1440,
+          390
+        ]
+      }
+    ],
+    "waived": [
+      {
+        "check": "coordinates",
+        "where": "details.restaurant-credits > ul > li:nth-of-type(2) > a \"-8.0663198,-34.927602\"",
+        "msg": "a link holds map coordinates, in a link (www.google.com): \"-8.0663198,-34.927602\"; they point at one building on a map (not shown at this width: a closed part, a tab, a slide or a hidden link)",
+        "fix": "drop the coordinates: Get directions opens an OpenStreetMap search for the street and the district",
+        "widths": [
+          1440
+        ],
+        "from": "consistency",
+        "ids": [
+          "coordinates"
+        ],
+        "wheres": [
+          "details.restaurant-credits > ul > li:nth-of-type(2) > a \"-8.0663198,-34.927602\""
+        ],
+        "reason": "This is the existing attribution URL for the real facade photograph of this shop on Google Maps. Its coordinates belong to the original source and were not invented."
+      },
+      {
+        "check": "phone-number",
+        "where": "div.house-information > div.restaurant-story-copy > dl.restaurant-details > div:nth-of-type(3) \"(81) 3140 7400\"",
+        "msg": "a phone number after its label: \"(81) 3140 7400\"; a visitor can dial it and reach a stranger",
+        "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+        "widths": [
+          1440
+        ],
+        "from": "consistency",
+        "ids": [
+          "phone-number"
+        ],
+        "wheres": [
+          "div.house-information > div.restaurant-story-copy > dl.restaurant-details > div:nth-of-type(3) \"(81) 3140 7400\""
+        ],
+        "reason": "The real shop phone is already supplied in src/data/store.json and was displayed before this redesign. Keeping its operational contact is part of the requested scope."
+      },
+      {
+        "check": "phone-number",
+        "where": "dl.restaurant-details > div:nth-of-type(3) > dd > a.link \"tel:+558131407400\"",
+        "msg": "a tel: link calls a number in a real dialable format: \"tel:+558131407400\"; a visitor can dial it and reach a stranger",
+        "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+        "widths": [
+          1440
+        ],
+        "from": "consistency",
+        "ids": [
+          "phone-number"
+        ],
+        "wheres": [
+          "dl.restaurant-details > div:nth-of-type(3) > dd > a.link \"tel:+558131407400\""
+        ],
+        "reason": "The real shop phone is already supplied in src/data/store.json and was displayed before this redesign. Keeping its operational contact is part of the requested scope."
+      },
+      {
+        "check": "map-link",
+        "where": "div.house-information > div.restaurant-story-copy > div.restaurant-actions > a.button.btn:nth-of-type(1) \"Como chegar\"",
+        "msg": "\"Como chegar\" searches for nothing: a map of a district or a town shows nobody the door (and 4 more links with the same search)",
+        "fix": "with a street from the brief, \"Get directions\" to its search; a district only: \"See the area\"; a town only: no map link",
+        "widths": [
+          1440
+        ],
+        "from": "consistency",
+        "ids": [
+          "map-link"
+        ],
+        "wheres": [
+          "div.house-information > div.restaurant-story-copy > div.restaurant-actions > a.button.btn:nth-of-type(1) \"Como chegar\""
+        ],
+        "reason": "This existing Google Maps business link uses the Passira place CID. It opens the actual restaurant and is not an empty search."
+      },
+      {
+        "check": "street-number",
+        "where": "dl.restaurant-details > div:nth-of-type(1) > dd > address \"Av. General San Martin, 1656\"",
+        "msg": "a street with its house number: \"Av. General San Martin, 1656\"; a real door, which the brief does not give (told at 1440 where it did not show) (and 1 more like it: aside.cart-panel > div.pickup-note > div > p)",
+        "fix": "print the street and the district only (\"Weserstraße, Berlin-Neukölln\"): no house number, unless the brief gives the address",
+        "widths": [
+          390
+        ],
+        "from": "consistency",
+        "ids": [
+          "street-number"
+        ],
+        "wheres": [
+          "dl.restaurant-details > div:nth-of-type(1) > dd > address \"Av. General San Martin, 1656\""
+        ],
+        "reason": "The real shop address is already supplied in src/data/store.json and was displayed before this redesign. This task does not replace operational details with examples."
+      }
+    ]
+  },
+  "performance": {
+    "partial": false,
+    "results": [
+      {
+        "w": 1440,
+        "rows": [
+          {
+            "name": "host CPU load (before/after)",
+            "value": "39/47 %",
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "total transfer",
+            "value": "2378.2 KiB",
+            "verdict": "WARN",
+            "note": "html 31.6K  css 38.4K  js 245.9K  font 72.7K  img 1937.3K  other 52.3K"
+          },
+          {
+            "name": "requests",
+            "value": 57,
+            "verdict": "PASS",
+            "note": "54 by load"
+          },
+          {
+            "name": "images bytes",
+            "value": "1937.3 KiB",
+            "verdict": "WARN",
+            "note": "25 files"
+          },
+          {
+            "name": "largest image",
+            "value": "317.6 KiB",
+            "verdict": "PASS",
+            "note": "campaign/passira-delivery.webp"
+          },
+          {
+            "name": "JS parsed",
+            "value": "874.2 KiB",
+            "verdict": "WARN",
+            "note": "16 files, 245.9K gz"
+          },
+          {
+            "name": "CSS",
+            "value": "38.4 KiB",
+            "verdict": "PASS",
+            "note": "5 files"
+          },
+          {
+            "name": "font families",
+            "value": 2,
+            "verdict": "PASS",
+            "note": "Barlow Condensed, Source Sans 3"
+          },
+          {
+            "name": "font files",
+            "value": 3,
+            "verdict": "PASS",
+            "note": "72.7K"
+          },
+          {
+            "name": "font bytes",
+            "value": "72.7 KiB",
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "images without width+height",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "below-fold images not lazy",
+            "value": 5,
+            "verdict": "FAIL",
+            "note": "passira-logo.webp, passira-logo.webp, fachada-san-martin.webp"
+          },
+          {
+            "name": "oversized images (natural > 2.2x shown)",
+            "value": 17,
+            "verdict": "FAIL",
+            "note": "passira-logo.webp 512px for 125; 380075.webp 479px for 124; 428606.webp 471px for 124"
+          },
+          {
+            "name": "WebGL live at load",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "WebGL live at bottom",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "WebGL peak live",
+            "value": 0,
+            "verdict": "PASS",
+            "note": "0 contexts made in all"
+          },
+          {
+            "name": "long tasks",
+            "value": 2,
+            "verdict": "PASS",
+            "note": "runs 3, 1..3, max 104ms"
+          },
+          {
+            "name": "blocking time",
+            "value": "71 ms",
+            "verdict": "PASS",
+            "note": "runs 3, 10..74 ms; at load 71ms"
+          },
+          {
+            "name": "FCP (CPU, relative)",
+            "value": "596 ms",
+            "verdict": "PASS",
+            "note": "runs 3, 568..604"
+          },
+          {
+            "name": "LCP (CPU, relative)",
+            "value": "596 ms",
+            "verdict": "PASS",
+            "note": "runs 3, 568..604, img"
+          },
+          {
+            "name": "layout shift",
+            "value": "0.002",
+            "verdict": "PASS",
+            "note": "runs 3, 0.002..0.002; at load 0.002"
+          },
+          {
+            "name": "modules loaded, never mounted",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "broken requests",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "page height",
+            "value": "6.4 screens",
+            "verdict": "PASS",
+            "note": "DOM 933 nodes"
+          }
+        ]
+      },
+      {
+        "w": 390,
+        "rows": [
+          {
+            "name": "host CPU load (before/after)",
+            "value": "39/47 %",
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "total transfer",
+            "value": "1916.4 KiB",
+            "verdict": "WARN",
+            "note": "html 31.6K  css 38.4K  js 245.9K  font 72.7K  img 1475.4K  other 52.3K"
+          },
+          {
+            "name": "requests",
+            "value": 52,
+            "verdict": "PASS",
+            "note": "43 by load"
+          },
+          {
+            "name": "images bytes",
+            "value": "1475.4 KiB",
+            "verdict": "WARN",
+            "note": "20 files"
+          },
+          {
+            "name": "largest image",
+            "value": "317.6 KiB",
+            "verdict": "PASS",
+            "note": "campaign/passira-delivery.webp"
+          },
+          {
+            "name": "JS parsed",
+            "value": "874.2 KiB",
+            "verdict": "WARN",
+            "note": "16 files, 245.9K gz"
+          },
+          {
+            "name": "CSS",
+            "value": "38.4 KiB",
+            "verdict": "PASS",
+            "note": "5 files"
+          },
+          {
+            "name": "font families",
+            "value": 2,
+            "verdict": "PASS",
+            "note": "Barlow Condensed, Source Sans 3"
+          },
+          {
+            "name": "font files",
+            "value": 3,
+            "verdict": "PASS",
+            "note": "72.7K"
+          },
+          {
+            "name": "font bytes",
+            "value": "72.7 KiB",
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "images without width+height",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "below-fold images not lazy",
+            "value": 5,
+            "verdict": "FAIL",
+            "note": "passira-logo.webp, passira-logo.webp, fachada-san-martin-640.webp"
+          },
+          {
+            "name": "oversized images (natural > 2.2x shown)",
+            "value": 13,
+            "verdict": "FAIL",
+            "note": "passira-logo.webp 512px for 112; passira-delivery.webp 1000px for 355; 380075.webp 479px for 114"
+          },
+          {
+            "name": "WebGL live at load",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "WebGL live at bottom",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "WebGL peak live",
+            "value": 0,
+            "verdict": "PASS",
+            "note": "0 contexts made in all"
+          },
+          {
+            "name": "long tasks",
+            "value": 1,
+            "verdict": "PASS",
+            "note": "runs 3, 1..1, max 61ms"
+          },
+          {
+            "name": "blocking time",
+            "value": "4 ms",
+            "verdict": "PASS",
+            "note": "runs 3, 1..11 ms; at load 4ms"
+          },
+          {
+            "name": "FCP (CPU, relative)",
+            "value": "408 ms",
+            "verdict": "PASS",
+            "note": "runs 3, 404..464"
+          },
+          {
+            "name": "LCP (CPU, relative)",
+            "value": "408 ms",
+            "verdict": "PASS",
+            "note": "runs 3, 404..464, img"
+          },
+          {
+            "name": "layout shift",
+            "value": "0.000",
+            "verdict": "PASS",
+            "note": "runs 3, 0.000..0.000; at load 0.000"
+          },
+          {
+            "name": "modules loaded, never mounted",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "broken requests",
+            "value": 0,
+            "verdict": "PASS",
+            "note": ""
+          },
+          {
+            "name": "page height",
+            "value": "10.8 screens",
+            "verdict": "PASS",
+            "note": "DOM 933 nodes"
+          }
+        ]
+      }
+    ]
+  },
+  "initialFullAudit": {
+    "note": "Full audit before final adjustments; final gate above supersedes overlapping findings.",
+    "widths": [
+      {
+        "width": 1440,
+        "runtimeErrors": []
+      },
+      {
+        "width": 1024,
+        "runtimeErrors": []
+      },
+      {
+        "width": 820,
+        "runtimeErrors": []
+      },
+      {
+        "width": 768,
+        "runtimeErrors": []
+      },
+      {
+        "width": 390,
+        "runtimeErrors": []
+      }
+    ],
+    "counts": {
+      "FAIL": 380,
+      "WARN": 134
+    }
+  },
+  "validation": {
+    "productionBuild": "passed",
+    "copyLint": {
+      "fail": 0,
+      "warn": 1,
+      "note": "Existing pizza description in the menu has an exclamation mark."
+    },
+    "screenshots": [
+      1440,
+      1024,
+      820,
+      768,
+      390
+    ],
+    "originalKitFiles": "Compared byte for byte with the installed skill. MIT license included.",
+    "testDatabase": "Isolated SQLite database under ignored test-results; no live store data changed."
+  }
+}

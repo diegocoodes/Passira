@@ -8,7 +8,7 @@ export function useRevealMotion(root: RefObject<HTMLElement | null>) {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     let observed = new WeakSet<Element>();
     const animations = new Set<Animation>();
-    const selector = '.hero h1, .hero-pizza img, .section-heading h2, .restaurant-story h2, .product-card, .restaurant-photo, .review-card';
+    const selector = '.hero h1, .hero-pizza img, .house-selection .section-heading h2, .product-card';
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       observer.unobserve(entry.target);
