@@ -98,6 +98,14 @@ Para validar os serviços no PostgreSQL, forneça `TEST_POSTGRES_URL` apenas ao 
 As senhas são armazenadas como hashes scrypt com salt. As sessões duram 24 horas e usam cookies HttpOnly, SameSite estrito e Secure em produção. Alterar a senha encerra todas as sessões. As APIs administrativas verificam autenticação e origem das alterações; tentativas de login e criação de pedidos têm limitação de frequência.
 ## Recursos da loja e do painel
 
+### Páginas de erro
+
+Endereços inexistentes e produtos não encontrados exibem a página 404 temática. Falhas inesperadas de renderização usam a tela 500, com **Tentar novamente** para buscar e renderizar a página de novo. Falhas no layout principal também têm uma tela independente, com fontes e estilos próprios e sem consultar o banco. As telas não exibem mensagens internas de exceções nem alteram os dados locais do carrinho.
+
+Para visualizar os demais modelos, acesse `/erro/400/`, `/erro/401/`, `/erro/403/`, `/erro/404/`, `/erro/405/`, `/erro/408/`, `/erro/410/`, `/erro/413/`, `/erro/415/`, `/erro/422/`, `/erro/429/`, `/erro/500/`, `/erro/501/`, `/erro/502/`, `/erro/503/`, `/erro/504/` ou `/erro/505/`. Outros códigos entre 400 e 599 usam uma mensagem genérica. Essas rotas de apresentação respondem com HTTP 200 e não são indexadas; elas não simulam uma falha de infraestrutura. Códigos inválidos exibem a página não encontrada.
+
+As APIs preservam respostas JSON e os códigos HTTP existentes para formulários, login e pedidos. Erros de protocolo, proxy, CDN, conexão ou hospedagem que ocorram antes de a aplicação ser executada precisam de configuração no respectivo serviço para mostrar este mesmo tema. Uma falha depois do início do streaming pode manter o status HTTP já enviado, mesmo exibindo a tela de erro.
+
 ### Conteúdo da loja
 
 Em **Conteúdo da loja**, edite o banner principal, os textos do cardápio e dos destaques, a apresentação da marca, a seção sobre a Passira e a descrição do rodapé. Os campos de imagem aceitam links HTTPS ou caminhos de imagens existentes dentro de `/images/`. Informe uma descrição para a imagem principal e a foto do restaurante. As prévias ajudam a conferir as imagens antes de salvar. As fotos dos produtos continuam sendo editadas em **Produtos**.
