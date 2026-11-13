@@ -41,10 +41,10 @@ export function CartPanel() {
   return <aside className="cart-panel"><div className="cart-panel-title"><ShoppingBag size={20} /><h2>Seu pedido</h2><span className="count">{items.reduce((n, i) => n + i.quantity, 0)}</span></div><MethodChoice />{items.length ? <><CartRows /><CartSummary /><Link href="/finalizar/" className="button primary full-width">Finalizar pedido<ArrowRight size={18} /></Link></> : <EmptyCart />}<div className="pickup-note"><MapPin size={17} /><div><strong>{method === 'pickup' ? 'Retire na Passira' : 'Entrega para você'}</strong><p>{method === 'pickup' ? 'Av. General San Martin, 1656' : 'Consulte a disponibilidade do seu bairro.'}</p></div></div><p className="payment-note"><CreditCard size={15} />Pagamento {method === 'pickup' ? 'na retirada' : 'no recebimento'}</p></aside>;
 }
 const blankCustomer: Customer = { name: '', phone: '', cpf: '', cep: '', street: '', number: '', neighborhood: '', complement: '', note: '', payment: 'pix' };
-export function Checkout() {
+export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'details' }) {
   const { productById, cartTotals, itemDetails, deliveryRegions } = useMenu();
   const items = useCart(s => s.items), method = useCart(s => s.method), saveOrder = useCart(s => s.saveOrder);
-  const [step, setStep] = useState<'cart' | 'details' | 'review'>('cart');
+  const [step, setStep] = useState<'cart' | 'details' | 'review'>(() => initialStep === 'details' && !cartTotals(items, method, '').hasErrors ? 'details' : 'cart');
   const [customer, setCustomer] = useState<Customer>(() => ({ ...blankCustomer, ...useCart.getState().customerDraft }));
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');

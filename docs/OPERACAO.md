@@ -106,6 +106,12 @@ Selecione até seis produtos em destaque e use as setas para ordenar. Produtos p
 
 Clique em **Salvar conteúdo da loja** para publicar as alterações no banco. Elas aparecem ao abrir ou atualizar a página inicial, sem recompilar. **Desfazer edição** recupera a última versão carregada ou salva. Salve antes de trocar de área do painel. O conteúdo usa um registro próprio na tabela de configurações, sem alterar o cardápio, os pedidos ou os custos e sem exigir uma nova migration. Antes da primeira edição, a loja mantém o conteúdo original. Ao substituir a foto do restaurante, o crédito da foto original deixa de ser exibido.
 
+### Seleção de produtos e finalização
+
+A página do produto reúne foto, opções de tamanho, sabores, adicionais e observações. A barra inferior mantém quantidade e total do item visíveis durante a montagem. Grupos obrigatórios continuam sendo validados antes de adicionar ou salvar alterações.
+
+Após adicionar, a confirmação mostra o item escolhido, as opções, a quantidade e o subtotal do carrinho. **Finalizar meu pedido** abre diretamente os dados do cliente, preservando o carrinho e os dados já preenchidos. **Ver carrinho** abre a revisão dos itens; **Adicionar mais produtos** retorna à categoria do produto. Se houver itens inválidos no carrinho, o acesso direto aos dados volta à revisão. O pedido só é registrado depois da conferência e da ação **Concluir pedido**.
+
 ### Favoritos e repetição de pedidos
 
 O coração de cada produto salva o favorito neste navegador. O filtro Favoritos reúne os produtos ativos salvos. Os favoritos continuam disponíveis após recarregar a página e não exigem cadastro.
