@@ -19,6 +19,7 @@ import { CustomerReviews } from './customer-reviews';
 import { StorefrontHero, StorefrontManifesto } from './storefront-hero';
 import { FavoriteButton } from './favorite-button';
 import { useRevealMotion } from './use-reveal-motion';
+import { StorefrontOpening } from './storefront-opening';
 
 function ProductCard({ product, featured = false, at }: { product: Product; featured?: boolean; at?: Date }) {
   const { minimumPrice, availability, bestSellerIds } = useMenu();
@@ -55,6 +56,7 @@ export function Storefront({ content }: { content: StorefrontContent }) {
   const chooseCategory = (id: string) => { setCategory(id); setQuery(''); setShowAll(false); setFavoritesOnly(false); };
   const searchMenu = (value: string) => { setQuery(value); setShowAll(false); };
   return <div className="passira-storefront" ref={root}>
+    <StorefrontOpening />
     <a className="skip-link" href="#cardapio">Ir para o cardápio</a>
     <div className="top-strip"><span>Passira San Martin</span><span>Todos os dias, 10h às 23h15</span></div>
     <header className="site-header"><div className="header-inner"><a href="#" className="brand" aria-label="Passira, início"><BrandLogo /></a><nav className="header-nav" aria-label="Menu principal"><a href="#cardapio" className="current">Cardápio</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a><button onClick={() => setHistory(true)}><ReceiptText size={17} />Meus pedidos</button><button className="store-information-button" onClick={() => setInformation(true)} aria-label="Informações da loja"><Info size={17} /></button></nav><Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b key={count} className="cart-count-feedback">{count}</b></Link></div></header>

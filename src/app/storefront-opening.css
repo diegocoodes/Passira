@@ -1,0 +1,69 @@
+.storefront-opening { position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; overflow: hidden; background: transparent; color: white; isolation: isolate; }
+.storefront-opening[open] { display: grid; place-items: center; }
+.storefront-opening::backdrop { background: transparent; }
+.opening-door { position: absolute; top: 0; bottom: 0; width: 50.1%; z-index: -1; background: #cb1823; will-change: transform; }
+.opening-door::before { content: ''; position: absolute; inset: 0; opacity: .35; background: radial-gradient(ellipse at 50% 38%, #ff7b852e, transparent 65%); }
+.opening-door::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 48px; background: conic-gradient(white 25%, var(--green) 0 50%, white 0 75%, var(--green) 0) 0 0 / 48px 48px; }
+.opening-door-left { left: 0; }
+.opening-door-right { right: 0; }
+.storefront-opening[open] .opening-door-left { animation: opening-door-left 540ms cubic-bezier(.76,0,.24,1) 2000ms both; }
+.storefront-opening[open] .opening-door-right { animation: opening-door-right 540ms cubic-bezier(.76,0,.24,1) 2000ms both; }
+.opening-skip { position: absolute; right: 32px; top: max(24px, env(safe-area-inset-top)); z-index: 2; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px 16px; border: 1px solid #ffffff66; border-radius: 30px; color: white; background: #8c101b; font-size: 12px; }
+.opening-skip:hover { background: #063f2c; }
+.opening-skip:focus-visible { outline: 2px solid white; outline-offset: 5px; }
+.opening-scene { display: flex; align-items: center; flex-direction: column; position: relative; width: min(100%, 600px); padding: 64px 24px 96px; text-align: center; pointer-events: none; }
+.storefront-opening[open] .opening-scene { animation: opening-scene 2050ms ease both; }
+.opening-logo { padding: 7px 12px; border-radius: 12px; background: white; }
+.opening-logo .brand-logo { width: 105px; }
+.opening-pizza-stage { position: relative; width: clamp(160px, 27vh, 250px); margin: 20px 0 16px; }
+.opening-pizza { display: block; width: 100%; height: auto; overflow: visible; }
+.opening-plate { opacity: .35; stroke-dasharray: 4 7; }
+.storefront-opening[open] .opening-plate { transform-origin: 140px 140px; animation: opening-plate 2400ms ease-out both; }
+.storefront-opening[open] .opening-slice { animation: opening-slice 480ms cubic-bezier(.2,.8,.3,1) var(--slice-delay) both; }
+.opening-steam { opacity: 0; }
+.storefront-opening[open] .opening-steam { animation: opening-steam 1000ms ease-out 800ms both; }
+.opening-pizza-seal { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; position: absolute; right: -21px; bottom: 2px; width: 82px; height: 82px; border: 2px solid white; border-radius: 50%; background: #006b36; transform: rotate(-12deg); font-family: var(--display); font-size: 19px; font-weight: 600; }
+.storefront-opening[open] .opening-pizza-seal { animation: opening-seal 400ms ease-out 800ms both; }
+.opening-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 2px; }
+.opening-title { margin-top: 10px; font: 700 clamp(46px, 6.5vw, 76px)/.9 var(--display); letter-spacing: -.5px; text-transform: uppercase; }
+.opening-title > span { display: inline-block; margin-top: 6px; color: #063f2c; -webkit-text-stroke: 1.5px white; paint-order: stroke fill; }
+.opening-caption { margin-top: 16px; font-size: 14px; }
+.opening-location { position: absolute; left: 32px; right: 32px; bottom: calc(66px + env(safe-area-inset-bottom)); display: flex; justify-content: space-between; gap: 20px; color: white; font-size: 11px; }
+.storefront-opening[open] .opening-location { animation: opening-scene 2050ms ease both; }
+@keyframes opening-door-left { to { transform: translateX(-100%); } }
+@keyframes opening-door-right { to { transform: translateX(100%); } }
+@keyframes opening-scene { 0% { opacity: 0; transform: translateY(10px); } 12%, 83% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(-14px); } }
+@keyframes opening-slice { from { opacity: 0; transform: translateY(-36px) scale(.88); } to { opacity: 1; transform: none; } }
+@keyframes opening-plate { from { transform: rotate(-24deg); } to { transform: rotate(24deg); } }
+@keyframes opening-steam { 0% { opacity: 0; transform: translateY(8px); } 30%, 65% { opacity: .7; } 100% { opacity: 0; transform: translateY(-14px); } }
+@keyframes opening-seal { from { opacity: 0; transform: rotate(-25deg) scale(.8); } to { opacity: 1; transform: rotate(-12deg) scale(1); } }
+@media (max-width: 540px) {
+  .opening-skip { right: 18px; top: max(16px, env(safe-area-inset-top)); font-size: 11px; }
+  .opening-scene { padding: 76px 24px 100px; }
+  .opening-pizza-stage { width: clamp(150px, 24vh, 205px); margin-block: 24px 18px; }
+  .opening-pizza-seal { right: -18px; width: 70px; height: 70px; font-size: 17px; }
+  .opening-title { font-size: clamp(48px, 14vw, 68px); }
+  .opening-location { left: 20px; right: 20px; font-size: 10px; }
+}
+@media (max-height: 650px) {
+  .opening-scene { padding-block: 72px 82px; }
+  .opening-logo .brand-logo { width: 76px; }
+  .opening-pizza-stage { width: clamp(100px, 24vh, 150px); margin-block: 14px 10px; }
+  .opening-pizza-seal { right: -25px; width: 58px; height: 58px; font-size: 15px; }
+  .opening-pizza-seal > svg { width: 16px; height: 16px; }
+  .opening-title { font-size: 46px; }
+  .opening-eyebrow { font-size: 9px; }
+  .opening-caption { margin-top: 10px; font-size: 12px; }
+}
+@media (max-height: 430px) {
+  .opening-scene { width: 100%; padding: 24px 90px 64px; display: grid; grid-template-columns: 140px minmax(0, 280px); justify-content: center; column-gap: 28px; }
+  .opening-logo { display: none; }
+  .opening-pizza-stage { grid-column: 1; grid-row: 1 / 4; width: 130px; margin: 0; }
+  .opening-eyebrow, .opening-title, .opening-caption { grid-column: 2; }
+  .opening-title { font-size: 46px; }
+  .opening-location { bottom: 58px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .storefront-opening[open] { display: none; }
+  .storefront-opening[open] *, .storefront-opening[open] *::after { animation: none; }
+}

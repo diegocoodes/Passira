@@ -140,4 +140,6 @@ Abra um pedido no painel e clique em Imprimir comanda. O navegador abre sua jane
 
 ### Movimento e acessibilidade
 
+A primeira visita à página inicial mostra uma abertura temática de cerca de 2,6 segundos: a pizza se monta e os painéis vermelhos se abrem para revelar a loja. **Pular abertura** ou a tecla Escape permitem entrar imediatamente. A abertura aparece uma vez por sessão da aba, não aparece em links diretos para categorias ou seções e é ignorada quando o sistema prefere menos movimento. Alterar essa preferência durante a abertura também a encerra. O conteúdo do cardápio já é carregado durante a animação e permanece acessível se o JavaScript estiver desativado.
+
 As animações de entrada, categorias e novos itens usam transições curtas. O conteúdo já é visível antes de qualquer animação. A preferência do sistema por menos movimento desativa os efeitos decorativos, preservando a navegação, os botões e o acesso a todos os produtos.

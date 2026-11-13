@@ -10,6 +10,7 @@ import './admin.css';
 import './order-tracking.css';
 import './storefront-campaign.css';
 import './experience.css';
+import './storefront-opening.css';
 export const metadata: Metadata = { title: 'Passira San Martin | Pizzaria e Restaurante', description: 'O cardápio da Passira San Martin: pizzas, pratos para compartilhar, petiscos e bebidas. Monte seu pedido para retirada ou entrega.' };
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   await connection();

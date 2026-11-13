@@ -12,6 +12,7 @@ test('administrator edits storefront content and customers see persisted changes
   await page.getByLabel('Email', { exact: true }).fill('teste@passira.local');
   await page.getByLabel('Senha', { exact: true }).fill('senha-apenas-para-testes-123456');
   await page.getByRole('button', { name: 'Entrar no painel' }).click();
+  await expect(page.getByRole('heading', { name: 'Sua operação, à vista.', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Conteúdo da loja', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Banner principal', exact: true })).toBeVisible();
   const original: StorefrontContent = await (await page.request.get('/api/admin/content/')).json();

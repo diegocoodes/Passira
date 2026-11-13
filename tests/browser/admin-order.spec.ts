@@ -136,6 +136,8 @@ test('administrator manages products and the customer follows a real numbered or
   expect(Object.keys(highlights).sort()).toEqual(['periodDays', 'productIds']);
   const storefront = await customerContext.newPage();
   await storefront.goto('/');
+  await expect(storefront.locator('.desktop-cart .cart-panel')).toBeAttached();
+  await expect(storefront.locator('.storefront-opening[open]')).toHaveCount(0);
   await storefront.getByLabel('Buscar no cardápio').fill(product.name);
   await expect(storefront.locator('#menu-products .best-seller-label')).toHaveText('Mais pedidos');
   await storefront.close();
