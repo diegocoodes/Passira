@@ -16,6 +16,8 @@ import { createMenu } from '../src/lib/menu';
 import { checkOrigin } from '../src/server/http';
 import { postgresConnection } from '../src/server/connection';
 import { salesHighlights } from '../src/server/storefront-insights';
+import { getStorefrontContent, saveStorefrontContent } from '../src/server/storefront-content';
+import { defaultStorefrontContent } from '../src/lib/storefront-content';
 
 const folder = mkdtempSync(path.join(tmpdir(), 'passira-tests-'));
 const postgresUrl = process.env.TEST_POSTGRES_URL;
@@ -62,6 +64,29 @@ after(async () => {
 const inputProduct = () => ({ name: 'Prato do teste', description: 'Uma porção para testar o sistema.', categoryId: '274522', kind: 'food', photoUrl: '', enabled: true, blocked: false, optionGroupIds: [], variants: [{ sizeId: null, name: 'Individual', cents: 5000, pickupCents: 5000, deliveryCents: 5500, unitCostCents: 2000, enabled: true, pickupEnabled: true, deliveryEnabled: true }] });
 const payload = (quantity = 1) => ({ requestKey: randomUUID(), fulfillment: 'pickup', customer, expectedTotalCents: 5000 * quantity, items: [{ id: randomUUID(), productId, priceId, flavorIds: [], selections: [], note: '', quantity }] });
 async function complete(id: number) { for (const [expected, status] of [['received', 'accepted'], ['accepted', 'preparing'], ['preparing', 'ready'], ['ready', 'completed']] as const) await changeStatus(id, expected, status); }
+
+test('storefront content persists separately from the menu and rejects unsafe images and invalid highlights', async () => {
+  assert.deepEqual(await getStorefrontContent(), defaultStorefrontContent);
+  const originalCatalog = await getCatalog();
+  const content = structuredClone(defaultStorefrontContent);
+  content.hero.title = 'Nossa pizza';
+  content.hero.image = 'https://example.com/pizza.webp';
+  content.story.body = 'Uma nova história escrita pela equipe.';
+  content.selection.productIds.reverse();
+  await saveStorefrontContent(content);
+  assert.deepEqual(await getStorefrontContent(), content);
+  assert.deepEqual(await getCatalog(), originalCatalog);
+  for (const image of ['http://example.com/photo.jpg', 'javascript:alert(1)', 'data:image/svg+xml,test', '//example.com/photo.jpg', '/images/../private', 'https://user:password@example.com/photo.jpg']) {
+    await assert.rejects(saveStorefrontContent({ ...content, hero: { ...content.hero, image } }), /HTTPS/);
+  }
+  await assert.rejects(saveStorefrontContent({ ...content, selection: { ...content.selection, productIds: ['missing-product'] } }), /produtos disponíveis/);
+  await assert.rejects(saveStorefrontContent({ ...content, selection: { ...content.selection, productIds: [content.selection.productIds[0], content.selection.productIds[0]] } }), /produtos diferentes/);
+  await assert.rejects(saveStorefrontContent({ ...content, hero: { ...content.hero, title: '   ' } }), /Preencha/);
+  assert.deepEqual(await getStorefrontContent(), content, 'Rejected edits must preserve saved content.');
+  await saveStorefrontContent({ ...content, selection: { ...content.selection, productIds: [] } });
+  assert.deepEqual((await getStorefrontContent()).selection.productIds, []);
+  await saveStorefrontContent(defaultStorefrontContent);
+});
 
 test('database imports the original menu once without overwriting later edits', async () => {
   assert.equal((await getCatalog()).products.length, 192);

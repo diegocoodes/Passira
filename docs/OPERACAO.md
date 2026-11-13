@@ -98,6 +98,14 @@ Para validar os serviços no PostgreSQL, forneça `TEST_POSTGRES_URL` apenas ao 
 As senhas são armazenadas como hashes scrypt com salt. As sessões duram 24 horas e usam cookies HttpOnly, SameSite estrito e Secure em produção. Alterar a senha encerra todas as sessões. As APIs administrativas verificam autenticação e origem das alterações; tentativas de login e criação de pedidos têm limitação de frequência.
 ## Recursos da loja e do painel
 
+### Conteúdo da loja
+
+Em **Conteúdo da loja**, edite o banner principal, os textos do cardápio e dos destaques, a apresentação da marca, a seção sobre a Passira e a descrição do rodapé. Os campos de imagem aceitam links HTTPS ou caminhos de imagens existentes dentro de `/images/`. Informe uma descrição para a imagem principal e a foto do restaurante. As prévias ajudam a conferir as imagens antes de salvar. As fotos dos produtos continuam sendo editadas em **Produtos**.
+
+Selecione até seis produtos em destaque e use as setas para ordenar. Produtos pausados, bloqueados, excluídos ou de categorias desativadas ficam ocultos na vitrine. É possível manter ou remover uma seleção antiga enquanto se editam os textos. Remover todos os destaques oculta a seção e seu atalho na página inicial.
+
+Clique em **Salvar conteúdo da loja** para publicar as alterações no banco. Elas aparecem ao abrir ou atualizar a página inicial, sem recompilar. **Desfazer edição** recupera a última versão carregada ou salva. Salve antes de trocar de área do painel. O conteúdo usa um registro próprio na tabela de configurações, sem alterar o cardápio, os pedidos ou os custos e sem exigir uma nova migration. Antes da primeira edição, a loja mantém o conteúdo original. Ao substituir a foto do restaurante, o crédito da foto original deixa de ser exibido.
+
 ### Favoritos e repetição de pedidos
 
 O coração de cada produto salva o favorito neste navegador. O filtro Favoritos reúne os produtos ativos salvos. Os favoritos continuam disponíveis após recarregar a página e não exigem cadastro.

@@ -242,4 +242,6 @@
   .passira-storefront .hero-quick-order { right: 10px; }
   .passira-storefront .hero-side-copy { left: 18px; }
 }
+.passira-storefront .hero h1, .passira-storefront .hero-delivery-art > span, .storefront-manifesto > p, .passira-storefront .restaurant-story-copy > p:not(.section-kicker) { white-space: pre-line; }
+.passira-storefront .hero h1, .passira-storefront .menu-toolbar h2, .passira-storefront .section-heading h2, .passira-storefront .restaurant-story h2, .storefront-manifesto, .passira-storefront .footer-brand > span { overflow-wrap: anywhere; }
 @media (prefers-reduced-motion: reduce) { .passira-storefront .hero-quick-order { transition: none; } }
