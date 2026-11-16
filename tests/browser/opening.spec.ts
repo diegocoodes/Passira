@@ -15,12 +15,12 @@ for (const width of [390, 1440]) {
     await page.screenshot({ path: `test-results/opening-${width}.png` });
     await expect(opening).toHaveCount(0, { timeout: 5000 });
     expect(await page.evaluate(() => document.body.style.overflow)).toBe('');
-    await expect(page.locator('#menu-products > .product-card')).toHaveCount(6);
+    await expect(page.locator('#menu-products .product-card')).toHaveCount(10);
     await page.reload();
-    await expect(page.locator('#menu-products > .product-card')).toHaveCount(6);
+    await expect(page.locator('#menu-products .product-card')).toHaveCount(10);
     await expect(page.locator('.storefront-opening[open]')).toHaveCount(0);
     await page.getByLabel('Buscar no cardápio', { exact: true }).fill('pizza');
-    await expect(page.locator('#menu-products > .product-card')).toHaveCount(6);
+    await expect(page.locator('#menu-products .product-card')).toHaveCount(10);
   });
 }
 
@@ -42,17 +42,18 @@ test('skip, Escape and a change to reduced motion release the store immediately'
   await expect(page.locator('.storefront-opening[open]')).toHaveCount(0);
   expect(await page.evaluate(() => document.body.style.overflow)).toBe('');
   await page.getByRole('button', { name: 'Ver mais', exact: true }).click();
-  expect(await page.locator('#menu-products > .product-card').count()).toBeGreaterThan(6);
+  expect(await page.locator('#menu-products .product-card').count()).toBeGreaterThan(10);
 });
 
 test('direct menu links and reduced motion bypass the opening', async ({ page }) => {
   await page.goto('/?categoria=274528#cardapio');
-  await expect(page.locator('#menu-products > .product-card')).toHaveCount(6);
+  await expect(page.locator('#categoria-274528')).toBeFocused();
+  expect(await page.locator('#menu-products .product-card').count()).toBeGreaterThan(10);
   await expect(page.locator('.storefront-opening[open]')).toHaveCount(0);
   await page.evaluate(() => sessionStorage.removeItem('passira-opening-seen'));
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  await expect(page.locator('#menu-products > .product-card')).toHaveCount(6);
+  await expect(page.locator('#menu-products .product-card')).toHaveCount(10);
   await expect(page.locator('.storefront-opening[open]')).toHaveCount(0);
   expect(await page.evaluate(() => document.body.style.overflow)).toBe('');
 });
@@ -65,5 +66,5 @@ test('blocked session storage does not prevent skipping or using the menu', asyn
   await page.getByRole('button', { name: 'Pular abertura', exact: true }).click();
   await expect(page.locator('.storefront-opening[open]')).toHaveCount(0);
   await page.getByRole('button', { name: 'Ver mais', exact: true }).click();
-  expect(await page.locator('#menu-products > .product-card').count()).toBeGreaterThan(6);
+  expect(await page.locator('#menu-products .product-card').count()).toBeGreaterThan(10);
 });

@@ -11,6 +11,7 @@ import './admin-logs.css';
 import './order-tracking.css';
 import './storefront-campaign.css';
 import './experience.css';
+import './menu-categories.css';
 import './storefront-opening.css';
 import './house-reviews.css';
 export const metadata: Metadata = { title: 'Passira San Martin | Pizzaria e Restaurante', description: 'O cardápio da Passira San Martin: pizzas, pratos para compartilhar, petiscos e bebidas. Monte seu pedido para retirada ou entrega.' };

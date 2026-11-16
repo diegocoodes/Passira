@@ -1,0 +1,7 @@
+.menu-category + .menu-category { margin-top: 52px; }
+.menu-category, #menu-products .product-card { scroll-margin-top: 16px; }
+.menu-category:focus-visible, #menu-products .product-card:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
+.menu-category .category-title h2 { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .menu-category + .menu-category { margin-top: 38px; }
+}

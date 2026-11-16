@@ -158,6 +158,10 @@ Clique em **Salvar conteúdo da loja** para publicar as alterações no banco. E
 
 ### Seleção de produtos e finalização
 
+O bloco do cardápio da página inicial começa com até dez produtos, na ordem das categorias e dos itens. **Ver mais** revela os produtos ativos de todas as categorias ativas na mesma página, com um título para cada categoria. **Ver menos** retorna à prévia e às categorias. A busca e os favoritos também começam com até dez resultados e permitem expandir a lista.
+
+Selecionar uma categoria revela o cardápio completo, limpa a busca e os favoritos e rola até a seção escolhida. O foco acompanha a navegação por teclado, e a rolagem respeita a preferência por menos movimento. Os endereços `/?categoria=ID#cardapio` e `/#categoria-ID` também abrem a categoria diretamente. Itens e categorias desativados continuam ocultos; as informações de preços em conferência e horários permanecem no cardápio.
+
 A página do produto reúne foto, opções de tamanho, sabores, adicionais e observações. A barra inferior mantém quantidade e total do item visíveis durante a montagem. Grupos obrigatórios continuam sendo validados antes de adicionar ou salvar alterações.
 
 Após adicionar, a confirmação mostra o item escolhido, as opções, a quantidade e o subtotal do carrinho. **Finalizar meu pedido** abre diretamente os dados do cliente, preservando o carrinho e os dados já preenchidos. **Ver carrinho** abre a revisão dos itens; **Adicionar mais produtos** retorna à categoria do produto. Se houver itens inválidos no carrinho, o acesso direto aos dados volta à revisão. O pedido só é registrado depois da conferência e da ação **Concluir pedido**.

@@ -13,10 +13,10 @@ async function fixture(page: import('@playwright/test').Page, request: import('@
   return price;
 }
 
-test('favorites persist, filtering keeps six-item behavior and the real combo opens its customizer', async ({ page }) => {
+test('favorites persist, filtering keeps the ten-item preview and the real combo opens its customizer', async ({ page }) => {
   await page.goto('/');
-  const cards = page.locator('#menu-products > .product-card');
-  await expect(cards).toHaveCount(6);
+  const cards = page.locator('#menu-products .product-card');
+  await expect(cards).toHaveCount(10);
   await cards.first().getByRole('button', { name: 'Salvar nos favoritos', exact: true }).click();
   await expect(page).toHaveURL(/\/$/);
   await page.reload();
@@ -84,9 +84,9 @@ test('repeat order appends only valid items using current prices and preserves t
 test('reduced motion keeps the menu and checkout content visible without decorative animations', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  await expect(page.locator('#menu-products > .product-card')).toHaveCount(6);
+  await expect(page.locator('#menu-products .product-card')).toHaveCount(10);
   await page.getByRole('button', { name: 'Ver mais', exact: true }).click();
-  expect(await page.locator('#menu-products > .product-card').count()).toBeGreaterThan(6);
-  await expect(page.locator('#menu-products > .product-card').first()).toBeVisible();
+  expect(await page.locator('#menu-products .product-card').count()).toBeGreaterThan(10);
+  await expect(page.locator('#menu-products .product-card').first()).toBeVisible();
   expect(await page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
 });
