@@ -6,11 +6,12 @@ import { HttpError } from './auth';
 import type { Price, Product } from '@/data/types';
 import { dayBounds } from '@/lib/order-status';
 import { presentOrder } from './order-service';
+import { recordLog, type LogActor } from './system-logs';
 
 const cents = z.number().int().min(0).max(10000000);
 const variantSchema = z.object({ id: z.string().max(100).optional(), sizeId: z.string().max(100).nullable(), name: z.string().trim().min(1).max(100), cents: cents.nullable(), deliveryCents: cents.nullable(), pickupCents: cents.nullable(), unitCostCents: cents.nullable(), enabled: z.boolean(), deliveryEnabled: z.boolean(), pickupEnabled: z.boolean() });
 export const productSchema = z.object({ name: z.string().trim().min(2).max(160), description: z.string().max(2000), categoryId: z.string().max(100), kind: z.enum(['food', 'pizza']), photoUrl: z.string().max(2000).refine(value => !value || /^https:\/\//.test(value) || /^\/images\/[a-zA-Z0-9/_.-]+$/.test(value), 'Use uma imagem HTTPS ou um caminho de imagem local.'), enabled: z.boolean(), blocked: z.boolean(), optionGroupIds: z.array(z.string().max(100)).max(20), variants: z.array(variantSchema).min(1).max(20) });
-export async function saveProduct(input: unknown, id?: string) {
+export async function saveProduct(input: unknown, id?: string, actor?: LogActor) {
   const data = productSchema.parse(input), catalog = await getCatalog();
   const category = catalog.categories.find(category => category.id === data.categoryId && category.enabled);
   if (!category) throw new HttpError(400, 'Selecione uma categoria ativa.');
@@ -37,6 +38,7 @@ export async function saveProduct(input: unknown, id?: string) {
       const price: Price = { id: variantId, productId, sizeId: variant.sizeId, name: variant.name, cents: variant.cents, deliveryCents: variant.deliveryCents, pickupCents: variant.pickupCents, enabled: variant.enabled, deliveryEnabled: variant.deliveryEnabled, pickupEnabled: variant.pickupEnabled, optionGroupIds: old?.optionGroupIds || [] };
       await tx.variant.upsert({ where: { id: variantId }, create: { id: variantId, productId, data: json(price), unitCostCents: variant.unitCostCents }, update: { data: json(price), unitCostCents: variant.unitCostCents } });
     }
+    await recordLog({ action: id ? 'products.updated' : 'products.created', actor, entityId: productId, details: { variantCount: data.variants.length, changedFields: Object.keys(data) } }, tx);
   });
   return { id: productId };
 }

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 import { HttpError } from './auth';
+import { logRequestId, safeRecordLog, withLogContext } from './system-logs';
+import { databaseIssue } from './database-health';
 
 export function checkOrigin(request: Request) {
   const origin = request.headers.get('origin');
@@ -30,11 +32,22 @@ export async function readJson(request: Request) {
   const text = Buffer.concat(chunks).toString('utf8');
   try { return JSON.parse(text); } catch { throw new HttpError(400, 'Dados inválidos.'); }
 }
-export function api(handler: () => Promise<unknown>) {
-  return handler().then(data => NextResponse.json(data, { headers: { 'Cache-Control': 'no-store' } })).catch(error => {
-    if (error instanceof HttpError) return NextResponse.json({ error: error.message }, { status: error.status });
-    if (error instanceof ZodError) return NextResponse.json({ error: error.issues[0]?.message || 'Revise os campos.' }, { status: 400 });
-    console.error('Falha interna da aplicação:', error instanceof Error ? error.name : 'Erro');
-    return NextResponse.json({ error: 'Não foi possível concluir. Tente novamente.' }, { status: 500 });
+export function api(handler: () => Promise<unknown>, request?: Request) {
+  return withLogContext(request, async () => {
+    const requestId = logRequestId()!;
+    const headers = { 'Cache-Control': 'no-store', 'X-Request-ID': requestId };
+    try {
+      const data = await handler();
+      if (data instanceof Response) { data.headers.set('X-Request-ID', requestId); return data; }
+      return NextResponse.json(data, { headers });
+    } catch (error) {
+      const status = error instanceof HttpError ? error.status : error instanceof ZodError ? 400 : 500;
+      if (status >= 500 || status === 403 || status === 429) {
+        const issue = databaseIssue(error);
+        await safeRecordLog({ action: status >= 500 ? 'system.request_failed' : 'system.request_blocked', level: status >= 500 ? 'error' : 'warning', details: { statusCode: status, code: status >= 500 ? issue === 'DATABASE_UNAVAILABLE' ? 'INTERNAL_ERROR' : issue : `HTTP_${status}` } });
+      }
+      const message = error instanceof HttpError ? error.message : error instanceof ZodError ? error.issues[0]?.message || 'Revise os campos.' : 'Não foi possível concluir. Tente novamente.';
+      return NextResponse.json({ error: message, ...(status >= 500 ? { requestId } : {}) }, { status, headers });
+    }
   });
 }

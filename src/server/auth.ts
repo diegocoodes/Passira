@@ -1,6 +1,7 @@
 import { randomBytes, scryptSync, timingSafeEqual, createHash } from 'node:crypto';
 import { cookies } from 'next/headers';
 import { db } from './db';
+import { recordLog, setLogActor, type LogActor } from './system-logs';
 
 const COOKIE = 'passira-admin';
 export function hashPassword(password: string) {
@@ -20,17 +21,25 @@ export async function currentAdmin() {
 export async function requireAdmin() {
   const admin = await currentAdmin();
   if (!admin) throw new HttpError(401, 'Entre no painel para continuar.');
+  setLogActor(admin);
   return admin;
 }
-export async function startSession(adminId: string) {
+export async function startSession(adminId: string, actor?: LogActor) {
   const token = randomBytes(32).toString('hex');
   const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
-  await db().session.create({ data: { id: digest(token), adminId, expiresAt } });
+  await db().$transaction(async tx => {
+    await tx.session.create({ data: { id: digest(token), adminId, expiresAt } });
+    await recordLog({ action: 'access.login', actor }, tx);
+  });
   (await cookies()).set(COOKIE, token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', path: '/', expires: expiresAt });
 }
 export async function endSession() {
   const jar = await cookies(), token = jar.get(COOKIE)?.value;
-  if (token) await db().session.deleteMany({ where: { id: digest(token) } });
+  if (token) await db().$transaction(async tx => {
+    const session = await tx.session.findUnique({ where: { id: digest(token) }, include: { admin: true } });
+    const deleted = await tx.session.deleteMany({ where: { id: digest(token) } });
+    if (session && deleted.count) await recordLog({ action: 'access.logout', actor: session.admin }, tx);
+  });
   jar.delete(COOKIE);
 }
 export class HttpError extends Error { constructor(public status: number, message: string) { super(message); } }

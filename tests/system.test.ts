@@ -19,6 +19,9 @@ import { mysqlConnection, postgresConnection } from '../src/server/connection';
 import { salesHighlights } from '../src/server/storefront-insights';
 import { getStorefrontContent, saveStorefrontContent } from '../src/server/storefront-content';
 import { defaultStorefrontContent } from '../src/lib/storefront-content';
+import { recordLog, setLogActor } from '../src/server/system-logs';
+import { listLogs } from '../src/server/logs-query';
+import { api } from '../src/server/http';
 
 const folder = mkdtempSync(path.join(tmpdir(), 'passira-tests-'));
 const postgresUrl = process.env.TEST_POSTGRES_URL;
@@ -128,6 +131,10 @@ test('orders receive sequential numbers, server totals, and idempotent retry han
   await assert.rejects(createOrder({ ...input, expectedTotalCents: 1 }, serviceTime), (error: unknown) => error instanceof HttpError && error.status === 409);
   await assert.rejects(createOrder({ ...payload(), expectedTotalCents: 1 }, serviceTime), /valores do cardápio mudaram/);
   assert.equal(await db().order.count(), 1);
+  const logs = await db().systemLog.findMany({ where: { action: 'orders.created', entityId: String(first.number) } });
+  assert.equal(logs.length, 1, 'Retries must not duplicate the recorded order event.');
+  const recorded = JSON.stringify(logs);
+  for (const privateValue of [customer.name, customer.phone, customer.cpf, first.customer.cpf, first.token]) assert.ok(!recorded.includes(privateValue!));
   await complete(first.number!);
 });
 test('tracking by number returns status without customer information or the private tracking token', async () => {
@@ -186,6 +193,48 @@ test('login attempt limits are stored in the database and reset after expiration
   await db().rateLimit.update({ where: { id: digest(key) }, data: { expiresAt: new Date(Date.now() - 1000) } });
   await rateLimit(key, 2, 900);
 });
+test('log transactions roll back with their operation and administrative events keep actor attribution', async () => {
+  const actor = { id: 'audit-test-admin', email: 'equipe@passira.local' };
+  const product = await saveProduct(inputProduct(), undefined, actor);
+  const entry = await db().systemLog.findFirstOrThrow({ where: { action: 'products.created', entityId: product.id } });
+  assert.equal(entry.actorEmail, actor.email);
+  assert.equal(entry.actorId, actor.id);
+  const marker = randomUUID();
+  await assert.rejects(db().$transaction(async tx => {
+    await tx.additionCost.create({ data: { id: marker, costCents: 10 } });
+    await recordLog({ action: 'settings.delivery_updated', actor, entityId: marker }, tx);
+    throw new Error('rollback-probe');
+  }), /rollback-probe/);
+  assert.equal(await db().additionCost.count({ where: { id: marker } }), 0);
+  assert.equal(await db().systemLog.count({ where: { entityId: marker } }), 0);
+});
+
+test('logs paginate without duplicate rows and respect area and severity filters', async () => {
+  const marker = randomUUID();
+  await db().systemLog.createMany({ data: Array.from({ length: 65 }, (_, index) => ({ id: `log-${marker}-${String(index).padStart(2, '0')}`, createdAt: new Date('2026-11-20T12:00:00Z'), action: 'system.request_failed', summary: 'Falha em uma solicitação', category: 'system', level: 'error', entityId: marker, details: {} })) });
+  const params = new URLSearchParams({ q: marker, from: '2026-11-20', to: '2026-11-20', category: 'system', level: 'error' });
+  const first = await listLogs(params); assert.equal(first.entries.length, 50); assert.equal(first.total, 65); assert.ok(first.nextCursor);
+  params.set('cursor', first.nextCursor!);
+  const second = await listLogs(params); assert.equal(second.entries.length, 15); assert.equal(second.nextCursor, null);
+  assert.equal(new Set([...first.entries, ...second.entries].map(row => row.id)).size, 65);
+  params.delete('cursor'); params.set('category', 'products'); assert.equal((await listLogs(params)).total, 0);
+});
+
+test('API failures persist a safe diagnostic and return its request ID without leaking error messages', async () => {
+  const secret = 'never-log-this-password-or-customer';
+  const request = new Request(`http://localhost/api/orders/${secret}/?cpf=${secret}`);
+  const actor = { id: 'failure-admin', email: 'operacao@passira.local' };
+  const response = await api(async () => { setLogActor(actor); throw new Error(secret); }, request);
+  assert.equal(response.status, 500);
+  const body = await response.json();
+  assert.equal(body.requestId, response.headers.get('X-Request-ID'));
+  const row = await db().systemLog.findFirstOrThrow({ where: { requestId: body.requestId } });
+  assert.equal(row.action, 'system.request_failed');
+  assert.equal(row.actorEmail, actor.email);
+  assert.ok(!JSON.stringify({ body, row }).includes(secret));
+  assert.equal((row.details as { route: string }).route, '/api/orders/[id]/');
+});
+
 test('same-origin requests work behind a proxy and foreign origins are rejected', () => {
   assert.doesNotThrow(() => checkOrigin(new Request('http://localhost:3100/api/admin/login/', { headers: { host: '127.0.0.1:3100', origin: 'http://127.0.0.1:3100' } })));
   assert.throws(() => checkOrigin(new Request('http://localhost:3100/api/admin/login/', { headers: { host: '127.0.0.1:3100', origin: 'https://attacker.example' } })), /Origem/);

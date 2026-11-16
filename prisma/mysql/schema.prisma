@@ -114,3 +114,20 @@ model RateLimit {
   hits      Int
   expiresAt DateTime
 }
+
+model SystemLog {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  level      String
+  category   String
+  action     String
+  summary    String
+  actorId    String?
+  actorEmail String?
+  entityId   String?
+  requestId  String?
+  details    Json
+  @@index([createdAt, id])
+  @@index([category, createdAt])
+  @@index([level, createdAt])
+}

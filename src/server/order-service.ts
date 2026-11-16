@@ -10,6 +10,7 @@ import type { CartItem, Customer, Fulfillment, ItemConfiguration, Order, OrderSt
 import { formatCpf } from '@/lib/format';
 import type { Prisma } from '@/generated/prisma/client';
 import { nextStatuses } from '@/lib/order-status';
+import { recordLog, type LogActor } from './system-logs';
 
 const selection = z.object({ scope: z.enum(['size', 'product', 'flavor']), ownerId: z.string().max(100), groupId: z.string().max(100), quantities: z.record(z.string().max(100), z.number().int().min(0).max(99)) });
 export const itemSchema = z.object({ id: z.string().min(1).max(100), productId: z.string().max(100), priceId: z.string().max(100), flavorIds: z.array(z.string().max(100)).max(2), selections: z.array(selection).max(30), note: z.string().max(500), quantity: z.number().int().min(1).max(99) });
@@ -63,7 +64,13 @@ export async function createOrder(input: unknown, date = new Date()) {
   if (payload.fulfillment === 'pickup') Object.assign(payload.customer, { cep: '', street: '', number: '', neighborhood: '', complement: '' });
   const data = { token: randomBytes(24).toString('hex'), requestKey: payload.requestKey, requestHash: hash, fulfillment: payload.fulfillment, customer: json(payload.customer), subtotalCents: totals.subtotal, deliveryCents: totals.fee, totalCents: totals.total,
     items: { create: totals.rows.map(row => ({ productId: row.item.productId, title: productById[row.item.productId].name, quantity: row.item.quantity, configuration: json(row.item), details: json(menu.itemDetails(row.item)), unitCents: row.cents!, unitCostCents: costOf(row.item) })) }, events: { create: { status: 'received' } } };
-  try { return presentOrder(await db().order.create({ data, include: includeOrder })); }
+  try {
+    return await db().$transaction(async tx => {
+      const order = await tx.order.create({ data, include: includeOrder });
+      await recordLog({ action: 'orders.created', entityId: String(order.id), details: { totalCents: order.totalCents, itemCount: payload.items.reduce((sum, item) => sum + item.quantity, 0), status: 'received' } }, tx);
+      return presentOrder(order);
+    });
+  }
   catch (error) {
     // Concurrent retries share one unique key and must return the same order.
     const saved = await db().order.findUnique({ where: { requestKey: payload.requestKey }, include: includeOrder });
@@ -83,7 +90,7 @@ export async function trackedOrderByNumber(number: number): Promise<PublicOrderT
   if (!order) throw new HttpError(404, 'Pedido não encontrado. Confira o número e tente novamente.');
   return { id: `#${order.id}`, number: order.id, status: order.status as OrderStatus, fulfillment: order.fulfillment as Fulfillment, createdAt: order.createdAt.toISOString(), events: order.events.map(event => ({ status: event.status as OrderStatus, createdAt: event.createdAt.toISOString() })) };
 }
-export async function changeStatus(id: number, expected: OrderStatus, status: OrderStatus) {
+export async function changeStatus(id: number, expected: OrderStatus, status: OrderStatus, actor?: LogActor) {
   return db().$transaction(async tx => {
     const order = await tx.order.findUnique({ where: { id } });
     if (!order) throw new HttpError(404, 'Pedido não encontrado.');
@@ -92,6 +99,7 @@ export async function changeStatus(id: number, expected: OrderStatus, status: Or
     const result = await tx.order.updateMany({ where: { id, status: expected }, data: { status, ...(status === 'completed' ? { completedAt: new Date() } : {}) } });
     if (!result.count) throw new HttpError(409, 'O pedido mudou. Atualize o painel.');
     await tx.orderEvent.create({ data: { orderId: id, status } });
+    await recordLog({ action: 'orders.status_changed', actor, entityId: String(id), details: { previousStatus: expected, status } }, tx);
     return { ok: true };
   });
 }

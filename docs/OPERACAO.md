@@ -126,6 +126,20 @@ Para validar os serviços no MySQL/MariaDB, forneça `TEST_MYSQL_URL` apenas ao 
 As senhas são armazenadas como hashes scrypt com salt. As sessões duram 24 horas e usam cookies HttpOnly, SameSite estrito e Secure em produção. Alterar a senha encerra todas as sessões. As APIs administrativas verificam autenticação e origem das alterações; tentativas de login e criação de pedidos têm limitação de frequência.
 ## Recursos da loja e do painel
 
+### Registros do sistema
+
+Abra **Registros** no painel para consultar eventos por período, área, nível, responsável, referência ou código de solicitação. Os horários seguem America/Recife. A lista mostra até 50 eventos por página; **Exportar CSV** baixa os primeiros 5.000 eventos dos filtros aplicados, com acentos e separador ponto e vírgula. Para volumes maiores, consulte períodos menores. A exportação também gera um evento.
+
+O histórico inclui entradas e saídas do painel, tentativas de login recusadas, alterações de senha, criação e edição de produtos, exclusões, despesas, configurações, conteúdo da loja, pedidos recebidos e suas mudanças de etapa. As operações de negócio e seus registros são gravados na mesma transação. Repetir a confirmação de um pedido não duplica o evento de recebimento. Os campos de alterações são identificados, mas textos livres e fotos não são copiados para o histórico.
+
+Falhas internas das APIs e erros de renderização no servidor geram diagnósticos com nível Erro. Solicitações bloqueadas por origem inválida ou limitação de frequência geram Atenção. As respostas de erro interno das APIs incluem um código de solicitação que pode ser buscado no painel. Requisições normais de consulta e atualização automática não geram eventos, evitando preencher o banco com verificações periódicas.
+
+Os registros ficam na tabela `SystemLog` do mesmo banco persistente da loja e entram no backup desse banco. A nova migration cria somente essa tabela e seus índices, preservando os dados existentes. Na Hostinger, `npm run build:hostinger` aplica a migration antes da publicação.
+
+O acesso à consulta e à exportação exige sessão administrativa. Não há ação de edição ou exclusão de registros no painel, nem remoção automática por prazo. O recurso começa a registrar a partir da sua ativação e não reconstrói eventos anteriores. Isso é um histórico operacional, sem garantia criptográfica contra alterações feitas diretamente por quem administra o banco.
+
+Senhas, hashes de senha, cookies, tokens privados de pedidos, endereços IP, CPF, nome, telefone, endereço e observações dos clientes não são registrados. A identificação administrativa usa o email e o ID interno do administrador. As rotas são guardadas como modelos, sem parâmetros privados nem query strings. Metadados passam por uma lista de campos permitidos. Se o próprio banco estiver indisponível, o diagnóstico não poderá ser persistido; nesse caso há um aviso estruturado `LOG_STORAGE_UNAVAILABLE` no console do servidor, sem o conteúdo da solicitação.
+
 ### Páginas de erro
 
 Endereços inexistentes e produtos não encontrados exibem a página 404 temática. Falhas inesperadas de renderização usam a tela 500, com **Tentar novamente** para buscar e renderizar a página de novo. Falhas no layout principal também têm uma tela independente, com fontes e estilos próprios e sem consultar o banco. As telas não exibem mensagens internas de exceções nem alteram os dados locais do carrinho.

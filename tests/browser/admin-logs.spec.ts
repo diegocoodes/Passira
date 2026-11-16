@@ -1,0 +1,53 @@
+import { test, expect } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
+
+const origin = 'http://127.0.0.1:3100';
+test('administrators inspect and export persistent logs without exposing submitted private values', async ({ page, request }) => {
+  expect((await request.get('/api/admin/logs/')).status()).toBe(401);
+  expect((await request.get('/api/admin/logs/?format=csv')).status()).toBe(401);
+  expect((await request.post('/api/admin/login/', { headers: { origin }, data: { email: 'nao-cadastrado@passira.local', password: 'senha-privada-do-teste' } })).status()).toBe(401);
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/admin/entrar/');
+  await page.getByLabel('Email', { exact: true }).fill('teste@passira.local');
+  await page.getByLabel('Senha', { exact: true }).fill('senha-apenas-para-testes-123456');
+  await page.getByRole('button', { name: 'Entrar no painel', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Sua operação, à vista.' })).toBeVisible();
+  const denied = await page.request.get('/api/admin/logs/?category=access&level=warning');
+  expect((await denied.json()).entries.some((row: { action: string }) => row.action === 'access.login_failed')).toBe(true);
+  const privateValue = 'CPF privado 529.982.247-25';
+  const created = await page.request.post('/api/admin/expenses/', { headers: { origin }, data: { day: '2026-11-16', title: privateValue, cents: 123 } });
+  expect(created.status()).toBe(200);
+  const expense = await created.json();
+  const response = await page.request.get(`/api/admin/logs/?category=expenses&q=${expense.id}`);
+  const records = await response.json();
+  expect(records.entries[0].actorEmail).toBe('teste@passira.local');
+  expect(records.entries[0].summary).toBe('Despesa cadastrada');
+  expect(JSON.stringify(records)).not.toContain(privateValue);
+  expect(JSON.stringify(records)).not.toContain('529.982.247-25');
+  await page.getByRole('button', { name: 'Registros', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'O que aconteceu na loja' })).toBeVisible();
+  await page.getByRole('combobox', { name: 'Área', exact: true }).selectOption('expenses');
+  await page.getByRole('textbox', { name: 'Buscar nos registros' }).fill(expense.id);
+  await page.getByRole('button', { name: 'Filtrar registros' }).click();
+  await expect(page.locator('.admin-log-entry')).toHaveCount(1);
+  await expect(page.getByRole('heading', { name: 'Despesa cadastrada', exact: true })).toBeVisible();
+  await page.getByText('Ver detalhes', { exact: true }).click();
+  await expect(page.getByText('Código da solicitação', { exact: true })).toBeVisible();
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Exportar CSV', exact: true }).click();
+  const download = await downloadPromise;
+  await download.saveAs('test-results/registros-exportados.csv');
+  const csv = await readFile('test-results/registros-exportados.csv', 'utf8');
+  expect(csv).toContain('Despesa cadastrada');
+  expect(csv).not.toContain(privateValue);
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 950 });
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await page.screenshot({ path: `test-results/registros-${width}.png`, fullPage: true });
+  }
+  expect((await page.request.get('/api/admin/logs/?from=2026-02-30')).status()).toBe(400);
+  expect((await page.request.delete('/api/admin/logs/', { headers: { origin } })).status()).toBe(405);
+  expect((await page.request.delete(`/api/admin/expenses/?id=${expense.id}`, { headers: { origin } })).status()).toBe(200);
+  expect(errors).toEqual([]);
+});

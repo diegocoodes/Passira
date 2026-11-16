@@ -7,6 +7,7 @@ import './brand.css';
 import './storefront-sections.css';
 import './product-page.css';
 import './admin.css';
+import './admin-logs.css';
 import './order-tracking.css';
 import './storefront-campaign.css';
 import './experience.css';

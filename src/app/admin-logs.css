@@ -1,0 +1,30 @@
+.admin-log-filters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.admin-log-search { grid-column: span 3; }
+.admin-log-filters > button { align-self: end; }
+.admin-log-toolbar, .admin-log-pagination { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-block: 20px; font-size: 12px; color: var(--muted); }
+.admin-log-toolbar > div, .admin-log-pagination > div { display: flex; gap: 10px; flex-wrap: wrap; }
+.admin-log-toolbar .button, .admin-log-pagination .button { min-height: 44px; font-size: 12px; }
+.admin-log-list { list-style: none; padding: 0; margin: 0; }
+.admin-log-entry { display: grid; grid-template-columns: 165px minmax(0, 1fr) minmax(120px, 220px); gap: 12px 24px; padding: 22px 0; border-top: 1px solid var(--line); }
+.admin-log-moment { display: grid; align-content: start; gap: 8px; }
+.admin-log-moment time { color: var(--muted); font-size: 12px; }
+.admin-log-level { display: inline-flex; width: fit-content; padding: 3px 9px; border-radius: 5px; font-size: 11px; font-weight: 600; background: var(--green-soft); color: var(--green); }
+.admin-log-level.warning { color: var(--ink); background: var(--surface); border: 1px solid var(--line); }
+.admin-log-level.error { color: #921f27; background: #fcebed; }
+.admin-log-event h3 { font: 600 21px/1.2 var(--display); }
+.admin-log-event p { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px 18px; font-size: 11px; color: var(--muted); overflow-wrap: anywhere; }
+.admin-log-actor { display: grid; align-content: start; gap: 5px; font-size: 12px; overflow-wrap: anywhere; }
+.admin-log-actor > span { color: var(--muted); font-size: 10px; }
+.admin-log-actor strong { font-weight: 500; }
+.admin-log-entry details { grid-column: 2 / -1; font-size: 12px; }
+.admin-log-entry summary { cursor: pointer; width: fit-content; min-height: 32px; color: var(--green); padding-block: 6px; }
+.admin-log-entry summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.admin-log-entry dl { margin: 8px 0 0; padding: 14px; border-radius: 6px; background: var(--surface); }
+.admin-log-entry dl > div { display: grid; grid-template-columns: minmax(120px, 180px) minmax(0, 1fr); gap: 12px; padding: 5px 0; }
+.admin-log-entry dt { color: var(--muted); }
+.admin-log-entry dd { margin: 0; overflow-wrap: anywhere; }
+.admin-log-entry code { font-size: 10px; }
+.admin-logs .admin-empty > svg { color: var(--green); margin-bottom: 12px; }
+.admin-logs .admin-empty small { display: block; margin-top: 8px; }
+@media (max-width: 1050px) { .admin-log-entry { grid-template-columns: 145px minmax(0, 1fr); } .admin-log-actor { grid-column: 2; } .admin-log-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } .admin-log-search { grid-column: auto; } }
+@media (max-width: 600px) { .admin-log-entry { grid-template-columns: minmax(0, 1fr); gap: 12px; } .admin-log-moment { display: flex; align-items: center; justify-content: space-between; gap: 10px; } .admin-log-actor, .admin-log-entry details { grid-column: 1; } .admin-log-entry dl > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } .admin-log-search, .admin-log-filters > button { grid-column: 1 / -1; } .admin-log-toolbar > div { width: 100%; } .admin-log-toolbar > div > button { flex: 1; } }

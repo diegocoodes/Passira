@@ -1,4 +1,4 @@
 import { api } from '@/server/http';
 import { salesHighlights } from '@/server/storefront-insights';
 
-export async function GET() { return api(() => salesHighlights()); }
+export async function GET(request: Request) { return api(() => salesHighlights(), request); }

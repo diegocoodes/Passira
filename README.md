@@ -32,6 +32,7 @@ O setup importa o cardápio original uma única vez e não sobrescreve alteraç�
 - Despesas do dia.
 - Regiões de entrega e custos dos adicionais.
 - Alteração de senha e encerramento de sessões.
+- Registros persistentes de acessos, pedidos, alterações e falhas, com filtros e exportação CSV no painel.
 
 Produtos excluídos saem da loja; pedidos anteriores preservam os dados da compra. Cada pedido usa um número global crescente, sem reinício diário. O endereço de acompanhamento usa um token privado e não permite consultas apenas pelo número.
 

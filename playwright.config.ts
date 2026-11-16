@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 
 export default defineConfig({
   testDir: './tests/browser',
+  outputDir: './test-results/playwright',
   fullyParallel: false,
   workers: 1,
   timeout: 90000,
