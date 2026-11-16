@@ -66,6 +66,16 @@ Custos vazios são desconhecidos. Nesse caso o painel mostra **Pendente**, sem i
 
 Em **Configurações**, cadastre regiões, bairros e taxas confirmadas. Bairros não cadastrados ou com taxa vazia não permitem finalizar entrega. Retirada tem taxa zero. Não há preenchimento automático de endereço por CEP nesta versão.
 
+## Hospedar na Hostinger
+
+No aplicativo Node.js, selecione Next.js, branch `main`, Node.js 24.x, diretório raiz `./`, gerenciador npm, comando `npm run build` e diretório de saída `.next`.
+
+O build usa Webpack para permitir o fallback WebAssembly do compilador SWC quando o servidor não oferece a versão de GLIBC exigida pelo binário nativo. A configuração fica em `next.config.mjs`, que o Node.js carrega sem transformar TypeScript. Mantenha esses dois ajustes juntos.
+
+Cadastre `NODE_ENV=production` e `DATABASE_URL` com uma conexão PostgreSQL persistente e TLS. Prepare o banco antes de publicar, executando `npm run db:migrate` e `npm run db:setup` em um ambiente confiável com essa mesma conexão. No primeiro setup, defina também `ADMIN_EMAIL` e `ADMIN_PASSWORD` com no mínimo 12 caracteres. O build não executa esses comandos automaticamente.
+
+Se aparecer `GLIBC_2.29 not found`, confira se a implantação está usando o commit com `next.config.mjs` e `next build --webpack`. O fallback WASM pode permitir a compilação mesmo com o aviso sobre o binário nativo. Confirme o resultado final do build no log.
+
 ## Hospedar na Vercel
 
 O sistema agora precisa de um servidor Next.js e de um banco persistente. Exportar `out/` ou manter um arquivo SQLite dentro de uma função Vercel não atende a esses requisitos.

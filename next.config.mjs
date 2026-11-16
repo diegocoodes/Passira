@@ -1,6 +1,7 @@
-import type { NextConfig } from 'next';
+// @ts-check
 
-const config: NextConfig = {
+/** @type {import('next').NextConfig} */
+const config = {
   serverExternalPackages: ['@libsql/client'],
   trailingSlash: true,
   images: { unoptimized: true },
