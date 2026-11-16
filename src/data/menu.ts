@@ -13,7 +13,12 @@ function presentEntry<T extends { name: string; description?: string }>(entry: T
   return { ...entry, name: displayMenuText(entry.name), ...(typeof entry.description === 'string' ? { description: displayMenuText(entry.description) } : {}) };
 }
 
-export const categories: Category[] = rawCategories.map(presentEntry);
+function compareCategories(a: Category, b: Category) {
+  const priority = (id: string) => id === '274528' ? -1 : id === '274513' ? 1 : 0;
+  return priority(a.id) - priority(b.id);
+}
+
+export const categories: Category[] = rawCategories.map(presentEntry).sort(compareCategories);
 export const products: Product[] = rawProducts.map(presentEntry);
 export const sizes: Size[] = rawSizes.map(presentEntry);
 export const prices: Price[] = rawPrices.map(presentEntry);
@@ -30,7 +35,7 @@ export const productPrices = (id: string) => prices.filter(p => p.productId === 
 export const initialCatalog: Catalog = { categories, products, prices, sizes, optionGroups, additions, deliveryRegions };
 export function indexCatalog(catalog: Catalog) {
   const presented = { ...catalog,
-    categories: catalog.categories.map(presentEntry), products: catalog.products.map(presentEntry),
+    categories: catalog.categories.map(presentEntry).sort(compareCategories), products: catalog.products.map(presentEntry),
     prices: catalog.prices.map(presentEntry), sizes: catalog.sizes.map(presentEntry),
     optionGroups: catalog.optionGroups.map(presentEntry), additions: catalog.additions.map(presentEntry),
   };

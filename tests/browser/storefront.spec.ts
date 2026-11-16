@@ -9,12 +9,16 @@ test('menu previews ten products and expands every enabled category without dupl
   const cards = page.locator('#menu-products .product-card');
   const more = page.getByRole('button', { name: 'Ver mais', exact: true });
   await expect(cards).toHaveCount(10);
+  await expect(page.locator('#category-track > button').first()).toHaveAttribute('aria-label', /^Pizzas /);
+  await expect(page.locator('#category-track > button').last()).toHaveAttribute('aria-label', /^Bebidas /);
   await page.getByRole('link', { name: /Bateu a fome/ }).click();
   await expect(page).toHaveURL(/#cardapio$/);
   await expect(page.getByRole('heading', { name: 'Nosso cardápio.' })).toBeVisible();
   await expect(more).toHaveAttribute('aria-expanded', 'false');
   await more.click();
   await expect(cards).toHaveCount(products.length);
+  await expect(page.locator('#menu-products > .menu-category').first()).toHaveAttribute('id', 'categoria-274528');
+  await expect(page.locator('#menu-products > .menu-category').last()).toHaveAttribute('id', 'categoria-274513');
   for (const category of categories) {
     const expected = products.filter((product: { categoryId: string }) => product.categoryId === category.id).length;
     if (expected) await expect(page.locator(`#categoria-${category.id} .product-card`)).toHaveCount(expected);
