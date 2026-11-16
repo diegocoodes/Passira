@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createClient } from '@libsql/client';
 import { Client as PgClient } from 'pg';
+import { createConnection as createMysqlConnection } from 'mariadb';
 import { db } from '../src/server/db';
 import { seedCatalog, getCatalog } from '../src/server/catalog';
 import { saveProduct, dashboard } from '../src/server/admin-service';
@@ -14,23 +15,28 @@ import { hashPassword, verifyPassword, HttpError, rateLimit, digest } from '../s
 import { nextStatuses, todayInRecife, dayBounds } from '../src/lib/order-status';
 import { createMenu } from '../src/lib/menu';
 import { checkOrigin } from '../src/server/http';
-import { postgresConnection } from '../src/server/connection';
+import { mysqlConnection, postgresConnection } from '../src/server/connection';
 import { salesHighlights } from '../src/server/storefront-insights';
 import { getStorefrontContent, saveStorefrontContent } from '../src/server/storefront-content';
 import { defaultStorefrontContent } from '../src/lib/storefront-content';
 
 const folder = mkdtempSync(path.join(tmpdir(), 'passira-tests-'));
 const postgresUrl = process.env.TEST_POSTGRES_URL;
+const mysqlUrl = process.env.TEST_MYSQL_URL;
+if (postgresUrl && mysqlUrl) throw new Error('Configure apenas um banco remoto de teste por execução.');
 const testSchema = `passira_test_${randomUUID().replaceAll('-', '')}`;
+let mysqlCreated = false;
 if (postgresUrl) {
   const url = new URL(postgresUrl); url.searchParams.set('schema', testSchema); process.env.DATABASE_URL = url.toString();
+} else if (mysqlUrl) {
+  const url = new URL(mysqlUrl); url.pathname = `/${testSchema}`; process.env.DATABASE_URL = url.toString();
 } else process.env.DATABASE_URL = `file:${path.join(folder, 'test.db').replaceAll('\\', '/')}`;
 const serviceTime = new Date('2026-11-11T18:00:00-03:00');
 const customer = { name: 'Cliente de teste', phone: '(81) 99999-9999', cpf: '529.982.247-25', cep: '', street: '', number: '', neighborhood: '', complement: '', note: '', payment: 'pix' as const };
 let productId: string, priceId: string;
 
 before(async () => {
-  const migrations = postgresUrl ? 'prisma/migrations' : 'prisma/sqlite/migrations';
+  const migrations = postgresUrl ? 'prisma/migrations' : mysqlUrl ? 'prisma/mysql/migrations' : 'prisma/sqlite/migrations';
   const scripts = readdirSync(migrations).filter(name => /^\d+_/.test(name)).sort().map(name => readFileSync(`${migrations}/${name}/migration.sql`, 'utf8'));
   if (postgresUrl) {
     const client = new PgClient({ connectionString: postgresConnection(postgresUrl), connectionTimeoutMillis: 15000 });
@@ -39,6 +45,18 @@ before(async () => {
       for (const script of scripts) await client.query(script);
       await client.query('INSERT INTO "Category" (id, name, data) VALUES ($1, $2, $3)', ['schema-probe', testSchema, '{}']);
       assert.equal((await db().category.findUnique({ where: { id: 'schema-probe' } }))?.name, testSchema, 'The test client must use its isolated schema.');
+      await db().category.delete({ where: { id: 'schema-probe' } });
+    } finally { await client.end(); }
+  } else if (mysqlUrl) {
+    const client = await createMysqlConnection({ ...mysqlConnection(mysqlUrl), multipleStatements: true });
+    try {
+      assert.match(testSchema, /^passira_test_[a-f0-9]{32}$/);
+      await client.query(`CREATE DATABASE \`${testSchema}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`);
+      mysqlCreated = true;
+      await client.query(`USE \`${testSchema}\``);
+      for (const script of scripts) await client.query(script);
+      await client.query('INSERT INTO Category (id, name, data) VALUES (?, ?, ?)', ['schema-probe', testSchema, '{}']);
+      assert.equal((await db().category.findUnique({ where: { id: 'schema-probe' } }))?.name, testSchema, 'The MySQL client must use its isolated database.');
       await db().category.delete({ where: { id: 'schema-probe' } });
     } finally { await client.end(); }
   } else {
@@ -54,6 +72,11 @@ after(async () => {
     assert.match(testSchema, /^passira_test_[a-f0-9]{32}$/);
     const client = new PgClient({ connectionString: postgresConnection(postgresUrl), connectionTimeoutMillis: 15000 });
     try { await client.connect(); await client.query(`DROP SCHEMA "${testSchema}" CASCADE`); } finally { await client.end(); }
+  }
+  if (mysqlUrl && mysqlCreated) {
+    assert.match(testSchema, /^passira_test_[a-f0-9]{32}$/);
+    const client = await createMysqlConnection(mysqlConnection(mysqlUrl));
+    try { await client.query(`DROP DATABASE \`${testSchema}\``); } finally { await client.end(); }
   }
   // On Windows, the native SQLite driver can retain handles until process exit.
   if (process.platform !== 'win32') {

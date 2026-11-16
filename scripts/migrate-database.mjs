@@ -5,8 +5,8 @@ import { dirname, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const url = process.env.DATABASE_URL || 'file:./prisma/dev.db';
-if (process.env.VERCEL && url.startsWith('file:')) throw new Error('Configure DATABASE_URL com um banco PostgreSQL persistente.');
-if (!url.startsWith('file:') && !/^postgres(ql)?:/.test(url)) throw new Error('DATABASE_URL deve usar PostgreSQL ou SQLite local.');
+if (process.env.VERCEL && url.startsWith('file:')) throw new Error('Configure DATABASE_URL com um banco MySQL ou PostgreSQL persistente.');
+if (!url.startsWith('file:') && !/^(postgres(ql)?|mysql):/.test(url)) throw new Error('DATABASE_URL deve usar MySQL, PostgreSQL ou SQLite local.');
 if (url.startsWith('file:')) {
   mkdirSync(dirname(resolve(url.slice(5))), { recursive: true });
   const client = createClient({ url });

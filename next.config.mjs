@@ -2,7 +2,7 @@
 
 /** @type {import('next').NextConfig} */
 const config = {
-  serverExternalPackages: ['@libsql/client'],
+  serverExternalPackages: ['@libsql/client', 'mariadb'],
   trailingSlash: true,
   images: { unoptimized: true },
   poweredByHeader: false,

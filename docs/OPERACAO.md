@@ -68,11 +68,27 @@ Em **Configurações**, cadastre regiões, bairros e taxas confirmadas. Bairros 
 
 ## Hospedar na Hostinger
 
-No aplicativo Node.js, selecione Next.js, branch `main`, Node.js 24.x, diretório raiz `./`, gerenciador npm, comando `npm run build` e diretório de saída `.next`.
+No aplicativo Node.js, selecione Next.js, branch `main`, Node.js 24.x, diretório raiz `./`, gerenciador npm, comando `npm run build:hostinger` e diretório de saída `.next`.
 
 O build usa Webpack para permitir o fallback WebAssembly do compilador SWC quando o servidor não oferece a versão de GLIBC exigida pelo binário nativo. A configuração fica em `next.config.mjs`, que o Node.js carrega sem transformar TypeScript. Mantenha esses dois ajustes juntos.
 
-Cadastre `NODE_ENV=production` e `DATABASE_URL` com uma conexão PostgreSQL persistente e TLS. Prepare o banco antes de publicar, executando `npm run db:migrate` e `npm run db:setup` em um ambiente confiável com essa mesma conexão. No primeiro setup, defina também `ADMIN_EMAIL` e `ADMIN_PASSWORD` com no mínimo 12 caracteres. O build não executa esses comandos automaticamente.
+Crie o banco MySQL e o usuário em Bancos de dados, Gerenciamento. Nos campos de conexão, use os nomes completos com o prefixo da conta. Cadastre as variáveis na aplicação Node.js, sem aspas no valor de cada campo:
+
+```dotenv
+NODE_ENV=production
+NPM_CONFIG_INCLUDE=dev
+DATABASE_URL=mysql://USUARIO:SENHA@127.0.0.1:3306/BANCO
+ADMIN_EMAIL=seu-email@example.com
+ADMIN_PASSWORD=senha-inicial-com-pelo-menos-12-caracteres
+```
+
+`NPM_CONFIG_INCLUDE=dev` mantém as ferramentas de migrations, setup e compilação disponíveis durante a instalação. Codifique caracteres especiais do usuário e da senha com percent encoding na URL. A senha do administrador é independente da senha do MySQL. A Hostinger recomenda `127.0.0.1` para a conexão interna do aplicativo Node.js ao MySQL, evitando a resolução IPv6 de `localhost`: [guia oficial](https://www.hostinger.com/support/connecting-a-hostinger-mysql-database-to-a-node-js-application/).
+
+`npm run build:hostinger` executa migrations MySQL, importa o cardápio, cria o primeiro administrador e compila o site. Uma nova execução preserva os produtos editados, pedidos e contas existentes. As credenciais iniciais só são utilizadas se ainda não houver administrador. O comando convencional `npm run build` continua apenas compilando. Não use `db push` ou `migrate reset` para preparar o banco da loja.
+
+Se o ambiente de compilação não alcançar o MySQL interno, execute `npm run db:prepare` via SSH na hospedagem, com as mesmas variáveis, e utilize `npm run build` no painel. Não habilite acesso público ao MySQL para contornar uma falha na conexão interna.
+
+Após a implantação, verifique `/api/health/`: a resposta esperada é `{"status":"ok","database":"connected"}`. Abra `/admin/`, entre com `ADMIN_EMAIL` e `ADMIN_PASSWORD` e altere a senha inicial. O diagnóstico não retorna credenciais.
 
 Se aparecer `GLIBC_2.29 not found`, confira se a implantação está usando o commit com `next.config.mjs` e `next build --webpack`. O fallback WASM pode permitir a compilação mesmo com o aviso sobre o binário nativo. Confirme o resultado final do build no log.
 
@@ -87,7 +103,7 @@ O sistema agora precisa de um servidor Next.js e de um banco persistente. Export
 5. Publique usando Node.js 24.x, `npm ci`, `npm run build` e a saída padrão do Next.js.
 6. Acesse `/admin/`, altere a senha inicial, cadastre custos e entrega e confira o fluxo antes de receber clientes.
 
-O build gera os clientes Prisma para PostgreSQL e SQLite a partir dos mesmos modelos, mas não executa migrations nem cria administradores automaticamente. Rode as migrations antes de publicar versões que alterem o schema. O comando `db:migrate` usa Prisma Migrate e seleciona o schema e as migrations pelo protocolo de `DATABASE_URL`. Os modelos canônicos ficam em `prisma/schema.prisma`; a versão em `prisma/sqlite/schema.prisma` é gerada por `npm run db:generate`. Não misture migrations dos dois conectores. Faça backups antes de futuras alterações de schema.
+O build convencional gera os clientes Prisma para PostgreSQL, MySQL e SQLite a partir dos mesmos modelos, mas não executa migrations nem cria administradores automaticamente. Rode as migrations antes de publicar versões que alterem o schema. O comando `db:migrate` usa Prisma Migrate e seleciona o schema e as migrations pelo protocolo de `DATABASE_URL`. Os modelos canônicos ficam em `prisma/schema.prisma`; as versões em `prisma/mysql/schema.prisma` e `prisma/sqlite/schema.prisma` são geradas por `npm run db:generate`. Não misture migrations dos conectores. Faça backups antes de futuras alterações de schema.
 
 Uma conexão remota configurada no computador não é enviada à Vercel pelo GitHub. Cadastre a variável privada também no ambiente da hospedagem. O repositório não inclui credenciais nem cria contas no provedor automaticamente.
 
@@ -104,6 +120,8 @@ npm run test:e2e
 Os testes de serviço usam um banco temporário separado. O teste de navegador inicia uma instância de produção na porta 3100, com banco e usuário exclusivos de teste em `test-results/`. Ele não envia pedidos ao WhatsApp nem altera o banco da loja local. O teste completo da compra respeita o horário real da loja, das 10h às 23h15 em America/Recife.
 
 Para validar os serviços no PostgreSQL, forneça `TEST_POSTGRES_URL` apenas ao processo de teste e execute `npm run test:system`. A suíte cria um schema aleatório exclusivo, verifica o isolamento antes de inserir dados e remove esse schema ao terminar. Ela não usa as tabelas operacionais de `public`. Não use os comandos de reset do Prisma no banco da loja.
+
+Para validar os serviços no MySQL/MariaDB, forneça `TEST_MYSQL_URL` apenas ao processo de teste e execute `npm run test:system`. Use uma instância de teste cujo usuário possa criar e remover bancos. A suíte cria um banco aleatório `passira_test_...`, verifica o isolamento e remove somente esse banco ao terminar. Não configure `TEST_MYSQL_URL` e `TEST_POSTGRES_URL` na mesma execução.
 
 As senhas são armazenadas como hashes scrypt com salt. As sessões duram 24 horas e usam cookies HttpOnly, SameSite estrito e Secure em produção. Alterar a senha encerra todas as sessões. As APIs administrativas verificam autenticação e origem das alterações; tentativas de login e criação de pedidos têm limitação de frequência.
 ## Recursos da loja e do painel
