@@ -9,7 +9,7 @@ export default defineConfig({
   timeout: 90000,
   use: { baseURL: 'http://127.0.0.1:3100', headless: true, actionTimeout: 15000, trace: 'retain-on-failure', screenshot: 'only-on-failure' },
   webServer: {
-    command: 'npm run db:migrate && npm run db:setup && npm run start -- --port 3100',
+    command: 'npm run db:migrate && npm run db:setup && node --import ./tests/browser/service-clock.mjs node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3100',
     url: 'http://127.0.0.1:3100/admin/entrar/',
     reuseExistingServer: false,
     timeout: 120000,

@@ -7,8 +7,9 @@ import { useCart } from '@/lib/cart';
 import { pickupAddress } from '@/lib/orders';
 import { Checkout } from './cart';
 import { BrandLogo } from './brand-logo';
+import { AccountLink } from './account-link';
 
-export function CheckoutPage({ startAtDetails = false }: { startAtDetails?: boolean }) {
+export function CheckoutPage({ startAtDetails = false, startAtReview = false }: { startAtDetails?: boolean; startAtReview?: boolean }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -18,10 +19,10 @@ export function CheckoutPage({ startAtDetails = false }: { startAtDetails?: bool
   }, []);
 
   return <div className="checkout-page">
-    <header className="site-header"><div className="header-inner"><Link href="/" className="brand" aria-label="Passira, início"><BrandLogo /></Link><Link href="/#cardapio" className="checkout-back"><ArrowLeft size={18} /><span>Voltar ao cardápio</span></Link></div></header>
+    <header className="site-header"><div className="header-inner"><Link href="/" className="brand" aria-label="Passira, início"><BrandLogo /></Link><div className="account-header-actions"><Link href="/#cardapio" className="checkout-back"><ArrowLeft size={18} /><span>Voltar ao cardápio</span></Link><AccountLink /></div></div></header>
     <main className="checkout-container">
       <div className="checkout-intro"><h1>Finalizar pedido</h1><p>Confira os itens, escolha como receber e preencha seus dados.</p></div>
-      {ready ? <Checkout initialStep={startAtDetails ? 'details' : 'cart'} /> : <div className="checkout-loading" role="status"><ShoppingBag size={28} /><p>Carregando seu pedido…</p></div>}
+      {ready ? <Checkout initialStep={startAtReview ? 'review' : startAtDetails ? 'details' : 'cart'} /> : <div className="checkout-loading" role="status"><ShoppingBag size={28} /><p>Carregando seu pedido…</p></div>}
       <footer className="checkout-page-footer"><Link href="/" aria-label="Passira, início"><BrandLogo /></Link><p><MapPin size={15} />{pickupAddress}</p></footer>
     </main>
   </div>;

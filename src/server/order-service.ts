@@ -26,12 +26,13 @@ export function presentOrder(order: StoredOrder): Order {
   };
 }
 
-export async function createOrder(input: unknown, date = new Date()) {
+export async function createOrder(input: unknown, accountId: string, date = new Date()) {
+  if (!accountId) throw new HttpError(401, 'Entre na sua conta para concluir o pedido.');
   const payload = orderSchema.parse(input);
-  const hash = createHash('sha256').update(JSON.stringify(payload)).digest('hex');
+  const hash = createHash('sha256').update(JSON.stringify({ accountId, payload })).digest('hex');
   const previous = await db().order.findUnique({ where: { requestKey: payload.requestKey }, include: includeOrder });
   if (previous) {
-    if (previous.requestHash !== hash) throw new HttpError(409, 'Esta tentativa já foi usada para outro pedido. Recarregue a página.');
+    if (previous.accountId !== accountId || previous.requestHash !== hash) throw new HttpError(409, 'Esta tentativa já foi usada para outro pedido. Recarregue a página.');
     return presentOrder(previous);
   }
   const reason = validateCustomer(payload.customer, payload.fulfillment === 'delivery');
@@ -62,7 +63,7 @@ export async function createOrder(input: unknown, date = new Date()) {
     return Math.round(total);
   };
   if (payload.fulfillment === 'pickup') Object.assign(payload.customer, { cep: '', street: '', number: '', neighborhood: '', complement: '' });
-  const data = { token: randomBytes(24).toString('hex'), requestKey: payload.requestKey, requestHash: hash, fulfillment: payload.fulfillment, customer: json(payload.customer), subtotalCents: totals.subtotal, deliveryCents: totals.fee, totalCents: totals.total,
+  const data = { accountId, token: randomBytes(24).toString('hex'), requestKey: payload.requestKey, requestHash: hash, fulfillment: payload.fulfillment, customer: json(payload.customer), subtotalCents: totals.subtotal, deliveryCents: totals.fee, totalCents: totals.total,
     items: { create: totals.rows.map(row => ({ productId: row.item.productId, title: productById[row.item.productId].name, quantity: row.item.quantity, configuration: json(row.item), details: json(menu.itemDetails(row.item)), unitCents: row.cents!, unitCostCents: costOf(row.item) })) }, events: { create: { status: 'received' } } };
   try {
     return await db().$transaction(async tx => {
@@ -74,9 +75,22 @@ export async function createOrder(input: unknown, date = new Date()) {
   catch (error) {
     // Concurrent retries share one unique key and must return the same order.
     const saved = await db().order.findUnique({ where: { requestKey: payload.requestKey }, include: includeOrder });
-    if (saved && saved.requestHash === hash) return presentOrder(saved);
+    if (saved && saved.accountId === accountId && saved.requestHash === hash) return presentOrder(saved);
     throw error;
   }
+}
+export async function customerOrders(accountId: string, before?: number) {
+  if (!accountId) throw new HttpError(401, 'Entre na sua conta para ver seus pedidos.');
+  if (before !== undefined && (!Number.isSafeInteger(before) || before < 1 || before > 2147483647)) throw new HttpError(400, 'Página de pedidos inválida.');
+  const rows = await db().order.findMany({ where: { accountId, ...(before ? { id: { lt: before } } : {}) }, orderBy: { id: 'desc' }, take: 21, include: includeOrder });
+  return { orders: rows.slice(0, 20).map(presentOrder), nextCursor: rows.length > 20 ? rows[19].id : null };
+}
+export async function customerOrder(accountId: string, number: number) {
+  if (!accountId) throw new HttpError(401, 'Entre na sua conta para ver seu pedido.');
+  if (!Number.isSafeInteger(number) || number < 1 || number > 2147483647) throw new HttpError(404, 'Pedido não encontrado.');
+  const order = await db().order.findFirst({ where: { id: number, accountId }, include: includeOrder });
+  if (!order) throw new HttpError(404, 'Pedido não encontrado.');
+  return presentOrder(order);
 }
 export async function trackedOrder(token: string) {
   if (!/^[a-f0-9]{48}$/.test(token)) throw new HttpError(404, 'Pedido não encontrado.');

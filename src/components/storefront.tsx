@@ -10,7 +10,8 @@ import type { StorefrontContent } from '@/lib/storefront-content';
 import { useCart } from '@/lib/cart';
 import { brl, normalize } from '@/lib/format';
 import { pickupAddress } from '@/lib/orders';
-import { CartPanel, OrderReceipt } from './cart';
+import { CartPanel } from './cart';
+import { AccountLink } from './account-link';
 import { CategoryNavigation } from './category-navigation';
 import { BrandLogo } from './brand-logo';
 import { Dialog } from './dialog';
@@ -45,10 +46,9 @@ export function Storefront({ content }: { content: StorefrontContent }) {
   const root = useRef<HTMLDivElement>(null);
   useRevealMotion(root);
   const [information, setInformation] = useState(false);
-  const [history, setHistory] = useState(false);
   const [ready, setReady] = useState(false);
   const [now, setNow] = useState(new Date());
-  const items = useCart(s => s.items), orders = useCart(s => s.orders), clearOrders = useCart(s => s.clearOrders), method = useCart(s => s.method);
+  const items = useCart(s => s.items), method = useCart(s => s.method);
   useEffect(() => { useCart.persist.rehydrate(); setReady(true); const id = window.setInterval(() => setNow(new Date()), 30000); return () => window.clearInterval(id); }, []);
   useEffect(() => {
     const readLocation = (event?: Event) => {
@@ -104,7 +104,7 @@ export function Storefront({ content }: { content: StorefrontContent }) {
     <StorefrontOpening />
     <a className="skip-link" href="#cardapio">Ir para o cardápio</a>
     <div className="top-strip"><span>Passira San Martin</span><span>Todos os dias, 10h às 23h15</span></div>
-    <header className="site-header"><div className="header-inner"><a href="#" className="brand" aria-label="Passira, início"><BrandLogo /></a><nav className="header-nav" aria-label="Menu principal"><a href="#cardapio" className="current">Cardápio</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a><button onClick={() => setHistory(true)}><ReceiptText size={17} />Meus pedidos</button><button className="store-information-button" onClick={() => setInformation(true)} aria-label="Informações da loja"><Info size={17} /></button></nav><Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b key={count} className="cart-count-feedback">{count}</b></Link></div></header>
+    <header className="site-header"><div className="header-inner"><a href="#" className="brand" aria-label="Passira, início"><BrandLogo /></a><nav className="header-nav" aria-label="Menu principal"><a href="#cardapio" className="current">Cardápio</a><a href="#a-passira">A Passira</a><a href="#avaliacoes">Avaliações</a><Link href="/minha-conta/" className="header-orders" aria-label="Meus pedidos"><ReceiptText size={17} /><span>Meus pedidos</span></Link><button className="store-information-button" onClick={() => setInformation(true)} aria-label="Informações da loja"><Info size={17} /></button></nav><AccountLink /><Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b key={count} className="cart-count-feedback">{count}</b></Link></div></header>
     <main className="storefront-main">
       <StorefrontHero content={content.hero} />
       <div className="page-container">
@@ -151,6 +151,5 @@ export function Storefront({ content }: { content: StorefrontContent }) {
     <footer className="site-footer"><div className="page-container footer-content"><div className="footer-brand"><a href="#" className="footer-logo" aria-label="Passira, início"><BrandLogo /></a><span>{content.footer.description}</span></div><p><MapPin size={19} />{pickupAddress}</p><div><a href="/conferencia/">Cardápio e informações em conferência<ArrowRight size={14} /></a><small>Dados conferidos em 10/11/2026 · <a href="https://loja.neemo.com.br/passira-sanmartin" target="_blank" rel="noreferrer">Fonte do cardápio</a></small><small>Imagens complementares ilustrativas · <a href="/images/illustrative/credits.html" target="_blank" rel="noreferrer">Créditos das fotos</a></small><RestaurantPhotoCredits image={content.story.image} /></div></div></footer>
     <Link href="/finalizar/" className="mobile-cart-bar"><span className="mobile-cart-count">{count}</span><ShoppingBag size={19} /><strong>Ver meu pedido</strong><b>{brl(total)}</b><ChevronRight size={17} /></Link>
     {information && <Dialog title="Passira San Martin" close={() => setInformation(false)}><div className="information-body"><h3>Informações da loja</h3><div className="information-row"><MapPin size={22} /><div><strong>Endereço para retirada</strong><p>{pickupAddress}</p><p>{store.address.complement}</p></div></div><div className="information-row"><Clock3 size={22} /><div><strong>Todos os dias, 10h às 23h15</strong><p>Estimativa de retirada: 30 a 40 minutos.<br />Estimativa de entrega: 70 a 90 minutos.</p><small>Estimativas informadas no cardápio original. Confirme com a loja.</small></div></div><div className="information-row"><Info size={22} /><div><strong>Pagamento no recebimento</strong><p>Pix, cartão de débito ou crédito. Você só indica a forma de pagamento; nenhuma cobrança é feita pelo site.</p></div></div><a className="button secondary" href="/conferencia/">Ver conferência do cardápio<ArrowRight size={17} /></a></div></Dialog>}
-    {history && <Dialog title="Meus pedidos" close={() => setHistory(false)} drawer><div className="drawer-body">{orders.length ? <><p className="helper">Pedidos deste navegador. Abra o acompanhamento para ver a aceitação e as etapas do preparo.</p>{orders.map(o => <details className="history-order" key={o.id}><summary><ReceiptText size={18} /><span><strong>{o.id}</strong><small>{new Date(o.createdAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}</small></span><strong>{brl(o.totalCents)}</strong></summary><OrderReceipt order={o} /></details>)}<button className="text-button" onClick={() => { if (window.confirm('Apagar os resumos salvos neste navegador?')) clearOrders(); }}>Apagar histórico deste navegador</button></> : <div className="no-results"><ReceiptText size={35} strokeWidth={1.2} /><h3>Nenhum pedido salvo</h3><p>Os resumos dos pedidos que você salvar aparecerão neste navegador.</p><button className="button primary" onClick={() => setHistory(false)}>Ver cardápio<ArrowRight size={17} /></button></div>}</div></Dialog>}
   </div>;
 }

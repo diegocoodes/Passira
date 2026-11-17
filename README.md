@@ -24,6 +24,18 @@ npm run dev
 
 O setup importa o cardápio original uma única vez e não sobrescreve alterações posteriores. Banco, senhas e sessões não são enviados ao GitHub. Consulte [.env.example](.env.example) para configurar outro banco.
 
+## Contas de clientes
+
+O botão Entrar abre `/entrar/`, com cadastro em `/criar-conta/`. O cliente cria uma conta com nome, telefone, email e senha de pelo menos 8 caracteres. A conta de cliente é separada da administração.
+
+O cardápio e o carrinho continuam acessíveis antes do login. Na conferência, o cliente precisa entrar para concluir o pedido. Cadastro e login devolvem o cliente à conferência, preservando o carrinho e os dados preenchidos. A API de criação também exige uma sessão válida e define a conta a partir do cookie, sem aceitar o proprietário enviado pelo navegador.
+
+Em `/minha-conta/`, o cliente vê os pedidos em andamento e os últimos pedidos, com atualização automática a cada 15 segundos, paginação e acesso aos detalhes em `/minha-conta/pedidos/NUMERO/`. Cada consulta valida a conta proprietária. Pedidos concluídos podem ser repetidos com preços e disponibilidade atuais.
+
+As senhas são armazenadas com hash e salt. Sessões de clientes duram até 30 dias, usam cookie HttpOnly com Secure em produção e são revogadas ao sair. O logout limpa os dados pessoais do checkout e os resumos antigos do navegador, preservando os itens do carrinho. Pedidos novos ficam no banco e não são armazenados como histórico no localStorage. Pedidos anteriores à criação das contas mantêm seus links privados, sem associação automática por telefone ou email.
+
+Antes de publicar esta versão, execute `npm run db:migrate` no banco de destino. A migration `20261117120000_customer_accounts` adiciona contas, sessões e um vínculo opcional nos pedidos existentes, sem apagar os dados. Há migrations para PostgreSQL, MySQL e SQLite.
+
 ## Painel sem código
 
 - Visão geral com pedidos recebidos, concluídos, faturamento, lucro estimado e produtos mais pedidos por data.

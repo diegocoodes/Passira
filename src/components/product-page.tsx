@@ -9,6 +9,7 @@ import { getProductImage } from '@/data/illustrative-images';
 import { brl } from '@/lib/format';
 import { useCart } from '@/lib/cart';
 import { BrandLogo } from './brand-logo';
+import { AccountLink } from './account-link';
 import { ProductCustomizer } from './product-customizer';
 import { FavoriteButton } from './favorite-button';
 import { useMenu } from './menu-provider';
@@ -49,7 +50,7 @@ export function ProductPage({ product }: { product: Product }) {
     <div className="product-brand-strip"><span>Passira San Martin</span><span>O sabor dos seus bons momentos</span></div>
     <header className="site-header"><div className="header-inner">
       <Link href="/" className="brand" aria-label="Passira, início"><BrandLogo /></Link>
-      <Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b key={count} className="cart-count-feedback">{count}</b></Link>
+      <div className="account-header-actions"><AccountLink /><Link href="/finalizar/" className="header-cart" aria-label={`Abrir carrinho, ${count} itens`}><ShoppingBag size={20} /><span>Meu pedido</span><b key={count} className="cart-count-feedback">{count}</b></Link></div>
     </div></header>
     <main id="produto" className="product-page-container">
       <div className="product-page-tools"><Link href={editId ? '/finalizar/' : menuHref} className="checkout-back"><ArrowLeft size={18} />{editId ? 'Voltar ao carrinho' : 'Voltar ao cardápio'}</Link><FavoriteButton productId={product.id} ready={ready} compact={false} /></div>

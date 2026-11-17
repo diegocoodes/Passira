@@ -1,10 +1,11 @@
+export class ApiError extends Error { constructor(public status: number, message: string) { super(message); } }
 export async function requestJson<T>(url: string, options?: RequestInit): Promise<T> {
   const response = await fetch(url, { cache: 'no-store', ...options, headers: { 'Content-Type': 'application/json', ...options?.headers } });
   const data = await response.json();
   if (!response.ok) {
     if (response.status === 401 && url.startsWith('/api/admin/') && !url.includes('/login/')) window.location.assign('/admin/entrar/');
     const reference = typeof data.requestId === 'string' && /^[a-f0-9-]{36}$/.test(data.requestId) ? ` Código: ${data.requestId}` : '';
-    throw new Error((data.error || 'Não foi possível concluir a operação.') + reference);
+    throw new ApiError(response.status, (data.error || 'Não foi possível concluir a operação.') + reference);
   }
   return data as T;
 }

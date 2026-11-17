@@ -44,6 +44,8 @@ test('administrator manages products and the customer follows a real numbered or
   expect(product).toBeTruthy();
   const customerContext = await browser.newContext({ baseURL: origin });
   const customer = await customerContext.newPage();
+  const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Recife', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  await customer.clock.setFixedTime(new Date(`${day}T18:00:00-03:00`));
   let whatsappUrl = '';
   await customerContext.route('https://wa.me/**', async route => { whatsappUrl = route.request().url(); await route.fulfill({ status: 200, contentType: 'text/html', body: '<title>WhatsApp test</title><p>Mensagem pronta para envio</p>' }); });
   customer.on('pageerror', error => browserErrors.push(error.message));
@@ -69,6 +71,18 @@ test('administrator manages products and the customer follows a real numbered or
   await expect(customer.getByLabel('Seu nome', { exact: true })).toHaveValue('Cliente Teste');
   await expect(customer.getByLabel('CPF', { exact: true })).toHaveValue('529.982.247-25');
   await customer.getByRole('button', { name: 'Conferir pedido' }).click();
+  await customer.getByRole('button', { name: /Entrar para concluir pedido/ }).click();
+  await expect(customer).toHaveURL(/\/entrar\/\?next=/);
+  await customer.getByRole('link', { name: 'Criar uma conta', exact: true }).click();
+  await customer.getByLabel('Nome completo', { exact: true }).fill('Cliente Teste');
+  await customer.getByLabel('Telefone com DDD', { exact: true }).fill('81999999999');
+  await customer.getByLabel('Email', { exact: true }).fill('pedido@passira.local');
+  await customer.getByLabel('Senha', { exact: true }).fill('senha-cliente-pedido-123');
+  await customer.getByLabel('Confirmar senha', { exact: true }).fill('senha-cliente-pedido-123');
+  await customer.getByRole('button', { name: 'Criar minha conta', exact: true }).click();
+  await expect(customer.getByRole('heading', { name: 'Revise seu pedido', exact: true })).toBeVisible();
+  await expect(customer.locator('.review-block').first()).toContainText('529.982.247-25');
+  await expect(customer.locator('.checkout-summary')).toContainText('2×');
   const whatsappPagePromise = customerContext.waitForEvent('page');
   await customer.getByRole('button', { name: /Concluir pedido/ }).click();
   const whatsappPage = await whatsappPagePromise;
@@ -80,6 +94,16 @@ test('administrator manages products and the customer follows a real numbered or
   const repeat = await customerContext.request.post('/api/orders/', { data: submitted, headers: { origin } });
   expect(repeat.status()).toBe(200);
   const order = await repeat.json();
+  const accountHistory = await customerContext.request.get('/api/account/orders/');
+  expect((await accountHistory.json()).orders[0].number).toBe(order.number);
+  const stranger = await browser.newContext({ baseURL: origin });
+  expect((await stranger.request.get(`/api/account/orders/${order.number}/`)).status()).toBe(401);
+  const strangerSignup = await stranger.request.post('/api/account/register/', { headers: { origin }, data: { name: 'Outro Cliente', phone: '81999999999', email: 'outro-pedido@passira.local', password: 'senha-outro-cliente-123' } });
+  expect(strangerSignup.ok()).toBe(true);
+  expect((await stranger.request.get(`/api/account/orders/${order.number}/`)).status()).toBe(404);
+  expect((await (await stranger.request.get('/api/account/orders/')).json()).orders).toEqual([]);
+  expect((await stranger.request.post('/api/orders/', { data: submitted, headers: { origin } })).status()).toBe(409);
+  await stranger.close();
   expect(order.number).toBe(1); expect(order.totalCents).toBe(9980);
   expect((await request.get('/api/orders/1/')).status()).toBe(404);
   await customer.getByRole('link', { name: 'Acompanhar pedido' }).click();
@@ -96,7 +120,7 @@ test('administrator manages products and the customer follows a real numbered or
   for (const key of ['customer', 'token', 'items', 'requestKey']) expect(publicTracking).not.toHaveProperty(key);
   await expect(tracker.locator('body')).not.toContainText('529.982.247-25');
   await expect(tracker.locator('body')).not.toContainText('Cliente Teste');
-  await page.getByRole('button', { name: 'Pedidos', exact: true }).click();
+  await page.getByRole('button', { name: /^Pedidos(?: \d+)?$/ }).click();
   await page.getByRole('button', { name: 'Atualizar painel' }).click();
   await expect(page.getByRole('alert').filter({ hasText: 'Novo pedido #1 recebido.' })).toBeVisible();
   expect(await page.evaluate(() => (window as unknown as { toneStarts: number }).toneStarts)).toBe(4);
@@ -116,6 +140,19 @@ test('administrator manages products and the customer follows a real numbered or
   for (const label of ['Iniciar preparo', 'Marcar como pronto', 'Concluir pedido']) await card.getByRole('button', { name: label, exact: true }).click();
   await customer.reload();
   await expect(customer.locator('.order-status')).toHaveText('Concluído');
+  const accountTab = await customerContext.newPage();
+  await accountTab.goto('/minha-conta/');
+  await expect(accountTab.locator('.customer-order')).toContainText(`Pedido #${order.number}`);
+  await expect(accountTab.locator('.customer-order .order-status')).toHaveText('Concluído');
+  for (const width of [320, 390, 768, 1440]) {
+    await accountTab.setViewportSize({ width, height: 900 });
+    await expect.poll(() => accountTab.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    if (width === 390 || width === 1440) await accountTab.screenshot({ path: `test-results/account-orders-${width}.png`, fullPage: true });
+  }
+  await accountTab.getByRole('link', { name: 'Ver pedido', exact: true }).click();
+  await expect(accountTab).toHaveURL(new RegExp(`/minha-conta/pedidos/${order.number}/`));
+  await expect(accountTab.locator('.order-status')).toHaveText('Concluído');
+  await accountTab.close();
   await tracker.reload();
   await expect(tracker.locator('.order-status')).toHaveText('Concluído');
   await tracker.getByLabel('Número do pedido').fill('999999');

@@ -59,8 +59,30 @@ model Session {
   expiresAt DateTime
 }
 
+model CustomerAccount {
+  id           String            @id @default(cuid())
+  name         String
+  email        String            @unique
+  phone        String
+  passwordHash String
+  createdAt    DateTime          @default(now())
+  sessions     CustomerSession[]
+  orders       Order[]
+}
+
+model CustomerSession {
+  id        String          @id
+  accountId String
+  account   CustomerAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  @@index([accountId])
+  @@index([expiresAt])
+}
+
 model Order {
   id                Int          @id @default(autoincrement())
+  accountId         String?
+  account           CustomerAccount? @relation(fields: [accountId], references: [id], onDelete: SetNull)
   token             String       @unique
   requestKey        String       @unique
   requestHash       String
@@ -76,6 +98,7 @@ model Order {
   items             OrderItem[]
   events            OrderEvent[]
   @@index([createdAt, status])
+  @@index([accountId, id])
 }
 
 model OrderItem {

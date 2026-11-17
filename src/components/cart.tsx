@@ -10,7 +10,9 @@ import { brl, formatCep, formatCpf, formatPhone } from '@/lib/format';
 import { storeOpen } from '@/lib/menu';
 import { downloadOrder, paymentLabels, pickupAddress, validateCustomer, whatsappLink } from '@/lib/orders';
 import { Quantity } from './quantity';
-import { requestJson } from '@/lib/api-client';
+import { ApiError, requestJson } from '@/lib/api-client';
+import { accountLoginHref } from '@/lib/account';
+import { useAccount } from './account-provider';
 import type { PostalAddress } from '@/server/postal-code';
 import { RepeatOrderButton } from './repeat-order-button';
 import { CartNotice } from './cart-notice';
@@ -41,11 +43,16 @@ export function CartPanel() {
   return <aside className="cart-panel"><div className="cart-panel-title"><ShoppingBag size={20} /><h2>Seu pedido</h2><span className="count">{items.reduce((n, i) => n + i.quantity, 0)}</span></div><MethodChoice />{items.length ? <><CartRows /><CartSummary /><Link href="/finalizar/" className="button primary full-width">Finalizar pedido<ArrowRight size={18} /></Link></> : <EmptyCart />}<div className="pickup-note"><MapPin size={17} /><div><strong>{method === 'pickup' ? 'Retire na Passira' : 'Entrega para você'}</strong><p>{method === 'pickup' ? 'Av. General San Martin, 1656' : 'Consulte a disponibilidade do seu bairro.'}</p></div></div><p className="payment-note"><CreditCard size={15} />Pagamento {method === 'pickup' ? 'na retirada' : 'no recebimento'}</p></aside>;
 }
 const blankCustomer: Customer = { name: '', phone: '', cpf: '', cep: '', street: '', number: '', neighborhood: '', complement: '', note: '', payment: 'pix' };
-export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'details' }) {
+export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'details' | 'review' }) {
+  const { user, loading: accountLoading } = useAccount();
   const { productById, cartTotals, itemDetails, deliveryRegions } = useMenu();
   const items = useCart(s => s.items), method = useCart(s => s.method), saveOrder = useCart(s => s.saveOrder);
-  const [step, setStep] = useState<'cart' | 'details' | 'review'>(() => initialStep === 'details' && !cartTotals(items, method, '').hasErrors ? 'details' : 'cart');
-  const [customer, setCustomer] = useState<Customer>(() => ({ ...blankCustomer, ...useCart.getState().customerDraft }));
+  const [step, setStep] = useState<'cart' | 'details' | 'review'>(() => {
+    if (initialStep === 'cart' || cartTotals(items, method, '').hasErrors) return 'cart';
+    const draft = useCart.getState().customerDraft;
+    return initialStep === 'review' && draft && !validateCustomer(draft, method === 'delivery') ? 'review' : 'details';
+  });
+  const [customer, setCustomer] = useState<Customer>(() => ({ ...blankCustomer, ...(user ? { name: user.name, phone: user.phone } : {}), ...useCart.getState().customerDraft }));
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [order, setOrder] = useState<Order | null>(null);
@@ -103,6 +110,7 @@ export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'det
   };
   const confirm = async () => {
     if (submitting) return;
+    if (!user) { useCart.getState().setCustomerDraft(customer); window.location.assign(accountLoginHref('/finalizar/?etapa=conferencia')); return; }
     const reason = validate(); if (reason) { setError(reason); return; }
     setSubmitting(true); setError('');
     let whatsappWindow: Window | null = null;
@@ -114,8 +122,8 @@ export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'det
       const payload = { fulfillment: method, customer: finalCustomer, items, expectedTotalCents: totals.total };
       const serialized = JSON.stringify(payload);
       let requestKey = crypto.randomUUID();
-      try { const previous = JSON.parse(sessionStorage.getItem('passira-pending-order') || 'null'); if (previous?.payload === serialized) requestKey = previous.key; } catch {}
-      sessionStorage.setItem('passira-pending-order', JSON.stringify({ key: requestKey, payload: serialized }));
+      try { const previous = JSON.parse(sessionStorage.getItem('passira-pending-order') || 'null'); if (previous?.accountId === user.id && previous?.payload === serialized) requestKey = previous.key; } catch {}
+      sessionStorage.setItem('passira-pending-order', JSON.stringify({ key: requestKey, payload: serialized, accountId: user.id }));
       const saved = await requestJson<Order>('/api/orders/', { method: 'POST', body: JSON.stringify({ ...payload, requestKey }) });
       saveOrder(saved); setOrder(saved); sessionStorage.removeItem('passira-pending-order');
       const destination = whatsappLink(saved);
@@ -123,13 +131,18 @@ export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'det
         if (whatsappWindow && !whatsappWindow.closed) whatsappWindow.location.replace(destination);
         else window.location.assign(destination);
       } catch { whatsappWindow?.close(); }
-    } catch (error) { whatsappWindow?.close(); setError(error instanceof Error ? error.message : 'Não foi possível enviar o pedido. Tente novamente.'); window.dispatchEvent(new Event('focus')); }
+    } catch (error) {
+      whatsappWindow?.close();
+      if (error instanceof ApiError && error.status === 401) { useCart.getState().setCustomerDraft(customer); window.location.assign(accountLoginHref('/finalizar/?etapa=conferencia')); return; }
+      setError(error instanceof Error ? error.message : 'Não foi possível enviar o pedido. Tente novamente.'); window.dispatchEvent(new Event('focus'));
+    }
     finally { setSubmitting(false); }
   };
   if (order) return <section className="checkout-complete" aria-label="Pedido recebido"><OrderReceipt order={order} /><Link href="/#cardapio" className="button secondary full-width">Voltar ao cardápio<ArrowRight size={18} /></Link></section>;
   if (!items.length) return <section className="checkout-empty"><EmptyCart /><Link href="/#cardapio" className="button primary">Explorar o cardápio<ArrowRight size={18} /></Link></section>;
   return <section className="checkout-flow" aria-label="Finalização do pedido">
     <CartNotice />
+    {step === 'review' && <div className="checkout-account-notice"><strong>{user ? `Pedido na conta de ${user.name}` : 'Entre na sua conta para concluir'}</strong><p>{user ? 'Você poderá acompanhar este pedido em Meus pedidos.' : 'Seu carrinho e seus dados estão guardados. Entre ou crie uma conta para enviar o pedido.'}</p></div>}
     <ol className="checkout-steps" aria-label="Etapas do pedido">{['Carrinho', 'Seus dados', 'Conferência'].map((s, i) => <li className={i <= ['cart', 'details', 'review'].indexOf(step) ? 'active' : ''} aria-current={i === ['cart', 'details', 'review'].indexOf(step) ? 'step' : undefined} key={s}><b>{i < ['cart', 'details', 'review'].indexOf(step) ? <Check size={15} /> : i + 1}</b>{s}</li>)}</ol>
     <div className="checkout-layout"><div className="checkout-form-panel"><div className="checkout-section-heading"><span className="eyebrow">PASSO {['cart', 'details', 'review'].indexOf(step) + 1} DE 3</span><h2 ref={heading} tabIndex={-1}>{step === 'cart' ? 'Confira os itens' : step === 'details' ? 'Dados do cliente' : 'Revise seu pedido'}</h2><p>{step === 'cart' ? 'Revise as quantidades e escolha retirada ou entrega.' : step === 'details' ? 'Informe seu contato e a forma de pagamento.' : 'Revise os detalhes antes de enviar à Passira.'}</p></div>
     <div className="checkout-body">
@@ -141,7 +154,7 @@ export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'det
       </form>}
       {step === 'review' && <><div className="review-block"><span className="eyebrow">{method === 'pickup' ? 'RETIRADA NO BALCÃO' : 'ENTREGA'}</span><h3>{customer.name}</h3><p>{customer.phone}</p><p>CPF: {customer.cpf}</p><p>{method === 'pickup' ? pickupAddress : `${customer.street}, ${customer.number} · ${customer.neighborhood} · ${customer.cep}${customer.complement ? ' · ' + customer.complement : ''}`}</p></div><CartRows /><div className="review-block"><strong>{paymentLabels[customer.payment]}</strong><p>Pagamento {method === 'pickup' ? 'na retirada' : 'no recebimento'}. Sem cobrança online.</p>{customer.note && <p>Observação: {customer.note}</p>}</div><p className="helper">Ao concluir, seu pedido será registrado e abriremos o WhatsApp com o resumo. Confira a mensagem e toque em Enviar para encaminhá-la à loja.</p></>}
       {error && <p className="form-error" role="alert">{error}</p>}
-    </div><footer className="checkout-actions">{step !== 'cart' && <button className="text-button back" onClick={() => { setStep(step === 'review' ? 'details' : 'cart'); setError(''); }}><ArrowLeft size={16} />Voltar</button>}{step === 'cart' ? <button type="button" className="button primary" disabled={totals.hasErrors} onClick={event => { event.preventDefault(); setStep('details'); }}>Continuar para meus dados<ArrowRight size={18} /></button> : step === 'details' ? <button type="submit" form="customer-form" className="button primary">Conferir pedido<ChevronRight size={18} /></button> : <button className="button primary" disabled={submitting} onClick={confirm}>{submitting ? 'Confirmando pedido…' : 'Concluir pedido'} · {totals.total === null ? 'A confirmar' : brl(totals.total)}<MessageCircle size={18} /></button>}</footer></div>
+    </div><footer className="checkout-actions">{step !== 'cart' && <button className="text-button back" onClick={() => { setStep(step === 'review' ? 'details' : 'cart'); setError(''); }}><ArrowLeft size={16} />Voltar</button>}{step === 'cart' ? <button type="button" className="button primary" disabled={totals.hasErrors} onClick={event => { event.preventDefault(); setStep('details'); }}>Continuar para meus dados<ArrowRight size={18} /></button> : step === 'details' ? <button type="submit" form="customer-form" className="button primary">Conferir pedido<ChevronRight size={18} /></button> : <button className="button primary" disabled={submitting || accountLoading} onClick={confirm}>{submitting ? 'Confirmando pedido…' : !user ? 'Entrar para concluir pedido' : 'Concluir pedido'} · {totals.total === null ? 'A confirmar' : brl(totals.total)}<MessageCircle size={18} /></button>}</footer></div>
     <aside className="checkout-summary"><div className="cart-panel-title"><ShoppingBag size={21} /><h2>Resumo do pedido</h2><span className="count">{items.reduce((count, item) => count + item.quantity, 0)}</span></div><div className="checkout-summary-items">{items.map(item => <div key={item.id}><span>{item.quantity}× {productById[item.productId]?.name ?? 'Produto indisponível'}</span></div>)}</div><CartSummary neighborhood={customer.neighborhood} /><div className="pickup-note"><MapPin size={18} /><div><strong>{method === 'pickup' ? 'Endereço para retirada' : 'Endereço de entrega'}</strong><p>{method === 'pickup' ? 'Av. General San Martin, 1656' : 'Confira o endereço e a taxa de entrega.'}</p></div></div><p className="payment-note"><CreditCard size={16} />Pagamento {method === 'pickup' ? 'na retirada' : 'no recebimento'}</p></aside></div>
   </section>;
 }
@@ -155,7 +168,7 @@ export function OrderReceipt({ order }: { order: Order }) {
     <p className="receipt-customer">{order.customer.name}{order.customer.cpf && <> · CPF: {order.customer.cpf}</>}</p>
     <p><strong>{paymentLabels[order.customer.payment]}</strong> · {order.fulfillment === 'pickup' ? 'Na retirada' : 'No recebimento'}</p>
     {order.fulfillment === 'pickup' && <p className="receipt-address"><MapPin size={17} />{pickupAddress}</p>}
-    {order.token && <Link className="button primary full-width" href={`/pedido/${order.token}/`}>Acompanhar pedido<ArrowRight size={18} /></Link>}
+    {order.token && <Link className="button primary full-width" href={order.number ? `/minha-conta/pedidos/${order.number}/` : `/pedido/${order.token}/`}>Acompanhar pedido<ArrowRight size={18} /></Link>}
     <a className="button secondary full-width" href={whatsappLink(order)} target="_blank" rel="noopener noreferrer"><MessageCircle size={19} />Enviar pelo WhatsApp</a>
     <button className="button secondary full-width" onClick={() => downloadOrder(order)}><Download size={18} />Baixar resumo</button>
     <RepeatOrderButton order={order} />

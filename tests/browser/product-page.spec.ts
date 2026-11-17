@@ -1,6 +1,11 @@
 import { test, expect } from '@playwright/test';
 import type { Catalog } from '../../src/data/types';
 
+test.beforeEach(async ({ page }) => {
+  const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Recife', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  await page.clock.setFixedTime(new Date(`${day}T18:00:00-03:00`));
+});
+
 test('dish options, quantity and notes lead to a styled confirmation and direct checkout', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));

@@ -1,5 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+test.beforeEach(async ({ page }) => {
+  const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Recife', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  await page.clock.setFixedTime(new Date(`${day}T18:00:00-03:00`));
+});
+
 async function fixture(page: import('@playwright/test').Page, request: import('@playwright/test').APIRequestContext, withHistory = false) {
   const catalog = await (await request.get('/api/menu/')).json();
   const price = catalog.prices.find((price: { productId: string; sizeId: string }) => price.productId === 'flavor-380033' && price.sizeId === '40442');
@@ -10,6 +15,11 @@ async function fixture(page: import('@playwright/test').Page, request: import('@
   await page.addInitScript(state => {
     if (!localStorage.getItem('passira-cart-v1')) localStorage.setItem('passira-cart-v1', JSON.stringify({ state, version: 1 }));
   }, { items: [item], orders: withHistory ? [order] : [], customerDraft: customer, method: 'pickup', favoriteIds: [] });
+  if (withHistory) {
+    const signup = await page.request.post('/api/account/register/', { headers: { origin: 'http://127.0.0.1:3100' }, data: { name: 'Cliente do histórico', phone: '81999999999', email: 'historico@passira.local', password: 'senha-historico-123' } });
+    expect(signup.ok()).toBe(true);
+    await page.route('**/api/account/orders/', route => route.fulfill({ json: { orders: [{ ...order, number: 90, status: 'completed' }], nextCursor: null } }));
+  }
   return price;
 }
 
@@ -63,9 +73,7 @@ test('CEP fills the address, preserves typing during lookup and allows manual fa
 
 test('repeat order appends only valid items using current prices and preserves the current cart and draft', async ({ page, request }) => {
   const price = await fixture(page, request, true);
-  await page.goto('/');
-  await page.getByRole('button', { name: 'Meus pedidos', exact: true }).click();
-  await page.locator('.history-order > summary').click();
+  await page.goto('/minha-conta/');
   await page.getByRole('button', { name: 'Pedir novamente', exact: true }).click();
   await expect(page).toHaveURL(/\/finalizar\//);
   await expect(page.locator('.cart-row')).toHaveCount(2);
