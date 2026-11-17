@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { signInCustomer } from './helpers/customer';
 
 test.beforeEach(async ({ page }) => {
   const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Recife', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
@@ -6,6 +7,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 async function fixture(page: import('@playwright/test').Page, request: import('@playwright/test').APIRequestContext, withHistory = false) {
+  const user = await signInCustomer(page, 'fixture-experience');
   const catalog = await (await request.get('/api/menu/')).json();
   const price = catalog.prices.find((price: { productId: string; sizeId: string }) => price.productId === 'flavor-380033' && price.sizeId === '40442');
   const item = { id: 'existing', productId: 'flavor-380033', priceId: price.id, flavorIds: ['flavor-380033'], selections: [], note: '', quantity: 1 };
@@ -14,10 +16,8 @@ async function fixture(page: import('@playwright/test').Page, request: import('@
     items: [{ title: 'Pizza antiga', configuration: { ...item, id: 'old', quantity: 2 }, details: [], unitCents: 1 }, { title: 'Item removido', configuration: { ...item, productId: 'deleted' }, details: [], unitCents: 1 }], subtotalCents: 3, deliveryCents: 0, totalCents: 3 };
   await page.addInitScript(state => {
     if (!localStorage.getItem('passira-cart-v1')) localStorage.setItem('passira-cart-v1', JSON.stringify({ state, version: 1 }));
-  }, { items: [item], orders: withHistory ? [order] : [], customerDraft: customer, method: 'pickup', favoriteIds: [] });
+  }, { items: [item], orders: withHistory ? [order] : [], customerDraft: customer, customerDraftAccountId: user.id, method: 'pickup', favoriteIds: [] });
   if (withHistory) {
-    const signup = await page.request.post('/api/account/register/', { headers: { origin: 'http://127.0.0.1:3100' }, data: { name: 'Cliente do histórico', phone: '81999999999', email: 'historico@passira.local', password: 'senha-historico-123' } });
-    expect(signup.ok()).toBe(true);
     await page.route('**/api/account/orders/', route => route.fulfill({ json: { orders: [{ ...order, number: 90, status: 'completed' }], nextCursor: null } }));
   }
   return price;

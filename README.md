@@ -26,9 +26,11 @@ O setup importa o cardápio original uma única vez e não sobrescreve alteraç�
 
 ## Contas de clientes
 
-O botão Entrar abre `/entrar/`, com cadastro em `/criar-conta/`. O cliente cria uma conta com nome, telefone, email e senha de pelo menos 8 caracteres. A conta de cliente é separada da administração.
+O botão Entrar abre `/entrar/`, com cadastro em `/criar-conta/`. O cliente cria uma conta com nome, CPF, telefone, email e senha de pelo menos 8 caracteres. A conta de cliente é separada da administração.
 
-O cardápio e o carrinho continuam acessíveis antes do login. Na conferência, o cliente precisa entrar para concluir o pedido. Cadastro e login devolvem o cliente à conferência, preservando o carrinho e os dados preenchidos. A API de criação também exige uma sessão válida e define a conta a partir do cookie, sem aceitar o proprietário enviado pelo navegador.
+O cardápio e o carrinho continuam acessíveis antes do login. Ao clicar em Continuar para meus dados, o servidor confere a sessão atual. Sem login, o cliente vai para entrar ou criar uma conta e retorna diretamente a Seus dados, com o carrinho preservado. Com login, nome, CPF e telefone são preenchidos a partir da conta. O acesso direto às etapas de dados e conferência também exige login no servidor. A API de criação define a conta a partir do cookie, sem aceitar o proprietário enviado pelo navegador.
+
+Ao conferir o pedido, os dados de contato validados são salvos na conta para as próximas compras. Contas criadas antes do campo CPF informam esse dado uma vez no checkout. Alterações no rascunho da própria conta são preservadas; dados pessoais de rascunhos de outra conta não são reutilizados. A migration `20261117150000_customer_cpf` adiciona o campo opcional às contas existentes, sem preencher CPFs a partir de pedidos antigos.
 
 Em `/minha-conta/`, o cliente vê os pedidos em andamento e os últimos pedidos, com atualização automática a cada 15 segundos, paginação e acesso aos detalhes em `/minha-conta/pedidos/NUMERO/`. Cada consulta valida a conta proprietária. Pedidos concluídos podem ser repetidos com preços e disponibilidade atuais.
 

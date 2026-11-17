@@ -22,7 +22,7 @@ import { defaultStorefrontContent } from '../src/lib/storefront-content';
 import { recordLog, setLogActor } from '../src/server/system-logs';
 import { listLogs } from '../src/server/logs-query';
 import { api } from '../src/server/http';
-import { registerCustomer, authenticateCustomer, createCustomerSession, customerFromToken, revokeCustomerSession } from '../src/server/customer-auth';
+import { registerCustomer, authenticateCustomer, createCustomerSession, customerFromToken, revokeCustomerSession, saveCustomerProfile } from '../src/server/customer-auth';
 import { customerOrders, customerOrder } from '../src/server/order-service';
 import { accountDestination } from '../src/lib/account';
 
@@ -71,7 +71,7 @@ before(async () => {
     client.close();
   }
   await seedCatalog();
-  accountId = (await registerCustomer({ name: customer.name, phone: customer.phone, email: 'cliente@teste.local', password: 'senha-cliente-123' })).id;
+  accountId = (await registerCustomer({ name: customer.name, phone: customer.phone, cpf: customer.cpf, email: 'cliente@teste.local', password: 'senha-cliente-123' })).id;
 });
 after(async () => {
   await db().$disconnect();
@@ -127,10 +127,11 @@ test('database imports the original menu once without overwriting later edits', 
 });
 
 test('customer registration normalizes email, protects passwords and rejects duplicates and invalid input', async () => {
-  const credentials = { name: 'Cliente da Conta', phone: '(81) 99999-9999', email: '  CONTA@TESTE.LOCAL  ', password: 'senha-segura-123' };
+  const credentials = { name: 'Cliente da Conta', phone: '(81) 99999-9999', cpf: customer.cpf, email: '  CONTA@TESTE.LOCAL  ', password: 'senha-segura-123' };
   const user = await registerCustomer(credentials);
   assert.equal(user.email, 'conta@teste.local');
-  assert.deepEqual(Object.keys(user).sort(), ['email', 'id', 'name', 'phone']);
+  assert.deepEqual(Object.keys(user).sort(), ['cpf', 'email', 'id', 'name', 'phone']);
+  assert.equal(user.cpf, customer.cpf);
   const saved = await db().customerAccount.findUniqueOrThrow({ where: { id: user.id } });
   assert.notEqual(saved.passwordHash, credentials.password);
   assert.ok(verifyPassword(credentials.password, saved.passwordHash));
@@ -138,9 +139,23 @@ test('customer registration normalizes email, protects passwords and rejects dup
   await assert.rejects(registerCustomer({ ...credentials, email: 'conta@teste.local' }), (error: unknown) => error instanceof HttpError && error.status === 409);
   await assert.rejects(registerCustomer({ ...credentials, email: 'outra@teste.local', password: 'curta' }), /pelo menos 8/);
   await assert.rejects(registerCustomer({ ...credentials, email: 'outra@teste.local', phone: '123' }), /telefone brasileiro/);
+  await assert.rejects(registerCustomer({ ...credentials, email: 'outra@teste.local', cpf: '11111111111' }), /CPF válido/);
   for (const email of ['conta@teste.local', 'inexistente@teste.local']) {
     await assert.rejects(authenticateCustomer({ email, password: 'incorreta' }), (error: unknown) => error instanceof HttpError && error.status === 401 && error.message === 'Email ou senha incorretos.');
   }
+});
+
+test('legacy accounts can save a validated CPF and receive their profile in subsequent sessions', async () => {
+  const legacy = await db().customerAccount.create({ data: { name: 'Cliente antigo', email: 'legado@teste.local', phone: customer.phone, passwordHash: hashPassword('senha-legado-123') } });
+  assert.equal(legacy.cpf, null);
+  const updated = await saveCustomerProfile(legacy.id, { name: 'Cliente atualizado', phone: '81988887777', cpf: '52998224725' });
+  assert.equal(updated.cpf, '529.982.247-25'); assert.equal(updated.phone, '(81) 98888-7777');
+  const session = await createCustomerSession(legacy.id);
+  assert.deepEqual(await customerFromToken(session.token), updated);
+  assert.deepEqual(await authenticateCustomer({ email: legacy.email, password: 'senha-legado-123' }), updated);
+  await assert.rejects(saveCustomerProfile(legacy.id, { ...updated, cpf: '11111111111' }), /CPF válido/);
+  assert.equal((await customerFromToken(session.token))?.cpf, updated.cpf);
+  await assert.rejects(saveCustomerProfile('', updated), (error: unknown) => error instanceof HttpError && error.status === 401);
 });
 
 test('customer sessions store token digests, rotate, expire and are independent from admin sessions', async () => {
@@ -187,7 +202,7 @@ test('orders receive sequential numbers, server totals, and idempotent retry han
 });
 
 test('customer order history and details cannot expose or replay another account order', async () => {
-  const other = await registerCustomer({ name: 'Outro Cliente', phone: customer.phone, email: 'outro@teste.local', password: 'outra-senha-123' });
+  const other = await registerCustomer({ name: 'Outro Cliente', phone: customer.phone, cpf: customer.cpf, email: 'outro@teste.local', password: 'outra-senha-123' });
   assert.deepEqual(await customerOrders(other.id), { orders: [], nextCursor: null });
   assert.equal((await customerOrders(accountId)).orders[0].number, 1);
   assert.equal((await customerOrder(accountId, 1)).status, 'completed');
@@ -323,7 +338,7 @@ test('public highlights use recent completed sales and omit inactive products an
 });
 
 test('customer history paginates without duplicates and leaves legacy orders unclaimed', async () => {
-  const pagedAccount = await registerCustomer({ name: 'Cliente Paginação', phone: customer.phone, email: 'paginacao@teste.local', password: 'senha-paginacao-123' });
+  const pagedAccount = await registerCustomer({ name: 'Cliente Paginação', phone: customer.phone, cpf: customer.cpf, email: 'paginacao@teste.local', password: 'senha-paginacao-123' });
   const original = await db().order.findUniqueOrThrow({ where: { id: 1 } });
   const snapshot = { requestHash: original.requestHash, customer: original.customer as never, fulfillment: original.fulfillment, subtotalCents: original.subtotalCents, deliveryCents: original.deliveryCents, totalCents: original.totalCents };
   await db().order.createMany({ data: Array.from({ length: 23 }, () => ({ ...snapshot, token: randomUUID().replaceAll('-', '') + randomUUID().replaceAll('-', '').slice(0, 16), requestKey: randomUUID(), accountId: pagedAccount.id })) });

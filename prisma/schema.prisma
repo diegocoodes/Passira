@@ -63,6 +63,7 @@ model CustomerAccount {
   name         String
   email        String            @unique
   phone        String
+  cpf          String?
   passwordHash String
   createdAt    DateTime          @default(now())
   sessions     CustomerSession[]

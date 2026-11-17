@@ -1,0 +1,59 @@
+{
+  "scope": "Verificação de login em Continuar para meus dados e preenchimento automático a partir da conta. Alteração de comportamento nos formulários existentes, sem redesign.",
+  "validatedAt": "2026-11-17T13:13:27.009Z",
+  "build": {
+    "command": "npm run build",
+    "result": "PASS"
+  },
+  "unitAndSqlite": {
+    "command": "npm test",
+    "result": "PASS",
+    "tests": 49
+  },
+  "postgres": {
+    "command": "tsx --test tests/system.test.ts com TEST_POSTGRES_URL e schema temporário isolado",
+    "result": "PASS",
+    "tests": 22
+  },
+  "browser": {
+    "command": "npm run test:e2e",
+    "result": "PASS",
+    "tests": 29
+  },
+  "verified": [
+    "Botão consulta uma sessão atualizada antes de exibir os dados",
+    "Sem sessão, redireciona para login ou cadastro com retorno à etapa de dados",
+    "CPF validado no cadastro e persistido na conta",
+    "Nome, CPF e telefone preenchidos com dados da conta, inclusive após login e cadastro",
+    "Carrinho e observações preservados durante a autenticação",
+    "Rascunho da mesma conta mantém edições; rascunhos de outra conta não preenchem dados pessoais",
+    "Sessão encerrada em outra aba é detectada ao continuar",
+    "Alterações de perfil são consultadas novamente antes do preenchimento",
+    "Dados confirmados são salvos e preenchidos na próxima compra",
+    "Atualização de perfil exige login e origem válida; CPF inválido não é salvo",
+    "Contas antigas continuam funcionando com CPF inicialmente vazio"
+  ],
+  "database": {
+    "migration": "20261117150000_customer_cpf",
+    "appliedToConfiguredPostgres": true,
+    "providedFor": [
+      "PostgreSQL",
+      "MySQL",
+      "SQLite"
+    ],
+    "note": "Migration aditiva, sem associação de CPFs a partir de pedidos históricos. Integrações executadas em SQLite e PostgreSQL."
+  },
+  "responsive": {
+    "widths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "result": "PASS",
+    "screenshotsReviewed": [
+      "test-results/checkout-account-prefill-390.png"
+    ],
+    "note": "Cadastro e login também mantêm os testes existentes em 320, 390, 768, 1024 e 1440."
+  }
+}

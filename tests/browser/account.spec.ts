@@ -4,6 +4,9 @@ const origin = 'http://127.0.0.1:3100';
 test('guest order submission and private account endpoints require a customer session', async ({ page, request }) => {
   for (const endpoint of ['/api/account/orders/', '/api/account/orders/1/']) expect((await request.get(endpoint)).status()).toBe(401);
   expect((await request.post('/api/orders/', { headers: { origin }, data: { accountId: 'forged' } })).status()).toBe(401);
+  expect((await request.patch('/api/account/profile/', { headers: { origin }, data: {} })).status()).toBe(401);
+  await page.goto('/finalizar/?etapa=dados');
+  await expect(page).toHaveURL(/\/entrar\/\?next=%2Ffinalizar%2F%3Fetapa%3Ddados/);
   await page.goto('/minha-conta/');
   await expect(page).toHaveURL(/\/entrar\//);
   await page.goto('/minha-conta/pedidos/1/');
@@ -15,6 +18,7 @@ test('customers register, sign out, sign in on another browser and cannot access
   await page.getByRole('link', { name: 'Entrar', exact: true }).click();
   await page.getByRole('link', { name: 'Criar uma conta', exact: true }).click();
   await page.getByLabel('Nome completo').fill('Marina Passira');
+  await page.getByLabel('CPF', { exact: true }).fill('52998224725');
   await page.getByLabel('Telefone com DDD').fill('81988887777');
   await page.getByLabel('Email', { exact: true }).fill('MARINA@passira.local');
   await page.getByLabel('Senha', { exact: true }).fill('senha-cliente-marina-123');
@@ -29,7 +33,8 @@ test('customers register, sign out, sign in on another browser and cannot access
   await expect(page.getByRole('heading', { name: 'Olá, Marina.' })).toBeVisible();
   await expect(page.getByText('Seu primeiro pedido começa no cardápio')).toBeVisible();
   const session = await (await page.request.get('/api/account/session/')).json();
-  expect(Object.keys(session.user).sort()).toEqual(['email', 'id', 'name', 'phone']);
+  expect(Object.keys(session.user).sort()).toEqual(['cpf', 'email', 'id', 'name', 'phone']);
+  expect(session.user.cpf).toBe('529.982.247-25');
   const cookie = (await page.context().cookies()).find(cookie => cookie.name === 'passira-customer');
   expect(cookie?.httpOnly).toBe(true);
   expect(cookie?.sameSite).toBe('Lax');

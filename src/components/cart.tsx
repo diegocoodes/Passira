@@ -11,7 +11,7 @@ import { storeOpen } from '@/lib/menu';
 import { downloadOrder, paymentLabels, pickupAddress, validateCustomer, whatsappLink } from '@/lib/orders';
 import { Quantity } from './quantity';
 import { ApiError, requestJson } from '@/lib/api-client';
-import { accountLoginHref } from '@/lib/account';
+import { accountLoginHref, blankCustomer, customerForAccount, type AccountUser } from '@/lib/account';
 import { useAccount } from './account-provider';
 import type { PostalAddress } from '@/server/postal-code';
 import { RepeatOrderButton } from './repeat-order-button';
@@ -42,17 +42,22 @@ export function CartPanel() {
   const items = useCart(s => s.items), method = useCart(s => s.method);
   return <aside className="cart-panel"><div className="cart-panel-title"><ShoppingBag size={20} /><h2>Seu pedido</h2><span className="count">{items.reduce((n, i) => n + i.quantity, 0)}</span></div><MethodChoice />{items.length ? <><CartRows /><CartSummary /><Link href="/finalizar/" className="button primary full-width">Finalizar pedido<ArrowRight size={18} /></Link></> : <EmptyCart />}<div className="pickup-note"><MapPin size={17} /><div><strong>{method === 'pickup' ? 'Retire na Passira' : 'Entrega para você'}</strong><p>{method === 'pickup' ? 'Av. General San Martin, 1656' : 'Consulte a disponibilidade do seu bairro.'}</p></div></div><p className="payment-note"><CreditCard size={15} />Pagamento {method === 'pickup' ? 'na retirada' : 'no recebimento'}</p></aside>;
 }
-const blankCustomer: Customer = { name: '', phone: '', cpf: '', cep: '', street: '', number: '', neighborhood: '', complement: '', note: '', payment: 'pix' };
 export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'details' | 'review' }) {
-  const { user, loading: accountLoading } = useAccount();
+  const { user, loading: accountLoading, refresh: refreshAccount } = useAccount();
   const { productById, cartTotals, itemDetails, deliveryRegions } = useMenu();
   const items = useCart(s => s.items), method = useCart(s => s.method), saveOrder = useCart(s => s.saveOrder);
   const [step, setStep] = useState<'cart' | 'details' | 'review'>(() => {
-    if (initialStep === 'cart' || cartTotals(items, method, '').hasErrors) return 'cart';
+    if (!user || initialStep === 'cart' || cartTotals(items, method, '').hasErrors) return 'cart';
     const draft = useCart.getState().customerDraft;
     return initialStep === 'review' && draft && !validateCustomer(draft, method === 'delivery') ? 'review' : 'details';
   });
-  const [customer, setCustomer] = useState<Customer>(() => ({ ...blankCustomer, ...(user ? { name: user.name, phone: user.phone } : {}), ...useCart.getState().customerDraft }));
+  const [customer, setCustomer] = useState<Customer>(() => {
+    const cart = useCart.getState();
+    return user ? customerForAccount(user, cart.customerDraft, cart.customerDraftAccountId) : { ...blankCustomer, ...cart.customerDraft };
+  });
+  const [customerOwnerId, setCustomerOwnerId] = useState(user?.id || null);
+  const [checkingAccount, setCheckingAccount] = useState(false);
+  const [savingProfile, setSavingProfile] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [order, setOrder] = useState<Order | null>(null);
@@ -89,7 +94,7 @@ export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'det
     return () => { window.clearTimeout(timeout); controller.abort(); };
     // Address fields are captured once so typing during the lookup is preserved.
   }, [customer.cep, method, step]);
-  useEffect(() => { if (!order) useCart.getState().setCustomerDraft(customer); }, [customer, order]);
+  useEffect(() => { if (!order && step !== 'cart') useCart.getState().setCustomerDraft(customer, customerOwnerId); }, [customer, customerOwnerId, order, step]);
   useEffect(() => { const id = window.setInterval(() => setNow(new Date()), 30000); return () => window.clearInterval(id); }, []);
   useEffect(() => {
     if (previousStep.current === step) return;
@@ -98,6 +103,19 @@ export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'det
     heading.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
   }, [step]);
   const totals = cartTotals(items, method, customer.neighborhood, now);
+  const continueToDetails = async () => {
+    if (checkingAccount || totals.hasErrors) return;
+    setCheckingAccount(true); setError('');
+    try {
+      const account = await refreshAccount();
+      if (!account) { window.location.assign(accountLoginHref('/finalizar/?etapa=dados')); return; }
+      const cart = useCart.getState();
+      setCustomer(customerForAccount(account, cart.customerDraft, cart.customerDraftAccountId));
+      setCustomerOwnerId(account.id);
+      setStep('details');
+    } catch (error) { setError(error instanceof Error ? error.message : 'Não foi possível verificar sua conta. Tente novamente.'); }
+    finally { setCheckingAccount(false); }
+  };
   const setField = (key: keyof Customer, value: string) => { setCustomer(current => ({ ...current, [key]: value })); setError(''); };
   const validate = () => {
     const customerError = validateCustomer(customer, method === 'delivery');
@@ -108,9 +126,23 @@ export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'det
     if (!storeOpen()) return 'A pizzaria está fora do horário de atendimento (10h às 23h15). Volte durante o funcionamento para finalizar.';
     return null;
   };
+  const reviewOrder = async () => {
+    if (savingProfile) return;
+    const reason = validate(); if (reason) { setError(reason); return; }
+    setSavingProfile(true); setError('');
+    try {
+      const { user: account } = await requestJson<{ user: AccountUser }>('/api/account/profile/', { method: 'PATCH', body: JSON.stringify({ name: customer.name, cpf: customer.cpf, phone: customer.phone }) });
+      setCustomer(current => ({ ...current, name: account.name, cpf: account.cpf || '', phone: account.phone }));
+      setCustomerOwnerId(account.id);
+      setStep('review');
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 401) { window.location.assign(accountLoginHref('/finalizar/?etapa=dados')); return; }
+      setError(error instanceof Error ? error.message : 'Não foi possível salvar seus dados. Tente novamente.');
+    } finally { setSavingProfile(false); }
+  };
   const confirm = async () => {
     if (submitting) return;
-    if (!user) { useCart.getState().setCustomerDraft(customer); window.location.assign(accountLoginHref('/finalizar/?etapa=conferencia')); return; }
+    if (!user) { useCart.getState().setCustomerDraft(customer, customerOwnerId); window.location.assign(accountLoginHref('/finalizar/?etapa=dados')); return; }
     const reason = validate(); if (reason) { setError(reason); return; }
     setSubmitting(true); setError('');
     let whatsappWindow: Window | null = null;
@@ -133,7 +165,7 @@ export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'det
       } catch { whatsappWindow?.close(); }
     } catch (error) {
       whatsappWindow?.close();
-      if (error instanceof ApiError && error.status === 401) { useCart.getState().setCustomerDraft(customer); window.location.assign(accountLoginHref('/finalizar/?etapa=conferencia')); return; }
+      if (error instanceof ApiError && error.status === 401) { useCart.getState().setCustomerDraft(customer, customerOwnerId); window.location.assign(accountLoginHref('/finalizar/?etapa=dados')); return; }
       setError(error instanceof Error ? error.message : 'Não foi possível enviar o pedido. Tente novamente.'); window.dispatchEvent(new Event('focus'));
     }
     finally { setSubmitting(false); }
@@ -147,14 +179,14 @@ export function Checkout({ initialStep = 'cart' }: { initialStep?: 'cart' | 'det
     <div className="checkout-layout"><div className="checkout-form-panel"><div className="checkout-section-heading"><span className="eyebrow">PASSO {['cart', 'details', 'review'].indexOf(step) + 1} DE 3</span><h2 ref={heading} tabIndex={-1}>{step === 'cart' ? 'Confira os itens' : step === 'details' ? 'Dados do cliente' : 'Revise seu pedido'}</h2><p>{step === 'cart' ? 'Revise as quantidades e escolha retirada ou entrega.' : step === 'details' ? 'Informe seu contato e a forma de pagamento.' : 'Revise os detalhes antes de enviar à Passira.'}</p></div>
     <div className="checkout-body">
       {step === 'cart' && <><MethodChoice /><CartRows />{totals.hasErrors && <p className="form-error">Há itens que precisam ser revisados.</p>}<Link href="/#cardapio" className="text-button checkout-add-more"><ArrowLeft size={15} />Adicionar mais itens</Link></>}
-      {step === 'details' && <form id="customer-form" onSubmit={e => { e.preventDefault(); const reason = validate(); if (reason) setError(reason); else { setError(''); setStep('review'); } }}><MethodChoice /><div className="notice neutral"><MapPin size={19} /><div><strong>{method === 'pickup' ? 'Retirada no estabelecimento' : 'Endereço de entrega'}</strong><p>{method === 'pickup' ? pickupAddress : 'Preencha seu endereço. A taxa será apresentada antes da confirmação.'}</p>{method === 'pickup' && <p>Prox. a Praça de eventos</p>}</div></div>
+      {step === 'details' && <form id="customer-form" onSubmit={event => { event.preventDefault(); void reviewOrder(); }}><MethodChoice /><div className="notice neutral"><MapPin size={19} /><div><strong>{method === 'pickup' ? 'Retirada no estabelecimento' : 'Endereço de entrega'}</strong><p>{method === 'pickup' ? pickupAddress : 'Preencha seu endereço. A taxa será apresentada antes da confirmação.'}</p>{method === 'pickup' && <p>Prox. a Praça de eventos</p>}</div></div>
         <div className="form-grid"><label className="field span-two"><span>Seu nome</span><input name="name" autoComplete="name" required minLength={2} maxLength={100} value={customer.name} onChange={e => setField('name', e.target.value)} placeholder="Nome completo" /></label><label className="field span-two"><span>CPF</span><input name="cpf" required inputMode="numeric" autoComplete="off" maxLength={14} pattern="[0-9]{3}[.][0-9]{3}[.][0-9]{3}-[0-9]{2}" value={customer.cpf} onChange={event => setField('cpf', formatCpf(event.target.value))} placeholder="000.000.000-00" /></label><label className="field span-two"><span>Telefone com DDD</span><input name="phone" type="tel" inputMode="tel" autoComplete="tel-national" required maxLength={15} value={customer.phone} onChange={e => setField('phone', formatPhone(e.target.value))} placeholder="(81) 99999-9999" /></label>
           {method === 'delivery' && <><label className="field span-two"><span id="postal-code-label">CEP</span><input name="cep" aria-labelledby="postal-code-label" inputMode="numeric" autoComplete="postal-code" required pattern="[0-9]{5}-[0-9]{3}" value={customer.cep} onChange={e => setField('cep', formatCep(e.target.value))} placeholder="00000-000" aria-describedby="postal-lookup-status" /><small id="postal-lookup-status" className="postal-lookup-status" role="status" aria-busy={postalLoading}>{postalMessage || 'O CEP sugere a rua e o bairro. Você pode editar os dados.'}</small></label><label className="field span-two"><span>Endereço</span><input name="street" autoComplete="address-line1" required minLength={2} maxLength={150} value={customer.street} onChange={e => setField('street', e.target.value)} placeholder="Rua ou avenida" /></label><label className="field"><span>Número</span><input name="number" required maxLength={20} value={customer.number} onChange={e => setField('number', e.target.value)} placeholder="Número ou S/N" /></label><label className="field"><span>Bairro</span><input name="neighborhood" required minLength={2} maxLength={100} list="neighborhoods" value={customer.neighborhood} onChange={e => setField('neighborhood', e.target.value)} placeholder="Seu bairro" /><datalist id="neighborhoods">{deliveryRegions.flatMap(r => r.neighborhoods.map(n => <option key={r.id + n} value={n} />))}</datalist></label><label className="field span-two"><span>Complemento <small>opcional</small></span><input name="complement" autoComplete="address-line2" maxLength={150} value={customer.complement} onChange={e => setField('complement', e.target.value)} placeholder="Apartamento, bloco, ponto de referência" /></label></>}
-        </div><fieldset className="option-section"><legend>Pagamento {method === 'pickup' ? 'na retirada' : 'no recebimento'}</legend><p className="helper">Selecione como pretende pagar. Nenhum valor será cobrado agora.</p><div className="payment-options">{(['pix', 'debit', 'credit'] as const).map(payment => <label key={payment} className={customer.payment === payment ? 'selected' : ''}><input type="radio" name="payment" value={payment} checked={customer.payment === payment} onChange={() => setField('payment', payment)} />{payment === 'pix' ? <QrCode size={20} /> : <CreditCard size={20} />}<span>{paymentLabels[payment]}</span>{customer.payment === payment && <Check size={16} />}</label>)}</div></fieldset><label className="field"><span>Observação do pedido <small>opcional</small></span><textarea name="note" maxLength={1000} rows={3} value={customer.note} onChange={e => setField('note', e.target.value)} placeholder="Algo que a equipe precisa saber?" /></label>
+        </div><p className="helper">Ao conferir o pedido, nome, CPF e telefone ficam salvos na sua conta para as próximas compras.</p><fieldset className="option-section"><legend>Pagamento {method === 'pickup' ? 'na retirada' : 'no recebimento'}</legend><p className="helper">Selecione como pretende pagar. Nenhum valor será cobrado agora.</p><div className="payment-options">{(['pix', 'debit', 'credit'] as const).map(payment => <label key={payment} className={customer.payment === payment ? 'selected' : ''}><input type="radio" name="payment" value={payment} checked={customer.payment === payment} onChange={() => setField('payment', payment)} />{payment === 'pix' ? <QrCode size={20} /> : <CreditCard size={20} />}<span>{paymentLabels[payment]}</span>{customer.payment === payment && <Check size={16} />}</label>)}</div></fieldset><label className="field"><span>Observação do pedido <small>opcional</small></span><textarea name="note" maxLength={1000} rows={3} value={customer.note} onChange={e => setField('note', e.target.value)} placeholder="Algo que a equipe precisa saber?" /></label>
       </form>}
       {step === 'review' && <><div className="review-block"><span className="eyebrow">{method === 'pickup' ? 'RETIRADA NO BALCÃO' : 'ENTREGA'}</span><h3>{customer.name}</h3><p>{customer.phone}</p><p>CPF: {customer.cpf}</p><p>{method === 'pickup' ? pickupAddress : `${customer.street}, ${customer.number} · ${customer.neighborhood} · ${customer.cep}${customer.complement ? ' · ' + customer.complement : ''}`}</p></div><CartRows /><div className="review-block"><strong>{paymentLabels[customer.payment]}</strong><p>Pagamento {method === 'pickup' ? 'na retirada' : 'no recebimento'}. Sem cobrança online.</p>{customer.note && <p>Observação: {customer.note}</p>}</div><p className="helper">Ao concluir, seu pedido será registrado e abriremos o WhatsApp com o resumo. Confira a mensagem e toque em Enviar para encaminhá-la à loja.</p></>}
       {error && <p className="form-error" role="alert">{error}</p>}
-    </div><footer className="checkout-actions">{step !== 'cart' && <button className="text-button back" onClick={() => { setStep(step === 'review' ? 'details' : 'cart'); setError(''); }}><ArrowLeft size={16} />Voltar</button>}{step === 'cart' ? <button type="button" className="button primary" disabled={totals.hasErrors} onClick={event => { event.preventDefault(); setStep('details'); }}>Continuar para meus dados<ArrowRight size={18} /></button> : step === 'details' ? <button type="submit" form="customer-form" className="button primary">Conferir pedido<ChevronRight size={18} /></button> : <button className="button primary" disabled={submitting || accountLoading} onClick={confirm}>{submitting ? 'Confirmando pedido…' : !user ? 'Entrar para concluir pedido' : 'Concluir pedido'} · {totals.total === null ? 'A confirmar' : brl(totals.total)}<MessageCircle size={18} /></button>}</footer></div>
+    </div><footer className="checkout-actions">{step !== 'cart' && <button className="text-button back" onClick={() => { setStep(step === 'review' ? 'details' : 'cart'); setError(''); }}><ArrowLeft size={16} />Voltar</button>}{step === 'cart' ? <button type="button" className="button primary" disabled={totals.hasErrors || checkingAccount} onClick={() => { void continueToDetails(); }}>{checkingAccount ? 'Verificando sua conta…' : 'Continuar para meus dados'}<ArrowRight size={18} /></button> : step === 'details' ? <button type="submit" form="customer-form" className="button primary" disabled={savingProfile}>{savingProfile ? 'Salvando seus dados…' : 'Conferir pedido'}<ChevronRight size={18} /></button> : <button className="button primary" disabled={submitting || accountLoading} onClick={confirm}>{submitting ? 'Confirmando pedido…' : !user ? 'Entrar para concluir pedido' : 'Concluir pedido'} · {totals.total === null ? 'A confirmar' : brl(totals.total)}<MessageCircle size={18} /></button>}</footer></div>
     <aside className="checkout-summary"><div className="cart-panel-title"><ShoppingBag size={21} /><h2>Resumo do pedido</h2><span className="count">{items.reduce((count, item) => count + item.quantity, 0)}</span></div><div className="checkout-summary-items">{items.map(item => <div key={item.id}><span>{item.quantity}× {productById[item.productId]?.name ?? 'Produto indisponível'}</span></div>)}</div><CartSummary neighborhood={customer.neighborhood} /><div className="pickup-note"><MapPin size={18} /><div><strong>{method === 'pickup' ? 'Endereço para retirada' : 'Endereço de entrega'}</strong><p>{method === 'pickup' ? 'Av. General San Martin, 1656' : 'Confira o endereço e a taxa de entrega.'}</p></div></div><p className="payment-note"><CreditCard size={16} />Pagamento {method === 'pickup' ? 'na retirada' : 'no recebimento'}</p></aside></div>
   </section>;
 }

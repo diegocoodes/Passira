@@ -58,10 +58,19 @@ test('administrator manages products and the customer follows a real numbered or
   await customer.getByRole('button', { name: /Adicionar ao carrinho/ }).click();
   await customer.getByRole('link', { name: 'Ver carrinho', exact: true }).click();
   await customer.getByRole('button', { name: 'Continuar para meus dados' }).click();
-  await customer.getByLabel('Seu nome', { exact: true }).fill('Cliente Teste');
+  await expect(customer).toHaveURL(/\/entrar\/\?next=/);
+  await customer.getByRole('link', { name: 'Criar uma conta', exact: true }).click();
+  await customer.getByLabel('Nome completo', { exact: true }).fill('Cliente Teste');
   await customer.getByLabel('CPF', { exact: true }).fill('52998224725');
-  await expect(customer.getByLabel('CPF', { exact: true })).toHaveValue('529.982.247-25');
   await customer.getByLabel('Telefone com DDD', { exact: true }).fill('81999999999');
+  await customer.getByLabel('Email', { exact: true }).fill('pedido@passira.local');
+  await customer.getByLabel('Senha', { exact: true }).fill('senha-cliente-pedido-123');
+  await customer.getByLabel('Confirmar senha', { exact: true }).fill('senha-cliente-pedido-123');
+  await customer.getByRole('button', { name: 'Criar minha conta', exact: true }).click();
+  await expect(customer.getByRole('heading', { name: 'Dados do cliente', exact: true })).toBeVisible();
+  await expect(customer.getByLabel('Seu nome', { exact: true })).toHaveValue('Cliente Teste');
+  await expect(customer.getByLabel('CPF', { exact: true })).toHaveValue('529.982.247-25');
+  await expect(customer.getByLabel('Telefone com DDD', { exact: true })).toHaveValue('(81) 99999-9999');
   // Product editing must preserve the customer's unfinished checkout.
   await customer.getByRole('button', { name: 'Voltar', exact: true }).click();
   await customer.getByRole('link', { name: `Editar ${product.name}` }).click();
@@ -71,15 +80,6 @@ test('administrator manages products and the customer follows a real numbered or
   await expect(customer.getByLabel('Seu nome', { exact: true })).toHaveValue('Cliente Teste');
   await expect(customer.getByLabel('CPF', { exact: true })).toHaveValue('529.982.247-25');
   await customer.getByRole('button', { name: 'Conferir pedido' }).click();
-  await customer.getByRole('button', { name: /Entrar para concluir pedido/ }).click();
-  await expect(customer).toHaveURL(/\/entrar\/\?next=/);
-  await customer.getByRole('link', { name: 'Criar uma conta', exact: true }).click();
-  await customer.getByLabel('Nome completo', { exact: true }).fill('Cliente Teste');
-  await customer.getByLabel('Telefone com DDD', { exact: true }).fill('81999999999');
-  await customer.getByLabel('Email', { exact: true }).fill('pedido@passira.local');
-  await customer.getByLabel('Senha', { exact: true }).fill('senha-cliente-pedido-123');
-  await customer.getByLabel('Confirmar senha', { exact: true }).fill('senha-cliente-pedido-123');
-  await customer.getByRole('button', { name: 'Criar minha conta', exact: true }).click();
   await expect(customer.getByRole('heading', { name: 'Revise seu pedido', exact: true })).toBeVisible();
   await expect(customer.locator('.review-block').first()).toContainText('529.982.247-25');
   await expect(customer.locator('.checkout-summary')).toContainText('2×');
@@ -98,7 +98,7 @@ test('administrator manages products and the customer follows a real numbered or
   expect((await accountHistory.json()).orders[0].number).toBe(order.number);
   const stranger = await browser.newContext({ baseURL: origin });
   expect((await stranger.request.get(`/api/account/orders/${order.number}/`)).status()).toBe(401);
-  const strangerSignup = await stranger.request.post('/api/account/register/', { headers: { origin }, data: { name: 'Outro Cliente', phone: '81999999999', email: 'outro-pedido@passira.local', password: 'senha-outro-cliente-123' } });
+  const strangerSignup = await stranger.request.post('/api/account/register/', { headers: { origin }, data: { name: 'Outro Cliente', phone: '81999999999', cpf: '52998224725', email: 'outro-pedido@passira.local', password: 'senha-outro-cliente-123' } });
   expect(strangerSignup.ok()).toBe(true);
   expect((await stranger.request.get(`/api/account/orders/${order.number}/`)).status()).toBe(404);
   expect((await (await stranger.request.get('/api/account/orders/')).json()).orders).toEqual([]);

@@ -60,7 +60,7 @@ export function AccountOrders({ user }: { user: AccountUser }) {
       try {
         await requestJson('/api/account/logout/', { method: 'POST' });
         await useCart.persist.rehydrate();
-        useCart.setState({ orders: [], customerDraft: null });
+        useCart.setState({ orders: [], customerDraft: null, customerDraftAccountId: null });
         sessionStorage.removeItem('passira-pending-order');
         window.location.replace('/');
       } catch (error) { setError(error instanceof Error ? error.message : 'Não foi possível sair da conta.'); setSigningOut(false); }

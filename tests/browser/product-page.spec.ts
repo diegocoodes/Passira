@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
 import type { Catalog } from '../../src/data/types';
+import { signInCustomer } from './helpers/customer';
 
 test.beforeEach(async ({ page }) => {
+  await signInCustomer(page, 'fixture-products');
   const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Recife', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   await page.clock.setFixedTime(new Date(`${day}T18:00:00-03:00`));
 });
